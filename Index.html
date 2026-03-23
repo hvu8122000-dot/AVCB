@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Lớp Giao Tiếp Ca III (20:00-21:30)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --navy: #1a2340;
+  --navy-light: #2a3558;
+  --accent: #4f7df3;
+  --accent-soft: #7da3ff;
+  --accent-pale: #eef2ff;
+  --teal: #0ea5a0;
+  --teal-pale: #e0f7f6;
+  --amber: #f59e0b;
+  --amber-pale: #fffbeb;
+  --green: #16a34a;
+  --green-pale: #dcfce7;
+  --red: #dc2626;
+  --red-pale: #fee2e2;
+  --purple: #7c3aed;
+  --purple-pale: #ede9fe;
+  --rose: #e11d48;
+  --rose-pale: #ffe4e6;
+  --text: #1a2340;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --shadow: 0 1px 12px rgba(26,35,64,0.07);
+  --shadow-md: 0 4px 24px rgba(26,35,64,0.11);
+  --shadow-lg: 0 10px 40px rgba(26,35,64,0.15);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --sidebar-w: 240px;
+  --topbar-h: 58px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Lexend',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6}
+
+/* ── TOPBAR (mobile) ── */
+.topbar{display:none;position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:var(--navy);z-index:400;align-items:center;padding:0 16px;gap:12px}
+.topbar-info{flex:1}
+.topbar-title{font-size:14px;font-weight:700;color:#fff;line-height:1.3}
+.topbar-sub{font-size:10px;color:rgba(255,255,255,.55);font-weight:300}
+.hamburger{width:44px;height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;flex-shrink:0}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── OVERLAY ── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:350;opacity:0;transition:opacity .25s;pointer-events:none}
+.overlay.show{opacity:1;pointer-events:auto}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);min-height:100vh;background:var(--navy);position:fixed;top:0;left:0;padding:28px 0 24px;display:flex;flex-direction:column;z-index:200;overflow-y:auto;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.sidebar-logo{padding:0 20px 22px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:10px}
+.sidebar-logo .tag{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-soft);background:rgba(79,125,243,.2);padding:3px 9px;border-radius:20px;display:inline-block;margin-bottom:9px}
+.sidebar-logo h1{font-size:15px;font-weight:700;color:#fff;line-height:1.35}
+.sidebar-logo p{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;font-weight:300}
+.nav-section{font-size:8.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:14px 20px 5px}
+.nav-link{display:flex;align-items:center;gap:9px;padding:10px 14px;border-radius:var(--radius-sm);margin:2px 8px;font-size:12.5px;font-weight:400;color:rgba(255,255,255,.6);text-decoration:none;transition:all .18s;min-height:44px}
+@media(hover:hover){.nav-link:hover{background:rgba(255,255,255,.1);color:#fff}}
+.nav-link:active,.nav-link.active{background:rgba(79,125,243,.3);color:#fff;font-weight:500}
+.nav-icon{font-size:14px;width:18px;text-align:center;flex-shrink:0}
+.nav-badge{margin-left:auto;font-size:9px;font-weight:700;background:rgba(255,255,255,.15);color:rgba(255,255,255,.7);padding:2px 7px;border-radius:20px}
+.nav-link.active .nav-badge{background:var(--accent);color:#fff}
+.sidebar-footer{margin-top:auto;padding:14px 20px 0;border-top:1px solid rgba(255,255,255,.1);font-size:10px;color:rgba(255,255,255,.35);font-weight:300}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sidebar-w);padding:36px 48px 80px;max-width:960px}
+
+/* ── PAGE HEADER ── */
+.page-header{margin-bottom:36px;padding:28px 32px;background:var(--navy);border-radius:var(--radius);box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.page-header::before{content:'🏠';position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:72px;opacity:.08;pointer-events:none}
+.ph-tags{display:flex;gap:7px;margin-bottom:12px;flex-wrap:wrap}
+.ph-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7)}
+.page-header h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:6px}
+.page-header p{font-size:13px;color:rgba(255,255,255,.6);font-weight:300;line-height:1.7;max-width:520px}
+
+/* ── SECTION HEADER ── */
+.section{margin-bottom:52px;scroll-margin-top:28px}
+.section-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px}
+.section-num{width:34px;height:34px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px;box-shadow:0 4px 12px rgba(79,125,243,.35)}
+.section-title{font-size:18px;font-weight:700;color:var(--text)}
+.section-sub{font-size:12px;color:var(--text-muted);font-weight:300;margin-top:3px}
+
+/* ── TTS BAR ── */
+.tts-bar{display:flex;align-items:center;gap:10px;padding:10px 16px;margin-bottom:18px;background:var(--accent-pale);border:1px solid #d0daff;border-radius:var(--radius-sm);flex-wrap:wrap}
+.tts-bar label{font-size:11.5px;font-weight:500;color:var(--text-muted);white-space:nowrap}
+.tts-select{padding:6px 10px;border-radius:20px;flex:1;min-width:0;border:1.5px solid var(--border-strong);background:#fff;font-family:'Lexend',sans-serif;font-size:12px;color:var(--text);outline:none}
+.tts-rate-wrap{display:flex;align-items:center;gap:6px}
+.tts-rate{width:70px;accent-color:var(--accent);cursor:pointer}
+.tts-rate-val{font-size:11px;font-weight:700;color:var(--accent);min-width:32px}
+
+/* ── TTS BUTTON ── */
+.tts-btn{display:inline-flex;align-items:center;justify-content:center;min-width:34px;min-height:34px;border-radius:50%;border:1.5px solid var(--border-strong);background:var(--accent-pale);color:var(--accent);font-size:14px;cursor:pointer;transition:all .18s;flex-shrink:0;padding:0}
+.tts-btn:active,.tts-btn.speaking{background:var(--accent);color:#fff;border-color:var(--accent);transform:scale(.93)}
+.tts-btn.speaking{animation:pulse-tts .7s infinite alternate}
+@keyframes pulse-tts{from{box-shadow:0 0 0 0 rgba(79,125,243,.5)}to{box-shadow:0 0 0 8px rgba(79,125,243,0)}}
+
+/* ── VOCAB GRID ── */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:13px}
+.vocab-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;cursor:pointer;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:all .22s;user-select:none;-webkit-user-select:none}
+.vocab-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--teal));opacity:0;transition:opacity .2s}
+@media(hover:hover){.vocab-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);border-color:#c0ccff}.vocab-card:hover::after{opacity:1}}
+.vocab-card:active{transform:scale(.97)}
+.vocab-card.revealed::after{opacity:1}
+
+.vc-cat{font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;padding:2px 8px;border-radius:20px;display:inline-block}
+.cat-word{background:var(--accent-pale);color:var(--accent)}
+.cat-chunk{background:var(--teal-pale);color:var(--teal)}
+.cat-slang{background:var(--rose-pale);color:var(--rose)}
+.cat-expr{background:var(--purple-pale);color:var(--purple)}
+
+.vc-ipa{font-size:15px;color:var(--amber);font-weight:500;margin-bottom:5px;letter-spacing:.03em;line-height:1.4}
+.vc-word{font-size:17px;font-weight:700;color:var(--text);display:none;margin-bottom:4px;align-items:center;gap:7px}
+.vocab-card.revealed .vc-word{display:flex}
+.vocab-card.revealed .vc-ipa{font-size:11px;color:var(--text-light);margin-bottom:3px}
+.vc-vi{font-size:12px;color:var(--text-muted);font-weight:300;margin-bottom:6px}
+.vc-example{font-size:11.5px;color:var(--text-light);font-style:italic;font-weight:300;border-top:1px solid var(--border);padding-top:7px;margin-top:7px;line-height:1.5;display:none;gap:6px}
+.vocab-card.revealed .vc-example{display:flex;align-items:flex-start}
+.vc-hint{font-size:10px;color:var(--text-light);font-weight:400;margin-top:5px;display:flex;align-items:center;gap:4px}
+.vocab-card.revealed .vc-hint{display:none}
+
+/* ── DIVIDER ── */
+.divider{border:none;border-top:1px solid var(--border);margin:32px 0}
+
+/* ── SPEAKING SECTION ── */
+.speak-intro{background:var(--navy);border-radius:var(--radius);padding:20px 24px;margin-bottom:24px;display:flex;align-items:flex-start;gap:16px}
+.si-icon{font-size:32px;flex-shrink:0;margin-top:2px}
+.si-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px}
+.si-body{font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.7;font-weight:300}
+.si-badges{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.si-badge{font-size:9.5px;font-weight:600;padding:3px 9px;border-radius:20px}
+.sib-green{background:rgba(22,163,74,.25);color:#6ee7b7}
+.sib-amber{background:rgba(245,158,11,.2);color:#fcd34d}
+.sib-red{background:rgba(220,38,38,.2);color:#fca5a5}
+
+/* Line card */
+.line-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow);transition:border-color .2s}
+.line-card.recording{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.line-card.done-good{border-color:var(--green)}
+.line-card.done-ok{border-color:var(--amber)}
+.line-card.done-bad{border-color:var(--red)}
+
+.line-header{padding:14px 18px 10px;border-bottom:1px solid var(--border)}
+.lh-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.lh-num{font-size:9.5px;font-weight:700;color:var(--text-light);background:var(--bg);padding:2px 8px;border-radius:20px;border:1px solid var(--border)}
+.lh-speaker{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px}
+.sp-nick{background:var(--accent-pale);color:var(--accent)}
+.sp-mum{background:var(--rose-pale);color:var(--rose)}
+.sp-dad{background:var(--purple-pale);color:var(--purple)}
+.sp-harper{background:var(--amber-pale);color:var(--amber)}
+.sp-all{background:var(--teal-pale);color:var(--teal)}
+
+.line-text{font-size:14px;color:var(--text);line-height:1.7;font-weight:400}
+.line-text .word{display:inline;padding:1px 2px;border-radius:3px;transition:background .2s,color .2s}
+.word.w-correct{background:var(--green-pale);color:var(--green)}
+.word.w-wrong{background:var(--red-pale);color:var(--red);text-decoration:underline dotted}
+.word.w-missed{background:var(--amber-pale);color:var(--amber)}
+
+.line-ipa{font-size:12px;color:var(--amber);font-weight:400;margin-top:6px;line-height:1.6;font-style:italic}
+
+.line-controls{padding:12px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+
+/* Record button */
+.rec-btn{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:24px;border:none;font-family:'Lexend',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;min-height:46px;-webkit-tap-highlight-color:transparent}
+.rec-btn-start{background:var(--accent);color:#fff}
+.rec-btn-start:active{transform:scale(.96);background:#3558e0}
+@media(hover:hover){.rec-btn-start:hover{background:#3558e0;transform:translateY(-1px);box-shadow:0 4px 14px rgba(79,125,243,.4)}}
+.rec-btn-stop{background:var(--red);color:#fff;animation:rec-pulse 1.4s infinite}
+@keyframes rec-pulse{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.5)}50%{box-shadow:0 0 0 10px rgba(220,38,38,0)}}
+.rec-btn-stop:active{transform:scale(.96)}
+
+.rec-dot{width:10px;height:10px;border-radius:50%;background:#fff;flex-shrink:0}
+.rec-btn-stop .rec-dot{animation:dot-blink .8s infinite alternate}
+@keyframes dot-blink{from{opacity:1}to{opacity:.3}}
+
+/* Listen button (TTS) */
+.listen-btn{display:flex;align-items:center;gap:7px;padding:10px 18px;border-radius:24px;border:1.5px solid var(--border-strong);background:var(--bg);font-family:'Lexend',sans-serif;font-size:12.5px;font-weight:500;cursor:pointer;color:var(--text-muted);transition:all .18s;min-height:44px}
+@media(hover:hover){.listen-btn:hover{background:var(--accent-pale);border-color:var(--accent);color:var(--accent)}}
+.listen-btn:active{background:var(--accent-pale);color:var(--accent)}
+.listen-btn.speaking{background:var(--accent-pale);border-color:var(--accent);color:var(--accent)}
+
+/* Score display */
+.score-display{display:none;margin-left:auto;align-items:center;gap:10px;flex-wrap:wrap}
+.score-display.show{display:flex}
+.score-circle{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;position:relative}
+.score-circle svg{position:absolute;top:0;left:0;transform:rotate(-90deg)}
+.score-circle .val{position:relative;z-index:1}
+.score-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.sc-excellent{color:var(--green)}
+.sc-good{color:var(--teal)}
+.sc-ok{color:var(--amber)}
+.sc-poor{color:var(--red)}
+
+/* Result bar */
+.result-bar{padding:10px 18px;border-top:1px solid var(--border);display:none;flex-wrap:wrap;gap:6px;align-items:center}
+.result-bar.show{display:flex}
+.rb-label{font-size:10.5px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-right:4px}
+.rb-heard{font-size:12.5px;color:var(--text-muted);font-style:italic;flex:1;min-width:0;word-break:break-word}
+.rb-retry{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border-strong);background:transparent;font-family:'Lexend',sans-serif;font-size:11.5px;font-weight:500;cursor:pointer;color:var(--text-muted);transition:all .18s;min-height:36px}
+.rb-retry:active{background:var(--accent-pale);color:var(--accent);border-color:var(--accent)}
+@media(hover:hover){.rb-retry:hover{background:var(--accent-pale);color:var(--accent);border-color:var(--accent)}}
+
+/* Progress bar */
+.progress-row{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:24px;flex-wrap:wrap}
+.pr-label{font-size:11px;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.pr-bar{flex:1;min-width:80px;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pr-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--teal));border-radius:3px;width:0%;transition:width .5s ease}
+.pr-count{font-size:11px;font-weight:700;color:var(--accent);white-space:nowrap}
+
+/* Overall score panel */
+.overall-panel{background:var(--navy);border-radius:var(--radius);padding:22px 26px;margin-top:20px;display:none}
+.overall-panel.show{display:block}
+.op-title{font-size:13px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.op-score{font-size:42px;font-weight:700;color:#fff;margin-bottom:6px}
+.op-sub{font-size:12px;color:rgba(255,255,255,.5);font-weight:300}
+.op-bar{width:100%;height:8px;background:rgba(255,255,255,.15);border-radius:4px;margin-top:14px;overflow:hidden}
+.op-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--teal));border-radius:4px;transition:width 1s ease}
+.op-badges{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.op-badge{padding:6px 14px;border-radius:20px;font-size:11.5px;font-weight:600;border:1.5px solid;opacity:.4;transition:all .4s}
+.op-badge.earned{opacity:1;animation:popIn .4s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes popIn{0%{transform:scale(.6)}100%{transform:scale(1)}}
+.badge-bronze{background:#fdf0d5;border-color:#d4956a;color:#9a5a1a}
+.badge-silver{background:#f0f0f5;border-color:#909090;color:#505050}
+.badge-gold{background:#fffae5;border-color:#d4a017;color:#8a6000}
+.badge-star{background:var(--accent-pale);border-color:var(--accent);color:var(--accent)}
+
+/* Skeleton */
+.skeleton{background:linear-gradient(90deg,#e2e8f0 25%,#f1f5f9 50%,#e2e8f0 75%);background-size:200% 100%;animation:shimmer 1.3s infinite;border-radius:var(--radius-sm)}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-vocab{height:130px;margin-bottom:12px}
+
+/* Scroll top */
+.scroll-top{position:fixed;bottom:24px;right:22px;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:16px;cursor:pointer;box-shadow:0 4px 16px rgba(79,125,243,.4);transition:all .2s;opacity:0;pointer-events:none;z-index:300}
+.scroll-top.show{opacity:1;pointer-events:auto}
+@media(hover:hover){.scroll-top:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(79,125,243,.5)}}
+.scroll-top:active{transform:scale(.92)}
+
+/* Browser support notice */
+.browser-notice{background:var(--amber-pale);border:1px solid #fbbf24;border-radius:var(--radius-sm);padding:12px 16px;font-size:12.5px;color:#92400e;margin-bottom:20px;display:none}
+.browser-notice.show{display:block}
+
+/* Responsive */
+@media(max-width:860px){
+  .topbar{display:flex}
+  .overlay{display:block}
+  .sidebar{transform:translateX(-110%);z-index:400}
+  .sidebar.open{transform:translateX(0);box-shadow:6px 0 30px rgba(0,0,0,.25)}
+  .main{margin-left:0;padding:calc(var(--topbar-h) + 20px) 16px 80px}
+  .vocab-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .page-header{padding:20px 20px}
+  .page-header h2{font-size:18px}
+  .page-header::before{font-size:50px}
+}
+@media(max-width:460px){
+  .vocab-grid{grid-template-columns:1fr}
+  .line-controls{gap:8px}
+  .rec-btn{font-size:12px;padding:10px 16px}
+  .section-title{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE TOPBAR -->
+<div class="topbar" id="topbar">
+  <button class="hamburger" id="hamburger" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+  <div class="topbar-info">
+    <div class="topbar-title">Lớp Giao Tiếp Ca III</div>
+    <div class="topbar-sub">20:00 – 21:30 · Casa Danica</div>
+  </div>
+</div>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="tag">Video Lesson</div>
+    <h1>Lớp Giao Tiếp Ca III</h1>
+    <p>20:00 – 21:30 · British sitcom</p>
+  </div>
+  <nav>
+    <div class="nav-section">Vocabulary</div>
+    <a class="nav-link active" href="#vocab" onclick="navClick(this)"><span class="nav-icon">📖</span> Words & Chunks<span class="nav-badge">20</span></a>
+    <div class="nav-section">Speaking</div>
+    <a class="nav-link" href="#speaking" onclick="navClick(this)"><span class="nav-icon">🎙</span> Line Practice<span class="nav-badge">15</span></a>
+    <a class="nav-link" href="#score" onclick="navClick(this)"><span class="nav-icon">🏆</span> Your Score</a>
+  </nav>
+  <div class="sidebar-footer">Web Speech API · Chrome / Safari</div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="page-header">
+    <div class="ph-tags">
+      <span class="ph-tag">🇬🇧 British English</span>
+      <span class="ph-tag">Sitcom / Informal</span>
+      <span class="ph-tag">B2 · C1</span>
+    </div>
+    <h2>Casa Danica 🏠</h2>
+    <p>Nick's parents visit his flat for the first time — a chaotic British sitcom scene full of idioms, slangs, and real colloquial English. Học từ vựng rồi luyện nói từng câu thoại.</p>
+  </div>
+
+  <!-- ── VOCABULARY ── -->
+  <section class="section" id="vocab">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div>
+        <div class="section-title">Vocabulary Enhancement</div>
+        <div class="section-sub">Words · Chunks · Slangs · Expressions — nhấn card để xem spelling</div>
+      </div>
+    </div>
+
+    <div class="tts-bar">
+      <span>🔊</span><label>Giọng:</label>
+      <select class="tts-select" id="voice-select"><option>Đang tải…</option></select>
+      <label>Tốc độ:</label>
+      <div class="tts-rate-wrap">
+        <input type="range" class="tts-rate" id="tts-rate" min="0.5" max="1.5" step="0.1" value="0.85"
+          oninput="document.getElementById('tts-rate-val').textContent=parseFloat(this.value).toFixed(1)+'×'">
+        <span class="tts-rate-val" id="tts-rate-val">0.85×</span>
+      </div>
+    </div>
+
+    <button style="padding:9px 18px;border-radius:24px;border:1.5px solid var(--border-strong);background:transparent;color:var(--text-muted);font-family:'Lexend',sans-serif;font-size:12px;font-weight:500;cursor:pointer;margin-bottom:16px;min-height:44px" onclick="revealAll()">👁 Hiện tất cả spelling</button>
+
+    <div class="vocab-grid" id="vocab-grid"></div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── SPEAKING ── -->
+  <section class="section" id="speaking">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--red)">2</div>
+      <div>
+        <div class="section-title">Speaking Practice</div>
+        <div class="section-sub">Nhấn 👂 nghe mẫu → 🎙 Ghi âm → Xem chấm điểm</div>
+      </div>
+    </div>
+
+    <div class="speak-intro">
+      <div class="si-icon">🎙</div>
+      <div>
+        <div class="si-title">Cách chấm điểm phát âm</div>
+        <div class="si-body">Hệ thống nhận dạng giọng nói và so sánh từng từ bạn nói với câu gốc. Kết quả hiển thị theo màu: xanh = đúng, đỏ = sai/bỏ sót, vàng = gần đúng. Dùng <strong>Chrome</strong> hoặc <strong>Safari</strong> để có kết quả tốt nhất.</div>
+        <div class="si-badges">
+          <span class="si-badge sib-green">✓ Xanh: Đúng</span>
+          <span class="si-badge sib-amber">~ Vàng: Gần đúng</span>
+          <span class="si-badge sib-red">✗ Đỏ: Sai / Bỏ sót</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="browser-notice" id="browser-notice">
+      ⚠️ Trình duyệt của bạn không hỗ trợ Web Speech API. Vui lòng dùng <strong>Chrome</strong> (Android/Desktop) hoặc <strong>Safari</strong> (iOS 14.5+) để sử dụng tính năng ghi âm.
+    </div>
+
+    <div class="progress-row">
+      <span class="pr-label">Tiến độ</span>
+      <div class="pr-bar"><div class="pr-fill" id="speak-progress"></div></div>
+      <span class="pr-count"><span id="done-count">0</span>/15 lines</span>
+    </div>
+
+    <div id="lines-container"></div>
+
+    <!-- OVERALL SCORE -->
+    <div class="overall-panel" id="score" >
+      <div class="op-title">🏆 Kết quả tổng hợp</div>
+      <div class="op-score" id="op-score-val">—</div>
+      <div class="op-sub" id="op-score-sub">Hoàn thành tất cả các câu để xem điểm</div>
+      <div class="op-bar"><div class="op-fill" id="op-fill" style="width:0%"></div></div>
+      <div class="op-badges">
+        <div class="op-badge badge-bronze" id="ob-bronze">🥉 Starter</div>
+        <div class="op-badge badge-silver" id="ob-silver">🥈 Practitioner</div>
+        <div class="op-badge badge-gold" id="ob-gold">🥇 Proficient</div>
+        <div class="op-badge badge-star" id="ob-star">⭐ Native-like</div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════════════════════
+
+const vocabData = [
+  // WORDS
+  { cat:'word', ipa:"/pɒp ˈəʊ.vər/", word:"pop over", vi:"ghé qua (không báo trước)", example:"Your mother thought she'd just pop over." },
+  { cat:'word', ipa:"/ɡrænd tʊər/", word:"the grand tour", vi:"tua tham quan trọn bộ (thường nói đùa)", example:"Let me give you the grand tour." },
+  { cat:'word', ipa:"/ˈluː/", word:"the loo", vi:"nhà vệ sinh (tiếng Anh thông tục)", example:"And where's the loo?" },
+  { cat:'word', ipa:"/frɛʃ ʌp/", word:"freshen up", vi:"làm mới/sửa soạn bản thân", example:"I'll just go and freshen up." },
+  { cat:'word', ipa:"/ˈdes.ə.lɪt ˈhel.həʊl/", word:"desolate hellhole", vi:"nơi ở tồi tệ, điêu tàn (mạnh)", example:"My son is struggling in this desolate hellhole." },
+  { cat:'word', ipa:"/ˈɒvə.welmɪŋ/", word:"overwhelmed", vi:"choáng ngợp, xúc động mạnh", example:"Just overwhelmed at how lovely your place is." },
+  { cat:'word', ipa:"/ˈek.skrɪ.mənt/", word:"excrement", vi:"chất thải (từ trang trọng nói đùa)", example:"He's standing in excrement." },
+  { cat:'word', ipa:"/ˈdeɪ.mɪ.dʒɪz/", word:"damages", vi:"thiệt hại, đền bù", example:"100 up front to cover the damages." },
+  // CHUNKS
+  { cat:'chunk', ipa:"/ˈstræɡ.əl tə sərˈvaɪv/", word:"struggling to survive", vi:"vất vả để tồn tại / kiếm sống", example:"My son is struggling to survive." },
+  { cat:'chunk', ipa:"/stænd ɒn ɪz əʊn tuː fiːt/", word:"stand on his own two feet", vi:"tự lập, không phụ thuộc ai", example:"Nick is standing on his own two feet." },
+  { cat:'chunk', ipa:"/ðə ˈsæk.rɪ.fɪs aɪm ˈwɪl.ɪŋ tə meɪk/", word:"that's the sacrifice I'm willing to make", vi:"đó là hy sinh mà tôi sẵn sàng chấp nhận", example:"That's the sacrifice I'm willing to make." },
+  { cat:'chunk', ipa:"/juː dəʊnt wɒnt miː ɒn jɔː bæd saɪd/", word:"you don't want me on your bad side", vi:"bạn không muốn làm tôi giận đâu", example:"You don't want me on your bad side." },
+  { cat:'chunk', ipa:"/æsk pəˈlaɪtli/", word:"ask politely", vi:"hỏi/yêu cầu một cách lịch sự", example:"The next time you ask for rent, ask politely." },
+  // SLANGS & INFORMAL
+  { cat:'slang', ipa:"/kuːl/", word:"cool", vi:"tuyệt, hay đấy (informal đồng ý/phản ứng)", example:"Cool. Well, let me give you the grand tour." },
+  { cat:'slang', ipa:"/juː oʊ miː/", word:"you owe me", vi:"mày nợ tao (informal)", example:"Harper! You owe me rent." },
+  { cat:'slang', ipa:"/ˈlæ.zi sʌn əv ə pɪɡz ˈnɪ.pəl/", word:"lazy son of a pig's nipple", vi:"thằng lười biếng (chửi tục hài hước)", example:"You lazy son of a pig's nipple." },
+  { cat:'slang', ipa:"/ðæts ʌɪl raɪt nɪk/", word:"it's all right, Nick", vi:"yên tâm đi Nick / bình tĩnh nào", example:"It's all right, Nick. I'll handle all this." },
+  // EXPRESSIONS
+  { cat:'expr', ipa:"/tɪərz əv dʒɔɪ/", word:"tears of joy", vi:"nước mắt vui mừng / khóc vì hạnh phúc", example:"Oh, tears of joy. I'm so happy." },
+  { cat:'expr', ipa:"/ɡʊd ˈoʊld vɪv/", word:"good old Viv", vi:"Viv tốt bụng quen thuộc (thân mật)", example:"Good old Viv. That's our relationship." },
+  { cat:'expr', ipa:"/ðæts ə ˈmɑː.stə.piːs/", word:"that's a masterpiece", vi:"đó là kiệt tác (nói mỉa)", example:"This flat is a masterpiece." },
+];
+
+const linesData = [
+  { id:0, speaker:"Mum", sp:"sp-mum", text:"Your mother thought she'd just pop over and check the place out.", ipa:"Lưu ý: pop over /pɒp ˈəʊ.vər/ = ghé thăm bất ngờ" },
+  { id:1, speaker:"Nick", sp:"sp-nick", text:"Cool. Well, let me give you the grand tour.", ipa:"grand tour /ɡrænd tʊər/ — nói với giọng tự hào hài hước" },
+  { id:2, speaker:"Mum", sp:"sp-mum", text:"Just overwhelmed at how lovely your place is.", ipa:"overwhelmed /ˌəʊ.vəˈwelmd/ — nói với giọng mỉa mai" },
+  { id:3, speaker:"Nick", sp:"sp-nick", text:"I've only got one bulb, so I have to move it from room to room.", ipa:"bulb /bʌlb/ = bóng đèn; room to room — nói tự nhiên, thản nhiên" },
+  { id:4, speaker:"Nick", sp:"sp-nick", text:"I'm thinking of making a few improvements. Maybe taking out this wall.", ipa:"improvements /ɪmˈpruːv.mənts/; taking out = phá bỏ" },
+  { id:5, speaker:"Mum", sp:"sp-mum", text:"You do that one more time and you're a dead man.", ipa:"dead man /ded mæn/ — đe dọa hài hước, nhấn mạnh 'dead'" },
+  { id:6, speaker:"Dad", sp:"sp-dad", text:"I'm not going to watch it, Susan. I'm going to take it home.", ipa:"Nhấn mạnh 'take it home' — nói dứt khoát" },
+  { id:7, speaker:"Mum", sp:"sp-mum", text:"For the first time in his life, Nick is standing on his own two feet.", ipa:"stand on his own two feet — idiom tự lập /stænd ɒn ɪz əʊn tuː fiːt/" },
+  { id:8, speaker:"Dad", sp:"sp-dad", text:"But he's standing in excrement.", ipa:"excrement /ˈek.skrɪ.mənt/ — nói thẳng, không chút xúc động" },
+  { id:9, speaker:"Mum", sp:"sp-mum", text:"No-one is allowed to speak about my son that way except me. I've earned it.", ipa:"earned it /ɜːnd ɪt/ — mẹ tuyên bố quyền được mắng con" },
+  { id:10, speaker:"Mum", sp:"sp-mum", text:"Believe me, you don't want me on your bad side. I'm a dentist.", ipa:"bad side /bæd saɪd/ — đe dọa; I'm a dentist — punchline hài" },
+  { id:11, speaker:"Nick", sp:"sp-nick", text:"Actually, I lost my job at the pub, I'm a week behind on my rent and I haven't eaten for two days.", ipa:"behind on my rent /bɪˈhaɪnd/ = nợ tiền thuê; key vocab cần phát âm rõ" },
+  { id:12, speaker:"Mum", sp:"sp-mum", text:"What sort of lesson would it be if we let Nick give up every time life gets difficult?", ipa:"Câu hỏi tu từ — lên giọng cuối câu; give up /ɡɪv ʌp/" },
+  { id:13, speaker:"Harper", sp:"sp-harper", text:"And 100 up front to cover the damages, cash.", ipa:"up front /ʌp frʌnt/ = trả trước; damages /ˈdæm.ɪ.dʒɪz/" },
+  { id:14, speaker:"Mum", sp:"sp-mum", text:"When I get home, I'm going to do up the entire house just like it.", ipa:"do up /duː ʌp/ = tân trang; sarcasm — giọng đều đều, thản nhiên" },
+];
+
+// ════════════════════════════════════════════════════════════════
+// TTS ENGINE
+// ════════════════════════════════════════════════════════════════
+let voices = [];
+let activeTtsBtn = null;
+
+function loadVoices() {
+  voices = window.speechSynthesis.getVoices();
+  const sel = document.getElementById('voice-select');
+  if (!sel) return;
+  const en = voices.filter(v => v.lang.startsWith('en'));
+  if (!en.length) { sel.innerHTML = '<option>Không có giọng EN</option>'; return; }
+  sel.innerHTML = '';
+  en.forEach((v, i) => {
+    const o = document.createElement('option');
+    o.value = i; o.textContent = v.name + ' (' + v.lang + ')';
+    if (v.lang === 'en-GB' || v.name.includes('Daniel') || v.name.includes('Google UK')) o.selected = true;
+    sel.appendChild(o);
+  });
+}
+function getVoice() {
+  const en = voices.filter(v => v.lang.startsWith('en'));
+  const sel = document.getElementById('voice-select');
+  return (sel && en.length) ? (en[parseInt(sel.value)] || en[0]) : null;
+}
+function getRate() { return parseFloat(document.getElementById('tts-rate')?.value || 0.85); }
+
+function speak(text, btn) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  if (activeTtsBtn) { activeTtsBtn.classList.remove('speaking'); activeTtsBtn.textContent = '🔊'; }
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.voice = getVoice(); utt.lang = 'en-GB'; utt.rate = getRate(); utt.pitch = 1;
+  if (btn) { activeTtsBtn = btn; btn.classList.add('speaking'); btn.textContent = '⏹'; }
+  utt.onend = utt.onerror = () => {
+    if (btn) { btn.classList.remove('speaking'); btn.textContent = '🔊'; }
+    if (activeTtsBtn === btn) activeTtsBtn = null;
+  };
+  setTimeout(() => window.speechSynthesis.speak(utt), 50);
+}
+
+function speakLine(id, btn) {
+  const line = linesData[id];
+  if (!line) return;
+  if (btn) {
+    btn.classList.toggle('speaking');
+    if (btn.classList.contains('speaking')) {
+      speak(line.text, btn);
+    } else {
+      window.speechSynthesis.cancel();
+      btn.textContent = '👂 Nghe mẫu';
+    }
+  } else {
+    speak(line.text);
+  }
+}
+
+if (window.speechSynthesis) {
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+  loadVoices();
+}
+
+// ════════════════════════════════════════════════════════════════
+// SPEECH RECOGNITION
+// ════════════════════════════════════════════════════════════════
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let activeRecognition = null;
+let lineScores = new Array(linesData.length).fill(null);
+let doneCount = 0;
+
+function normalise(str) {
+  return str.toLowerCase()
+    .replace(/[.,!?'"''\-:;]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function tokenise(str) {
+  return normalise(str).split(' ').filter(Boolean);
+}
+
+// Compute per-word match: returns array of {word, status} for each target word
+function scoreWords(target, heard) {
+  const tTokens = tokenise(target);
+  const hTokens = tokenise(heard);
+  const hSet = new Set(hTokens);
+  
+  // Simple fuzzy: levenshtein distance ≤ 1 for near-match
+  function levenshtein(a, b) {
+    const m = a.length, n = b.length;
+    const dp = Array.from({length: m+1}, (_, i) => Array.from({length: n+1}, (_, j) => i === 0 ? j : j === 0 ? i : 0));
+    for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++)
+      dp[i][j] = a[i-1] === b[j-1] ? dp[i-1][j-1] : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+    return dp[m][n];
+  }
+
+  return tTokens.map(w => {
+    if (hSet.has(w)) return { word: w, status: 'correct' };
+    const near = hTokens.find(h => levenshtein(w, h) <= 1 && Math.max(w.length, h.length) > 2);
+    if (near) return { word: w, status: 'near' };
+    return { word: w, status: 'wrong' };
+  });
+}
+
+function calcScore(wordResults) {
+  if (!wordResults.length) return 0;
+  const pts = wordResults.reduce((s, w) => s + (w.status === 'correct' ? 1 : w.status === 'near' ? 0.5 : 0), 0);
+  return Math.round((pts / wordResults.length) * 100);
+}
+
+function startRecording(lineId, btn, stopBtn) {
+  if (!SpeechRecognition) {
+    document.getElementById('browser-notice').classList.add('show');
+    return;
+  }
+  if (activeRecognition) { activeRecognition.stop(); activeRecognition = null; }
+
+  const card = document.getElementById(`line-card-${lineId}`);
+  card.classList.add('recording');
+  btn.style.display = 'none';
+  stopBtn.style.display = 'flex';
+
+  const rec = new SpeechRecognition();
+  activeRecognition = rec;
+  rec.lang = 'en-GB';
+  rec.continuous = false;
+  rec.interimResults = false;
+  rec.maxAlternatives = 3;
+
+  rec.onresult = (e) => {
+    const heard = e.results[0][0].transcript;
+    processResult(lineId, heard);
+  };
+  rec.onerror = (e) => {
+    card.classList.remove('recording');
+    btn.style.display = 'flex';
+    stopBtn.style.display = 'none';
+    activeRecognition = null;
+    const rb = document.getElementById(`rb-${lineId}`);
+    rb.classList.add('show');
+    document.getElementById(`rb-heard-${lineId}`).textContent = 'Lỗi nhận dạng: ' + (e.error === 'no-speech' ? 'Không nghe thấy giọng nói' : e.error);
+  };
+  rec.onend = () => {
+    card.classList.remove('recording');
+    btn.style.display = 'flex';
+    stopBtn.style.display = 'none';
+    activeRecognition = null;
+  };
+  rec.start();
+}
+
+function stopRecording() {
+  if (activeRecognition) { activeRecognition.stop(); activeRecognition = null; }
+}
+
+function processResult(lineId, heard) {
+  const line = linesData[lineId];
+  const wordResults = scoreWords(line.text, heard);
+  const score = calcScore(wordResults);
+
+  // Update word highlighting in line text
+  const wordContainer = document.getElementById(`words-${lineId}`);
+  wordContainer.innerHTML = '';
+  wordResults.forEach(w => {
+    const span = document.createElement('span');
+    span.className = `word w-${w.status === 'correct' ? 'correct' : w.status === 'near' ? 'missed' : 'wrong'}`;
+    span.textContent = w.word + ' ';
+    wordContainer.appendChild(span);
+  });
+
+  // Score circle
+  showScore(lineId, score);
+
+  // Result bar
+  const rb = document.getElementById(`rb-${lineId}`);
+  rb.classList.add('show');
+  document.getElementById(`rb-heard-${lineId}`).textContent = '"' + heard + '"';
+
+  // Card border colour
+  const card = document.getElementById(`line-card-${lineId}`);
+  card.classList.remove('done-good', 'done-ok', 'done-bad');
+  card.classList.add(score >= 80 ? 'done-good' : score >= 50 ? 'done-ok' : 'done-bad');
+
+  // Track score
+  const wasNull = lineScores[lineId] === null;
+  lineScores[lineId] = score;
+  if (wasNull) { doneCount++; document.getElementById('done-count').textContent = doneCount; }
+  const pct = (doneCount / linesData.length) * 100;
+  document.getElementById('speak-progress').style.width = pct + '%';
+
+  // Update overall if all done
+  if (doneCount === linesData.length) updateOverall();
+  else document.getElementById('score').classList.add('show');
+}
+
+function showScore(lineId, score) {
+  const sd = document.getElementById(`score-display-${lineId}`);
+  sd.classList.add('show');
+  const cls = score >= 80 ? 'sc-excellent' : score >= 60 ? 'sc-good' : score >= 40 ? 'sc-ok' : 'sc-poor';
+  const label = score >= 80 ? 'Excellent' : score >= 60 ? 'Good' : score >= 40 ? 'Fair' : 'Keep trying';
+  const circ = 2 * Math.PI * 18;
+  const dash = circ * (1 - score/100);
+  sd.innerHTML = `
+    <div class="score-circle" title="${score}%">
+      <svg width="48" height="48" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="18" fill="none" stroke="var(--border)" stroke-width="4"/>
+        <circle cx="24" cy="24" r="18" fill="none" stroke="${score>=80?'var(--green)':score>=60?'var(--teal)':score>=40?'var(--amber)':'var(--red)'}"
+          stroke-width="4" stroke-dasharray="${circ}" stroke-dashoffset="${dash}" stroke-linecap="round"/>
+      </svg>
+      <span class="val ${cls}" style="font-size:12px">${score}%</span>
+    </div>
+    <div>
+      <div class="score-label ${cls}">${label}</div>
+      <div style="font-size:10.5px;color:var(--text-light);margin-top:1px">Word accuracy</div>
+    </div>
+  `;
+}
+
+function updateOverall() {
+  const valid = lineScores.filter(s => s !== null);
+  if (!valid.length) return;
+  const avg = Math.round(valid.reduce((a, b) => a + b, 0) / valid.length);
+  const panel = document.getElementById('score');
+  panel.classList.add('show');
+  document.getElementById('op-score-val').textContent = avg + '%';
+  document.getElementById('op-score-sub').textContent =
+    avg >= 80 ? '🌟 Outstanding! Your pronunciation is very clear.' :
+    avg >= 60 ? '👍 Good effort! Keep practising the highlighted words.' :
+    avg >= 40 ? '📚 Fair. Focus on the red words and try again.' :
+    '💪 Keep going! Repeat each line multiple times.';
+  document.getElementById('op-fill').style.width = avg + '%';
+  if (avg >= 40) document.getElementById('ob-bronze').classList.add('earned');
+  if (avg >= 60) document.getElementById('ob-silver').classList.add('earned');
+  if (avg >= 75) document.getElementById('ob-gold').classList.add('earned');
+  if (avg >= 90) document.getElementById('ob-star').classList.add('earned');
+}
+
+// ════════════════════════════════════════════════════════════════
+// RENDER
+// ════════════════════════════════════════════════════════════════
+
+const catMap = { word:'cat-word', chunk:'cat-chunk', slang:'cat-slang', expr:'cat-expr' };
+const catLabel = { word:'Word', chunk:'Chunk', slang:'Slang', expr:'Expression' };
+
+function renderVocab() {
+  const grid = document.getElementById('vocab-grid');
+  grid.innerHTML = '';
+  vocabData.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    const sw = v.word.replace(/'/g, "\\'");
+    const se = v.example.replace(/'/g, "\\'");
+    card.innerHTML = `
+      <span class="vc-cat ${catMap[v.cat]}">${catLabel[v.cat]}</span>
+      <div class="vc-ipa">${v.ipa}</div>
+      <div class="vc-word">
+        <span>${v.word}</span>
+        <button class="tts-btn" style="min-width:30px;min-height:30px;font-size:13px" onclick="event.stopPropagation();speak('${sw}',this)">🔊</button>
+      </div>
+      <div class="vc-vi">${v.vi}</div>
+      <div class="vc-example">
+        <span>"${v.example}"</span>
+        <button class="tts-btn" style="min-width:28px;min-height:28px;font-size:12px;flex-shrink:0" onclick="event.stopPropagation();speak('${se}',this)">🔊</button>
+      </div>
+      <div class="vc-hint">👆 Nhấn để xem spelling</div>
+    `;
+    let t;
+    card.addEventListener('click', () => card.classList.toggle('revealed'));
+    card.addEventListener('touchstart', () => { card.style.transform='scale(0.97)'; clearTimeout(t); }, {passive:true});
+    card.addEventListener('touchend', () => { t = setTimeout(() => card.style.transform='', 300); }, {passive:true});
+    grid.appendChild(card);
+  });
+}
+
+function revealAll() { document.querySelectorAll('.vocab-card').forEach(c => c.classList.add('revealed')); }
+
+function renderLines() {
+  const c = document.getElementById('lines-container');
+  const hasSR = !!SpeechRecognition;
+  if (!hasSR) document.getElementById('browser-notice').classList.add('show');
+
+  linesData.forEach(line => {
+    const card = document.createElement('div');
+    card.className = 'line-card';
+    card.id = `line-card-${line.id}`;
+
+    // Build word spans (initial, unhighlighted)
+    const words = line.text.split(' ').map(w => `<span class="word">${w}</span>`).join(' ');
+
+    card.innerHTML = `
+      <div class="line-header">
+        <div class="lh-meta">
+          <span class="lh-num">Line ${line.id + 1}</span>
+          <span class="lh-speaker ${line.sp}">${line.speaker}</span>
+        </div>
+        <div class="line-text" id="words-${line.id}">${words}</div>
+        <div class="line-ipa">📌 ${line.ipa}</div>
+      </div>
+      <div class="line-controls">
+        <button class="listen-btn" id="listen-btn-${line.id}" onclick="speakLine(${line.id}, this)">👂 Nghe mẫu</button>
+        ${hasSR ? `
+        <button class="rec-btn rec-btn-start" id="rec-start-${line.id}"
+          onclick="startRecording(${line.id}, this, document.getElementById('rec-stop-${line.id}'))">
+          <span class="rec-dot" style="background:var(--accent);width:8px;height:8px;border-radius:50%"></span> Ghi âm
+        </button>
+        <button class="rec-btn rec-btn-stop" id="rec-stop-${line.id}" style="display:none"
+          onclick="stopRecording()">
+          <span class="rec-dot"></span> Đang nghe…
+        </button>` : `<span style="font-size:12px;color:var(--red)">⚠ Trình duyệt không hỗ trợ</span>`}
+        <div class="score-display" id="score-display-${line.id}"></div>
+      </div>
+      <div class="result-bar" id="rb-${line.id}">
+        <span class="rb-label">Nghe được:</span>
+        <span class="rb-heard" id="rb-heard-${line.id}"></span>
+        ${hasSR ? `<button class="rb-retry" onclick="document.getElementById('rec-start-${line.id}').click()">🔄 Thử lại</button>` : ''}
+      </div>
+    `;
+    c.appendChild(card);
+  });
+}
+
+// ════════════════════════════════════════════════════════════════
+// SIDEBAR & NAV
+// ════════════════════════════════════════════════════════════════
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('overlay');
+  const hb = document.getElementById('hamburger');
+  const open = sb.classList.toggle('open');
+  hb.classList.toggle('open', open);
+  ov.classList.toggle('show', open);
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  document.getElementById('hamburger').classList.remove('open');
+}
+function navClick(el) {
+  closeSidebar();
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Scroll spy
+window.addEventListener('scroll', () => {
+  document.getElementById('scroll-top').classList.toggle('show', window.scrollY > 400);
+  const sections = ['vocab','speaking','score'];
+  let cur = 'vocab';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 140) cur = id;
+  });
+  document.querySelectorAll('.nav-link').forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href') === '#' + cur);
+  });
+}, {passive:true});
+
+// ════════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════════
+window.addEventListener('DOMContentLoaded', () => {
+  // Skeleton
+  const grid = document.getElementById('vocab-grid');
+  for (let i = 0; i < 6; i++) {
+    const sk = document.createElement('div'); sk.className = 'skeleton sk-vocab'; grid.appendChild(sk);
+  }
+  setTimeout(() => {
+    grid.innerHTML = '';
+    renderVocab();
+    renderLines();
+  }, 600);
+});
+</script>
+</body>
+</html>
