@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Present Simple vs Continuous · IELTS Grammar</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Lexend+Deca:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════
+   ROOT TOKENS — Glassmorphic Deep Ocean
+════════════════════════════════════════ */
+:root {
+  /* Background layers */
+  --bg-base:    #06080f;
+  --bg-layer1:  rgba(10,16,32,0.95);
+  --bg-layer2:  rgba(15,22,45,0.88);
+  --bg-glass:   rgba(255,255,255,0.04);
+  --bg-glass2:  rgba(255,255,255,0.07);
+  --bg-glass3:  rgba(255,255,255,0.10);
+
+  /* Syntax colours — the core palette */
+  --ps:         #22d3ee;   /* Present Simple  → cyan   */
+  --ps2:        #06b6d4;
+  --ps-dim:     rgba(34,211,238,0.12);
+  --ps-glow:    rgba(34,211,238,0.25);
+
+  --pc:         #f97316;   /* Present Cont.   → orange */
+  --pc2:        #ea580c;
+  --pc-dim:     rgba(249,115,22,0.12);
+  --pc-glow:    rgba(249,115,22,0.25);
+
+  --state:      #a78bfa;   /* State verbs     → violet */
+  --state-dim:  rgba(167,139,250,0.12);
+
+  --action:     #34d399;   /* Action verbs    → emerald */
+  --action-dim: rgba(52,211,153,0.12);
+
+  --future:     #f59e0b;   /* Future use      → amber  */
+  --future-dim: rgba(245,158,11,0.12);
+
+  --err:        #f87171;   /* Error           → red    */
+  --err-dim:    rgba(248,113,113,0.12);
+
+  --ok:         #4ade80;   /* Correct         → green  */
+  --ok-dim:     rgba(74,222,128,0.12);
+
+  /* Text */
+  --ink:        #f0f4ff;
+  --ink2:       #94a3b8;
+  --ink3:       #475569;
+
+  /* Glass borders */
+  --gb:         rgba(255,255,255,0.08);
+  --gb2:        rgba(255,255,255,0.14);
+
+  /* Misc */
+  --r:          14px;
+  --r-lg:       20px;
+  --r-xl:       28px;
+  --nav-h:      64px;
+  --shadow-glass: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  --shadow-glow-ps:  0 0 40px rgba(34,211,238,0.15);
+  --shadow-glow-pc:  0 0 40px rgba(249,115,22,0.15);
+}
+
+/* ════════════════════════════════════════
+   RESET & BASE
+════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--gb2); border-radius:4px; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Lexend', sans-serif;
+  background: var(--bg-base);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+/* ════════════════════════════════════════
+   ANIMATED MESH BACKGROUND
+════════════════════════════════════════ */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: orbFloat 20s ease-in-out infinite;
+}
+.orb1 { width:600px;height:600px;background:radial-gradient(circle,rgba(34,211,238,0.12),transparent 70%);top:-200px;left:-200px;animation-delay:0s; }
+.orb2 { width:500px;height:500px;background:radial-gradient(circle,rgba(249,115,22,0.10),transparent 70%);bottom:-150px;right:-150px;animation-delay:-7s; }
+.orb3 { width:400px;height:400px;background:radial-gradient(circle,rgba(167,139,250,0.08),transparent 70%);top:40%;left:40%;animation-delay:-14s; }
+.orb4 { width:300px;height:300px;background:radial-gradient(circle,rgba(52,211,153,0.07),transparent 70%);top:20%;right:10%;animation-delay:-10s; }
+
+@keyframes orbFloat {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(40px,-30px) scale(1.08); }
+  66%      { transform: translate(-25px,20px) scale(0.95); }
+}
+
+/* Grid texture overlay */
+body::before {
+  content:'';
+  position:fixed;inset:0;z-index:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
+  background-size: 48px 48px;
+  pointer-events:none;
+}
+
+/* ════════════════════════════════════════
+   NAV BAR — glassmorphic sticky
+════════════════════════════════════════ */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 1000;
+  background: rgba(6,8,15,0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--gb);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 6px;
+}
+
+.nav-brand {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  margin-right: 18px;
+  background: linear-gradient(135deg, var(--ps), var(--pc));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+}
+.nav-items::-webkit-scrollbar { display: none; }
+
+.nav-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--ink2);
+  font-family: 'Lexend', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .2s, background .2s;
+  letter-spacing: 0.2px;
+}
+.nav-btn::after {
+  content:'';
+  position:absolute;
+  bottom:4px;left:50%;
+  width:0;height:2px;
+  border-radius:1px;
+  transform:translateX(-50%);
+  transition:width .25s cubic-bezier(0.34,1.56,0.64,1);
+}
+.nav-btn:hover { color: var(--ink); background: var(--bg-glass2); }
+.nav-btn:hover::after { width:60%; }
+
+/* Colour-coded nav hover lines */
+.nav-btn[data-section="s-overview"]:hover::after,
+.nav-btn[data-section="s-overview"].active::after { background: var(--ps); width:60%; }
+.nav-btn[data-section="s-action"]:hover::after,
+.nav-btn[data-section="s-action"].active::after   { background: var(--action); width:60%; }
+.nav-btn[data-section="s-ps"]:hover::after,
+.nav-btn[data-section="s-ps"].active::after       { background: var(--ps); width:60%; }
+.nav-btn[data-section="s-pc"]:hover::after,
+.nav-btn[data-section="s-pc"].active::after       { background: var(--pc); width:60%; }
+.nav-btn[data-section="s-state"]:hover::after,
+.nav-btn[data-section="s-state"].active::after    { background: var(--state); width:60%; }
+.nav-btn[data-section="s-temp"]:hover::after,
+.nav-btn[data-section="s-temp"].active::after     { background: var(--pc); width:60%; }
+.nav-btn[data-section="s-combo"]:hover::after,
+.nav-btn[data-section="s-combo"].active::after    { background: var(--future); width:60%; }
+.nav-btn[data-section="s-future"]:hover::after,
+.nav-btn[data-section="s-future"].active::after   { background: var(--future); width:60%; }
+.nav-btn[data-section="s-practice"]:hover::after,
+.nav-btn[data-section="s-practice"].active::after { background: var(--ok); width:60%; }
+
+.nav-btn.active { color: var(--ink); background: var(--bg-glass); }
+
+.nav-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════
+   MAIN LAYOUT
+════════════════════════════════════════ */
+#main {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(var(--nav-h) + 40px);
+  padding-bottom: 80px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* ════════════════════════════════════════
+   SECTIONS
+════════════════════════════════════════ */
+.section {
+  display: none;
+  animation: secIn .35s cubic-bezier(0.22,1,0.36,1);
+}
+.section.active { display: block; }
+@keyframes secIn {
+  from { opacity:0; transform: translateY(20px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* ════════════════════════════════════════
+   GLASS CARDS
+════════════════════════════════════════ */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--gb);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-glass);
+  padding: 28px 30px;
+  margin-bottom: 22px;
+  transition: border-color .25s, box-shadow .25s;
+}
+.glass:hover { border-color: var(--gb2); }
+
+.glass-ps {
+  border-color: rgba(34,211,238,0.2);
+  box-shadow: var(--shadow-glass), var(--shadow-glow-ps);
+}
+.glass-pc {
+  border-color: rgba(249,115,22,0.2);
+  box-shadow: var(--shadow-glass), var(--shadow-glow-pc);
+}
+.glass-state {
+  border-color: rgba(167,139,250,0.2);
+  box-shadow: var(--shadow-glass), 0 0 40px rgba(167,139,250,0.15);
+}
+
+/* ════════════════════════════════════════
+   TYPOGRAPHY
+════════════════════════════════════════ */
+.page-eyebrow {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.page-eyebrow::before {
+  content:''; display:inline-block;
+  width:24px; height:2px; border-radius:1px;
+}
+
+.page-h1 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: clamp(26px,4vw,38px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.page-sub {
+  font-size: 15px; color: var(--ink2);
+  font-weight: 400; margin-bottom: 28px;
+}
+
+.sec-title {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 22px; font-weight: 800;
+  margin-bottom: 6px; line-height: 1.2;
+}
+.sec-sub { font-size: 13px; color: var(--ink2); margin-bottom: 20px; }
+
+.card-label {
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ════════════════════════════════════════
+   SYNTAX HIGHLIGHT TOKENS
+════════════════════════════════════════ */
+.t-ps    { color: var(--ps);     font-weight: 700; }
+.t-pc    { color: var(--pc);     font-weight: 700; }
+.t-state { color: var(--state);  font-weight: 700; }
+.t-act   { color: var(--action); font-weight: 700; }
+.t-fut   { color: var(--future); font-weight: 700; }
+.t-err   { color: var(--err);    font-weight: 700; text-decoration: line-through; }
+.t-ok    { color: var(--ok);     font-weight: 700; }
+
+.syntax-mark {
+  display: inline-block;
+  padding: 1px 8px; border-radius: 6px;
+  font-weight: 700; font-size: 0.9em;
+}
+.sm-ps    { background: var(--ps-dim);    color: var(--ps); }
+.sm-pc    { background: var(--pc-dim);    color: var(--pc); }
+.sm-state { background: var(--state-dim); color: var(--state); }
+.sm-act   { background: var(--action-dim);color: var(--action); }
+.sm-fut   { background: var(--future-dim);color: var(--future); }
+.sm-err   { background: var(--err-dim);   color: var(--err); }
+.sm-ok    { background: var(--ok-dim);    color: var(--ok); }
+
+/* ════════════════════════════════════════
+   FORMULA BOXES
+════════════════════════════════════════ */
+.formula {
+  background: var(--bg-glass2);
+  border-radius: var(--r);
+  padding: 18px 22px;
+  margin-bottom: 14px;
+  border-left: 3px solid;
+  font-size: 15px; font-weight: 600;
+  line-height: 1.8;
+  transition: transform .2s, box-shadow .2s;
+}
+.formula:hover { transform: translateX(3px); }
+
+.formula-ps  { border-color: var(--ps);    background: rgba(34,211,238,0.06); }
+.formula-pc  { border-color: var(--pc);    background: rgba(249,115,22,0.06); }
+.formula-sta { border-color: var(--state); background: rgba(167,139,250,0.06); }
+.formula-act { border-color: var(--action);background: rgba(52,211,153,0.06); }
+.formula-fut { border-color: var(--future);background: rgba(245,158,11,0.06); }
+.formula-err { border-color: var(--err);   background: rgba(248,113,113,0.06); }
+
+.fl { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: .6; margin-bottom: 7px; }
+.ff { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.fe { font-size: 13.5px; color: var(--ink2); font-style: italic; line-height: 1.85; }
+.fe strong { font-style: normal; }
+
+/* ════════════════════════════════════════
+   COMPARISON TABLE
+════════════════════════════════════════ */
+.cmp-table {
+  width: 100%; border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.cmp-table th {
+  padding: 12px 16px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  border-bottom: 1px solid var(--gb);
+  text-align: left;
+}
+.cmp-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13.5px; line-height: 1.55;
+  vertical-align: top;
+}
+.cmp-table tr:last-child td { border-bottom: none; }
+.cmp-table tr:hover td { background: var(--bg-glass); }
+.th-ps  { color: var(--ps); }
+.th-pc  { color: var(--pc); }
+
+/* ════════════════════════════════════════
+   VERB CARDS GRID
+════════════════════════════════════════ */
+.verb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.verb-chip {
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px; font-weight: 600;
+  text-align: center;
+  border: 1px solid;
+  transition: transform .15s, box-shadow .15s;
+  cursor: default;
+}
+.verb-chip:hover { transform: translateY(-2px); }
+.vc-state {
+  background: var(--state-dim);
+  border-color: rgba(167,139,250,0.3);
+  color: var(--state);
+  box-shadow: 0 0 0 0 var(--state);
+}
+.vc-state:hover { box-shadow: 0 4px 16px rgba(167,139,250,0.2); }
+.vc-action {
+  background: var(--action-dim);
+  border-color: rgba(52,211,153,0.3);
+  color: var(--action);
+}
+.vc-action:hover { box-shadow: 0 4px 16px rgba(52,211,153,0.2); }
+
+/* ════════════════════════════════════════
+   INFO BOXES
+════════════════════════════════════════ */
+.infobox {
+  border-radius: var(--r);
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 13.5px; line-height: 1.7;
+  border: 1px solid;
+}
+.ib-ps    { background: var(--ps-dim);    border-color: rgba(34,211,238,0.25);  }
+.ib-pc    { background: var(--pc-dim);    border-color: rgba(249,115,22,0.25);  }
+.ib-state { background: var(--state-dim); border-color: rgba(167,139,250,0.25); }
+.ib-act   { background: var(--action-dim);border-color: rgba(52,211,153,0.25);  }
+.ib-fut   { background: var(--future-dim);border-color: rgba(245,158,11,0.25);  }
+.ib-warn  { background: var(--err-dim);   border-color: rgba(248,113,113,0.25); }
+.ib-ok    { background: var(--ok-dim);    border-color: rgba(74,222,128,0.25);  }
+.ib-icon  { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+/* ════════════════════════════════════════
+   TWO-COLUMN SPLIT
+════════════════════════════════════════ */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.split-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+
+/* ════════════════════════════════════════
+   FUNCTION BADGES
+════════════════════════════════════════ */
+.fn-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.fn-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 12px 16px;
+  background: var(--bg-glass);
+  border-radius: var(--r);
+  border: 1px solid var(--gb);
+  transition: border-color .2s, transform .2s;
+  font-size: 13.5px;
+}
+.fn-item:hover { border-color: var(--gb2); transform: translateX(4px); }
+.fn-num {
+  min-width: 26px; height: 26px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; flex-shrink: 0;
+}
+.fn-ps .fn-num { background: var(--ps-dim);    color: var(--ps); }
+.fn-pc .fn-num { background: var(--pc-dim);    color: var(--pc); }
+
+/* ════════════════════════════════════════
+   TIMELINE / VISUAL AIDS
+════════════════════════════════════════ */
+.timeline {
+  position: relative;
+  height: 48px;
+  background: var(--bg-glass2);
+  border-radius: 24px;
+  border: 1px solid var(--gb);
+  margin: 16px 0;
+  overflow: hidden;
+}
+.tl-line {
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  height: 2px;
+  background: var(--gb2);
+  transform: translateY(-50%);
+}
+.tl-now {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--ink);
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 0 3px var(--bg-base), 0 0 0 5px var(--gb2);
+}
+.tl-label {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  font-size: 11px; font-weight: 700;
+  white-space: nowrap; padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* ════════════════════════════════════════
+   PRACTICE SECTION
+════════════════════════════════════════ */
+.practice-tab-bar {
+  display: flex; gap: 6px; margin-bottom: 22px;
+  background: var(--bg-glass);
+  padding: 6px;
+  border-radius: var(--r);
+  border: 1px solid var(--gb);
+}
+.ptab {
+  flex: 1; padding: 9px 12px;
+  border-radius: 10px; border: none;
+  background: transparent;
+  font-family: 'Lexend', sans-serif;
+  font-size: 12px; font-weight: 700;
+  color: var(--ink2); cursor: pointer;
+  transition: all .2s; text-align: center;
+  white-space: nowrap;
+}
+.ptab:hover { background: var(--bg-glass2); color: var(--ink); }
+.ptab.active {
+  background: var(--bg-glass3);
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.practice-set { display: none; }
+.practice-set.active { display: block; }
+
+/* Exercise cards */
+.ex-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--gb);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  transition: border-color .2s;
+}
+.ex-card:focus-within { border-color: var(--gb2); }
+.ex-num {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--ink3);
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.ex-q { font-size: 14.5px; line-height: 1.7; margin-bottom: 10px; }
+
+/* Fill blank input */
+.blank-inp {
+  border: none;
+  border-bottom: 2px solid rgba(34,211,238,0.4);
+  background: transparent;
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px; font-weight: 700;
+  color: var(--ps);
+  min-width: 100px; text-align: center;
+  outline: none; padding: 2px 6px;
+  transition: border-color .2s, color .2s;
+}
+.blank-inp:focus { border-color: var(--ps); }
+.blank-inp.correct { border-color: var(--ok);  color: var(--ok); }
+.blank-inp.wrong   { border-color: var(--err); color: var(--err); }
+
+/* MCQ options */
+.mcq-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.mcq-opt {
+  padding: 7px 18px;
+  border-radius: 9px;
+  border: 1.5px solid var(--gb);
+  background: var(--bg-glass);
+  font-family: 'Lexend', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--ink2); cursor: pointer;
+  transition: all .15s;
+}
+.mcq-opt:hover { border-color: var(--ps); color: var(--ps); background: var(--ps-dim); }
+.mcq-opt.sel   { border-color: var(--ps); color: var(--ps); background: var(--ps-dim); }
+.mcq-opt.ok    { border-color: var(--ok);  color: var(--ok);  background: var(--ok-dim); }
+.mcq-opt.bad   { border-color: var(--err); color: var(--err); background: var(--err-dim); }
+
+/* Error correction */
+.err-inp {
+  width: 100%;
+  border: none; border-bottom: 1.5px solid rgba(249,115,22,0.4);
+  background: transparent;
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px; font-weight: 500; color: var(--ink);
+  outline: none; padding: 5px 2px;
+  transition: border-color .2s;
+}
+.err-inp:focus { border-color: var(--pc); }
+.err-inp.correct { border-color: var(--ok);  color: var(--ok); }
+.err-inp.wrong   { border-color: var(--err); color: var(--err); }
+
+/* Explain bubble */
+.ex-exp {
+  display: none;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: var(--bg-glass2);
+  border-radius: 9px;
+  font-size: 12.5px; color: var(--ink2);
+  line-height: 1.6;
+  border-left: 3px solid;
+}
+.ex-exp.show { display: block; }
+.ep-ps  { border-color: var(--ps); }
+.ep-pc  { border-color: var(--pc); }
+.ep-sta { border-color: var(--state); }
+.ep-fut { border-color: var(--future); }
+.ep-comb{ border-color: var(--future); }
+
+/* Classify drag */
+.classify-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.classify-bin {
+  min-height: 100px;
+  border-radius: var(--r);
+  border: 2px dashed;
+  padding: 14px;
+  transition: background .2s;
+}
+.cb-state  { border-color: rgba(167,139,250,0.4); background: rgba(167,139,250,0.04); }
+.cb-action { border-color: rgba(52,211,153,0.4);  background: rgba(52,211,153,0.04); }
+.cb-label  { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.cb-state  .cb-label { color: var(--state); }
+.cb-action .cb-label { color: var(--action); }
+.classify-pool { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.drag-chip {
+  padding: 6px 14px; border-radius: 9px;
+  border: 1.5px solid var(--gb2);
+  background: var(--bg-glass2);
+  font-size: 13px; font-weight: 600; color: var(--ink);
+  cursor: pointer; transition: all .15s; user-select: none;
+}
+.drag-chip:hover { border-color: var(--ps); color: var(--ps); background: var(--ps-dim); transform: scale(1.05); }
+.drag-chip.placed { opacity: .5; pointer-events: none; }
+
+/* BTN */
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  border: none; border-radius: 10px;
+  padding: 10px 22px;
+  font-family: 'Lexend', sans-serif;
+  font-size: 13px; font-weight: 700;
+  cursor: pointer; transition: all .18s;
+}
+.btn-ps {
+  background: linear-gradient(135deg, var(--ps), var(--ps2));
+  color: #000;
+}
+.btn-ps:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(34,211,238,0.3); }
+.btn-pc {
+  background: linear-gradient(135deg, var(--pc), var(--pc2));
+  color: #fff;
+}
+.btn-pc:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(249,115,22,0.3); }
+.btn-ghost {
+  background: var(--bg-glass2);
+  color: var(--ink2);
+  border: 1px solid var(--gb);
+}
+.btn-ghost:hover { color: var(--ink); border-color: var(--gb2); }
+.btn-ok {
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+  color: #000;
+}
+.btn-ok:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(34,197,94,0.3); }
+
+.score-box {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; border-radius: 12px;
+  font-size: 17px; font-weight: 800;
+  margin-top: 14px; display: none;
+  border: 1px solid;
+}
+.score-box.show { display: inline-flex; }
+.sb-good { background: var(--ok-dim);   border-color: rgba(74,222,128,0.3);  color: var(--ok); }
+.sb-ok   { background: var(--future-dim);border-color:rgba(245,158,11,0.3);  color: var(--future); }
+.sb-bad  { background: var(--err-dim);  border-color: rgba(248,113,113,0.3); color: var(--err); }
+
+/* progress bar */
+.ex-progress {
+  height: 4px; background: var(--gb);
+  border-radius: 2px; margin-bottom: 18px; overflow: hidden;
+}
+.ex-progress-fill {
+  height: 100%; border-radius: 2px;
+  background: linear-gradient(90deg, var(--ps), var(--pc));
+  transition: width .5s ease;
+}
+
+/* ════════════════════════════════════════
+   OVERVIEW CARDS
+════════════════════════════════════════ */
+.ov-card {
+  position: relative;
+  border-radius: var(--r-lg);
+  padding: 24px 22px;
+  border: 1px solid var(--gb);
+  background: var(--bg-glass);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  cursor: default;
+}
+.ov-card::before {
+  content:''; position:absolute;
+  top:0;left:0;right:0;height:3px;
+}
+.ov-card:hover { transform: translateY(-4px); border-color: var(--gb2); }
+.ovc-ps::before  { background: linear-gradient(90deg,var(--ps),transparent); }
+.ovc-pc::before  { background: linear-gradient(90deg,var(--pc),transparent); }
+.ovc-sta::before { background: linear-gradient(90deg,var(--state),transparent); }
+.ovc-fut::before { background: linear-gradient(90deg,var(--future),transparent); }
+.ov-card:hover.ovc-ps  { box-shadow: var(--shadow-glow-ps); }
+.ov-card:hover.ovc-pc  { box-shadow: var(--shadow-glow-pc); }
+
+.ov-ico { font-size: 32px; margin-bottom: 12px; display: block; }
+.ov-title { font-size: 16px; font-weight: 800; margin-bottom: 5px; }
+.ov-desc  { font-size: 12.5px; color: var(--ink2); line-height: 1.6; }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media(max-width: 700px) {
+  #main { padding: 20px 16px 60px; padding-top: calc(var(--nav-h) + 24px); }
+  .split, .split-3 { grid-template-columns: 1fr; }
+  .classify-wrap { grid-template-columns: 1fr; }
+  .glass { padding: 20px 18px; }
+  .nav-brand { display: none; }
+  .nav-btn { padding: 6px 10px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Background orbs -->
+<div class="orb1 bg-orb"></div>
+<div class="orb2 bg-orb"></div>
+<div class="orb3 bg-orb"></div>
+<div class="orb4 bg-orb"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-brand">PSvPC</div>
+  <div class="nav-items">
+    <button class="nav-btn active" data-section="s-overview" onclick="showSection('s-overview',this)">
+      <span class="nav-dot" style="background:var(--ps)"></span>Tổng quan
+    </button>
+    <button class="nav-btn" data-section="s-action" onclick="showSection('s-action',this)">
+      <span class="nav-dot" style="background:var(--action)"></span>Action & State
+    </button>
+    <button class="nav-btn" data-section="s-ps" onclick="showSection('s-ps',this)">
+      <span class="nav-dot" style="background:var(--ps)"></span>Present Simple
+    </button>
+    <button class="nav-btn" data-section="s-pc" onclick="showSection('s-pc',this)">
+      <span class="nav-dot" style="background:var(--pc)"></span>Present Cont.
+    </button>
+    <button class="nav-btn" data-section="s-state" onclick="showSection('s-state',this)">
+      <span class="nav-dot" style="background:var(--state)"></span>State + Cont.
+    </button>
+    <button class="nav-btn" data-section="s-temp" onclick="showSection('s-temp',this)">
+      <span class="nav-dot" style="background:var(--pc)"></span>Tạm thời
+    </button>
+    <button class="nav-btn" data-section="s-combo" onclick="showSection('s-combo',this)">
+      <span class="nav-dot" style="background:var(--future)"></span>Kết hợp
+    </button>
+    <button class="nav-btn" data-section="s-future" onclick="showSection('s-future',this)">
+      <span class="nav-dot" style="background:var(--future)"></span>Tương lai
+    </button>
+    <button class="nav-btn" data-section="s-practice" onclick="showSection('s-practice',this)">
+      <span class="nav-dot" style="background:var(--ok)"></span>Luyện tập 50Q
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ══════════════ OVERVIEW ══════════════ -->
+<div id="s-overview" class="section active">
+  <div class="page-eyebrow" style="color:var(--ps)">
+    <span style="background:linear-gradient(90deg,var(--ps),var(--pc));height:2px;width:24px;display:inline-block;border-radius:1px"></span>
+    IELTS Grammar · Buổi học 2
+  </div>
+  <h1 class="page-h1">
+    <span class="t-ps">Present Simple</span><br>
+    <span style="color:var(--ink2);font-size:.55em;font-weight:400">vs</span><br>
+    <span class="t-pc">Present Continuous</span>
+  </h1>
+  <p class="page-sub">Hiểu rõ chức năng — Dùng đúng ngữ cảnh — Luyện tập 50 câu</p>
+
+  <!-- Colour legend -->
+  <div class="glass" style="padding:16px 22px;margin-bottom:28px">
+    <div class="card-label" style="color:var(--ink3)">🎨 Bảng màu ngữ pháp xuyên suốt bài học</div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <span class="syntax-mark sm-ps">Present Simple</span>
+      <span class="syntax-mark sm-pc">Present Continuous</span>
+      <span class="syntax-mark sm-state">State Verb</span>
+      <span class="syntax-mark sm-act">Action Verb</span>
+      <span class="syntax-mark sm-fut">Future Use</span>
+      <span class="syntax-mark sm-err">Lỗi sai</span>
+      <span class="syntax-mark sm-ok">Đúng</span>
+    </div>
+  </div>
+
+  <!-- Overview topic cards -->
+  <div class="split-3">
+    <div class="ov-card ovc-ps">
+      <span class="ov-ico">🔵</span>
+      <div class="ov-title t-ps">Present Simple</div>
+      <div class="ov-desc">Sự thật, thói quen, lịch trình cố định. Dùng với động từ trạng thái.</div>
+    </div>
+    <div class="ov-card ovc-pc">
+      <span class="ov-ico">🟠</span>
+      <div class="ov-title t-pc">Present Continuous</div>
+      <div class="ov-desc">Hành động đang xảy ra, tạm thời, và kế hoạch tương lai gần.</div>
+    </div>
+    <div class="ov-card ovc-sta">
+      <span class="ov-ico">🟣</span>
+      <div class="ov-title t-state">State Verbs</div>
+      <div class="ov-desc">Động từ trạng thái <strong>không dùng</strong> với Present Continuous.</div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="ov-card ovc-pc">
+      <span class="ov-ico">⚡</span>
+      <div class="ov-title t-pc">Hành động tạm thời</div>
+      <div class="ov-desc">Present Continuous mô tả tình huống tạm thời trái với thói quen.</div>
+    </div>
+    <div class="ov-card ovc-fut">
+      <span class="ov-ico">📅</span>
+      <div class="ov-title t-fut">Diễn đạt tương lai</div>
+      <div class="ov-desc">Present Continuous = kế hoạch đã sắp xếp cho tương lai gần.</div>
+    </div>
+  </div>
+
+  <!-- Quick contrast table -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--ink2)">⚡ <span>So sánh nhanh</span></div>
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th style="width:30%">Tiêu chí</th>
+          <th class="th-ps">Present Simple</th>
+          <th class="th-pc">Present Continuous</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--ink2);font-size:12.5px">Công thức</td>
+          <td><span class="t-ps">S + V / V-s/es</span></td>
+          <td><span class="t-pc">S + am/is/are + V-ing</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--ink2);font-size:12.5px">Thời điểm</td>
+          <td>Mọi lúc / nói chung</td>
+          <td>Ngay bây giờ / thời điểm nói</td>
+        </tr>
+        <tr>
+          <td style="color:var(--ink2);font-size:12.5px">Tín hiệu nhận biết</td>
+          <td><em>always, usually, every day, never, often</em></td>
+          <td><em>now, at the moment, currently, look!, listen!</em></td>
+        </tr>
+        <tr>
+          <td style="color:var(--ink2);font-size:12.5px">Với state verbs</td>
+          <td><span class="sm-ok">✓ Dùng được</span></td>
+          <td><span class="sm-err">✗ Không dùng</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--ink2);font-size:12.5px">Diễn tả tương lai</td>
+          <td>Lịch trình cố định (tàu, máy bay)</td>
+          <td>Kế hoạch cá nhân đã sắp xếp</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="btn btn-ps" onclick="showSection('s-action',document.querySelectorAll('.nav-btn')[1])">
+    Bắt đầu: Action & State verbs →
+  </button>
+</div>
+
+<!-- ══════════════ ACTION & STATE ══════════════ -->
+<div id="s-action" class="section">
+  <div class="page-eyebrow" style="color:var(--action)">
+    <span style="background:var(--action);height:2px;width:24px;display:inline-block;border-radius:1px"></span>
+    Khái niệm nền tảng
+  </div>
+  <h1 class="page-h1">Action Verbs vs <span class="t-state">State Verbs</span></h1>
+  <p class="page-sub">Phân biệt động từ hành động và động từ trạng thái — chìa khoá để dùng thì đúng</p>
+
+  <div class="split">
+    <div class="glass glass-ps" style="border-color:rgba(52,211,153,0.25)">
+      <div class="card-label" style="color:var(--action)">⚡ Action Verbs — Động từ hành động</div>
+      <p style="font-size:13.5px;color:var(--ink2);margin-bottom:14px">Mô tả hành động có thể <strong style="color:var(--ink)">nhìn thấy, nghe thấy</strong> hoặc đo lường được. Có thể dùng cả Present Simple lẫn Continuous.</p>
+      <div class="verb-grid">
+        <div class="verb-chip vc-action">run</div>
+        <div class="verb-chip vc-action">write</div>
+        <div class="verb-chip vc-action">eat</div>
+        <div class="verb-chip vc-action">study</div>
+        <div class="verb-chip vc-action">work</div>
+        <div class="verb-chip vc-action">play</div>
+        <div class="verb-chip vc-action">read</div>
+        <div class="verb-chip vc-action">cook</div>
+        <div class="verb-chip vc-action">teach</div>
+        <div class="verb-chip vc-action">listen</div>
+        <div class="verb-chip vc-action">drive</div>
+        <div class="verb-chip vc-action">make</div>
+      </div>
+      <div class="infobox ib-act" style="margin-bottom:0">
+        <span class="ib-icon">✅</span>
+        <div>
+          She <span class="t-ps">reads</span> every night. <em style="color:var(--ink3)">(thói quen)</em><br>
+          She <span class="t-pc">is reading</span> right now. <em style="color:var(--ink3)">(đang xảy ra)</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass glass-state">
+      <div class="card-label" style="color:var(--state)">🔮 State Verbs — Động từ trạng thái</div>
+      <p style="font-size:13.5px;color:var(--ink2);margin-bottom:14px">Mô tả <strong style="color:var(--ink)">trạng thái tâm lý, nhận thức, cảm xúc, sở hữu, giác quan</strong>. <span class="sm-err">Không dùng với -ing</span></p>
+      <div class="verb-grid">
+        <div class="verb-chip vc-state">know</div>
+        <div class="verb-chip vc-state">believe</div>
+        <div class="verb-chip vc-state">want</div>
+        <div class="verb-chip vc-state">love</div>
+        <div class="verb-chip vc-state">hate</div>
+        <div class="verb-chip vc-state">need</div>
+        <div class="verb-chip vc-state">own</div>
+        <div class="verb-chip vc-state">have</div>
+        <div class="verb-chip vc-state">seem</div>
+        <div class="verb-chip vc-state">understand</div>
+        <div class="verb-chip vc-state">prefer</div>
+        <div class="verb-chip vc-state">remember</div>
+        <div class="verb-chip vc-state">forget</div>
+        <div class="verb-chip vc-state">mean</div>
+        <div class="verb-chip vc-state">consist</div>
+        <div class="verb-chip vc-state">contain</div>
+        <div class="verb-chip vc-state">belong</div>
+        <div class="verb-chip vc-state">depend</div>
+        <div class="verb-chip vc-state">see</div>
+        <div class="verb-chip vc-state">hear</div>
+      </div>
+      <div class="infobox ib-warn" style="margin-bottom:0">
+        <span class="ib-icon">⚠️</span>
+        <div>
+          <span class="t-err">I am knowing</span> the answer. ← <strong style="color:var(--err)">SAI</strong><br>
+          <span class="t-ok">I know</span> the answer. ← <strong style="color:var(--ok)">ĐÚNG</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 categories of state verbs -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--state)">🗂️ <span>5 Nhóm State Verbs cần nhớ</span></div>
+    <div class="split">
+      <div>
+        <div class="formula formula-sta">
+          <div class="fl" style="color:var(--state)">Nhóm 1 — Nhận thức / Tư duy</div>
+          <div style="font-size:13px;color:var(--ink2)">know · understand · realise · believe · think (=believe) · remember · forget · recognise · mean</div>
+        </div>
+        <div class="formula formula-sta">
+          <div class="fl" style="color:var(--state)">Nhóm 2 — Cảm xúc / Mong muốn</div>
+          <div style="font-size:13px;color:var(--ink2)">love · hate · like · prefer · want · need · wish · fear · enjoy (khi = like)</div>
+        </div>
+        <div class="formula formula-sta">
+          <div class="fl" style="color:var(--state)">Nhóm 3 — Giác quan</div>
+          <div style="font-size:13px;color:var(--ink2)">see · hear · smell · taste · feel (=seem) · look (=seem) · sound</div>
+        </div>
+      </div>
+      <div>
+        <div class="formula formula-sta">
+          <div class="fl" style="color:var(--state)">Nhóm 4 — Sở hữu / Tồn tại</div>
+          <div style="font-size:13px;color:var(--ink2)">have · own · possess · belong · contain · consist · include · exist</div>
+        </div>
+        <div class="formula formula-sta">
+          <div class="fl" style="color:var(--state)">Nhóm 5 — Liên quan / Trạng thái</div>
+          <div style="font-size:13px;color:var(--ink2)">seem · appear · depend · matter · concern · involve · lack · differ</div>
+        </div>
+        <div class="infobox ib-ps">
+          <span class="ib-icon">💡</span>
+          <div><strong>Một số verbs vừa là action vừa là state</strong> tuỳ ngữ cảnh:<br>
+          <em>I <span class="t-ps">think</span> (=believe) you're right.</em> — state<br>
+          <em>I <span class="t-pc">am thinking</span> about it.</em> — action (đang suy nghĩ)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="infobox ib-warn">
+    <span class="ib-icon">🚨</span>
+    <div>
+      <strong>Động từ "have":</strong> Khi <em>have = possess</em> → state verb → <span class="sm-err">không dùng -ing</span><br>
+      <em><span class="sm-err">I am having</span> a car.</em> ← SAI &nbsp;&nbsp;
+      <em><span class="sm-ok">I have</span> a car.</em> ← ĐÚNG<br>
+      Nhưng: <em><span class="sm-pc">I am having</span> lunch.</em> ← ĐÚNG (<em>have = eat</em>, action verb)
+    </div>
+  </div>
+
+  <button class="btn btn-ps" onclick="showSection('s-ps',document.querySelectorAll('.nav-btn')[2])">Tiếp: Present Simple →</button>
+</div>
+
+
+<!-- ══════════════ PRESENT SIMPLE ══════════════ -->
+<div id="s-ps" class="section">
+  <div class="page-eyebrow" style="color:var(--ps)">
+    <span style="background:var(--ps);height:2px;width:24px;display:inline-block;border-radius:1px"></span>
+    Thì 1 / 2
+  </div>
+  <h1 class="page-h1 t-ps">Present Simple</h1>
+  <p class="page-sub">Sự thật phổ quát · Thói quen · Lịch trình · State verbs</p>
+
+  <!-- Formula -->
+  <div class="glass glass-ps">
+    <div class="card-label" style="color:var(--ps)">📐 Cấu trúc</div>
+    <div class="formula formula-ps">
+      <div class="fl" style="color:var(--ps)">Khẳng định</div>
+      <div class="ff"><span class="t-ps">S + V (bare infinitive) / V-s/es</span> <em style="color:var(--ink3);font-size:13px;font-weight:400"> — He/She/It thêm -s/es</em></div>
+      <div class="fe">She <strong class="t-ps">works</strong> at a hospital. &nbsp;·&nbsp; Water <strong class="t-ps">boils</strong> at 100°C. &nbsp;·&nbsp; They <strong class="t-ps">study</strong> every morning.</div>
+    </div>
+    <div class="formula formula-err">
+      <div class="fl" style="color:var(--err)">Phủ định</div>
+      <div class="ff">S + <span class="t-err">don't / doesn't</span> + V</div>
+      <div class="fe">I <strong class="t-err">don't</strong> eat meat. &nbsp;·&nbsp; She <strong class="t-err">doesn't</strong> like coffee.</div>
+    </div>
+    <div class="formula formula-ps" style="margin-bottom:0">
+      <div class="fl" style="color:var(--ps)">Câu hỏi</div>
+      <div class="ff"><span class="t-ps">Do / Does</span> + S + V?</div>
+      <div class="fe"><strong class="t-ps">Do</strong> you speak English? &nbsp;·&nbsp; <strong class="t-ps">Does</strong> he live here?</div>
+    </div>
+  </div>
+
+  <!-- 5 Functions -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--ps)">🎯 <span>5 Chức năng chính của Present Simple</span></div>
+    <ul class="fn-list">
+      <li class="fn-item fn-ps">
+        <div class="fn-num">1</div>
+        <div>
+          <strong>Sự thật phổ quát / Định luật khoa học</strong><br>
+          <span style="color:var(--ink2);font-size:13px">The Earth <span class="t-ps">orbits</span> the sun. &nbsp;·&nbsp; Light <span class="t-ps">travels</span> faster than sound.</span>
+        </div>
+      </li>
+      <li class="fn-item fn-ps">
+        <div class="fn-num">2</div>
+        <div>
+          <strong>Thói quen & hành động lặp đi lặp lại</strong><br>
+          <span style="color:var(--ink2);font-size:13px">She <span class="t-ps">goes</span> to the gym <em>every morning</em>. &nbsp;·&nbsp; He <span class="t-ps">never eats</span> fast food.</span>
+        </div>
+      </li>
+      <li class="fn-item fn-ps">
+        <div class="fn-num">3</div>
+        <div>
+          <strong>Trạng thái cảm xúc, suy nghĩ, sở hữu (state verbs)</strong><br>
+          <span style="color:var(--ink2);font-size:13px">I <span class="t-ps">know</span> the answer. &nbsp;·&nbsp; She <span class="t-ps">loves</span> music. &nbsp;·&nbsp; He <span class="t-ps">owns</span> two cars.</span>
+        </div>
+      </li>
+      <li class="fn-item fn-ps">
+        <div class="fn-num">4</div>
+        <div>
+          <strong>Lịch trình cố định (tàu, máy bay, chương trình TV)</strong><br>
+          <span style="color:var(--ink2);font-size:13px">The train <span class="t-ps">leaves</span> at 8:00. &nbsp;·&nbsp; The film <span class="t-ps">starts</span> at 9 pm.</span>
+        </div>
+      </li>
+      <li class="fn-item fn-ps">
+        <div class="fn-num">5</div>
+        <div>
+          <strong>Kể chuyện / Tường thuật / Chỉ dẫn</strong><br>
+          <span style="color:var(--ink2);font-size:13px">You <span class="t-ps">add</span> flour, then <span class="t-ps">mix</span> well. &nbsp;·&nbsp; In the story, the hero <span class="t-ps">finds</span> a map.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Time markers -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--ps)">⏰ <span>Từ nhận biết Present Simple</span></div>
+    <div style="display:flex;flex-wrap:wrap;gap:9px">
+      <span class="syntax-mark sm-ps">always</span>
+      <span class="syntax-mark sm-ps">usually</span>
+      <span class="syntax-mark sm-ps">often</span>
+      <span class="syntax-mark sm-ps">sometimes</span>
+      <span class="syntax-mark sm-ps">rarely</span>
+      <span class="syntax-mark sm-ps">never</span>
+      <span class="syntax-mark sm-ps">every day/week</span>
+      <span class="syntax-mark sm-ps">once a week</span>
+      <span class="syntax-mark sm-ps">in general</span>
+      <span class="syntax-mark sm-ps">on Mondays</span>
+    </div>
+
+    <!-- Timeline visual -->
+    <div style="margin-top:18px;position:relative">
+      <div style="display:flex;align-items:center;gap:0;position:relative;height:56px">
+        <div style="flex:1;height:2px;background:linear-gradient(90deg,transparent,var(--ps))"></div>
+        <div style="width:12px;height:12px;border-radius:50%;background:var(--ps);box-shadow:0 0 12px var(--ps);flex-shrink:0"></div>
+        <div style="flex:1;height:2px;background:linear-gradient(90deg,var(--ps),transparent)"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--bg-base);padding:2px 10px;border-radius:6px;border:1px solid var(--ps);font-size:11px;font-weight:700;color:var(--ps);white-space:nowrap">NOW</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--ink3);margin-top:4px">
+        <span>← Quá khứ</span>
+        <span style="color:var(--ps);font-weight:600">Sự thật / Thói quen / Trạng thái (không đổi theo thời gian)</span>
+        <span>Tương lai →</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-pc" onclick="showSection('s-pc',document.querySelectorAll('.nav-btn')[3])">Tiếp: Present Continuous →</button>
+</div>
+
+<!-- ══════════════ PRESENT CONTINUOUS ══════════════ -->
+<div id="s-pc" class="section">
+  <div class="page-eyebrow" style="color:var(--pc)">
+    <span style="background:var(--pc);height:2px;width:24px;display:inline-block;border-radius:1px"></span>
+    Thì 2 / 2
+  </div>
+  <h1 class="page-h1 t-pc">Present Continuous</h1>
+  <p class="page-sub">Đang xảy ra · Tạm thời · Kế hoạch tương lai</p>
+
+  <div class="glass glass-pc">
+    <div class="card-label" style="color:var(--pc)">📐 Cấu trúc</div>
+    <div class="formula formula-pc">
+      <div class="fl" style="color:var(--pc)">Khẳng định</div>
+      <div class="ff">S + <span class="t-ps">am / is / are</span> + <span class="t-pc">V-ing</span></div>
+      <div class="fe">I <strong class="t-ps">am</strong> <strong class="t-pc">studying</strong> right now. &nbsp;·&nbsp; She <strong class="t-ps">is</strong> <strong class="t-pc">working</strong> at the moment.</div>
+    </div>
+    <div class="formula formula-err">
+      <div class="fl" style="color:var(--err)">Phủ định</div>
+      <div class="ff">S + <span class="t-ps">am / is / are</span> + <span class="t-err">not</span> + V-ing</div>
+      <div class="fe">He <strong class="t-err">isn't</strong> watching TV. &nbsp;·&nbsp; They <strong class="t-err">aren't</strong> coming today.</div>
+    </div>
+    <div class="formula formula-pc" style="margin-bottom:0">
+      <div class="fl" style="color:var(--pc)">Câu hỏi</div>
+      <div class="ff"><span class="t-ps">Am / Is / Are</span> + S + V-ing?</div>
+      <div class="fe"><strong class="t-ps">Are</strong> you <strong class="t-pc">listening</strong>? &nbsp;·&nbsp; <strong class="t-ps">Is</strong> she <strong class="t-pc">coming</strong> to the party?</div>
+    </div>
+  </div>
+
+  <!-- 4 functions -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--pc)">🎯 <span>4 Chức năng chính của Present Continuous</span></div>
+    <ul class="fn-list">
+      <li class="fn-item fn-pc">
+        <div class="fn-num">1</div>
+        <div>
+          <strong>Hành động đang xảy ra ngay lúc nói</strong><br>
+          <span style="color:var(--ink2);font-size:13px">She <span class="t-pc">is talking</span> on the phone right now. &nbsp;·&nbsp; Look! It <span class="t-pc">is raining</span>!</span>
+        </div>
+      </li>
+      <li class="fn-item fn-pc">
+        <div class="fn-num">2</div>
+        <div>
+          <strong>Hành động xảy ra xung quanh thời điểm nói (không nhất thiết đúng lúc nói)</strong><br>
+          <span style="color:var(--ink2);font-size:13px">I <span class="t-pc">am reading</span> a great book this week. &nbsp;·&nbsp; He <span class="t-pc">is studying</span> for his IELTS exam these days.</span>
+        </div>
+      </li>
+      <li class="fn-item fn-pc">
+        <div class="fn-num">3</div>
+        <div>
+          <strong>Tình huống tạm thời (khác với thói quen thường ngày)</strong><br>
+          <span style="color:var(--ink2);font-size:13px">I usually take the bus, but this week I <span class="t-pc">am driving</span> because my bus pass is lost.</span>
+        </div>
+      </li>
+      <li class="fn-item fn-pc">
+        <div class="fn-num">4</div>
+        <div>
+          <strong>Kế hoạch cá nhân đã sắp xếp cho tương lai</strong><br>
+          <span style="color:var(--ink2);font-size:13px">I <span class="t-pc">am meeting</span> my friend tomorrow at 3pm. &nbsp;·&nbsp; We <span class="t-pc">are flying</span> to London next week.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Time markers -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--pc)">⏰ <span>Từ nhận biết Present Continuous</span></div>
+    <div style="display:flex;flex-wrap:wrap;gap:9px">
+      <span class="syntax-mark sm-pc">now</span>
+      <span class="syntax-mark sm-pc">right now</span>
+      <span class="syntax-mark sm-pc">at the moment</span>
+      <span class="syntax-mark sm-pc">currently</span>
+      <span class="syntax-mark sm-pc">at present</span>
+      <span class="syntax-mark sm-pc">these days</span>
+      <span class="syntax-mark sm-pc">this week/year</span>
+      <span class="syntax-mark sm-pc">Look! / Listen!</span>
+      <span class="syntax-mark sm-pc">still</span>
+      <span class="syntax-mark sm-fut">tomorrow</span>
+      <span class="syntax-mark sm-fut">next week</span>
+    </div>
+
+    <!-- Timeline visual -->
+    <div style="margin-top:18px">
+      <div style="display:flex;align-items:center;position:relative;height:56px">
+        <div style="flex:1;height:2px;background:var(--gb)"></div>
+        <div style="position:absolute;left:50%;top:0;bottom:0;width:120px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(249,115,22,0.3),transparent);border-radius:4px"></div>
+        <div style="width:12px;height:12px;border-radius:50%;background:var(--pc);box-shadow:0 0 12px var(--pc);flex-shrink:0;position:absolute;left:50%;transform:translateX(-50%)"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--bg-base);padding:2px 10px;border-radius:6px;border:1px solid var(--pc);font-size:11px;font-weight:700;color:var(--pc);white-space:nowrap;margin-top:22px">NOW (đang diễn ra)</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--ink3);margin-top:14px">
+        <span>← Trước đó</span>
+        <span style="color:var(--pc);font-weight:600">▓▓▓ Hành động đang xảy ra ▓▓▓</span>
+        <span>Kết thúc →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spelling rules -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--pc)">✏️ <span>Quy tắc thêm -ing</span></div>
+    <div class="split">
+      <div>
+        <div class="formula formula-pc">
+          <div class="fl" style="color:var(--pc)">Quy tắc chung</div>
+          <div class="fe">Hầu hết → thêm -ing trực tiếp<br><strong>study → study<span class="t-pc">ing</span> · work → work<span class="t-pc">ing</span></strong></div>
+        </div>
+        <div class="formula formula-pc">
+          <div class="fl" style="color:var(--pc)">Kết thúc bằng -e</div>
+          <div class="fe">Bỏ -e rồi thêm -ing<br><strong>come → com<span class="t-pc">ing</span> · make → mak<span class="t-pc">ing</span></strong></div>
+        </div>
+      </div>
+      <div>
+        <div class="formula formula-pc">
+          <div class="fl" style="color:var(--pc)">1 phụ âm sau 1 nguyên âm ngắn</div>
+          <div class="fe">Gấp đôi phụ âm cuối + -ing<br><strong>run → run<span class="t-pc">n</span>ing · sit → sit<span class="t-pc">t</span>ing</strong></div>
+        </div>
+        <div class="formula formula-pc">
+          <div class="fl" style="color:var(--pc)">Kết thúc bằng -ie</div>
+          <div class="fe">Đổi -ie thành -y + -ing<br><strong>die → dy<span class="t-pc">ing</span> · lie → ly<span class="t-pc">ing</span></strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-pc" onclick="showSection('s-state',document.querySelectorAll('.nav-btn')[4])">Tiếp: State verbs + Continuous →</button>
+</div>
+
+<!-- ══════════════ STATE + CONTINUOUS ══════════════ -->
+<div id="s-state" class="section">
+  <div class="page-eyebrow" style="color:var(--state)">
+    <span style="background:var(--state);height:2px;width:24px;display:inline-block;border-radius:1px"></span>
+    Quy tắc quan trọng
+  </div>
+  <h1 class="page-h1"><span class="t-state">State Verbs</span> + <span class="t-pc">Continuous</span></h1>
+  <p class="page-sub">Tại sao động từ trạng thái không dùng với thì tiếp diễn?</p>
+
+  <div class="glass glass-state">
+    <div class="card-label" style="color:var(--state)">🧠 <span>Lý giải ngôn ngữ học</span></div>
+    <div class="infobox ib-state" style="font-size:14px">
+      <span class="ib-icon">💎</span>
+      <div>
+        Thì tiếp diễn (<em>-ing</em>) diễn tả hành động <strong>có điểm bắt đầu và điểm kết thúc</strong> — tức là hành động có thể quan sát được.<br><br>
+        State verbs mô tả <strong>trạng thái tâm lý / cảm xúc / nhận thức</strong> — chúng <strong>không có điểm bắt đầu/kết thúc rõ ràng</strong>, tồn tại liên tục → <span class="sm-err">không dùng -ing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error vs correct table -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--err)">🚫 <span>Lỗi phổ biến & Cách sửa</span></div>
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th style="color:var(--err)">✗ SAI</th>
+          <th style="color:var(--ok)">✓ ĐÚNG</th>
+          <th style="color:var(--state)">Giải thích</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="t-err">I am knowing</span> the answer.</td>
+          <td><span class="t-ok">I know</span> the answer.</td>
+          <td style="font-size:12.5px;color:var(--ink2)"><em>know</em> = state verb (nhận thức)</td>
+        </tr>
+        <tr>
+          <td><span class="t-err">She is wanting</span> a coffee.</td>
+          <td><span class="t-ok">She wants</span> a coffee.</td>
+          <td style="font-size:12.5px;color:var(--ink2)"><em>want</em> = state verb (mong muốn)</td>
+        </tr>
+        <tr>
+          <td><span class="t-err">I am loving</span> this music!</td>
+          <td><span class="t-ok">I love</span> this music!</td>
+          <td style="font-size:12.5px;color:var(--ink2)"><em>love</em> = state verb (cảm xúc)</td>
+        </tr>
+        <tr>
+          <td><span class="t-err">He is believing</span> in miracles.</td>
+          <td><span class="t-ok">He believes</span> in miracles.</td>
+          <td style="font-size:12.5px;color:var(--ink2)"><em>believe</em> = state verb (niềm tin)</td>
+        </tr>
+        <tr>
+          <td><span class="t-err">We are needing</span> help.</td>
+          <td><span class="t-ok">We need</span> help.</td>
+          <td style="font-size:12.5px;color:var(--ink2)"><em>need</em> = state verb (nhu cầu)</td>
+        </tr>
+        <tr>
+          <td><span class="t-err">It is seeming</span> difficult.</td>
+          <td><span class="t-ok">It seems</span> difficult.</td>
+          <td style="font-size:12.5px;color:var(--ink2)"><em>seem</em> = state verb (vẻ ngoài)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Dual-meaning verbs -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--future)">⚡ <span>Động từ "hai mặt" — vừa State vừa Action</span></div>
+    <div class="infobox ib-ps" style="margin-bottom:18px">
+      <span class="ib-icon">💡</span>
+      <div>Một số động từ có <strong>hai nghĩa khác nhau</strong>: một nghĩa là state, một nghĩa là action. Nghĩa khác nhau → có thể dùng -ing!</div>
+    </div>
+    <table class="cmp-table">
+      <thead>
+        <tr><th>Động từ</th><th class="th-ps">Nghĩa State (Present Simple)</th><th class="th-pc">Nghĩa Action (Present Continuous)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>think</strong></td>
+          <td><em>I <span class="t-ps">think</span> he's right.</em><br><span style="font-size:11.5px;color:var(--ink3)">= believe / có ý kiến</span></td>
+          <td><em>I <span class="t-pc">am thinking</span> about you.</em><br><span style="font-size:11.5px;color:var(--ink3)">= đang suy nghĩ về</span></td>
+        </tr>
+        <tr>
+          <td><strong>have</strong></td>
+          <td><em>She <span class="t-ps">has</span> a dog.</em><br><span style="font-size:11.5px;color:var(--ink3)">= own / sở hữu</span></td>
+          <td><em>She <span class="t-pc">is having</span> lunch.</em><br><span style="font-size:11.5px;color:var(--ink3)">= eat / đang ăn</span></td>
+        </tr>
+        <tr>
+          <td><strong>see</strong></td>
+          <td><em>I <span class="t-ps">see</span> what you mean.</em><br><span style="font-size:11.5px;color:var(--ink3)">= understand / hiểu</span></td>
+          <td><em>I <span class="t-pc">am seeing</span> the doctor tomorrow.</em><br><span style="font-size:11.5px;color:var(--ink3)">= meet / gặp</span></td>
+        </tr>
+        <tr>
+          <td><strong>smell</strong></td>
+          <td><em>This <span class="t-ps">smells</span> delicious.</em><br><span style="font-size:11.5px;color:var(--ink3)">= has a smell</span></td>
+          <td><em>She <span class="t-pc">is smelling</span> the flowers.</em><br><span style="font-size:11.5px;color:var(--ink3)">= sniffing (hành động)</span></td>
+        </tr>
+        <tr>
+          <td><strong>look</strong></td>
+          <td><em>You <span class="t-ps">look</span> tired.</em><br><span style="font-size:11.5px;color:var(--ink3)">= seem / trông có vẻ</span></td>
+          <td><em>He <span class="t-pc">is looking</span> at the map.</em><br><span style="font-size:11.5px;color:var(--ink3)">= nhìn (hành động)</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="btn btn-pc" onclick="showSection('s-temp',document.querySelectorAll('.nav-btn')[5])">Tiếp: Hành động tạm thời →</button>
+</div>
+
+<!-- ══════════════ TEMPORARY ══════════════ -->
+<div id="s-temp" class="section">
+  <div class="page-eyebrow" style="color:var(--pc)">
+    <span style="background:var(--pc);height:2px;width:24px;display:inline-block;border-radius:1px"></span>
+    Chức năng nâng cao
+  </div>
+  <h1 class="page-h1"><span class="t-pc">Tạm thời</span> vs <span class="t-ps">Thói quen</span></h1>
+  <p class="page-sub">Present Continuous diễn tả hành động tạm thời — khác với thói quen dùng Present Simple</p>
+
+  <div class="glass glass-pc">
+    <div class="card-label" style="color:var(--pc)">🔑 <span>Nguyên tắc cốt lõi</span></div>
+    <div class="infobox ib-pc" style="font-size:14.5px;margin-bottom:0">
+      <span class="ib-icon">⚡</span>
+      <div>
+        Khi tình huống <strong>tạm thời, không phải thói quen thường ngày</strong>, dùng <span class="sm-pc">Present Continuous</span> dù không phải đúng lúc nói.<br>
+        <em style="color:var(--ink3)">Câu hỏi để nhận biết: "Đây có phải thói quen lâu dài không?" — Nếu KHÔNG → dùng -ing</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contrast examples -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--ink2)">📚 <span>Đối chiếu — cùng chủ ngữ, nghĩa khác nhau</span></div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="formula formula-ps">
+          <div class="fl" style="color:var(--ps)">Thói quen (Simple)</div>
+          <div class="fe"><strong>I usually <span class="t-ps">take</span> the bus to work.</strong><br><em style="font-size:12px;color:var(--ink3)">→ Đây là thói quen hàng ngày</em></div>
+        </div>
+        <div class="formula formula-pc">
+          <div class="fl" style="color:var(--pc)">Tạm thời (Continuous)</div>
+          <div class="fe"><strong>This week I <span class="t-pc">am taking</span> a taxi because the buses are on strike.</strong><br><em style="font-size:12px;color:var(--ink3)">→ Chỉ tuần này, không phải mãi mãi</em></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="formula formula-ps">
+          <div class="fl" style="color:var(--ps)">Thói quen (Simple)</div>
+          <div class="fe"><strong>She <span class="t-ps">lives</span> in Hanoi.</strong><br><em style="font-size:12px;color:var(--ink3)">→ Nơi ở cố định lâu dài</em></div>
+        </div>
+        <div class="formula formula-pc">
+          <div class="fl" style="color:var(--pc)">Tạm thời (Continuous)</div>
+          <div class="fe"><strong>She <span class="t-pc">is living</span> with her parents while her apartment is being repaired.</strong><br><em style="font-size:12px;color:var(--ink3)">→ Chỉ tạm thời</em></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="formula formula-ps">
+          <div class="fl" style="color:var(--ps)">Thói quen (Simple)</div>
+          <div class="fe"><strong>He <span class="t-ps">works</span> at a bank.</strong><br><em style="font-size:12px;color:var(--ink3)">→ Công việc ổn định</em></div>
+        </div>
+        <div class="formula formula-pc">
+          <div class="fl" style="color:var(--pc)">Tạm thời (Continuous)</div>
+          <div class="fe"><strong>He <span class="t-pc">is working</span> as a waiter this summer.</strong><br><em style="font-size:12px;color:var(--ink3)">→ Chỉ mùa hè này</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="infobox ib-state">
+    <span class="ib-icon">🔑</span>
+    <div>
+      <strong>Từ tín hiệu "tạm thời" thường gặp:</strong><br>
+      <span class="sm-pc">this week</span> <span class="sm-pc">this month</span> <span class="sm-pc">this year</span> <span class="sm-pc">these days</span> <span class="sm-pc">at the moment</span> <span class="sm-pc">currently</span> <span class="sm-pc">for now</span> <span class="sm-pc">temporarily</span> <span class="sm-pc">while...</span>
+    </div>
+  </div>
+
+  <button class="btn btn-pc" onclick="showSection('s-combo',document.querySelectorAll('.nav-btn')[6])">Tiếp: Kết hợp hai thì →</button>
+</div>
+
+<!-- ══════════════ COMBO ══════════════ -->
+<div id="s-combo" class="section">
+  <div class="page-eyebrow" style="color:var(--future)">
+    <span style="background:var(--future);height:2px;width:24px;display:inline-block;border-radius:1px"></span>
+    Nâng cao
+  </div>
+  <h1 class="page-h1">Kết hợp <span class="t-ps">Simple</span> + <span class="t-pc">Continuous</span></h1>
+  <p class="page-sub">Dùng hai thì trong một câu để diễn đạt tương phản và tình huống phức tạp</p>
+
+  <div class="glass">
+    <div class="card-label" style="color:var(--future)">💡 <span>Khi nào dùng cả hai thì trong một câu?</span></div>
+    <div class="infobox ib-fut">
+      <span class="ib-icon">⚡</span>
+      <div>Dùng <span class="sm-ps">Simple</span> cho <strong>thói quen / sự thật</strong> và <span class="sm-pc">Continuous</span> cho <strong>tình huống hiện tại / tạm thời</strong> — tương phản với nhau trong cùng một câu.</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
+      <div class="formula formula-fut">
+        <div class="fl" style="color:var(--future)">Tương phản thói quen vs tình huống hiện tại</div>
+        <div class="fe">
+          I usually <strong class="t-ps">drive</strong> to work, but today I <strong class="t-pc">am taking</strong> the train.<br>
+          She normally <strong class="t-ps">cooks</strong> dinner, but tonight she <strong class="t-pc">is ordering</strong> pizza.<br>
+          He <strong class="t-ps">lives</strong> in Hanoi but this month he <strong class="t-pc">is working</strong> in Ho Chi Minh City.
+        </div>
+      </div>
+      <div class="formula formula-fut">
+        <div class="fl" style="color:var(--future)">State + Action trong cùng câu</div>
+        <div class="fe">
+          I <strong class="t-ps">know</strong> she <strong class="t-pc">is trying</strong> her best.<br>
+          They <strong class="t-ps">understand</strong> why he <strong class="t-pc">is behaving</strong> this way.<br>
+          I <strong class="t-ps">believe</strong> the situation <strong class="t-pc">is getting</strong> better.
+        </div>
+      </div>
+      <div class="formula formula-fut">
+        <div class="fl" style="color:var(--future)">Khi + Thì (when / while)</div>
+        <div class="fe">
+          <em>While</em> she <strong class="t-pc">is studying</strong>, her brother <strong class="t-ps">watches</strong> TV.<br>
+          <em>When</em> I <strong class="t-ps">go</strong> to the office, he <strong class="t-pc">is usually still sleeping</strong>.<br>
+          <em>While</em> I <strong class="t-pc">am reading</strong>, I <strong class="t-ps">never listen</strong> to music.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pattern table -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--future)">📊 <span>Bảng pattern kết hợp</span></div>
+    <table class="cmp-table">
+      <thead>
+        <tr><th>Pattern</th><th>Ý nghĩa</th><th>Ví dụ</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sm-pc">-ing</span> + but + <span class="sm-ps">Simple</span></td>
+          <td style="font-size:12.5px;color:var(--ink2)">Tình huống tạm thời, mâu thuẫn thói quen</td>
+          <td style="font-size:13px">I <span class="t-pc">am eating</span> a lot but I normally <span class="t-ps">don't snack</span>.</td>
+        </tr>
+        <tr>
+          <td><span class="sm-ps">Simple</span> + while + <span class="sm-pc">-ing</span></td>
+          <td style="font-size:12.5px;color:var(--ink2)">Hai việc xảy ra đồng thời, một là thói quen</td>
+          <td style="font-size:13px">She <span class="t-ps">always listens</span> to podcasts while she <span class="t-pc">is commuting</span>.</td>
+        </tr>
+        <tr>
+          <td><span class="sm-state">State</span> + that + <span class="sm-pc">-ing</span></td>
+          <td style="font-size:12.5px;color:var(--ink2)">Nhận thức / cảm xúc về hành động đang diễn ra</td>
+          <td style="font-size:13px">I <span class="t-ps">think</span> he <span class="t-pc">is lying</span> to us.</td>
+        </tr>
+        <tr>
+          <td><span class="sm-ps">normally + Simple</span>,<br><span class="sm-pc">but now + -ing</span></td>
+          <td style="font-size:12.5px;color:var(--ink2)">Tương phản hoàn toàn giữa thói quen và thực tại</td>
+          <td style="font-size:13px">He normally <span class="t-ps">speaks</span> quietly but now he <span class="t-pc">is shouting</span>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="btn btn-pc" onclick="showSection('s-future',document.querySelectorAll('.nav-btn')[7])">Tiếp: Tương lai →</button>
+</div>
+
+<!-- ══════════════ FUTURE USE ══════════════ -->
+<div id="s-future" class="section">
+  <div class="page-eyebrow" style="color:var(--future)">
+    <span style="background:var(--future);height:2px;width:24px;display:inline-block;border-radius:1px"></span>
+    Ứng dụng đặc biệt
+  </div>
+  <h1 class="page-h1"><span class="t-pc">Present Continuous</span> → <span class="t-fut">Tương lai</span></h1>
+  <p class="page-sub">Diễn đạt kế hoạch cá nhân đã sắp xếp — khác với will và going to</p>
+
+  <div class="glass glass-pc">
+    <div class="card-label" style="color:var(--future)">📅 <span>Điều kiện để dùng Present Continuous cho tương lai</span></div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="infobox ib-fut">
+        <span class="ib-icon">1️⃣</span>
+        <div><strong>Kế hoạch đã được sắp xếp, đã xác nhận</strong> — có sự chuẩn bị cụ thể trước đó.<br><em style="color:var(--ink3)">I <span class="t-pc">am meeting</span> Sarah tomorrow. (đã nhắn tin, đã hẹn giờ)</em></div>
+      </div>
+      <div class="infobox ib-fut">
+        <span class="ib-icon">2️⃣</span>
+        <div><strong>Phải có từ chỉ thời gian tương lai</strong> kèm theo (nếu không sẽ hiểu là đang xảy ra).<br><em style="color:var(--ink3)">We <span class="t-pc">are leaving</span> <span class="t-fut">next Monday</span>. / <span class="t-fut">tomorrow</span> / <span class="t-fut">at 3pm</span></em></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3-way comparison -->
+  <div class="glass">
+    <div class="card-label" style="color:var(--future)">⚖️ <span>So sánh 3 cách nói tương lai</span></div>
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>Cấu trúc</th>
+          <th>Ý nghĩa / Khi dùng</th>
+          <th>Ví dụ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sm-pc">Present Continuous</span></td>
+          <td style="font-size:12.5px;color:var(--ink2)">Kế hoạch <strong>đã sắp xếp cụ thể</strong>, đã có sự chuẩn bị, xác nhận</td>
+          <td><em>I <span class="t-pc">am flying</span> to London <span class="t-fut">next week</span>.</em></td>
+        </tr>
+        <tr>
+          <td><span class="sm-fut">be going to + V</span></td>
+          <td style="font-size:12.5px;color:var(--ink2)"><strong>Ý định</strong> hoặc dự đoán dựa trên bằng chứng hiện tại</td>
+          <td><em>I <span class="t-fut">am going to</span> apply for that job. (tôi có ý định)</em></td>
+        </tr>
+        <tr>
+          <td><span class="sm-ps">will + V</span></td>
+          <td style="font-size:12.5px;color:var(--ink2)"><strong>Quyết định ngay lúc nói</strong>, dự đoán chung, lời hứa</td>
+          <td><em>I <span class="t-ps">will</span> help you later. (quyết định vừa xong)</em></td>
+        </tr>
+        <tr>
+          <td><span class="sm-ps">Present Simple</span></td>
+          <td style="font-size:12.5px;color:var(--ink2)"><strong>Lịch trình cố định</strong> của tàu, máy bay, chương trình TV</td>
+          <td><em>The train <span class="t-ps">leaves</span> at 9am.</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="glass">
+    <div class="card-label" style="color:var(--future)">📝 <span>Ví dụ thực tế — kế hoạch cá nhân</span></div>
+    <div class="formula formula-fut">
+      <div class="fe" style="line-height:2.2">
+        I <strong class="t-pc">am having</strong> dinner with my family <span class="t-fut">tonight</span>. (đã nấu/đặt bàn)<br>
+        We <strong class="t-pc">are moving</strong> to a new apartment <span class="t-fut">next month</span>. (đã ký hợp đồng)<br>
+        She <strong class="t-pc">is presenting</strong> her research <span class="t-fut">on Friday</span>. (đã lên lịch với giáo sư)<br>
+        They <strong class="t-pc">are getting</strong> married <span class="t-fut">in June</span>. (đã cưới hỏi, đặt tiệc)
+      </div>
+    </div>
+    <div class="infobox ib-warn" style="margin-bottom:0">
+      <span class="ib-icon">⚠️</span>
+      <div>
+        <strong>Không dùng state verbs cho tương lai theo cách này:</strong><br>
+        <span class="sm-err">I am knowing the answer tomorrow.</span> ← SAI vì <em>know</em> là state verb
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-ok" onclick="showSection('s-practice',document.querySelectorAll('.nav-btn')[8])">🎯 Bắt đầu luyện tập 50 câu →</button>
+</div>
+
+
+<!-- ══════════════ PRACTICE — 50 QUESTIONS ══════════════ -->
+<div id="s-practice" class="section">
+  <div class="page-eyebrow" style="color:var(--ok)">
+    <span style="background:var(--ok);height:2px;width:24px;display:inline-block;border-radius:1px"></span>
+    Luyện tập toàn diện
+  </div>
+  <h1 class="page-h1">50 Câu Luyện Tập</h1>
+  <p class="page-sub">6 dạng bài đa dạng · Có giải thích chi tiết · Tự chấm điểm</p>
+
+  <!-- Tab bar -->
+  <div class="practice-tab-bar">
+    <button class="ptab active" onclick="showPTab('pt1',this)">✏️ Fill Blank (15)</button>
+    <button class="ptab" onclick="showPTab('pt2',this)">🔘 MCQ (10)</button>
+    <button class="ptab" onclick="showPTab('pt3',this)">🔍 Error (10)</button>
+    <button class="ptab" onclick="showPTab('pt4',this)">🏷️ Classify (8)</button>
+    <button class="ptab" onclick="showPTab('pt5',this)">🔄 Transform (7)</button>
+  </div>
+
+  <!-- FILL IN THE BLANK (15 questions) -->
+  <div class="practice-set active" id="pt1">
+    <div class="ex-progress"><div class="ex-progress-fill" id="prog1" style="width:0%"></div></div>
+    <div id="fillArea"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+      <button class="btn btn-ps" onclick="checkFill()">✅ Kiểm tra Fill Blank</button>
+      <button class="btn btn-ghost" onclick="resetFill()">🔄 Làm lại</button>
+    </div>
+    <div class="score-box" id="fillScore"></div>
+  </div>
+
+  <!-- MCQ (10 questions) -->
+  <div class="practice-set" id="pt2">
+    <div class="ex-progress"><div class="ex-progress-fill" id="prog2" style="width:0%"></div></div>
+    <div id="mcqArea"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+      <button class="btn btn-ps" onclick="checkMCQ()">✅ Kiểm tra MCQ</button>
+      <button class="btn btn-ghost" onclick="resetMCQ()">🔄 Làm lại</button>
+    </div>
+    <div class="score-box" id="mcqScore"></div>
+  </div>
+
+  <!-- ERROR CORRECTION (10 questions) -->
+  <div class="practice-set" id="pt3">
+    <div class="ex-progress"><div class="ex-progress-fill" id="prog3" style="width:0%"></div></div>
+    <div id="errArea"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+      <button class="btn btn-pc" onclick="checkErr()">✅ Kiểm tra Error</button>
+      <button class="btn btn-ghost" onclick="showErrAns()">👁 Xem đáp án</button>
+    </div>
+    <div class="score-box" id="errScore"></div>
+  </div>
+
+  <!-- CLASSIFY (8 verbs) -->
+  <div class="practice-set" id="pt4">
+    <div class="glass">
+      <div class="card-label" style="color:var(--state)">🏷️ Phân loại 8 động từ — State hay Action?</div>
+      <p style="font-size:13px;color:var(--ink2);margin-bottom:14px">Click vào động từ để phân loại vào đúng nhóm. Sau đó nhấn Kiểm tra.</p>
+      <div class="classify-pool" id="classPool"></div>
+      <div class="classify-wrap">
+        <div class="classify-bin cb-state" id="binState">
+          <div class="cb-label">🔮 State Verbs</div>
+          <div id="stateItems" style="display:flex;flex-wrap:wrap;gap:7px;min-height:40px"></div>
+        </div>
+        <div class="classify-bin cb-action" id="binAction">
+          <div class="cb-label">⚡ Action Verbs</div>
+          <div id="actionItems" style="display:flex;flex-wrap:wrap;gap:7px;min-height:40px"></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+        <button class="btn btn-ok" onclick="checkClassify()">✅ Kiểm tra</button>
+        <button class="btn btn-ghost" onclick="resetClassify()">🔄 Làm lại</button>
+      </div>
+      <div class="score-box" id="classScore"></div>
+    </div>
+
+    <!-- Sentence classify (additional 7 sentences) -->
+    <div class="glass">
+      <div class="card-label" style="color:var(--ps)">📝 Nhận biết thì — Simple hay Continuous? (thêm bài tập nhận diện)</div>
+      <div id="identArea"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+        <button class="btn btn-ps" onclick="checkIdent()">✅ Kiểm tra</button>
+        <button class="btn btn-ghost" onclick="resetIdent()">🔄 Làm lại</button>
+      </div>
+      <div class="score-box" id="identScore"></div>
+    </div>
+  </div>
+
+  <!-- TRANSFORM (7 questions) -->
+  <div class="practice-set" id="pt5">
+    <div class="ex-progress"><div class="ex-progress-fill" id="prog5" style="width:0%"></div></div>
+    <div id="transArea"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+      <button class="btn btn-ps" onclick="checkTrans()">✅ Kiểm tra Transform</button>
+      <button class="btn btn-ghost" onclick="showTransAns()">👁 Xem đáp án</button>
+    </div>
+    <div class="score-box" id="transScore"></div>
+  </div>
+</div>
+
+</main>
+<script>
+// ── NAVIGATION
+function showSection(id, el) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(el && el.classList) el.classList.add('active');
+  else {
+    // find matching nav btn
+    const btn = document.querySelector(`.nav-btn[data-section="${id}"]`);
+    if(btn) btn.classList.add('active');
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── PRACTICE TABS
+function showPTab(id, el) {
+  document.querySelectorAll('.practice-set').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+
+// ════════════════════════════════════════
+// FILL IN THE BLANK — 15 questions
+// ════════════════════════════════════════
+const FD = [
+  // Present Simple — habits/facts
+  {q:'She always _____ (drink) coffee in the morning.', ans:'drinks', accept:['drinks'],
+   label:'👤 Thói quen', lc:'var(--ps)',
+   exp:'She = He/She/It → thêm -s. Từ tín hiệu: <em>always</em> → Present Simple.', ec:'ep-ps'},
+  {q:'Water _____ (freeze) at 0°C.', ans:'freezes', accept:['freezes'],
+   label:'🌍 Sự thật phổ quát', lc:'var(--ps)',
+   exp:'Định luật khoa học → Present Simple. Freeze + s/es → <em>freezes</em>.', ec:'ep-ps'},
+  {q:'Listen! Someone _____ (knock) at the door.', ans:'is knocking', accept:['is knocking',"'s knocking"],
+   label:'⚡ Đang xảy ra', lc:'var(--pc)',
+   exp:'Từ tín hiệu: <em>Listen!</em> → hành động đang xảy ra → Present Continuous.', ec:'ep-pc'},
+  {q:'I _____ (study) English more seriously these days because I have an IELTS exam next month.', ans:'am studying', accept:['am studying',"'m studying"],
+   label:'📅 Tạm thời', lc:'var(--pc)',
+   exp:'<em>These days</em> → tình huống tạm thời xung quanh thời điểm nói → Present Continuous.', ec:'ep-pc'},
+  {q:'I _____ (know) the answer to that question.', ans:'know', accept:['know'],
+   label:'🔮 State verb', lc:'var(--state)',
+   exp:'<em>know</em> = state verb (nhận thức) → KHÔNG dùng -ing. Dùng Present Simple.', ec:'ep-sta'},
+  {q:'My brother _____ (work) as an engineer, but this summer he _____ (help) at our family restaurant.', ans:'works / is helping', accept:['works / is helping','works/is helping'],
+   label:'🔄 Kết hợp', lc:'var(--future)',
+   exp:'works = thói quen cố định (Simple); is helping = tạm thời mùa hè này (Continuous).', ec:'ep-comb'},
+  {q:'The sun _____ (rise) in the east.', ans:'rises', accept:['rises'],
+   label:'🌍 Sự thật phổ quát', lc:'var(--ps)',
+   exp:'Sự thật phổ quát không đổi → Present Simple. Rise + s → <em>rises</em>.', ec:'ep-ps'},
+  {q:'Look! The cat _____ (sleep) on my laptop again!', ans:'is sleeping', accept:['is sleeping',"'s sleeping"],
+   label:'⚡ Đang xảy ra', lc:'var(--pc)',
+   exp:'<em>Look!</em> → hành động đang diễn ra trước mắt → Present Continuous.', ec:'ep-pc'},
+  {q:'I _____ (meet) my professor tomorrow at 2pm.', ans:'am meeting', accept:['am meeting',"'m meeting"],
+   label:'📅 Tương lai đã hẹn', lc:'var(--future)',
+   exp:'Kế hoạch đã hẹn cụ thể → Present Continuous diễn tả tương lai. Phải có <em>tomorrow</em>.', ec:'ep-fut'},
+  {q:'She _____ (not/eat) meat. She\'s been vegetarian for 10 years.', ans:"doesn't eat", accept:["doesn't eat","does not eat"],
+   label:'🚫 Thói quen phủ định', lc:'var(--ps)',
+   exp:'Thói quen ổn định → Present Simple phủ định: doesn\'t + V.', ec:'ep-ps'},
+  {q:'He usually _____ (take) the bus, but today he _____ (drive) because his bus pass is expired.', ans:'takes / is driving', accept:['takes / is driving','takes/is driving'],
+   label:'🔄 Tương phản', lc:'var(--future)',
+   exp:'takes = thói quen (Simple); is driving = tạm thời hôm nay (Continuous).', ec:'ep-comb'},
+  {q:'I _____ (believe) that honesty _____ (be) the best policy.', ans:'believe / is', accept:['believe / is','believe/is'],
+   label:'🔮 State + Fact', lc:'var(--state)',
+   exp:'believe = state verb → Simple; honesty is = sự thật phổ quát → Simple.', ec:'ep-sta'},
+  {q:'The company _____ (launch) a new product next Monday — the press conference _____ (start) at 10am.', ans:'is launching / starts', accept:['is launching / starts','is launching/starts'],
+   label:'📅 Tương lai', lc:'var(--future)',
+   exp:'is launching = kế hoạch đã sắp xếp (Continuous); starts = lịch trình cố định (Simple).', ec:'ep-fut'},
+  {q:'Why _____ you _____ (wear) a coat? It _____ (be) really hot today!', ans:'are / wearing / is', accept:['are / wearing / is','are/wearing/is'],
+   label:'⚡ Câu hỏi + fact', lc:'var(--pc)',
+   exp:'Are you wearing? = hành động đang diễn ra → Continuous. It is = trạng thái → Simple.', ec:'ep-pc'},
+  {q:'My parents _____ (live) in Da Nang, but my father _____ (work) in HCMC this semester.', ans:'live / is working', accept:['live / is working','live/is working'],
+   label:'🔄 Ổn định vs tạm thời', lc:'var(--future)',
+   exp:'live = nơi ở cố định (Simple); is working = tạm thời kỳ này (Continuous).', ec:'ep-comb'},
+];
+
+(function buildFill(){
+  let h='';
+  FD.forEach((q,i)=>{
+    const w = Math.max(110, q.ans.length * 10);
+    h += `<div class="ex-card">
+      <div class="ex-num">
+        <span style="background:var(--bg-glass2);padding:2px 9px;border-radius:6px;font-size:9px">Q${i+1}/15</span>
+        <span style="color:${q.lc};font-size:9.5px">${q.label}</span>
+      </div>
+      <div class="ex-q">${q.q.replace('_____',`<input class="blank-inp" id="fi${i}" style="width:${w}px" autocomplete="off" spellcheck="false" oninput="updateProg(1,15,'prog1')">`)}</div>
+      <div class="ex-exp ${q.ec}" id="fexp${i}">💡 ${q.exp} <strong style="color:var(--ok)">→ ${q.ans}</strong></div>
+    </div>`;
+  });
+  document.getElementById('fillArea').innerHTML = h;
+})();
+
+function checkFill(){
+  let sc=0;
+  FD.forEach((q,i)=>{
+    const el=document.getElementById('fi'+i);
+    const val=el.value.trim().toLowerCase();
+    const ok=q.accept.some(a=>val===a.toLowerCase());
+    el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+    document.getElementById('fexp'+i).classList.add('show');
+    if(ok)sc++;
+  });
+  const r=document.getElementById('fillScore');
+  r.className='score-box show '+(sc>=12?'sb-good':sc>=9?'sb-ok':'sb-bad');
+  r.innerHTML=`${sc>=12?'🎉':'💪'} <strong>${sc}/15</strong> — ${sc>=12?'Xuất sắc!':sc>=9?'Tốt! Xem lại các ô đỏ.':'Hãy ôn lại lý thuyết và thử lại.'}`;
+}
+function resetFill(){
+  FD.forEach((_,i)=>{const el=document.getElementById('fi'+i);el.value='';el.classList.remove('correct','wrong');document.getElementById('fexp'+i).classList.remove('show');});
+  document.getElementById('fillScore').className='score-box';
+  document.getElementById('prog1').style.width='0%';
+}
+
+function updateProg(setN, total, progId){
+  const inputs=document.querySelectorAll(`#pt${setN} .blank-inp, #pt${setN} .err-inp`);
+  let filled=0; inputs.forEach(i=>{if(i.value.trim())filled++;});
+  document.getElementById(progId).style.width=Math.min(100,Math.round(filled/total*100))+'%';
+}
+
+// ════════════════════════════════════════
+// MCQ — 10 questions
+// ════════════════════════════════════════
+const MD = [
+  {
+    q:'The children _____ in the garden right now.',
+    opts:['play','plays','are playing','is playing'],ans:2,
+    label:'⚡ Đang xảy ra',lc:'var(--pc)',
+    exp:'<em>right now</em> → Present Continuous. Chủ ngữ "The children" = plural → <em>are playing</em>.',ec:'ep-pc'
+  },
+  {
+    q:'Water _____ at 100 degrees Celsius.',
+    opts:['is boiling','boil','boils','are boiling'],ans:2,
+    label:'🌍 Sự thật',lc:'var(--ps)',
+    exp:'Định luật vật lý → Present Simple. Water = singular → <em>boils</em>.',ec:'ep-ps'
+  },
+  {
+    q:'I _____ to the gym every Monday and Wednesday.',
+    opts:['am going','go','goes','is going'],ans:1,
+    label:'👤 Thói quen',lc:'var(--ps)',
+    exp:'Thói quen lặp đi lặp lại (every Monday) → Present Simple. I → <em>go</em>.',ec:'ep-ps'
+  },
+  {
+    q:'Why _____ he _____ so slowly today? He\'s usually much faster.',
+    opts:['does / drive','is / driving','does / driving','is / drive'],ans:1,
+    label:'📅 Tạm thời',lc:'var(--pc)',
+    exp:'<em>today</em> + khác so với thói quen → Present Continuous. <em>is driving</em>.',ec:'ep-pc'
+  },
+  {
+    q:'She _____ to be very tired lately. Is she okay?',
+    opts:['seems','is seeming','seem','are seeming'],ans:0,
+    label:'🔮 State verb',lc:'var(--state)',
+    exp:'<em>seem</em> = state verb → KHÔNG dùng -ing. She → <em>seems</em>.',ec:'ep-sta'
+  },
+  {
+    q:'We _____ a house-warming party next Saturday. Can you come?',
+    opts:['have','will have','are having','is having'],ans:2,
+    label:'📅 Tương lai đã hẹn',lc:'var(--future)',
+    exp:'Kế hoạch đã được sắp xếp → Present Continuous. We → <em>are having</em>.',ec:'ep-fut'
+  },
+  {
+    q:'I _____ what you mean, but I _____ disagree with you.',
+    opts:['am understanding / still','understand / still','understand / am still','am understanding / am still'],ans:2,
+    label:'🔮 State + Action',lc:'var(--state)',
+    exp:'understand = state verb → Simple; disagreeing = thái độ đang thể hiện → can accept Continuous.',ec:'ep-sta'
+  },
+  {
+    q:'The last bus _____ at 11:30pm according to the timetable.',
+    opts:['is leaving','leave','leaves','will leave'],ans:2,
+    label:'📅 Lịch trình cố định',lc:'var(--ps)',
+    exp:'Lịch trình cố định (timetable) → Present Simple. <em>leaves</em>.',ec:'ep-ps'
+  },
+  {
+    q:'Look at Tom! He _____ to someone on his phone and _____ very upset.',
+    opts:['is talking / looks','talks / is looking','talks / looks','is talking / is looking'],ans:3,
+    label:'⚡ Đang xảy ra',lc:'var(--pc)',
+    exp:'Cả hai đều đang xảy ra → <em>is talking</em> và <em>is looking</em> (nhìn = action nghĩa này).',ec:'ep-pc'
+  },
+  {
+    q:'I _____ that this film _____ two hours.',
+    opts:['think / lasts','am thinking / is lasting','think / is lasting','am thinking / lasts'],ans:0,
+    label:'🔄 State + Fact',lc:'var(--state)',
+    exp:'think = believe (state) → Simple; lasts = fact (duration) → Simple. <em>think / lasts</em>.',ec:'ep-sta'
+  },
+];
+let mcqSel = new Array(MD.length).fill(-1);
+
+(function buildMCQ(){
+  let h='';
+  MD.forEach((q,i)=>{
+    h+=`<div class="ex-card">
+      <div class="ex-num">
+        <span style="background:var(--bg-glass2);padding:2px 9px;border-radius:6px;font-size:9px">Q${i+1}/10</span>
+        <span style="color:${q.lc};font-size:9.5px">${q.label}</span>
+      </div>
+      <div class="ex-q">${i+1}. ${q.q}</div>
+      <div class="mcq-opts" id="mg${i}">`;
+    q.opts.forEach((o,j)=>{h+=`<button class="mcq-opt" onclick="selM(${i},${j})">${o}</button>`;});
+    h+=`</div><div class="ex-exp ${q.ec}" id="mexp${i}">💡 ${q.exp}</div></div>`;
+  });
+  document.getElementById('mcqArea').innerHTML=h;
+})();
+
+function selM(qi,oi){
+  mcqSel[qi]=oi;
+  document.querySelectorAll(`#mg${qi} .mcq-opt`).forEach((b,j)=>{b.classList.remove('sel');if(j===oi)b.classList.add('sel');});
+}
+function checkMCQ(){
+  let sc=0;
+  MD.forEach((q,i)=>{
+    document.querySelectorAll(`#mg${i} .mcq-opt`).forEach((b,j)=>{
+      b.classList.remove('sel','ok','bad');
+      if(j===q.ans)b.classList.add('ok');
+      else if(j===mcqSel[i])b.classList.add('bad');
+    });
+    document.getElementById('mexp'+i).classList.add('show');
+    if(mcqSel[i]===q.ans)sc++;
+  });
+  const r=document.getElementById('mcqScore');
+  r.className='score-box show '+(sc>=8?'sb-good':sc>=6?'sb-ok':'sb-bad');
+  r.innerHTML=`${sc>=8?'🎉':'💪'} <strong>${sc}/10</strong> — ${sc>=8?'Xuất sắc!':sc>=6?'Khá tốt!':'Ôn lại phần lý thuyết.'}`;
+}
+function resetMCQ(){
+  mcqSel=new Array(MD.length).fill(-1);
+  MD.forEach((_,i)=>{
+    document.querySelectorAll(`#mg${i} .mcq-opt`).forEach(b=>b.classList.remove('sel','ok','bad'));
+    document.getElementById('mexp'+i).classList.remove('show');
+  });
+  document.getElementById('mcqScore').className='score-box';
+}
+
+// ════════════════════════════════════════
+// ERROR CORRECTION — 10 questions
+// ════════════════════════════════════════
+const ED = [
+  {wrong:'I am knowing the answer to every question in this test.',right:'I know the answer to every question in this test.',tip:'know = state verb → không dùng -ing.'},
+  {wrong:'She work at a hospital every day from 8am to 5pm.',right:'She works at a hospital every day from 8am to 5pm.',tip:'She/He/It → thêm -s. work → works (thói quen → Simple).'},
+  {wrong:'Look! The children are play in the garden.',right:'Look! The children are playing in the garden.',tip:'Present Continuous = am/is/are + V-ing. → playing.'},
+  {wrong:'He is usually eating breakfast before he goes to work.',right:'He usually eats breakfast before he goes to work.',tip:'usually + thói quen → Present Simple. Not Continuous.'},
+  {wrong:'I am meet my dentist tomorrow morning.',right:"I am meeting my dentist tomorrow morning.",tip:'Present Continuous future = am/is/are + V-ing. → am meeting.'},
+  {wrong:"They don't are coming to the party tonight.",right:"They aren't coming to the party tonight.",tip:'Phủ định Continuous: am/is/are + not + V-ing. → aren\'t coming.'},
+  {wrong:'The train leave at 6:45am every morning.',right:'The train leaves at 6:45am every morning.',tip:'Lịch trình cố định → Simple. The train = singular → leaves.'},
+  {wrong:'She is seeming very nervous about the exam.',right:'She seems very nervous about the exam.',tip:'seem = state verb → không dùng -ing. → seems.'},
+  {wrong:'I am live in Hanoi, but my parents are living in Da Nang permanently.',right:'I live in Hanoi, but my parents live in Da Nang permanently.',tip:'Nơi ở lâu dài → Present Simple. Không dùng Continuous.'},
+  {wrong:'Why does she cries every time she watches that film?',right:'Why does she cry every time she watches that film?',tip:'does + V (bare infinitive) → không thêm -s/es. → cry.'},
+];
+
+(function buildErr(){
+  let h='';
+  ED.forEach((q,i)=>{
+    const hi=q.wrong.split(' ').map((w,j)=>{
+      const rw=q.right.split(' ')[j]||'';
+      return w.toLowerCase()!==rw.toLowerCase()?`<span class="t-err">${w}</span>`:w;
+    }).join(' ');
+    h+=`<div class="ex-card">
+      <div class="ex-num"><span style="background:var(--bg-glass2);padding:2px 9px;border-radius:6px;font-size:9px">Q${i+1}/10</span><span style="color:var(--err);font-size:9.5px">❌ Tìm & sửa lỗi</span></div>
+      <div class="ex-q" style="margin-bottom:10px">${hi}</div>
+      <input class="err-inp" id="er${i}" placeholder="Viết lại câu đúng..." autocomplete="off" oninput="updateProg(3,10,'prog3')">
+      <div class="ex-exp ep-pc" id="eexp${i}">✅ <strong style="color:var(--ok)">${q.right}</strong><br>💡 ${q.tip}</div>
+    </div>`;
+  });
+  document.getElementById('errArea').innerHTML=h;
+})();
+
+function checkErr(){
+  let sc=0;
+  ED.forEach((q,i)=>{
+    const el=document.getElementById('er'+i);
+    const ok=el.value.trim().toLowerCase()===q.right.toLowerCase();
+    el.classList.toggle('correct',ok); el.classList.toggle('wrong',!ok);
+    document.getElementById('eexp'+i).classList.add('show');
+    if(ok)sc++;
+  });
+  const r=document.getElementById('errScore');
+  r.className='score-box show '+(sc>=8?'sb-good':sc>=6?'sb-ok':'sb-bad');
+  r.innerHTML=`${sc>=8?'🎉':'💪'} <strong>${sc}/10</strong> câu đúng.`;
+}
+function showErrAns(){
+  ED.forEach((q,i)=>{
+    const el=document.getElementById('er'+i);
+    el.value=q.right; el.classList.add('correct'); el.classList.remove('wrong');
+    document.getElementById('eexp'+i).classList.add('show');
+  });
+}
+
+// ════════════════════════════════════════
+// CLASSIFY — 8 verbs + 7 sentence identification
+// ════════════════════════════════════════
+const VERBS = [
+  {word:'understand',type:'state'},
+  {word:'run',type:'action'},
+  {word:'belong',type:'state'},
+  {word:'write',type:'action'},
+  {word:'prefer',type:'state'},
+  {word:'cook',type:'action'},
+  {word:'contain',type:'state'},
+  {word:'discuss',type:'action'},
+];
+let classAnswers = {};
+
+(function buildClassify(){
+  let pool='';
+  VERBS.forEach((v,i)=>{pool+=`<div class="drag-chip" id="chip${i}" onclick="placeChip(${i},'${v.type}')">${v.word}</div>`;});
+  document.getElementById('classPool').innerHTML=pool;
+})();
+
+function placeChip(i,type){
+  const chip=document.getElementById('chip'+i);
+  const target=type==='state'?'stateItems':'actionItems';
+  document.getElementById(target).appendChild(chip.cloneNode(true));
+  const clone=document.getElementById(target).lastChild;
+  clone.classList.add('placed');
+  clone.onclick=null;
+  chip.classList.add('placed');
+  classAnswers[i]=type;
+}
+
+function checkClassify(){
+  let sc=0;
+  VERBS.forEach((v,i)=>{if(classAnswers[i]===v.type)sc++;});
+  const r=document.getElementById('classScore');
+  r.className='score-box show '+(sc>=7?'sb-good':sc>=5?'sb-ok':'sb-bad');
+  r.innerHTML=`${sc>=7?'🎉':'💪'} <strong>${sc}/8</strong> — ${sc>=7?'Hoàn hảo!':sc>=5?'Tốt!':'Ôn lại 5 nhóm state verbs.'}`;
+}
+function resetClassify(){
+  classAnswers={};
+  VERBS.forEach((_,i)=>{const c=document.getElementById('chip'+i);c.classList.remove('placed');});
+  document.getElementById('stateItems').innerHTML='';
+  document.getElementById('actionItems').innerHTML='';
+  document.getElementById('classScore').className='score-box';
+}
+
+// Sentence identification (7)
+const IDENT = [
+  {q:'She drinks green tea every morning.',ans:'PS',label:'👤 Thói quen',exp:'every morning → Present Simple.'},
+  {q:'They are renovating their kitchen this week.',ans:'PC',label:'📅 Tạm thời',exp:'this week → tạm thời → Present Continuous.'},
+  {q:'I want a slice of chocolate cake.',ans:'PS',label:'🔮 State',exp:'want = state verb → Present Simple.'},
+  {q:'He is applying for a new job at the moment.',ans:'PC',label:'⚡ Hiện tại',exp:'at the moment → Present Continuous.'},
+  {q:'We are flying to Japan next April.',ans:'PC',label:'📅 Tương lai hẹn',exp:'next April + đã sắp xếp → Present Continuous.'},
+  {q:'The lesson starts at 8:30 according to the timetable.',ans:'PS',label:'📅 Lịch trình',exp:'lịch trình cố định → Present Simple.'},
+  {q:'You look great today! What\'s different?',ans:'PS',label:'🔮 State',exp:'look = seem (state) → Present Simple.'},
+];
+let identSel = new Array(IDENT.length).fill('');
+
+(function buildIdent(){
+  let h='';
+  IDENT.forEach((q,i)=>{
+    h+=`<div class="ex-card" style="margin-bottom:10px">
+      <div class="ex-num"><span style="background:var(--bg-glass2);padding:2px 9px;border-radius:6px;font-size:9px">Q${i+1}/7</span><span style="color:var(--ps);font-size:9.5px">${q.label}</span></div>
+      <div class="ex-q">${q.q}</div>
+      <div class="mcq-opts" id="idg${i}">
+        <button class="mcq-opt" onclick="selId(${i},'PS')"><span class="sm-ps">Present Simple</span></button>
+        <button class="mcq-opt" onclick="selId(${i},'PC')"><span class="sm-pc">Present Continuous</span></button>
+      </div>
+      <div class="ex-exp ep-ps" id="idexp${i}">💡 ${q.exp}</div>
+    </div>`;
+  });
+  document.getElementById('identArea').innerHTML=h;
+})();
+
+function selId(qi,ans){
+  identSel[qi]=ans;
+  document.querySelectorAll(`#idg${qi} .mcq-opt`).forEach(b=>b.classList.remove('sel'));
+  document.querySelectorAll(`#idg${qi} .mcq-opt`).forEach((b,j)=>{if((j===0&&ans==='PS')||(j===1&&ans==='PC'))b.classList.add('sel');});
+}
+function checkIdent(){
+  let sc=0;
+  IDENT.forEach((q,i)=>{
+    document.querySelectorAll(`#idg${i} .mcq-opt`).forEach((b,j)=>{
+      b.classList.remove('sel','ok','bad');
+      if((j===0&&q.ans==='PS')||(j===1&&q.ans==='PC'))b.classList.add('ok');
+      else if((j===0&&identSel[i]==='PS'&&q.ans!=='PS')||(j===1&&identSel[i]==='PC'&&q.ans!=='PC'))b.classList.add('bad');
+    });
+    document.getElementById('idexp'+i).classList.add('show');
+    if(identSel[i]===q.ans)sc++;
+  });
+  const r=document.getElementById('identScore');
+  r.className='score-box show '+(sc>=6?'sb-good':sc>=4?'sb-ok':'sb-bad');
+  r.innerHTML=`${sc>=6?'🎉':'💪'} <strong>${sc}/7</strong> câu nhận diện đúng.`;
+}
+function resetIdent(){
+  identSel=new Array(IDENT.length).fill('');
+  IDENT.forEach((_,i)=>{
+    document.querySelectorAll(`#idg${i} .mcq-opt`).forEach(b=>b.classList.remove('sel','ok','bad'));
+    document.getElementById('idexp'+i).classList.remove('show');
+  });
+  document.getElementById('identScore').className='score-box';
+}
+
+// ════════════════════════════════════════
+// SENTENCE TRANSFORMATION — 7 questions
+// ════════════════════════════════════════
+const TD = [
+  {q:'Active → Cont.: He reads the news every morning. (right now)',
+   hint:'Chuyển sang Present Continuous: He _____ the news right now.',
+   ans:'He is reading the news right now.',
+   alt:["he's reading the news right now"],
+   tip:'right now → hiện tại đang xảy ra → is reading.'},
+  {q:'Simple → Neg. + Q: She often eats sushi.',
+   hint:'Viết câu phủ định và câu hỏi tương ứng.',
+   ans:"She doesn't often eat sushi. / Does she often eat sushi?",
+   alt:["she doesn't often eat sushi / does she often eat sushi?","she doesn't often eat sushi. does she often eat sushi?"],
+   tip:"doesn't + V (bare); Does + S + V?"},
+  {q:'Cont. → Simple: She is living with her sister these days. (always)',
+   hint:'Đổi thành thói quen lâu dài: She always _____ with her sister.',
+   ans:'She always lives with her sister.',
+   alt:['she always lives with her sister.'],
+   tip:'Thói quen → Simple → lives.'},
+  {q:'Future planning (Cont.): I have booked a flight. → I _____ to Paris next month.',
+   hint:'Dùng Present Continuous để diễn đạt kế hoạch đã sắp xếp.',
+   ans:'I am flying to Paris next month.',
+   alt:["i'm flying to paris next month"],
+   tip:'Kế hoạch đã đặt vé → am flying (Continuous future).'},
+  {q:'Combine: (Habit) He drinks coffee. / (Now) He drinks tea. → One sentence with "usually...but today..."',
+   hint:'Kết hợp hai thì để so sánh thói quen vs hiện tại.',
+   ans:'He usually drinks coffee, but today he is drinking tea.',
+   alt:['he usually drinks coffee but today he is drinking tea'],
+   tip:'usually + Simple vs today + Continuous.'},
+  {q:'State verb fix: I am understanding your point very well. → Correct sentence.',
+   hint:'understand = state verb → không dùng -ing.',
+   ans:'I understand your point very well.',
+   alt:['i understand your point very well.'],
+   tip:'understand = state → Simple.'},
+  {q:'Add context word: "She works at a school." → Make it temporary using "this year".',
+   hint:'Dùng Present Continuous để diễn đạt tạm thời.',
+   ans:'She is working at a school this year.',
+   alt:["she's working at a school this year"],
+   tip:'this year → tạm thời → is working (Continuous).'},
+];
+
+(function buildTrans(){
+  let h='';
+  TD.forEach((q,i)=>{
+    h+=`<div class="ex-card">
+      <div class="ex-num"><span style="background:var(--bg-glass2);padding:2px 9px;border-radius:6px;font-size:9px">Q${i+1}/7</span><span style="color:var(--future);font-size:9.5px">🔄 Transform</span></div>
+      <div class="ex-q" style="color:var(--ink2);font-size:13px;margin-bottom:6px">${q.q}</div>
+      <div style="font-size:13px;color:var(--ink);margin-bottom:8px;font-style:italic">${q.hint}</div>
+      <input class="err-inp" id="tr${i}" placeholder="Write your answer..." autocomplete="off" style="border-bottom-color:rgba(245,158,11,0.4)" oninput="updateProg(5,7,'prog5')">
+      <div class="ex-exp ep-comb" id="texp${i}">✅ <strong style="color:var(--ok)">${q.ans}</strong><br>💡 ${q.tip}</div>
+    </div>`;
+  });
+  document.getElementById('transArea').innerHTML=h;
+})();
+
+function checkTrans(){
+  let sc=0;
+  TD.forEach((q,i)=>{
+    const el=document.getElementById('tr'+i);
+    const val=el.value.trim().toLowerCase().replace(/[.,!?]$/,'');
+    const ansClean=q.ans.toLowerCase().replace(/[.,!?]/g,'');
+    const ok=val===ansClean || (q.alt&&q.alt.some(a=>val===a.replace(/[.,!?]/g,'')));
+    // fuzzy: check key words present
+    const keys=q.ans.toLowerCase().split(' ').filter(w=>w.length>4);
+    const fuzzy=keys.filter(k=>val.includes(k)).length>=Math.ceil(keys.length*0.65);
+    const pass = ok || fuzzy;
+    el.classList.toggle('correct',pass); el.classList.toggle('wrong',!pass);
+    document.getElementById('texp'+i).classList.add('show');
+    if(pass)sc++;
+  });
+  const r=document.getElementById('transScore');
+  r.className='score-box show '+(sc>=6?'sb-good':sc>=4?'sb-ok':'sb-bad');
+  r.innerHTML=`${sc>=6?'🎉':'💪'} <strong>${sc}/7</strong> — Xem đáp án mẫu và giải thích bên dưới.`;
+}
+function showTransAns(){
+  TD.forEach((q,i)=>{
+    document.getElementById('tr'+i).value=q.ans;
+    document.getElementById('tr'+i).classList.add('correct');
+    document.getElementById('texp'+i).classList.add('show');
+  });
+}
+</script>
+</body>
+</html>
