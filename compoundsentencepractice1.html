@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Compound Sentence Practice — FANBOYS</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════
+   RESET & ROOT
+═══════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f4f1eb;
+  --bg2:       #ede9e0;
+  --card:      #ffffff;
+  --border:    #e0dbd0;
+  --border2:   #cdc7b8;
+
+  --ink:       #1c1a16;
+  --ink2:      #5a5549;
+  --ink3:      #9a9385;
+
+  --green:     #1d6a4a;
+  --green-m:   #2a8f64;
+  --green-l:   #e6f4ee;
+  --green-xl:  #f0faf5;
+
+  --red:       #b92d2d;
+  --red-l:     #fdf0f0;
+  --red-xl:    #fff6f6;
+
+  --amber:     #925f00;
+  --amber-l:   #fff8e8;
+
+  --blue:      #1a4f7a;
+  --blue-l:    #eaf3fb;
+
+  --purple:    #5c2fa0;
+  --purple-l:  #f3eeff;
+
+  --teal:      #0e6655;
+  --teal-l:    #e7f7f3;
+
+  /* FANBOYS chip colors */
+  --c-for:   #7a3200; --cbg-for:  #fff3e7;
+  --c-and:   #1d6a4a; --cbg-and:  #e6f4ee;
+  --c-nor:   #5c2fa0; --cbg-nor:  #f3eeff;
+  --c-but:   #b92d2d; --cbg-but:  #fdf0f0;
+  --c-or:    #1a4f7a; --cbg-or:   #eaf3fb;
+  --c-yet:   #7b1f72; --cbg-yet:  #faeef9;
+  --c-so:    #0e6655; --cbg-so:   #e7f7f3;
+
+  --r:     14px;
+  --r-sm:  8px;
+  --r-lg:  20px;
+  --shadow-card: 0 2px 8px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.04);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.05);
+  --t: .2s cubic-bezier(.4,0,.2,1);
+}
+
+html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: 'Lexend', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* ═══════════════════════════
+   HEADER / TOP BAR
+═══════════════════════════ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(244,241,235,.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 16px;
+}
+.topbar-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+}
+.topbar-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topbar-score {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--green-l);
+  border: 1px solid #a3d9be;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  transition: var(--t);
+}
+.topbar-score.bump {
+  animation: scoreBump .35s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes scoreBump {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.2); background: var(--green); color: #fff; }
+  100% { transform: scale(1); }
+}
+
+/* ═══════════════════════════
+   PROGRESS BAR
+═══════════════════════════ */
+.progress-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 12px 16px 0;
+}
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--ink3);
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+.progress-meta span:last-child { font-weight: 500; color: var(--ink2); }
+.progress-track {
+  height: 5px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green-m), var(--teal));
+  border-radius: 3px;
+  transition: width .5s cubic-bezier(.4,0,.2,1);
+  width: 0%;
+}
+
+/* ═══════════════════════════
+   FILTER TABS
+═══════════════════════════ */
+.filter-wrap {
+  max-width: 680px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+}
+.filter-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.filter-scroll::-webkit-scrollbar { display: none; }
+.ftab {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family: 'Lexend', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1.5px solid var(--border2);
+  background: var(--card);
+  color: var(--ink2);
+  transition: var(--t);
+  white-space: nowrap;
+}
+.ftab:hover { border-color: var(--green-m); color: var(--green); background: var(--green-xl); }
+.ftab.active { background: var(--green); color: #fff; border-color: var(--green); }
+.ftab .ct { opacity: .65; margin-left: 3px; font-size: 11px; }
+
+/* ═══════════════════════════
+   QUESTIONS CONTAINER
+═══════════════════════════ */
+.questions-wrap {
+  max-width: 680px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ═══════════════════════════
+   QUESTION CARD
+═══════════════════════════ */
+.qcard {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+  transition: box-shadow var(--t), transform var(--t);
+  animation: cardIn .35s ease both;
+}
+.qcard:hover { box-shadow: var(--shadow-hover); }
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Card meta row */
+.qcard-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.q-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink3);
+  letter-spacing: .04em;
+}
+.level-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 20px;
+  letter-spacing: .02em;
+}
+.lb-basic        { background: var(--green-l);  color: var(--green); border: 1px solid #a3d9be; }
+.lb-intermediate { background: var(--blue-l);   color: var(--blue);  border: 1px solid #a8cce8; }
+.lb-advanced     { background: var(--amber-l);  color: var(--amber); border: 1px solid #f5c97e; }
+.lb-intensive    { background: var(--red-l);    color: var(--red);   border: 1px solid #f5a8a8; }
+
+.type-badge {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--ink3);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+
+
+/* Sentence */
+.q-sentence {
+  font-size: 16.5px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.q-blank {
+  display: inline-block;
+  min-width: 72px;
+  border-bottom: 2.5px solid var(--green);
+  text-align: center;
+  padding: 0 4px;
+  vertical-align: bottom;
+  font-weight: 700;
+  color: var(--green);
+  transition: var(--t);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════
+   MCQ OPTIONS
+═══════════════════════════ */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+@media(max-width: 380px) { .options-grid { grid-template-columns: 1fr; } }
+
+.opt-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: var(--r);
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: all .16s cubic-bezier(.4,0,.2,1);
+  position: relative;
+  overflow: hidden;
+}
+.opt-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--green);
+  opacity: 0;
+  transition: opacity .15s;
+}
+.opt-btn:hover:not(:disabled) {
+  border-color: var(--green-m);
+  background: var(--green-xl);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(29,106,74,.12);
+}
+.opt-btn:active:not(:disabled) { transform: scale(.97); }
+
+.opt-letter {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--ink2);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: var(--t);
+}
+.opt-btn:hover:not(:disabled) .opt-letter {
+  background: var(--green);
+  color: #fff;
+}
+
+.fanboy-chip {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 5px;
+  border: 1.5px solid;
+  line-height: 1.5;
+}
+.chip-FOR  { background: var(--cbg-for);  color: var(--c-for);  border-color: #e8b888; }
+.chip-AND  { background: var(--cbg-and);  color: var(--c-and);  border-color: #a3d9be; }
+.chip-NOR  { background: var(--cbg-nor);  color: var(--c-nor);  border-color: #c4a8e8; }
+.chip-BUT  { background: var(--cbg-but);  color: var(--c-but);  border-color: #f5a8a8; }
+.chip-OR   { background: var(--cbg-or);   color: var(--c-or);   border-color: #a8cce8; }
+.chip-YET  { background: var(--cbg-yet);  color: var(--c-yet);  border-color: #e8a8e0; }
+.chip-SO   { background: var(--cbg-so);   color: var(--c-so);   border-color: #80cbb8; }
+
+/* States */
+.opt-btn.correct {
+  border-color: var(--green-m) !important;
+  background: var(--green-l) !important;
+}
+.opt-btn.correct .opt-letter { background: var(--green); color: #fff; }
+.opt-btn.wrong {
+  border-color: #f5a8a8 !important;
+  background: var(--red-l) !important;
+}
+.opt-btn.wrong .opt-letter { background: var(--red); color: #fff; }
+.opt-btn:disabled { cursor: default; transform: none !important; box-shadow: none !important; }
+
+/* ═══════════════════════════
+   INPUT TYPE (INTENSIVE)
+═══════════════════════════ */
+.input-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.q-input {
+  flex: 1;
+  padding: 11px 14px;
+  border-radius: var(--r);
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  font-family: 'Lexend', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  outline: none;
+  transition: var(--t);
+  -webkit-appearance: none;
+}
+.q-input:focus {
+  border-color: var(--green-m);
+  background: var(--green-xl);
+  box-shadow: 0 0 0 3px rgba(42,143,100,.12);
+}
+.q-input.correct { border-color: var(--green-m); background: var(--green-l); color: var(--green); }
+.q-input.wrong   { border-color: #f5a8a8; background: var(--red-l); color: var(--red); }
+.q-input::placeholder { color: var(--ink3); font-weight: 300; }
+.q-input:disabled { cursor: default; }
+
+.submit-btn {
+  padding: 11px 18px;
+  border-radius: var(--r);
+  border: none;
+  background: var(--green);
+  color: #fff;
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--t);
+  white-space: nowrap;
+}
+.submit-btn:hover { background: var(--green-m); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(29,106,74,.25); }
+.submit-btn:active { transform: scale(.97); }
+.submit-btn:disabled { background: var(--ink3); cursor: default; transform: none; box-shadow: none; }
+
+/* ═══════════════════════════
+   FEEDBACK
+═══════════════════════════ */
+.feedback {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: var(--r-sm);
+  font-size: 13.5px;
+  line-height: 1.65;
+  animation: fbIn .22s ease;
+}
+.feedback.show { display: block; }
+@keyframes fbIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.feedback.ok {
+  background: var(--green-l);
+  border: 1px solid #a3d9be;
+  color: var(--green);
+}
+.feedback.no {
+  background: var(--red-xl);
+  border: 1px solid #f5a8a8;
+  color: var(--red);
+}
+.fb-top {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.fb-icon {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.ok .fb-icon  { background: var(--green); color: #fff; }
+.no .fb-icon  { background: var(--red);   color: #fff; }
+.fb-explain { font-weight: 400; color: inherit; opacity: .9; }
+.fb-explain em { font-style: normal; font-weight: 600; }
+
+/* Redo button per card */
+.redo-btn {
+  display: none;
+  margin-top: 10px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border2);
+  background: transparent;
+  font-family: 'Lexend', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: var(--t);
+  align-items: center;
+  gap: 5px;
+}
+.redo-btn:hover { border-color: var(--green-m); color: var(--green); background: var(--green-xl); }
+.redo-btn.show { display: inline-flex; }
+.redo-icon { font-size: 13px; }
+
+/* ═══════════════════════════
+   SCORE CARD (FINAL)
+═══════════════════════════ */
+.score-card {
+  max-width: 680px;
+  margin: 20px auto 0;
+  padding: 0 16px;
+  display: none;
+}
+.score-card.show { display: block; animation: cardIn .4s ease; }
+.score-inner {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  padding: 32px 24px;
+  text-align: center;
+}
+.score-ring {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: var(--green-l);
+  border: 3px solid var(--green-m);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+}
+.score-num { font-size: 32px; font-weight: 700; color: var(--green); line-height: 1; }
+.score-denom { font-size: 13px; color: var(--ink3); font-weight: 400; }
+.score-label { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
+.score-sub { font-size: 13px; color: var(--ink2); font-weight: 300; margin-bottom: 20px; }
+
+.reset-all-btn {
+  padding: 12px 28px;
+  border-radius: 24px;
+  border: none;
+  background: var(--green);
+  color: #fff;
+  font-family: 'Lexend', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--t);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.reset-all-btn:hover {
+  background: var(--green-m);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29,106,74,.28);
+}
+.reset-all-btn:active { transform: scale(.97); }
+
+/* ═══════════════════════════
+   EMPTY STATE
+═══════════════════════════ */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--ink3);
+  font-size: 14px;
+  font-weight: 300;
+  display: none;
+}
+.empty-state.show { display: block; }
+
+/* ═══════════════════════════
+   LEVEL GROUP SEPARATOR
+═══════════════════════════ */
+.level-sep {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0 2px;
+}
+.level-sep-line { flex: 1; height: 1px; background: var(--border); }
+.level-sep-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+
+/* ═══════════════════════════
+   RESPONSIVE TWEAKS
+═══════════════════════════ */
+@media(max-width: 480px) {
+  .q-sentence { font-size: 15.5px; }
+  .opt-btn    { font-size: 13.5px; padding: 10px 12px; }
+  .qcard      { padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">FANBOYS Practice · 50 câu</div>
+    <div class="topbar-score" id="topScore">0 / 50</div>
+  </div>
+</header>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-meta">
+    <span>Tiến độ</span>
+    <span id="progressLabel">0 câu đã trả lời</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filter-wrap">
+  <div class="filter-scroll">
+    <button class="ftab active" onclick="filter('all',this)">Tất cả<span class="ct">(50)</span></button>
+    <button class="ftab" onclick="filter('basic',this)">Căn bản<span class="ct">(15)</span></button>
+    <button class="ftab" onclick="filter('intermediate',this)">Trung cấp<span class="ct">(15)</span></button>
+    <button class="ftab" onclick="filter('advanced',this)">Nâng cao<span class="ct">(12)</span></button>
+    <button class="ftab" onclick="filter('intensive',this)">Intensive<span class="ct">(8)</span></button>
+  </div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="questions-wrap" id="qwrap"></div>
+<div class="empty-state" id="emptyState">Không có câu nào ở cấp độ này.</div>
+
+<!-- FINAL SCORE -->
+<div class="score-card" id="scoreCard">
+  <div class="score-inner">
+    <div class="score-ring">
+      <div class="score-num" id="finalNum">0</div>
+      <div class="score-denom">/ 50</div>
+    </div>
+    <div class="score-label" id="finalLabel">Hoàn thành!</div>
+    <div class="score-sub" id="finalSub"></div>
+    <button class="reset-all-btn" onclick="resetAll()">
+      <span>↺</span> Làm lại tất cả
+    </button>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   DATA — 50 questions
+══════════════════════════════════════════════ */
+var QS = [
+
+/* ─── BASIC 1-15 ─── */
+{id:1,lv:'basic',type:'mcq',
+ logic:'Tương phản — kết quả trái kỳ vọng',
+ s:'She was tired, ___ she kept working.',
+ opts:['AND','BUT','SO','FOR'], ans:'BUT',
+ why:'<em>BUT</em>: mệt tạo kỳ vọng dừng lại, nhưng tiếp tục làm là bất ngờ. Hai mệnh đề trái chiều.'},
+
+{id:2,lv:'basic',type:'mcq',
+ logic:'Nhân quả — A gây ra B',
+ s:'It was raining, ___ we stayed inside.',
+ opts:['BUT','AND','SO','FOR'], ans:'SO',
+ why:'<em>SO</em>: mưa là nguyên nhân, ở trong nhà là hệ quả trực tiếp. Quan hệ nhân — quả.'},
+
+{id:3,lv:'basic',type:'mcq',
+ logic:'Lựa chọn — một trong hai',
+ s:'You can study now, ___ you can study later.',
+ opts:['AND','NOR','OR','BUT'], ans:'OR',
+ why:'<em>OR</em>: hai phương án, chỉ chọn một. Quan hệ lựa chọn.'},
+
+{id:4,lv:'basic',type:'mcq',
+ logic:'Nhân quả — học chăm dẫn đến đậu',
+ s:'He studied hard, ___ he passed the exam.',
+ opts:['BUT','NOR','SO','YET'], ans:'SO',
+ why:'<em>SO</em>: học chăm là nguyên nhân → đậu là kết quả tự nhiên. Nhân quả rõ ràng.'},
+
+{id:5,lv:'basic',type:'mcq',
+ logic:'Tương phản — dài nhưng không chán',
+ s:'The movie was long, ___ it was never boring.',
+ opts:['SO','AND','OR','BUT'], ans:'BUT',
+ why:'<em>BUT</em>: phim dài khiến ta kỳ vọng sẽ chán, nhưng thực tế ngược lại.'},
+
+{id:6,lv:'basic',type:'mcq',
+ logic:'Nhân quả — đói dẫn đến hành động',
+ s:'I was hungry, ___ I made a sandwich.',
+ opts:['BUT','NOR','SO','YET'], ans:'SO',
+ why:'<em>SO</em>: đói là nguyên nhân, làm bánh là hệ quả. Quan hệ nhân — quả.'},
+
+{id:7,lv:'basic',type:'mcq',
+ logic:'Cộng thêm — cả hai cùng xảy ra',
+ s:'She cooked dinner, ___ he washed the dishes.',
+ opts:['BUT','NOR','SO','AND'], ans:'AND',
+ why:'<em>AND</em>: hai việc cùng xảy ra, cùng chiều, không có sự bất ngờ hay nhân quả.'},
+
+{id:8,lv:'basic',type:'mcq',
+ logic:'Cảnh báo — hậu quả nếu không làm',
+ s:'You should wear sunscreen, ___ you will get sunburned.',
+ opts:['FOR','AND','OR','NOR'], ans:'OR',
+ why:'<em>OR</em> dạng cảnh báo: làm điều này, <em>or</em> hậu quả sẽ xảy ra nếu không.'},
+
+{id:9,lv:'basic',type:'mcq',
+ logic:'Nhân quả — lý do dẫn đến kết quả',
+ s:'She did not study, ___ she failed the test.',
+ opts:['BUT','YET','SO','AND'], ans:'SO',
+ why:'<em>SO</em>: không học là nguyên nhân → trượt là hệ quả trực tiếp.'},
+
+{id:10,lv:'basic',type:'mcq',
+ logic:'Tương phản — trái chiều',
+ s:'Tom loves coffee, ___ his sister prefers tea.',
+ opts:['SO','NOR','BUT','AND'], ans:'BUT',
+ why:'<em>BUT</em>: sở thích đối lập giữa hai người — Tom thích cà phê, em gái thích trà.'},
+
+{id:11,lv:'basic',type:'mcq',
+ logic:'Nhân quả — trễ dẫn đến hành động',
+ s:'I was late, ___ I ran to the station.',
+ opts:['BUT','NOR','FOR','SO'], ans:'SO',
+ why:'<em>SO</em>: trễ là lý do → chạy là hành động trực tiếp. Nhân — quả.'},
+
+{id:12,lv:'basic',type:'mcq',
+ logic:'Lựa chọn — hai phương án',
+ s:'We can take the bus, ___ we can walk to the park.',
+ opts:['AND','BUT','OR','SO'], ans:'OR',
+ why:'<em>OR</em>: hai phương án di chuyển, chọn một trong hai.'},
+
+{id:13,lv:'basic',type:'mcq',
+ logic:'Tương phản — đắt nhưng kém chất lượng',
+ s:'The bag was expensive, ___ it broke after one week.',
+ opts:['SO','AND','BUT','NOR'], ans:'BUT',
+ why:'<em>BUT</em>: đắt tạo kỳ vọng bền. Hỏng sau 1 tuần là kết quả bất ngờ.'},
+
+{id:14,lv:'basic',type:'mcq',
+ logic:'Cộng thêm — thêm thông tin',
+ s:'The food was delicious, ___ the service was excellent.',
+ opts:['BUT','NOR','SO','AND'], ans:'AND',
+ why:'<em>AND</em>: cả hai đặc điểm đều tích cực, cùng chiều, không có sự bất ngờ.'},
+
+{id:15,lv:'basic',type:'mcq',
+ logic:'Nhân quả — bỏ bữa dẫn đến yếu',
+ s:'He did not eat breakfast, ___ he felt weak during class.',
+ opts:['BUT','AND','SO','FOR'], ans:'SO',
+ why:'<em>SO</em>: không ăn sáng là nguyên nhân → yếu trong lớp là hệ quả.'},
+
+/* ─── INTERMEDIATE 16-30 ─── */
+{id:16,lv:'intermediate',type:'mcq',
+ logic:'Mâu thuẫn có chủ ý — biết mà không làm',
+ s:'Nam knew the exam would be hard, ___ he did not study at all.',
+ opts:['AND','SO','YET','FOR'], ans:'YET',
+ why:'<em>YET</em>: biết (nhận thức) mà không hành động phù hợp — mâu thuẫn phi lý có chủ ý, mạnh hơn BUT.'},
+
+{id:17,lv:'intermediate',type:'mcq',
+ logic:'Tương phản — hành động ngược với thông tin',
+ s:'She brought a jacket, ___ the forecast said it would be warm.',
+ opts:['AND','FOR','SO','BUT'], ans:'BUT',
+ why:'<em>BUT</em>: dự báo nóng tạo kỳ vọng không mang áo. Thực tế ngược lại — tương phản.'},
+
+{id:18,lv:'intermediate',type:'mcq',
+ logic:'Giải thích lý do — FOR',
+ s:'He wore a coat, ___ it was bitterly cold outside.',
+ opts:['SO','AND','FOR','BUT'], ans:'FOR',
+ why:'<em>FOR</em>: mệnh đề 2 giải thích lý do của mệnh đề 1. "Mặc áo khoác VÌ trời lạnh buốt."'},
+
+{id:19,lv:'intermediate',type:'mcq',
+ logic:'Cảnh báo nghiêm khắc',
+ s:'Save your work now, ___ you will lose everything.',
+ opts:['AND','FOR','OR','NOR'], ans:'OR',
+ why:'<em>OR</em> dạng cảnh báo mạnh: lưu bài ngay, hoặc mất tất cả. Hậu quả nghiêm trọng nếu không thực hiện.'},
+
+{id:20,lv:'intermediate',type:'mcq',
+ logic:'Phủ định kép — cả hai đều không',
+ s:'She did not smile, ___ did she say a word.',
+ opts:['AND','BUT','NOR','OR'], ans:'NOR',
+ why:'<em>NOR</em>: cả hai (cười và nói) đều bị phủ định. Đảo ngữ bắt buộc: <em>nor did she...</em>'},
+
+{id:21,lv:'intermediate',type:'mcq',
+ logic:'Tương phản — dài nhưng cuốn hút',
+ s:'The presentation was long, ___ the audience stayed engaged.',
+ opts:['SO','AND','BUT','FOR'], ans:'BUT',
+ why:'<em>BUT</em>: thuyết trình dài → kỳ vọng mất tập trung. Thực tế vẫn cuốn hút — bất ngờ.'},
+
+{id:22,lv:'intermediate',type:'mcq',
+ logic:'Nhân quả — đường đóng băng dẫn đến thận trọng',
+ s:'The road was icy, ___ he drove slowly.',
+ opts:['YET','NOR','SO','BUT'], ans:'SO',
+ why:'<em>SO</em>: đường đóng băng là nguyên nhân → lái chậm là hành động hợp lý (hệ quả).'},
+
+{id:23,lv:'intermediate',type:'mcq',
+ logic:'Tương phản bề ngoài vs thực tế',
+ s:'The restaurant looks expensive, ___ the food is actually quite affordable.',
+ opts:['SO','NOR','AND','BUT'], ans:'BUT',
+ why:'<em>BUT</em>: nhìn đắt → kỳ vọng giá cao. Thực tế giá vừa phải — trái chiều.'},
+
+{id:24,lv:'intermediate',type:'mcq',
+ logic:'Mâu thuẫn về ý chí — giàu nhưng không hạnh phúc',
+ s:'He is very rich, ___ he is never happy.',
+ opts:['AND','SO','YET','FOR'], ans:'YET',
+ why:'<em>YET</em>: giàu thường kéo theo hạnh phúc trong nhận thức chung, nhưng thực tế ngược lại — mâu thuẫn đáng chú ý.'},
+
+{id:25,lv:'intermediate',type:'mcq',
+ logic:'Giải thích lý do — FOR',
+ s:'She paused before answering, ___ her words were carefully chosen.',
+ opts:['BUT','NOR','FOR','YET'], ans:'FOR',
+ why:'<em>FOR</em>: dừng lại trước khi trả lời. Mệnh đề 2 giải thích lý do — từ ngữ được chọn kỹ.'},
+
+{id:26,lv:'intermediate',type:'mcq',
+ logic:'Tương phản — chuẩn bị kỹ nhưng thất bại',
+ s:'I set three alarms, ___ I still overslept.',
+ opts:['AND','FOR','SO','BUT'], ans:'BUT',
+ why:'<em>BUT</em>: đặt 3 báo thức → kỳ vọng dậy đúng giờ. Vẫn ngủ quên — trái chiều bất ngờ.'},
+
+{id:27,lv:'intermediate',type:'mcq',
+ logic:'Phủ định kép — không ngân sách, không hỗ trợ',
+ s:'The team had no budget, ___ did they have management support.',
+ opts:['AND','BUT','NOR','OR'], ans:'NOR',
+ why:'<em>NOR</em>: cả hai (ngân sách và hỗ trợ quản lý) đều không có. Đảo ngữ: <em>nor did they have...</em>'},
+
+{id:28,lv:'intermediate',type:'mcq',
+ logic:'Nhân quả / quyết định hợp lý',
+ s:'The weather was perfect, ___ we decided to go hiking.',
+ opts:['BUT','NOR','SO','YET'], ans:'SO',
+ why:'<em>SO</em>: thời tiết đẹp tạo ra quyết định đi leo núi — nhân quả hợp lý.'},
+
+{id:29,lv:'intermediate',type:'mcq',
+ logic:'Tương phản nội tâm — yêu nhưng ghét',
+ s:'She loves the beach, ___ she hates getting sand in her shoes.',
+ opts:['SO','AND','BUT','FOR'], ans:'BUT',
+ why:'<em>BUT</em>: yêu biển nhưng ghét cát trong giày — hai cảm xúc mâu thuẫn trong cùng một người.'},
+
+{id:30,lv:'intermediate',type:'mcq',
+ logic:'Nhân quả — bỏ lỡ đường dẫn đến hệ quả',
+ s:'The driver missed the exit, ___ he took a 20-minute detour.',
+ opts:['YET','NOR','SO','FOR'], ans:'SO',
+ why:'<em>SO</em>: bỏ lỡ đường thoát là nguyên nhân → phải đi vòng 20 phút là hệ quả.'},
+
+/* ─── ADVANCED 31-42 ─── */
+{id:31,lv:'advanced',type:'mcq',
+ logic:'Mâu thuẫn mạnh — biết sai vẫn làm',
+ s:'He knew it was wrong, ___ he did it anyway.',
+ opts:['AND','SO','YET','FOR'], ans:'YET',
+ why:'<em>YET</em>: biết sai (nhận thức đạo đức) nhưng vẫn làm — mâu thuẫn ý chí sâu sắc, mạnh hơn BUT.'},
+
+{id:32,lv:'advanced',type:'mcq',
+ logic:'Phủ định kép trang trọng',
+ s:'He did not apologize, ___ did he show any remorse.',
+ opts:['AND','BUT','NOR','OR'], ans:'NOR',
+ why:'<em>NOR</em>: cả hai (xin lỗi và hối hận) đều không xảy ra. Văn trang trọng với đảo ngữ.'},
+
+{id:33,lv:'advanced',type:'mcq',
+ logic:'Mâu thuẫn — có chuyên môn nhưng vụng về',
+ s:'He is a professional chef, ___ he cannot boil an egg without burning it.',
+ opts:['AND','SO','YET','FOR'], ans:'YET',
+ why:'<em>YET</em>: đầu bếp chuyên nghiệp → kỳ vọng nấu giỏi. Không luộc được trứng — mâu thuẫn vui.'},
+
+{id:34,lv:'advanced',type:'mcq',
+ logic:'Mâu thuẫn — cống hiến nhưng thất bại',
+ s:'She had dedicated years to the project, ___ it was ultimately cancelled.',
+ opts:['AND','SO','YET','FOR'], ans:'YET',
+ why:'<em>YET</em>: cống hiến nhiều năm → kỳ vọng thành công. Bị hủy bỏ — mâu thuẫn bi kịch.'},
+
+{id:35,lv:'advanced',type:'mcq',
+ logic:'Nhân quả rõ ràng — dân số đông',
+ s:'The city is densely populated, ___ parking is nearly impossible to find.',
+ opts:['YET','NOR','SO','FOR'], ans:'SO',
+ why:'<em>SO</em>: dân số đông là nguyên nhân → thiếu chỗ đậu xe là hệ quả tự nhiên.'},
+
+{id:36,lv:'advanced',type:'mcq',
+ logic:'Điều kiện học thuật — lựa chọn chính thức',
+ s:'You may follow the standard procedure, ___ you may propose an alternative approach.',
+ opts:['NOR','AND','OR','FOR'], ans:'OR',
+ why:'<em>OR</em> trong văn bản trang trọng: hai lựa chọn được phép, chọn một. Giọng văn học thuật/hành chính.'},
+
+{id:37,lv:'advanced',type:'mcq',
+ logic:'Mâu thuẫn — bình tĩnh bên ngoài, sợ hãi bên trong',
+ s:'She wore a smile throughout the meeting, ___ inside she was terrified.',
+ opts:['AND','SO','YET','FOR'], ans:'YET',
+ why:'<em>YET</em>: bề ngoài mỉm cười tương phản với nội tâm hoảng sợ — mâu thuẫn nội tâm sâu sắc.'},
+
+{id:38,lv:'advanced',type:'mcq',
+ logic:'Tương phản — vẻ ngoài vs thực tế ngược lại',
+ s:'The lake looks calm on the surface, ___ beneath it are powerful currents.',
+ opts:['AND','SO','YET','FOR'], ans:'YET',
+ why:'<em>YET</em>: bề mặt yên tĩnh — hàm ý an toàn. Dưới đó lại nguy hiểm — mâu thuẫn có nghĩa bóng.'},
+
+{id:39,lv:'advanced',type:'mcq',
+ logic:'Phủ định kép — không nói, không gửi',
+ s:'He did not speak at the meeting, ___ did he send any written feedback.',
+ opts:['AND','BUT','NOR','OR'], ans:'NOR',
+ why:'<em>NOR</em>: cả hai (nói và gửi phản hồi) đều không xảy ra. Đảo ngữ: <em>nor did he send...</em>'},
+
+{id:40,lv:'advanced',type:'mcq',
+ logic:'Mâu thuẫn — tự trọng cao từ chối giúp đỡ',
+ s:'He had no money, ___ he refused all offers of help.',
+ opts:['AND','SO','YET','FOR'], ans:'YET',
+ why:'<em>YET</em>: không có tiền → kỳ vọng nhận giúp đỡ. Từ chối tất cả — mâu thuẫn về tự trọng, có chủ ý.'},
+
+{id:41,lv:'advanced',type:'mcq',
+ logic:'Nhân quả — tác động trực tiếp',
+ s:'The road was closed, ___ we had to take a longer route.',
+ opts:['YET','NOR','SO','FOR'], ans:'SO',
+ why:'<em>SO</em>: đường đóng là nguyên nhân → phải đi đường vòng là hệ quả bắt buộc.'},
+
+{id:42,lv:'advanced',type:'mcq',
+ logic:'Giải thích lý do — FOR trang trọng',
+ s:'They spoke in whispers, ___ the baby was asleep in the next room.',
+ opts:['BUT','NOR','FOR','YET'], ans:'FOR',
+ why:'<em>FOR</em>: nói thì thầm. Mệnh đề 2 giải thích lý do — em bé đang ngủ ở phòng bên. FOR trang trọng hơn BECAUSE.'},
+
+/* ─── INTENSIVE 43-50 — INPUT ─── */
+{id:43,lv:'intensive',type:'input',
+ logic:'Mâu thuẫn bi kịch — cống hiến cả đời, kết quả không rõ',
+ s:'The scientist had dedicated her life to the research, ___ the results were inconclusive.',
+ ans:'YET',
+ why:'<em>YET</em>: cống hiến cả đời → kỳ vọng có kết quả rõ ràng. Kết quả không xác định — bi kịch nghiêm trọng. YET mạnh hơn BUT trong ngữ cảnh này.'},
+
+{id:44,lv:'intensive',type:'input',
+ logic:'Tương phản — đàm phán dài, không tiến triển',
+ s:'The negotiations had lasted three months, ___ both sides refused to compromise.',
+ ans:'YET',
+ why:'<em>YET</em>: đàm phán kéo dài → kỳ vọng đạt thỏa hiệp. Cả hai từ chối nhượng bộ — mâu thuẫn dai dẳng có chủ ý.'},
+
+{id:45,lv:'intensive',type:'input',
+ logic:'Mâu thuẫn bên ngoài / bên trong',
+ s:'She wore a smile throughout the interview, ___ inside she was absolutely terrified.',
+ ans:'YET',
+ why:'<em>YET</em>: bề ngoài bình tĩnh (mỉm cười) tương phản với nội tâm (cực kỳ sợ hãi) — mâu thuẫn nội tâm sâu sắc.'},
+
+{id:46,lv:'intensive',type:'input',
+ logic:'Phủ định kép hoàn toàn — không nói, không gửi',
+ s:'He did not speak a word during the meeting, ___ did he submit any written feedback afterward.',
+ ans:'NOR',
+ why:'<em>NOR</em>: cả hai (nói trong họp và gửi phản hồi) đều không xảy ra. Đảo ngữ bắt buộc: <em>nor did he submit...</em>'},
+
+{id:47,lv:'intensive',type:'input',
+ logic:'Mâu thuẫn kỹ thuật vs thực tế',
+ s:'The bridge was built to last a century, ___ it collapsed within a decade.',
+ ans:'YET',
+ why:'<em>YET</em>: thiết kế 100 năm → kỳ vọng bền vững. Sụp đổ sau 10 năm — thất bại ngoạn mục, mâu thuẫn nặng nề.'},
+
+{id:48,lv:'intensive',type:'input',
+ logic:'Phủ định kép nặng nề — thiếu cả hai yếu tố',
+ s:'The organization lacked funding, ___ did it have any visionary leadership.',
+ ans:'NOR',
+ why:'<em>NOR</em>: thiếu tiền <em>nor</em> thiếu lãnh đạo tầm nhìn — cả hai điều kiện đều không có, câu nhấn mạnh sự thiếu hụt kép.'},
+
+{id:49,lv:'intensive',type:'input',
+ logic:'Mâu thuẫn kiến thức vs trải nghiệm',
+ s:'He had never visited Paris, ___ he could describe every street from memory.',
+ ans:'YET',
+ why:'<em>YET</em>: chưa bao giờ đến Paris — kỳ vọng không biết. Mô tả được từng con phố — nghịch lý thú vị về kiến thức và trải nghiệm.'},
+
+{id:50,lv:'intensive',type:'input',
+ logic:'Nghịch lý triết học — tìm kiếm vs kết luận',
+ s:'The philosopher spent decades seeking absolute truth, ___ concluded that the search itself was the only truth worth having.',
+ ans:'YET',
+ why:'<em>YET</em>: tìm kiếm chân lý tuyệt đối → kỳ vọng tìm ra. Kết luận: quá trình tìm mới là chân lý — đảo ngược triết học, nghịch lý sâu sắc.'}
+];
+
+/* ══════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════ */
+var state = {};   // id -> {answered:bool, correct:bool}
+var currentFilter = 'all';
+
+var CHIP_CLASS = {FOR:'chip-FOR',AND:'chip-AND',NOR:'chip-NOR',BUT:'chip-BUT',OR:'chip-OR',YET:'chip-YET',SO:'chip-SO'};
+var LV_LABEL  = {basic:'Căn bản',intermediate:'Trung cấp',advanced:'Nâng cao',intensive:'Intensive'};
+var LV_CLASS  = {basic:'lb-basic',intermediate:'lb-intermediate',advanced:'lb-advanced',intensive:'lb-intensive'};
+
+/* ══════════════════════════════════════════════
+   RENDER
+══════════════════════════════════════════════ */
+function renderAll() {
+  var wrap = document.getElementById('qwrap');
+  wrap.innerHTML = '';
+
+  var groups = ['basic','intermediate','advanced','intensive'];
+  var shown = 0;
+
+  groups.forEach(function(lv) {
+    var qs = QS.filter(function(q){ return q.lv === lv; });
+    if (currentFilter !== 'all' && currentFilter !== lv) return;
+
+    var sepEl = document.createElement('div');
+    sepEl.className = 'level-sep';
+    sepEl.innerHTML = '<div class="level-sep-line"></div>'
+      + '<div class="level-sep-label">' + LV_LABEL[lv] + '</div>'
+      + '<div class="level-sep-line"></div>';
+    wrap.appendChild(sepEl);
+
+    qs.forEach(function(q, idx) {
+      wrap.appendChild(buildCard(q, idx * 40));
+      shown++;
+    });
+  });
+
+  var empty = document.getElementById('emptyState');
+  empty.classList.toggle('show', shown === 0);
+  updateProgress();
+}
+
+function buildCard(q, delay) {
+  var s = q.s;
+  var parts = s.split('___');
+  var sid = 'blank-' + q.id;
+  var sentenceHtml = escHtml(parts[0])
+    + '<span class="q-blank" id="' + sid + '">___</span>'
+    + escHtml(parts[1] || '');
+
+  var inner = '';
+  if (q.type === 'mcq') {
+    var letters = ['A','B','C','D'];
+    inner = '<div class="options-grid">';
+    q.opts.forEach(function(o, i) {
+      inner += '<button class="opt-btn" id="opt-' + q.id + '-' + o + '" onclick="pickMCQ(' + q.id + ',\'' + o + '\')" data-val="' + o + '">'
+        + '<span class="opt-letter">' + letters[i] + '</span>'
+        + '<span class="fanboy-chip ' + (CHIP_CLASS[o] || '') + '">' + o + '</span>'
+        + '</button>';
+    });
+    inner += '</div>';
+  } else {
+    inner = '<div class="input-row">'
+      + '<input class="q-input" id="inp-' + q.id + '" placeholder="Nhap FANBOYS..." maxlength="12" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key===\'Enter\')submitInput(' + q.id + ')">'
+      + '<button class="submit-btn" id="sbtn-' + q.id + '" onclick="submitInput(' + q.id + ')">Kiem tra</button>'
+      + '</div>';
+  }
+
+  var card = document.createElement('div');
+  card.className = 'qcard';
+  card.id = 'qcard-' + q.id;
+  card.style.animationDelay = delay + 'ms';
+  card.innerHTML =
+    '<div class="qcard-meta">'
+      + '<span class="q-num">#' + q.id + '</span>'
+      + '<span class="level-badge ' + LV_CLASS[q.lv] + '">' + LV_LABEL[q.lv] + '</span>'
+      + '<span class="type-badge">' + (q.type === 'input' ? 'Dien tu' : 'Chon tu') + '</span>'
+    + '</div>'
+
+    + '<div class="q-sentence">' + sentenceHtml + '</div>'
+    + inner
+    + '<div class="feedback" id="fb-' + q.id + '"></div>'
+    + '<button class="redo-btn" id="redo-' + q.id + '" onclick="redoCard(' + q.id + ')">'
+      + '<span class="redo-icon">↺</span> Làm lại câu này'
+    + '</button>';
+
+  // Restore state if already answered
+  var st = state[q.id];
+  if (st) {
+    setTimeout(function(){ applyAnsweredState(q, st.correct); }, 0);
+  }
+
+  return card;
+}
+
+/* ══════════════════════════════════════════════
+   ANSWER LOGIC
+══════════════════════════════════════════════ */
+function pickMCQ(id, chosen) {
+  if (state[id]) return;
+  var q = findQ(id);
+  var correct = chosen === q.ans;
+  state[id] = { answered: true, correct: correct };
+
+  var card = document.getElementById('qcard-' + id);
+  card.querySelectorAll('.opt-btn').forEach(function(b) {
+    b.disabled = true;
+    var val = b.dataset.val;
+    if (val === q.ans) b.classList.add('correct');
+    else if (val === chosen && !correct) b.classList.add('wrong');
+  });
+  applyAnsweredState(q, correct);
+  updateProgress();
+}
+
+function submitInput(id) {
+  if (state[id]) return;
+  var q = findQ(id);
+  var inp = document.getElementById('inp-' + id);
+  var val = inp.value.trim().toUpperCase().replace(/[^A-Z]/g,'');
+  if (!val) { inp.focus(); return; }
+  var correct = val === q.ans;
+  state[id] = { answered: true, correct: correct };
+
+  inp.disabled = true;
+  document.getElementById('sbtn-' + id).disabled = true;
+  inp.classList.add(correct ? 'correct' : 'wrong');
+  applyAnsweredState(q, correct);
+  updateProgress();
+}
+
+function applyAnsweredState(q, correct) {
+  var id = q.id;
+  // Fill blank
+  var blank = document.getElementById('blank-' + id);
+  if (blank) {
+    blank.innerHTML = '<span class="fanboy-chip ' + (CHIP_CLASS[q.ans] || '') + '" style="font-size:14px;">' + q.ans + '</span>';
+    blank.style.borderBottom = 'none';
+    blank.style.minWidth = 'auto';
+  }
+  // Feedback
+  var fb = document.getElementById('fb-' + id);
+  if (fb) {
+    var icon = correct ? '✓' : '✗';
+    var head = correct ? 'Chinh xac!' : 'Chua dung — Dap an: ' + q.ans;
+    fb.innerHTML = '<div class="fb-top"><span class="fb-icon">' + icon + '</span>' + head + '</div>'
+      + '<div class="fb-explain">' + q.why + '</div>';
+    fb.className = 'feedback show ' + (correct ? 'ok' : 'no');
+  }
+  // Redo button
+  var redo = document.getElementById('redo-' + id);
+  if (redo) redo.classList.add('show');
+
+  // Score bump
+  if (correct) {
+    var sc = document.getElementById('topScore');
+    sc.classList.remove('bump');
+    void sc.offsetWidth;
+    sc.classList.add('bump');
+  }
+
+  // Check if all done
+  checkAllDone();
+}
+
+/* ══════════════════════════════════════════════
+   REDO (per card)
+══════════════════════════════════════════════ */
+function redoCard(id) {
+  delete state[id];
+  var q = findQ(id);
+  var card = document.getElementById('qcard-' + id);
+  if (!card) return;
+
+  // Rebuild inner
+  var newCard = buildCard(q, 0);
+  card.parentNode.replaceChild(newCard, card);
+  updateProgress();
+  // Check final card visibility
+  checkAllDone();
+}
+
+/* ══════════════════════════════════════════════
+   RESET ALL
+══════════════════════════════════════════════ */
+function resetAll() {
+  state = {};
+  document.getElementById('scoreCard').classList.remove('show');
+  renderAll();
+}
+
+/* ══════════════════════════════════════════════
+   FILTER
+══════════════════════════════════════════════ */
+function filter(lv, btn) {
+  currentFilter = lv;
+  document.querySelectorAll('.ftab').forEach(function(t){ t.classList.remove('active'); });
+  btn.classList.add('active');
+  renderAll();
+}
+
+/* ══════════════════════════════════════════════
+   PROGRESS & SCORE
+══════════════════════════════════════════════ */
+function updateProgress() {
+  var total = QS.length;
+  var done  = Object.keys(state).length;
+  var sc    = Object.values(state).filter(function(s){ return s.correct; }).length;
+
+  document.getElementById('progressFill').style.width  = (done / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = done + ' cau da tra loi';
+  document.getElementById('topScore').textContent = sc + ' / ' + total;
+}
+
+function checkAllDone() {
+  var visibleQs = (currentFilter === 'all')
+    ? QS
+    : QS.filter(function(q){ return q.lv === currentFilter; });
+
+  var allAnswered = visibleQs.every(function(q){ return !!state[q.id]; });
+  if (!allAnswered) return;
+
+  var total = QS.length;
+  var sc    = Object.values(state).filter(function(s){ return s.correct; }).length;
+
+  var card = document.getElementById('scoreCard');
+  document.getElementById('finalNum').textContent = sc;
+  var pct = Math.round(sc / total * 100);
+  var label = pct >= 90 ? 'Xuat sac!' : pct >= 70 ? 'Tot lam!' : pct >= 50 ? 'Kha on!' : 'Tiep tuc co gang!';
+  document.getElementById('finalLabel').textContent = label;
+  document.getElementById('finalSub').textContent = 'Ban dung ' + pct + '% so cau. ' + (pct < 80 ? 'Hay xem lai phan giai thich de nam vung logic.' : 'Ban da hieu logic FANBOYS rat tot!');
+  card.classList.add('show');
+  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+/* ══════════════════════════════════════════════
+   UTILS
+══════════════════════════════════════════════ */
+function findQ(id) {
+  for (var i = 0; i < QS.length; i++) { if (QS[i].id === id) return QS[i]; }
+  return null;
+}
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ══════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════ */
+renderAll();
+</script>
+</body>
+</html>
