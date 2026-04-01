@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Logic Mindset → Compound Sentence</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f1ea;--bg2:#eceadf;--card:#fff;--border:#ddd8cb;--border2:#c9c3b3;
+  --ink:#1b1814;--ink2:#595249;--ink3:#9a9285;
+  --accent:#2b5f88;--accent-l:#e7f1f8;--accent-xl:#f1f7fc;--accent-m:#3879b5;
+  --green:#1c6847;--green-l:#e6f3ec;--green-m:#28875f;
+  --red:#b52c2c;--red-l:#fdf0f0;
+  --amber:#8a5a00;--amber-l:#fff8e6;--amber-m:#f5c840;
+  --purple:#562b8a;--purple-l:#f2eeff;
+  --teal:#0d6255;--teal-l:#e7f6f3;
+  --orange:#b84f00;--orange-l:#fff2e6;
+  --r:14px;--r-sm:8px;--r-lg:20px;--r-xl:24px;
+  --sh:0 2px 8px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.04);
+  --sh-h:0 10px 32px rgba(0,0,0,.11),0 0 0 1px rgba(0,0,0,.05);
+  --t:.2s cubic-bezier(.4,0,.2,1)
+}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{font-family:'Lexend',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.7;min-height:100vh;padding-bottom:80px}
+
+/* ── TOPBAR ── */
+.topbar{position:sticky;top:0;z-index:200;background:rgba(244,241,234,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.topbar-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;gap:12px;height:54px;padding:0 16px}
+.topbar-logo{font-size:13px;font-weight:700;color:var(--accent);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score-pill{font-size:12px;font-weight:700;color:var(--green);background:var(--green-l);border:1px solid #9dd4b6;padding:4px 12px;border-radius:20px;white-space:nowrap;transition:var(--t)}
+.score-pill.bump{animation:bump .38s cubic-bezier(.34,1.56,.64,1)}
+@keyframes bump{0%{transform:scale(1)}50%{transform:scale(1.2);background:var(--green);color:#fff}100%{transform:scale(1)}}
+
+/* ── PROGRESS ── */
+.prog-wrap{max-width:700px;margin:0 auto;padding:12px 16px 0}
+.prog-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--ink3);margin-bottom:5px}
+.prog-meta b{color:var(--ink2);font-weight:600}
+.prog-track{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent-m),var(--teal));border-radius:2px;width:0%;transition:width .5s cubic-bezier(.4,0,.2,1)}
+
+/* ── FILTER TABS ── */
+.filter-wrap{max-width:700px;margin:14px auto 0;padding:0 16px}
+.filter-scroll{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.filter-scroll::-webkit-scrollbar{display:none}
+.ftab{flex-shrink:0;padding:6px 14px;border-radius:20px;font-family:'Lexend',sans-serif;font-size:12px;font-weight:500;cursor:pointer;border:1.5px solid var(--border2);background:var(--card);color:var(--ink2);transition:var(--t);white-space:nowrap}
+.ftab:hover{border-color:var(--accent-m);color:var(--accent);background:var(--accent-xl)}
+.ftab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ftab .ct{opacity:.6;margin-left:3px;font-size:11px}
+
+/* ── MAIN ── */
+.main{max-width:700px;margin:16px auto 0;padding:0 16px;display:flex;flex-direction:column;gap:16px}
+.lv-sep{display:flex;align-items:center;gap:10px}
+.lv-sep-line{flex:1;height:1px;background:var(--border)}
+.lv-sep-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+
+/* ── CARD ── */
+.mcard{background:var(--card);border-radius:var(--r-xl);border:1px solid var(--border);box-shadow:var(--sh);overflow:hidden;animation:cardIn .35s ease both;transition:box-shadow var(--t),transform var(--t)}
+.mcard:hover{box-shadow:var(--sh-h);transform:translateY(-1px)}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.mcard-head{padding:18px 20px 0}
+.mcard-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.q-num{font-size:11px;font-weight:700;color:var(--ink3);letter-spacing:.04em}
+.lv-badge{font-size:10px;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.03em}
+.lb-basic{background:var(--green-l);color:var(--green);border:1px solid #9dd4b6}
+.lb-intermediate{background:var(--accent-l);color:var(--accent);border:1px solid #a8c8e8}
+.lb-advanced{background:var(--amber-l);color:var(--amber);border:1px solid #f0c870}
+.lb-intensive{background:var(--purple-l);color:var(--purple);border:1px solid #c4a8e8}
+.topic-tag{margin-left:auto;font-size:10px;color:var(--ink3);background:var(--bg2);border:1px solid var(--border);padding:2px 8px;border-radius:4px}
+
+/* ── LOGIC ARROW ── */
+.logic-arrow{display:flex;align-items:stretch;gap:0;margin-bottom:14px;border-radius:var(--r);overflow:hidden;border:1.5px solid var(--border);transition:box-shadow var(--t),transform var(--t);cursor:default}
+.logic-arrow:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:scale(1.005)}
+.la-box{padding:11px 14px;font-size:13px;font-weight:600;flex:1;text-align:center;display:flex;align-items:center;justify-content:center;line-height:1.4;min-width:0}
+.la-mid{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 10px;flex-shrink:0;gap:4px;min-width:88px}
+.la-logic-type{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
+.la-arrows{display:flex;align-items:center}
+.la-arr{width:22px;height:2px;position:relative}
+.la-arr.r::after{content:'';position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:7px solid currentColor;border-right:none}
+.la-arr.b::before{content:'';position:absolute;left:-1px;top:-4px;border:5px solid transparent;border-right:7px solid currentColor;border-left:none}
+.la-arr.b::after{content:'';position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:7px solid currentColor;border-right:none}
+
+/* Logic color themes */
+.lt-cause .la-box.a{background:#fff8e6;color:#8a5a00}
+.lt-cause .la-box.b{background:#e6f3ec;color:#1c6847}
+.lt-cause .la-mid{background:#fef2d4;color:#8a5a00}
+.lt-cause .la-arr{background:#8a5a00;color:#8a5a00}
+.lt-cause{border-color:#f0c870}
+
+.lt-contrast .la-box.a{background:#e6f3ec;color:#1c6847}
+.lt-contrast .la-box.b{background:#fdf0f0;color:#b52c2c}
+.lt-contrast .la-mid{background:#faeaea;color:#b52c2c}
+.lt-contrast .la-arr{background:#b52c2c;color:#b52c2c}
+.lt-contrast{border-color:#f5a8a8}
+
+.lt-choice .la-box.a{background:#e7f1f8;color:#2b5f88}
+.lt-choice .la-box.b{background:#e7f1f8;color:#2b5f88}
+.lt-choice .la-mid{background:#dbeef8;color:#2b5f88}
+.lt-choice .la-arr{background:#2b5f88;color:#2b5f88}
+.lt-choice{border-color:#a8c8e8}
+
+.lt-negation .la-box.a{background:#f2eeff;color:#562b8a}
+.lt-negation .la-box.b{background:#f2eeff;color:#562b8a}
+.lt-negation .la-mid{background:#e8e0ff;color:#562b8a}
+.lt-negation .la-arr{background:#562b8a;color:#562b8a}
+.lt-negation{border-color:#c4a8e8}
+
+.lt-complex .la-box.a{background:#fff2e6;color:#b84f00}
+.lt-complex .la-box.b{background:#e7f6f3;color:#0d6255}
+.lt-complex .la-mid{background:#fde8d4;color:#b84f00}
+.lt-complex .la-arr{background:#b84f00;color:#b84f00}
+.lt-complex{border-color:#f0a870}
+
+/* ── PROMPT ── */
+.logic-dot-row{display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.logic-dot{width:8px;height:8px;border-radius:50%;background:var(--amber-m);flex-shrink:0}
+.logic-dot-label{font-size:11px;font-weight:600;color:var(--amber);letter-spacing:.04em}
+.prompt-text{font-size:13px;color:var(--ink2);margin-bottom:14px;line-height:1.65}
+
+/* ── COLLOCATION TABLE ── */
+.colloc-wrap{margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.colloc-hdr{display:flex;align-items:center;gap:8px;padding:7px 13px;background:var(--bg2);border-bottom:1px solid var(--border)}
+.colloc-hdr-icon{width:16px;height:16px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:#fff;font-weight:700}
+.colloc-hdr-title{font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.05em;text-transform:uppercase}
+.colloc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));background:var(--card)}
+.colloc-item{padding:7px 13px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);display:flex;flex-direction:column;gap:2px;transition:background var(--t);cursor:default}
+.colloc-item:hover{background:var(--amber-l)}
+.colloc-ph{font-size:12px;font-weight:600;color:var(--ink);font-style:italic}
+.colloc-vi{font-size:11px;color:var(--ink3);font-weight:300}
+
+/* ── SLOTS ── */
+.slots-wrap{padding:0 20px 20px;display:flex;flex-direction:column;gap:10px}
+.slot{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color var(--t),box-shadow var(--t)}
+.slot:focus-within{border-color:var(--accent-m);background:var(--accent-xl);box-shadow:0 0 0 3px rgba(56,121,181,.1)}
+.slot.s-ok{border-color:#9dd4b6;background:var(--green-l)}
+.slot.s-no{border-color:#f5a8a8;background:var(--red-l)}
+
+.slot-hdr{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.slot.s-ok .slot-hdr{border-color:#c4ead4}
+.slot.s-no .slot-hdr{border-color:#f5c8c8}
+.slot-label{font-size:11px;font-weight:600;color:var(--ink3);letter-spacing:.04em;flex:1;min-width:80px}
+.fb-tags{display:flex;gap:4px;flex-wrap:wrap}
+.fbt{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:4px;border:1.5px solid}
+.fbt-FOR{background:#fff3e7;color:#7a3200;border-color:#e8b888}
+.fbt-AND{background:#e6f3ec;color:#1c6847;border-color:#9dd4b6}
+.fbt-NOR{background:#f2eeff;color:#562b8a;border-color:#c4a8e8}
+.fbt-BUT{background:#fdf0f0;color:#b52c2c;border-color:#f5a8a8}
+.fbt-OR {background:#e7f1f8;color:#2b5f88;border-color:#a8c8e8}
+.fbt-YET{background:#faeef9;color:#7b1f72;border-color:#e8a8e0}
+.fbt-SO {background:#e7f6f3;color:#0d6255;border-color:#80cbb8}
+
+.slot-ta{width:100%;padding:10px 12px;border:none;background:transparent;font-family:'Lexend',sans-serif;font-size:14px;font-weight:400;color:var(--ink);outline:none;resize:none;min-height:44px;line-height:1.6;-webkit-text-size-adjust:100%}
+.slot-ta::placeholder{color:var(--ink3);font-weight:300}
+.slot-ta:disabled{cursor:default;color:var(--ink2)}
+
+/* feedback */
+.slot-fb{display:none;padding:10px 12px;font-size:12.5px;line-height:1.6;border-top:1px dashed var(--border)}
+.slot-fb.show{display:block;animation:fbIn .2s ease}
+@keyframes fbIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.slot-fb.ok{background:var(--green-l);color:var(--green);border-color:#c4ead4}
+.slot-fb.no{background:var(--red-l);color:var(--red);border-color:#f5c8c8}
+.fb-hd{font-weight:700;margin-bottom:3px;font-size:12px}
+.fb-why{font-weight:400;margin-bottom:4px}
+.fb-model{font-size:11.5px;opacity:.8;font-style:italic;border-top:1px dashed currentColor;padding-top:5px;margin-top:4px}
+.fb-model b{font-weight:600;font-style:normal}
+
+/* checking spinner */
+.slot-checking{display:none;padding:8px 12px;font-size:12px;color:var(--amber);background:var(--amber-l);border-top:1px solid var(--amber-m);align-items:center;gap:6px}
+.slot-checking.show{display:flex}
+.spin{width:11px;height:11px;border:1.5px solid var(--amber-m);border-top-color:var(--amber);border-radius:50%;animation:spin .6s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── CARD ACTIONS ── */
+.card-actions{display:flex;gap:8px;padding:0 20px 18px;flex-wrap:wrap;align-items:center}
+.check-btn{padding:9px 22px;border-radius:20px;border:none;background:var(--accent);color:#fff;font-family:'Lexend',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:var(--t)}
+.check-btn:hover{background:var(--accent-m);transform:translateY(-1px);box-shadow:0 4px 14px rgba(43,95,136,.25)}
+.check-btn:active{transform:scale(.97)}
+.check-btn:disabled{background:var(--ink3);cursor:default;transform:none;box-shadow:none}
+.redo-btn{padding:9px 16px;border-radius:20px;border:1.5px solid var(--border2);background:transparent;font-family:'Lexend',sans-serif;font-size:12px;font-weight:500;color:var(--ink2);cursor:pointer;transition:var(--t);display:none;align-items:center;gap:5px}
+.redo-btn:hover{border-color:var(--accent-m);color:var(--accent);background:var(--accent-xl)}
+.redo-btn.show{display:inline-flex}
+
+/* card summary */
+.card-summary{display:none;margin:0 20px 14px;padding:12px 14px;border-radius:var(--r-sm);font-size:13px;line-height:1.65}
+.card-summary.show{display:block;animation:cardIn .22s ease}
+.card-summary.ok{background:var(--green-l);border:1px solid #9dd4b6;color:var(--green)}
+.card-summary.partial{background:var(--amber-l);border:1px solid #f0c870;color:var(--amber)}
+.card-summary.no{background:var(--red-l);border:1px solid #f5a8a8;color:var(--red)}
+.cs-hd{font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.cs-insight{font-size:12px;font-weight:400;margin-top:5px;border-top:1px dashed currentColor;padding-top:6px;line-height:1.6;opacity:.9}
+.cs-insight-lbl{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;opacity:.65;display:block;margin-bottom:2px}
+
+/* model answers toggle */
+.model-wrap{display:none;margin:0 20px 16px;border-radius:var(--r-sm);border:1px solid var(--border);overflow:hidden}
+.model-wrap.show{display:block}
+.model-tog{width:100%;display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:var(--bg2);border:none;font-family:'Lexend',sans-serif;font-size:11.5px;font-weight:600;color:var(--ink2);cursor:pointer;transition:var(--t)}
+.model-tog:hover{color:var(--accent);background:var(--accent-xl)}
+.model-tog .arr{transition:transform .2s;font-size:10px}
+.model-tog.open .arr{transform:rotate(180deg)}
+.model-body{display:none;padding:12px 14px;background:var(--card)}
+.model-tog.open+.model-body{display:block}
+.model-ex{padding:7px 0;border-bottom:1px dashed var(--border);font-size:13px;line-height:1.65}
+.model-ex:last-child{border-bottom:none;padding-bottom:0}
+.mex-style{font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:3px}
+.mex-conj{font-weight:700;background:var(--accent-l);color:var(--accent);padding:1px 5px;border-radius:3px}
+
+/* ── FINAL SCORE ── */
+.final-wrap{max-width:700px;margin:20px auto 0;padding:0 16px;display:none}
+.final-wrap.show{display:block;animation:cardIn .4s ease}
+.final-inner{background:var(--card);border-radius:var(--r-xl);border:1px solid var(--border);box-shadow:var(--sh);padding:36px 24px;text-align:center}
+.final-ring{width:96px;height:96px;border-radius:50%;background:var(--accent-l);border:3px solid var(--accent-m);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 16px}
+.final-num{font-size:30px;font-weight:700;color:var(--accent);line-height:1}
+.final-denom{font-size:12px;color:var(--ink3)}
+.final-title{font-size:17px;font-weight:600;margin-bottom:6px}
+.final-sub{font-size:13px;color:var(--ink2);font-weight:300;margin-bottom:22px;line-height:1.65}
+.reset-all-btn{padding:12px 28px;border-radius:24px;border:none;background:var(--accent);color:#fff;font-family:'Lexend',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:var(--t);display:inline-flex;align-items:center;gap:8px}
+.reset-all-btn:hover{background:var(--accent-m);transform:translateY(-2px);box-shadow:0 6px 20px rgba(43,95,136,.28)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:480px){
+  .la-box{font-size:11px;padding:9px 8px}
+  .la-mid{min-width:70px;padding:6px 7px}
+  .mcard-head{padding:14px 14px 0}
+  .slots-wrap,.card-actions{padding-left:14px;padding-right:14px}
+  .model-wrap,.card-summary{margin-left:14px;margin-right:14px}
+  .colloc-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-logo">Logic Mindset → Câu ghép FANBOYS</div>
+    <div class="score-pill" id="topScore">0 / 20</div>
+  </div>
+</header>
+
+<div class="prog-wrap">
+  <div class="prog-meta"><span>Tiến độ</span><b id="progLbl">0 / 20 bài đã nộp</b></div>
+  <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+</div>
+
+<div class="filter-wrap">
+  <div class="filter-scroll">
+    <button class="ftab active" onclick="doFilter('all',this)">Tất cả <span class="ct">(20)</span></button>
+    <button class="ftab" onclick="doFilter('basic',this)">Căn bản <span class="ct">(6)</span></button>
+    <button class="ftab" onclick="doFilter('intermediate',this)">Trung cấp <span class="ct">(6)</span></button>
+    <button class="ftab" onclick="doFilter('advanced',this)">Nâng cao <span class="ct">(5)</span></button>
+    <button class="ftab" onclick="doFilter('intensive',this)">Intensive <span class="ct">(3)</span></button>
+  </div>
+</div>
+
+<div class="main" id="mainWrap"></div>
+
+<div class="final-wrap" id="finalWrap">
+  <div class="final-inner">
+    <div class="final-ring"><div class="final-num" id="finalNum">0</div><div class="final-denom">/ 20</div></div>
+    <div class="final-title" id="finalTitle">Hoàn thành!</div>
+    <div class="final-sub" id="finalSub"></div>
+    <button class="reset-all-btn" onclick="resetAll()">↺ Làm lại tất cả</button>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════
+   LOGIC TYPE THEMES
+══════════════════════════════════════ */
+var LT = {
+  cause:   {cls:'lt-cause',    lbl:'CAUSE → EFFECT',     arr:'r'},
+  contrast:{cls:'lt-contrast', lbl:'CONTRAST ↔',         arr:'b'},
+  choice:  {cls:'lt-choice',   lbl:'CHOICE / OR',        arr:'r'},
+  negation:{cls:'lt-negation', lbl:'NOR — PHỦ ĐỊNH KÉP', arr:'b'},
+  complex: {cls:'lt-complex',  lbl:'MULTI-LOGIC',        arr:'r'}
+};
+var LV_VI  = {basic:'Căn bản',intermediate:'Trung cấp',advanced:'Nâng cao',intensive:'Intensive'};
+var LV_CLS = {basic:'lb-basic',intermediate:'lb-intermediate',advanced:'lb-advanced',intensive:'lb-intensive'};
+
+/* ══════════════════════════════════════
+   DATA — 20 MINDSET EXERCISES
+══════════════════════════════════════ */
+var DATA = [
+
+/* ─── CĂN BẢN 1-6 ─── */
+{id:1,lv:'basic',topic:'Daily Life',
+ cA:'Cảm thấy mệt',cB:'Cần nghỉ ngơi / Đi ngủ sớm',lt:'cause',
+ logicDot:'Nguyên nhân → Hệ quả tự nhiên',
+ prompt:'Viết 2 câu: Câu 1 dùng SO (mệt → đi ngủ sớm). Câu 2 dùng FOR (đặt kết quả trước, lý do sau).',
+ collocs:[
+   {ph:'feel exhausted',vi:'cảm thấy kiệt sức'},
+   {ph:'go to bed early',vi:'đi ngủ sớm'},
+   {ph:'take a rest',vi:'nghỉ ngơi'},
+   {ph:'work long hours',vi:'làm việc nhiều giờ'},
+   {ph:'fall asleep quickly',vi:'ngủ thiếp đi nhanh'},
+   {ph:'have a good sleep',vi:'ngủ ngon'},
+   {ph:'feel refreshed',vi:'cảm thấy sảng khoái'}
+ ],
+ slots:[
+   {lbl:'Style 1 — SO (nguyên nhân → kết quả)',hints:['SO'],ph:'She was very tired, so ...',fb:'SO',
+    model:'She was very tired, so she went to bed early.',
+    ok:'Đúng! SO đặt nguyên nhân trước, kết quả sau.',
+    no:'Dùng SO: [lý do], so [điều xảy ra]. Ví dụ: "He felt exhausted, so he took a rest."'},
+   {lbl:'Style 2 — FOR (kết quả → lý do)',hints:['FOR'],ph:'He went to bed at 9 pm, for ...',fb:'FOR',
+    model:'He went to bed at 9 pm, for he had worked long hours all day.',
+    ok:'Tốt! FOR đặt kết quả trước, FOR + lý do giải thích sau — trang trọng hơn BECAUSE.',
+    no:'FOR: [kết quả/hiện tượng], for [lý do tại sao]. Ví dụ: "She slept early, for she was completely exhausted."'}
+ ],
+ insight:'SO và FOR đều diễn đạt nhân quả nhưng ngược chiều: SO = nguyên nhân SO kết quả; FOR = kết quả FOR lý do. FOR nghe trang trọng hơn, phù hợp với IELTS writing.'
+},
+
+{id:2,lv:'basic',topic:'Food & Health',
+ cA:'Ăn nhiều đồ ngọt',cB:'Tăng cân / Không tốt cho sức khỏe',lt:'cause',
+ logicDot:'Nguyên nhân → Hệ quả tiêu cực',
+ prompt:'Viết 2 câu về tác hại của đồ ngọt. Câu 1: SO (ăn nhiều → tăng cân). Câu 2: BUT (đồ ngọt ngon nhưng có hại).',
+ collocs:[
+   {ph:'eat too much sugar',vi:'ăn quá nhiều đường'},
+   {ph:'gain weight',vi:'tăng cân'},
+   {ph:'taste good',vi:'có vị ngon'},
+   {ph:'bad for your teeth',vi:'có hại cho răng'},
+   {ph:'cause health problems',vi:'gây ra vấn đề sức khỏe'},
+   {ph:'feel unhealthy',vi:'cảm thấy không khỏe'},
+   {ph:'high in calories',vi:'nhiều calo'}
+ ],
+ slots:[
+   {lbl:'Style 1 — SO (nhân quả)',hints:['SO'],ph:'He eats too much sugar, so ...',fb:'SO',
+    model:'He eats too much sugar, so he has gained a lot of weight.',
+    ok:'Đúng! SO chỉ rõ ăn nhiều đường là nguyên nhân dẫn đến tăng cân.',
+    no:'SO: [thói quen ăn uống], so [hậu quả]. Ví dụ: "She drinks a lot of soda, so she feels unhealthy."'},
+   {lbl:'Style 2 — BUT (tương phản)',hints:['BUT'],ph:'Sweets taste very good, but ...',fb:'BUT',
+    model:'Sweets taste very good, but eating too many of them is bad for your health.',
+    ok:'Hay! BUT thừa nhận vị ngon rồi chỉ ra tác hại — lập luận cân bằng đơn giản.',
+    no:'BUT: [điều tích cực], but [điều tiêu cực]. Ví dụ: "Chocolate is delicious, but it contains a lot of calories."'}
+ ],
+ insight:'BUT rất hữu ích khi bạn muốn thừa nhận một ưu điểm nhưng sau đó chỉ ra nhược điểm. Cấu trúc này xuất hiện thường xuyên trong IELTS Task 2.'
+},
+
+{id:3,lv:'basic',topic:'Education',
+ cA:'Học chăm / Ôn thi đều',cB:'Kết quả thi tốt',lt:'cause',
+ logicDot:'Nỗ lực → Thành quả',
+ prompt:'Viết 2 câu về học bài và kết quả thi. Câu 1: SO. Câu 2: AND (học chăm VÀ còn một lợi ích khác).',
+ collocs:[
+   {ph:'study hard',vi:'học chăm chỉ'},
+   {ph:'pass the exam',vi:'đỗ kỳ thi'},
+   {ph:'get a good mark',vi:'được điểm cao'},
+   {ph:'prepare well',vi:'chuẩn bị tốt'},
+   {ph:'feel confident',vi:'cảm thấy tự tin'},
+   {ph:'review notes',vi:'ôn lại ghi chú'},
+   {ph:'improve skills',vi:'cải thiện kỹ năng'}
+ ],
+ slots:[
+   {lbl:'Style 1 — SO (nhân quả)',hints:['SO'],ph:'She studied hard for the exam, so ...',fb:'SO',
+    model:'She studied hard for the exam, so she got a very good mark.',
+    ok:'Tốt! SO cho thấy học chăm là nguyên nhân trực tiếp dẫn đến điểm cao.',
+    no:'SO: [nguyên nhân], so [kết quả]. Ví dụ: "He prepared well, so he felt confident before the exam."'},
+   {lbl:'Style 2 — AND (bổ sung lợi ích)',hints:['AND'],ph:'Studying regularly helps you pass exams, and ...',fb:'AND',
+    model:'Studying regularly helps you pass exams, and it also builds good habits for the future.',
+    ok:'Hay! AND bổ sung thêm một lợi ích khác cùng chiều — câu trở nên đầy đủ hơn.',
+    no:'AND: [lợi ích học tập 1], and [lợi ích học tập 2]. Ví dụ: "It helps you get good grades, and it also improves your memory."'}
+ ],
+ insight:'SO nhấn mạnh quan hệ nhân quả trực tiếp; AND chỉ bổ sung thêm thông tin cùng chiều. Hãy chọn đúng theo ý nghĩa bạn muốn truyền đạt.'
+},
+
+{id:4,lv:'basic',topic:'Transport',
+ cA:'Tắc đường / Giao thông đông',cB:'Đến nơi muộn',lt:'cause',
+ logicDot:'Tình huống → Hậu quả tất yếu',
+ prompt:'Viết 2 câu về tắc đường. Câu 1: SO (tắc đường → đến muộn). Câu 2: OR (cảnh báo — đi sớm hoặc bị muộn).',
+ collocs:[
+   {ph:'get stuck in traffic',vi:'bị kẹt xe'},
+   {ph:'arrive late',vi:'đến muộn'},
+   {ph:'miss the bus',vi:'lỡ xe buýt'},
+   {ph:'leave home early',vi:'rời nhà sớm'},
+   {ph:'heavy traffic',vi:'giao thông đông đúc'},
+   {ph:'take a different route',vi:'đi đường khác'},
+   {ph:'be on time',vi:'đúng giờ'}
+ ],
+ slots:[
+   {lbl:'Style 1 — SO (hậu quả)',hints:['SO'],ph:'There was heavy traffic this morning, so ...',fb:'SO',
+    model:'There was heavy traffic this morning, so I arrived at work late.',
+    ok:'Đúng! SO thể hiện hệ quả trực tiếp: tắc đường → đến muộn.',
+    no:'SO: [tình trạng giao thông], so [hậu quả]. Ví dụ: "The road was blocked, so we had to wait for an hour."'},
+   {lbl:'Style 2 — OR (cảnh báo)',hints:['OR'],ph:'You should leave home early, or ...',fb:'OR',
+    model:'You should leave home early, or you will miss the bus and be late for work.',
+    ok:'Tốt! OR dạng cảnh báo: làm điều này, hoặc hậu quả xấu sẽ xảy ra.',
+    no:'OR cảnh báo: [điều cần làm], or [hậu quả nếu không làm]. Ví dụ: "Take a taxi, or you will be late."'}
+ ],
+ insight:'OR có hai chức năng: (1) lựa chọn giữa hai phương án, (2) cảnh báo hậu quả nếu không hành động. Trong IELTS, OR dạng cảnh báo rất hiệu quả để nhấn mạnh tính cần thiết.'
+},
+
+{id:5,lv:'basic',topic:'Technology',
+ cA:'Điện thoại thông minh',cB:'Tiện ích / Gây mất tập trung',lt:'contrast',
+ logicDot:'Một thứ → hai mặt đối lập',
+ prompt:'Viết 2 câu về điện thoại thông minh. Câu 1: AND (hai lợi ích). Câu 2: BUT (hữu ích nhưng gây mất tập trung).',
+ collocs:[
+   {ph:'stay connected',vi:'giữ liên lạc'},
+   {ph:'find information',vi:'tìm kiếm thông tin'},
+   {ph:'waste time',vi:'lãng phí thời gian'},
+   {ph:'get distracted',vi:'bị phân tâm'},
+   {ph:'useful tool',vi:'công cụ hữu ích'},
+   {ph:'check social media',vi:'xem mạng xã hội'},
+   {ph:'lose focus',vi:'mất tập trung'}
+ ],
+ slots:[
+   {lbl:'Style 1 — AND (liệt kê lợi ích)',hints:['AND'],ph:'Smartphones help us stay connected, and ...',fb:'AND',
+    model:'Smartphones help us stay connected, and they make it easy to find information quickly.',
+    ok:'Hay! AND liệt kê hai lợi ích của điện thoại — cả hai đều tích cực và cùng chiều.',
+    no:'AND: [lợi ích 1], and [lợi ích 2]. Ví dụ: "Phones are convenient, and they can also be used for learning."'},
+   {lbl:'Style 2 — BUT (thừa nhận & tương phản)',hints:['BUT'],ph:'Smartphones are very useful, but ...',fb:'BUT',
+    model:'Smartphones are very useful, but they can also cause people to lose focus and waste a lot of time.',
+    ok:'Đúng! BUT thừa nhận điện thoại hữu ích nhưng chỉ ra mặt tiêu cực rõ ràng.',
+    no:'BUT: [điều tích cực], but [mặt tiêu cực]. Ví dụ: "Phones are helpful, but many students use them in class instead of paying attention."'}
+ ],
+ insight:'Trong IELTS Task 2, bạn thường cần trình bày hai mặt của công nghệ. AND để liệt kê lợi ích, BUT để đưa ra hạn chế — hai cấu trúc này giúp bài viết cân bằng hơn.'
+},
+
+{id:6,lv:'basic',topic:'Environment',
+ cA:'Vứt rác bừa bãi',cB:'Môi trường bị ô nhiễm',lt:'cause',
+ logicDot:'Hành động xấu → Hậu quả rõ ràng',
+ prompt:'Viết 2 câu về rác thải và ô nhiễm. Câu 1: SO. Câu 2: NOR (không giữ sạch VÀ cũng không tái chế).',
+ collocs:[
+   {ph:'throw rubbish',vi:'vứt rác'},
+   {ph:'pollute the environment',vi:'gây ô nhiễm môi trường'},
+   {ph:'keep streets clean',vi:'giữ đường phố sạch'},
+   {ph:'use a bin',vi:'dùng thùng rác'},
+   {ph:'recycle waste',vi:'tái chế rác thải'},
+   {ph:'harmful to nature',vi:'có hại cho thiên nhiên'},
+   {ph:'damage the ecosystem',vi:'phá hủy hệ sinh thái'}
+ ],
+ slots:[
+   {lbl:'Style 1 — SO (hậu quả trực tiếp)',hints:['SO'],ph:'People throw rubbish on the streets, so ...',fb:'SO',
+    model:'People throw rubbish on the streets, so the city becomes dirty and unhealthy.',
+    ok:'Đúng! SO thể hiện hậu quả trực tiếp của việc xả rác bừa bãi.',
+    no:'SO: [hành động xấu], so [hậu quả cho môi trường]. Ví dụ: "They dump waste in the river, so the water becomes polluted."'},
+   {lbl:'Style 2 — NOR (phủ định kép)',hints:['NOR'],ph:'They do not keep the streets clean, nor ...',fb:'NOR',
+    model:'They do not keep the streets clean, nor do they make any effort to recycle their waste.',
+    ok:'Tốt! NOR phủ định cả hai việc — đảo ngữ đúng: nor + trợ động từ + chủ ngữ.',
+    no:'NOR: "không làm A, nor do/does they làm B". Ví dụ: "She does not use a bin, nor does she try to reduce her waste."'}
+ ],
+ insight:'NOR phủ định song song hai điều — mạnh hơn chỉ dùng "and...not". Luôn đảo ngữ sau NOR (nor + trợ động từ + chủ ngữ). Cấu trúc này ít phổ biến nhưng ấn tượng trong IELTS.'
+},
+
+/* ─── TRUNG CẤP 7-12 ─── */
+{id:7,lv:'intermediate',topic:'Education',
+ cA:'Bằng đại học',cB:'Cơ hội việc làm (không đảm bảo)',lt:'contrast',
+ logicDot:'Kỳ vọng ↔ Thực tế',
+ prompt:'Viết 2 câu phân tích vai trò của bằng đại học. Câu 1: BUT (có lợi nhưng không đảm bảo). Câu 2: YET (nhiều người có bằng vẫn khó tìm việc).',
+ collocs:[
+   {ph:'get a degree',vi:'lấy bằng đại học'},
+   {ph:'find a good job',vi:'tìm được việc làm tốt'},
+   {ph:'have practical skills',vi:'có kỹ năng thực tế'},
+   {ph:'face competition',vi:'đối mặt với sự cạnh tranh'},
+   {ph:'earn a good salary',vi:'kiếm được lương tốt'},
+   {ph:'gain work experience',vi:'tích lũy kinh nghiệm làm việc'},
+   {ph:'stand out from others',vi:'nổi bật hơn người khác'}
+ ],
+ slots:[
+   {lbl:'Style 1 — BUT (tương phản cơ bản)',hints:['BUT'],ph:'A university degree is very helpful, but ...',fb:'BUT',
+    model:'A university degree is very helpful, but it does not always mean you will find a good job.',
+    ok:'Đúng! BUT tạo tương phản rõ: bằng cấp có ích nhưng không đủ để đảm bảo thành công.',
+    no:'BUT: [ưu điểm của bằng cấp], but [hạn chế thực tế]. Ví dụ: "Having a degree is important, but employers also want work experience."'},
+   {lbl:'Style 2 — YET (mâu thuẫn đáng chú ý)',hints:['YET'],ph:'Many students graduate from university, yet ...',fb:'YET',
+    model:'Many students graduate from university, yet they still struggle to find a job in their chosen field.',
+    ok:'Hay! YET mạnh hơn BUT — nhấn mạnh sự mâu thuẫn: tốt nghiệp rồi nhưng vẫn khó tìm việc.',
+    no:'YET: [thực tế có vẻ tốt], yet [kết quả bất ngờ tiêu cực]. Ví dụ: "She has a good degree, yet she has been unemployed for six months."'}
+ ],
+ insight:'BUT và YET đều thể hiện tương phản, nhưng YET mạnh hơn — dùng khi mâu thuẫn đáng ngạc nhiên hoặc có ý nghĩa sâu hơn. BUT dùng cho tương phản thông thường.'
+},
+
+{id:8,lv:'intermediate',topic:'Health',
+ cA:'Ít vận động / Ngồi nhiều',cB:'Sức khỏe kém + Tăng cân',lt:'cause',
+ logicDot:'Thói quen xấu → Nhiều hậu quả',
+ prompt:'Viết 2 câu về tác hại của việc ngồi nhiều. Câu 1: SO (ngồi nhiều → đau lưng). Câu 2: AND (thêm một hậu quả khác).',
+ collocs:[
+   {ph:'sit for long hours',vi:'ngồi nhiều giờ liền'},
+   {ph:'gain weight',vi:'tăng cân'},
+   {ph:'feel less energetic',vi:'cảm thấy kém năng lượng'},
+   {ph:'suffer from back pain',vi:'bị đau lưng'},
+   {ph:'increase health risks',vi:'tăng nguy cơ sức khỏe'},
+   {ph:'take regular breaks',vi:'nghỉ giải lao thường xuyên'},
+   {ph:'do light exercise',vi:'tập thể dục nhẹ'}
+ ],
+ slots:[
+   {lbl:'Style 1 — SO (hậu quả trực tiếp)',hints:['SO'],ph:'Many people sit at a desk all day, so ...',fb:'SO',
+    model:'Many people sit at a desk all day, so they often suffer from back pain and poor posture.',
+    ok:'Tốt! SO thể hiện hậu quả trực tiếp của việc ngồi nhiều.',
+    no:'SO: [thói quen không lành mạnh], so [hậu quả sức khỏe]. Ví dụ: "He rarely moves around at work, so he has gained a lot of weight."'},
+   {lbl:'Style 2 — AND (thêm hậu quả)',hints:['AND'],ph:'Sitting all day causes back pain, and ...',fb:'AND',
+    model:'Sitting all day causes back pain, and it can also lead to serious health problems over time.',
+    ok:'Hay! AND bổ sung thêm một hậu quả nữa — lập luận trở nên đầy đủ và thuyết phục hơn.',
+    no:'AND: [hậu quả 1], and [hậu quả 2 bổ sung]. Ví dụ: "It makes you gain weight, and it also affects your energy levels."'}
+ ],
+ insight:'AND giúp liệt kê nhiều hậu quả cùng loại một cách tự nhiên. SO tập trung vào một hệ quả trực tiếp. Kết hợp cả hai trong bài viết giúp lập luận thuyết phục hơn.'
+},
+
+{id:9,lv:'intermediate',topic:'Society',
+ cA:'Mạng xã hội nhiều',cB:'Kết nối ảo ↔ Cô đơn thực tế',lt:'contrast',
+ logicDot:'Hiện tượng ↔ Nghịch lý',
+ prompt:'Viết 2 câu về mạng xã hội và sự cô đơn. Câu 1: BUT (nhiều bạn online nhưng ít bạn thật). Câu 2: YET (dùng nhiều nhưng vẫn cô đơn).',
+ collocs:[
+   {ph:'have many online friends',vi:'có nhiều bạn trực tuyến'},
+   {ph:'feel lonely',vi:'cảm thấy cô đơn'},
+   {ph:'real-life relationships',vi:'các mối quan hệ trong cuộc sống thật'},
+   {ph:'spend time on social media',vi:'dành thời gian trên mạng xã hội'},
+   {ph:'face-to-face interaction',vi:'giao tiếp trực tiếp'},
+   {ph:'lack deep connection',vi:'thiếu kết nối sâu sắc'},
+   {ph:'message friends online',vi:'nhắn tin với bạn bè trực tuyến'}
+ ],
+ slots:[
+   {lbl:'Style 1 — BUT (tương phản)',hints:['BUT'],ph:'Some people have hundreds of online friends, but ...',fb:'BUT',
+    model:'Some people have hundreds of online friends, but they still feel lonely in real life.',
+    ok:'Đúng! BUT tạo tương phản rõ: nhiều bạn online nhưng vẫn cô đơn ngoài đời thật.',
+    no:'BUT: [thực tế mạng xã hội], but [thực tế trong đời thật]. Ví dụ: "She talks to many people online, but she has very few close friends."'},
+   {lbl:'Style 2 — YET (nghịch lý)',hints:['YET'],ph:'Many people spend hours on social media every day, yet ...',fb:'YET',
+    model:'Many people spend hours on social media every day, yet they often feel more lonely than before.',
+    ok:'Xuất sắc! YET nhấn mạnh nghịch lý: dùng mạng xã hội nhiều để kết nối nhưng lại cô đơn hơn.',
+    no:'YET: [hành động để kết nối], yet [cảm giác cô đơn vẫn còn]. Ví dụ: "He messages friends all day, yet he feels disconnected from the world."'}
+ ],
+ insight:'YET phù hợp khi bạn muốn nhấn mạnh một nghịch lý — điều bạn làm và kết quả thực tế trái ngược hoàn toàn. Đây là công cụ mạnh để làm câu văn IELTS ấn tượng hơn.'
+},
+
+{id:10,lv:'intermediate',topic:'Environment',
+ cA:'Dùng năng lượng mặt trời',cB:'Tiết kiệm tiền + Bảo vệ môi trường',lt:'cause',
+ logicDot:'Giải pháp → Hai lợi ích',
+ prompt:'Viết 2 câu về năng lượng mặt trời. Câu 1: BUT (đắt lúc đầu nhưng xứng đáng). Câu 2: SO (sử dụng → môi trường tốt hơn).',
+ collocs:[
+   {ph:'install solar panels',vi:'lắp đặt tấm pin mặt trời'},
+   {ph:'save money on bills',vi:'tiết kiệm tiền điện'},
+   {ph:'expensive at first',vi:'đắt lúc ban đầu'},
+   {ph:'good for the environment',vi:'tốt cho môi trường'},
+   {ph:'reduce pollution',vi:'giảm ô nhiễm'},
+   {ph:'use clean energy',vi:'sử dụng năng lượng sạch'},
+   {ph:'pay back over time',vi:'hoàn vốn theo thời gian'}
+ ],
+ slots:[
+   {lbl:'Style 1 — BUT (đắt nhưng đáng)',hints:['BUT'],ph:'Solar panels are expensive to install, but ...',fb:'BUT',
+    model:'Solar panels are expensive to install, but they help families save a lot of money on electricity bills.',
+    ok:'Hay! BUT thừa nhận chi phí cao nhưng nhấn mạnh lợi ích — lập luận cân bằng hiệu quả.',
+    no:'BUT: [nhược điểm chi phí], but [lợi ích rõ ràng]. Ví dụ: "It costs a lot upfront, but solar energy saves money in the long run."'},
+   {lbl:'Style 2 — SO (hệ quả tốt)',hints:['SO'],ph:'More people are using solar energy now, so ...',fb:'SO',
+    model:'More people are using solar energy now, so the amount of pollution from power plants is slowly decreasing.',
+    ok:'Đúng! SO thể hiện hệ quả tích cực: nhiều người dùng năng lượng mặt trời → ô nhiễm giảm.',
+    no:'SO: [xu hướng tích cực], so [kết quả tốt cho môi trường]. Ví dụ: "We switched to solar energy, so our electricity costs dropped a lot."'}
+ ],
+ insight:'BUT + SO là công thức lập luận mạnh trong IELTS: BUT thừa nhận nhược điểm, SO chỉ ra kết quả tích cực. Hãy dùng cặp này khi cần thuyết phục người đọc.'
+},
+
+{id:11,lv:'intermediate',topic:'Work & Career',
+ cA:'Công việc áp lực cao',cB:'Stress / Phát triển kỹ năng',lt:'contrast',
+ logicDot:'Thách thức → Hai mặt đối lập',
+ prompt:'Viết 2 câu về công việc căng thẳng. Câu 1: SO (áp lực → bị stress). Câu 2: YET (khó nhưng học được nhiều).',
+ collocs:[
+   {ph:'work under pressure',vi:'làm việc dưới áp lực'},
+   {ph:'feel stressed',vi:'cảm thấy căng thẳng'},
+   {ph:'develop new skills',vi:'phát triển kỹ năng mới'},
+   {ph:'meet tight deadlines',vi:'đáp ứng thời hạn gấp'},
+   {ph:'gain valuable experience',vi:'tích lũy kinh nghiệm quý giá'},
+   {ph:'feel burned out',vi:'cảm thấy kiệt sức'},
+   {ph:'challenge yourself',vi:'thử thách bản thân'}
+ ],
+ slots:[
+   {lbl:'Style 1 — SO (áp lực → stress)',hints:['SO'],ph:'Her job involves a lot of pressure, so ...',fb:'SO',
+    model:'Her job involves a lot of pressure, so she often feels stressed and tired at the end of the day.',
+    ok:'Đúng! SO thể hiện hệ quả tự nhiên: áp lực cao → mệt mỏi và căng thẳng.',
+    no:'SO: [tính chất công việc], so [cảm giác hoặc hậu quả]. Ví dụ: "He has to meet very tight deadlines, so he rarely has time to relax."'},
+   {lbl:'Style 2 — YET (khó nhưng đáng)',hints:['YET'],ph:'The job is very stressful, yet ...',fb:'YET',
+    model:'The job is very stressful, yet it has helped her develop many useful skills and gain confidence.',
+    ok:'Xuất sắc! YET thể hiện nghịch lý tích cực: căng thẳng nhưng vẫn học được nhiều.',
+    no:'YET: [điều tiêu cực], yet [điều tích cực bất ngờ]. Ví dụ: "The work is exhausting, yet she enjoys the challenges it brings."'}
+ ],
+ insight:'YET giúp bạn nhìn nhận vấn đề từ hai phía. Trong IELTS Task 2, bạn có thể dùng YET để đồng ý một phần rồi đưa ra góc nhìn khác — thể hiện tư duy phân tích.'
+},
+
+{id:12,lv:'intermediate',topic:'City Life',
+ cA:'Sống ở thành phố lớn',cB:'Nhiều cơ hội / Chi phí sinh hoạt cao',lt:'contrast',
+ logicDot:'Môi trường sống → Lợi ích & Bất lợi',
+ prompt:'Viết 2 câu về cuộc sống đô thị. Câu 1: AND (hai lợi ích). Câu 2: BUT (nhiều cơ hội nhưng đắt đỏ).',
+ collocs:[
+   {ph:'find better jobs',vi:'tìm được việc làm tốt hơn'},
+   {ph:'cost of living is high',vi:'chi phí sinh hoạt cao'},
+   {ph:'have access to services',vi:'được tiếp cận các dịch vụ'},
+   {ph:'afford rent',vi:'đủ khả năng trả tiền thuê nhà'},
+   {ph:'enjoy cultural events',vi:'tận hưởng các sự kiện văn hóa'},
+   {ph:'deal with pollution',vi:'đối phó với ô nhiễm'},
+   {ph:'use public transport',vi:'sử dụng phương tiện công cộng'}
+ ],
+ slots:[
+   {lbl:'Style 1 — AND (liệt kê lợi ích)',hints:['AND'],ph:'Living in a big city gives you more job options, and ...',fb:'AND',
+    model:'Living in a big city gives you more job options, and it also provides easy access to schools, hospitals and entertainment.',
+    ok:'Hay! AND liệt kê hai lợi ích của việc sống ở thành phố một cách rõ ràng.',
+    no:'AND: [lợi ích 1], and [lợi ích 2]. Ví dụ: "The city has many job opportunities, and the public transport is very convenient."'},
+   {lbl:'Style 2 — BUT (tương phản chi phí)',hints:['BUT'],ph:'City life offers many opportunities, but ...',fb:'BUT',
+    model:'City life offers many opportunities, but the cost of living is very high and many people struggle to afford rent.',
+    ok:'Đúng! BUT thừa nhận lợi ích của thành phố nhưng chỉ ra vấn đề chi phí — lập luận cân bằng.',
+    no:'BUT: [lợi ích đô thị], but [vấn đề thực tế]. Ví dụ: "The city is exciting, but it can be very stressful and expensive to live in."'}
+ ],
+ insight:'AND + BUT là cặp kết hợp rất phổ biến trong IELTS Task 2: AND để nêu lợi ích, BUT để thừa nhận hạn chế. Bài viết dùng cả hai sẽ thể hiện tư duy cân bằng hơn.'
+},
+
+/* ─── NÂNG CAO 13-17 ─── */
+{id:13,lv:'advanced',topic:'Education',
+ cA:'Học trực tuyến (online)',cB:'Linh hoạt / Thiếu tương tác thực',lt:'contrast',
+ logicDot:'Phương pháp → Lợi ích & Hạn chế',
+ prompt:'Viết 3 câu về học online. Câu 1: AND (hai lợi ích). Câu 2: BUT (linh hoạt nhưng thiếu tương tác). Câu 3: SO (thiếu tương tác → khó duy trì động lực).',
+ collocs:[
+   {ph:'study at home',vi:'học ở nhà'},
+   {ph:'learn at your own pace',vi:'học theo tốc độ của mình'},
+   {ph:'lack face-to-face contact',vi:'thiếu giao tiếp trực tiếp'},
+   {ph:'feel isolated',vi:'cảm thấy bị cô lập'},
+   {ph:'access courses online',vi:'học các khóa học trực tuyến'},
+   {ph:'miss classroom discussions',vi:'bỏ lỡ các buổi thảo luận'},
+   {ph:'stay motivated',vi:'duy trì động lực'}
+ ],
+ slots:[
+   {lbl:'Style 1 — AND (hai lợi ích)',hints:['AND'],ph:'Online learning is flexible, and ...',fb:'AND',
+    model:'Online learning is flexible, and students can study at any time that suits their schedule.',
+    ok:'Hay! AND liệt kê hai lợi ích của học online: linh hoạt và chủ động về thời gian.',
+    no:'AND: [ưu điểm 1], and [ưu điểm 2]. Ví dụ: "It saves travel time, and it gives students access to a wide range of courses."'},
+   {lbl:'Style 2 — BUT (linh hoạt nhưng thiếu tương tác)',hints:['BUT'],ph:'Online courses offer a lot of freedom, but ...',fb:'BUT',
+    model:'Online courses offer a lot of freedom, but they lack the face-to-face interaction that helps students learn better.',
+    ok:'Đúng! BUT thừa nhận sự linh hoạt nhưng chỉ ra điều còn thiếu quan trọng.',
+    no:'BUT: [sự linh hoạt], but [điều còn thiếu]. Ví dụ: "It is convenient, but students may feel lonely without classmates around."'},
+   {lbl:'Style 3 — SO (thiếu tương tác → hậu quả)',hints:['SO'],ph:'Many online students feel isolated, so ...',fb:'SO',
+    model:'Many online students feel isolated, so they find it harder to stay motivated and complete their courses.',
+    ok:'Chính xác! SO thể hiện hệ quả: cô đơn, thiếu tương tác → khó duy trì động lực.',
+    no:'SO: [vấn đề của học online], so [hệ quả đối với học sinh]. Ví dụ: "Without a fixed timetable, students may fall behind, so many drop out early."'}
+ ],
+ insight:'Kết hợp AND + BUT + SO trong một bài cho thấy bạn có thể xem xét vấn đề từ nhiều góc độ — kỹ năng quan trọng được đánh giá cao trong IELTS Task 2.'
+},
+
+{id:14,lv:'advanced',topic:'Environment',
+ cA:'Nhiều xe hơi trên đường',cB:'Ô nhiễm + Tắc đường',lt:'cause',
+ logicDot:'Nguyên nhân → Nhiều hậu quả liên tiếp',
+ prompt:'Viết 3 câu về xe hơi và giao thông đô thị. Câu 1: SO (nhiều xe → ô nhiễm). Câu 2: AND (thêm hậu quả). Câu 3: OR (cảnh báo giải pháp).',
+ collocs:[
+   {ph:'drive to work',vi:'lái xe đi làm'},
+   {ph:'cause air pollution',vi:'gây ô nhiễm không khí'},
+   {ph:'increase traffic jams',vi:'làm tăng tắc đường'},
+   {ph:'use public transport',vi:'sử dụng phương tiện công cộng'},
+   {ph:'carbon emissions',vi:'khí thải carbon'},
+   {ph:'encourage cycling',vi:'khuyến khích đi xe đạp'},
+   {ph:'reduce car use',vi:'giảm việc sử dụng xe hơi'}
+ ],
+ slots:[
+   {lbl:'Style 1 — SO (ô nhiễm không khí)',hints:['SO'],ph:'Too many people drive cars in the city, so ...',fb:'SO',
+    model:'Too many people drive cars in the city, so air pollution has become a serious problem.',
+    ok:'Đúng! SO thể hiện hệ quả trực tiếp: nhiều xe hơi → ô nhiễm không khí.',
+    no:'SO: [thực trạng nhiều xe], so [hậu quả cho không khí]. Ví dụ: "Car use is rising every year, so the roads are often completely blocked."'},
+   {lbl:'Style 2 — AND (thêm hậu quả)',hints:['AND'],ph:'More cars cause pollution, and ...',fb:'AND',
+    model:'More cars cause pollution, and they also make traffic jams much worse in the city centre.',
+    ok:'Hay! AND bổ sung thêm hậu quả khác — câu trở nên đầy đủ và thuyết phục hơn.',
+    no:'AND: [hậu quả 1], and [hậu quả 2]. Ví dụ: "Cars produce a lot of carbon, and they also create a lot of noise in the streets."'},
+   {lbl:'Style 3 — OR (cảnh báo)',hints:['OR'],ph:'Cities must invest in better public transport, or ...',fb:'OR',
+    model:'Cities must invest in better public transport, or traffic and pollution will continue to get much worse.',
+    ok:'Tốt! OR cảnh báo: hành động ngay, hoặc vấn đề sẽ tiếp tục xấu hơn.',
+    no:'OR: [giải pháp cần thiết], or [hậu quả nếu không hành động]. Ví dụ: "People should use buses more, or the pollution problem will never be solved."'}
+ ],
+ insight:'SO + AND + OR tạo ra một đoạn phân tích hoàn chỉnh: SO nêu nguyên nhân, AND bổ sung hậu quả, OR đưa ra cảnh báo. Đây là mô hình lập luận rất thực dụng trong IELTS Task 2.'
+},
+
+{id:15,lv:'advanced',topic:'Technology',
+ cA:'AI / Tự động hóa',cB:'Năng suất tăng / Nguy cơ mất việc làm',lt:'contrast',
+ logicDot:'Công nghệ → Lợi ích & Rủi ro đối lập',
+ prompt:'Viết 3 câu về AI. Câu 1: AND (hai lợi ích). Câu 2: BUT (lợi ích nhưng có rủi ro). Câu 3: SO (rủi ro → chính phủ cần hành động).',
+ collocs:[
+   {ph:'perform tasks automatically',vi:'thực hiện nhiệm vụ tự động'},
+   {ph:'save time and money',vi:'tiết kiệm thời gian và tiền bạc'},
+   {ph:'take over jobs',vi:'thay thế công việc của người'},
+   {ph:'improve efficiency',vi:'cải thiện hiệu suất'},
+   {ph:'need to retrain workers',vi:'cần đào tạo lại người lao động'},
+   {ph:'create new types of jobs',vi:'tạo ra loại việc làm mới'},
+   {ph:'lose employment',vi:'mất việc làm'}
+ ],
+ slots:[
+   {lbl:'Style 1 — AND (hai lợi ích)',hints:['AND'],ph:'AI can perform many tasks faster than humans, and ...',fb:'AND',
+    model:'AI can perform many tasks faster than humans, and it can also work around the clock without needing a break.',
+    ok:'Hay! AND liệt kê hai lợi ích rõ ràng của AI — nhanh hơn và không cần nghỉ ngơi.',
+    no:'AND: [lợi ích AI 1], and [lợi ích AI 2]. Ví dụ: "AI reduces human errors, and it can process large amounts of data very quickly."'},
+   {lbl:'Style 2 — BUT (lợi ích nhưng có rủi ro)',hints:['BUT'],ph:'AI makes many jobs easier, but ...',fb:'BUT',
+    model:'AI makes many jobs easier, but it could also replace millions of workers in factories and offices.',
+    ok:'Đúng! BUT tạo tương phản: AI giúp ích nhưng đe dọa việc làm của nhiều người.',
+    no:'BUT: [điều AI làm tốt], but [rủi ro đối với lao động]. Ví dụ: "It improves efficiency, but many low-skilled workers may lose their jobs."'},
+   {lbl:'Style 3 — SO (rủi ro → cần hành động)',hints:['SO'],ph:'AI is replacing workers in many industries, so ...',fb:'SO',
+    model:'AI is replacing workers in many industries, so governments need to help people learn new skills for future jobs.',
+    ok:'Tốt! SO chỉ ra hệ quả xã hội: AI thay thế người → chính phủ cần có chính sách hỗ trợ.',
+    no:'SO: [xu hướng AI thay thế người], so [giải pháp hoặc hậu quả xã hội]. Ví dụ: "Many jobs are being automated, so the unemployment rate in some sectors is rising."'}
+ ],
+ insight:'AND + BUT + SO là bộ ba cực kỳ hữu ích trong IELTS Task 2 về công nghệ: liệt kê ưu điểm (AND), thừa nhận rủi ro (BUT), nêu hệ quả (SO). Hãy luyện tập bộ ba này thường xuyên.'
+},
+
+{id:16,lv:'advanced',topic:'Society',
+ cA:'Bất bình đẳng xã hội',cB:'Thiếu cơ hội học tập & Hỗ trợ',lt:'negation',
+ logicDot:'Bất công → Nhiều thứ đều không có',
+ prompt:'Viết 2 câu về bất bình đẳng. Câu 1: BUT (muốn học nhưng không có điều kiện). Câu 2: NOR (không có trường tốt VÀ cũng không có hỗ trợ).',
+ collocs:[
+   {ph:'have equal opportunities',vi:'có cơ hội bình đẳng'},
+   {ph:'afford education',vi:'đủ khả năng học tập'},
+   {ph:'access quality schools',vi:'tiếp cận trường học chất lượng'},
+   {ph:'receive government support',vi:'nhận được hỗ trợ của chính phủ'},
+   {ph:'break out of poverty',vi:'thoát khỏi nghèo đói'},
+   {ph:'face disadvantages',vi:'đối mặt với những bất lợi'},
+   {ph:'social inequality',vi:'bất bình đẳng xã hội'}
+ ],
+ slots:[
+   {lbl:'Style 1 — BUT (muốn nhưng không có điều kiện)',hints:['BUT'],ph:'Many poor children want to study, but ...',fb:'BUT',
+    model:'Many poor children want to study, but they cannot afford to attend good schools.',
+    ok:'Đúng! BUT thể hiện tương phản rõ: muốn học nhưng không có điều kiện — bất bình đẳng thực tế.',
+    no:'BUT: [mong muốn của người nghèo], but [rào cản thực tế]. Ví dụ: "These families work hard, but they still cannot access quality education."'},
+   {lbl:'Style 2 — NOR (phủ định kép)',hints:['NOR'],ph:'Poor children do not have access to good schools, nor ...',fb:'NOR',
+    model:'Poor children do not have access to good schools, nor do they receive enough support from the government.',
+    ok:'Xuất sắc! NOR phủ định cả hai: không có trường tốt VÀ cũng không có hỗ trợ. Nhớ đảo ngữ sau NOR.',
+    no:'NOR: "không có A, nor do/does they have B". Ví dụ: "They do not get quality education, nor do they have role models to guide them."'}
+ ],
+ insight:'NOR dùng để phủ định hai điều cùng lúc — mạnh hơn "and...not". Luôn đảo ngữ sau NOR: nor + trợ động từ + chủ ngữ. Cấu trúc này ít phổ biến nhưng rất ấn tượng trong IELTS.'
+},
+
+{id:17,lv:'advanced',topic:'Work & Career',
+ cA:'Làm thêm giờ',cB:'Kiếm nhiều tiền / Sức khỏe suy giảm',lt:'contrast',
+ logicDot:'Nỗ lực → Lợi ích ngắn hạn & Chi phí dài hạn',
+ prompt:'Viết 2 câu về làm thêm giờ. Câu 1: FOR (giải thích tại sao nhiều người chọn làm thêm). Câu 2: YET (làm nhiều nhưng ảnh hưởng đến sức khỏe).',
+ collocs:[
+   {ph:'work overtime',vi:'làm thêm giờ'},
+   {ph:'earn more money',vi:'kiếm nhiều tiền hơn'},
+   {ph:'affect health badly',vi:'ảnh hưởng xấu đến sức khỏe'},
+   {ph:'have no time to relax',vi:'không có thời gian nghỉ ngơi'},
+   {ph:'support their family',vi:'nuôi sống gia đình'},
+   {ph:'feel burned out',vi:'cảm thấy kiệt sức'},
+   {ph:'neglect personal life',vi:'bỏ bê cuộc sống cá nhân'}
+ ],
+ slots:[
+   {lbl:'Style 1 — FOR (giải thích lý do)',hints:['FOR'],ph:'Many workers choose to work overtime, for ...',fb:'FOR',
+    model:'Many workers choose to work overtime, for they need to earn more money to support their families.',
+    ok:'Tốt! FOR đặt quyết định trước, rồi FOR + lý do giải thích tại sao họ làm vậy.',
+    no:'FOR: [quyết định hoặc hành động], for [lý do đằng sau]. Ví dụ: "He stays at work until late, for his family depends on the extra income."'},
+   {lbl:'Style 2 — YET (mâu thuẫn)',hints:['YET'],ph:'Some employees work very long hours, yet ...',fb:'YET',
+    model:'Some employees work very long hours, yet this often leads to poor health and a lack of work-life balance.',
+    ok:'Hay! YET thể hiện nghịch lý: làm nhiều để kiếm tiền nhưng lại ảnh hưởng xấu đến chất lượng cuộc sống.',
+    no:'YET: [nỗ lực làm việc nhiều], yet [hậu quả tiêu cực bất ngờ]. Ví dụ: "They earn a good salary, yet they never have time to enjoy it."'}
+ ],
+ insight:'FOR giải thích lý do (lịch sự, trang trọng hơn BECAUSE). YET nhấn mạnh nghịch lý. Kết hợp FOR + YET trong cùng một đoạn giúp bài IELTS đa dạng và sâu sắc hơn.'
+},
+
+/* ─── INTENSIVE 18-20 ─── */
+{id:18,lv:'intensive',topic:'Society & Rights',
+ cA:'Quyền tự do cá nhân',cB:'Lợi ích và an toàn chung của cộng đồng',lt:'complex',
+ logicDot:'Căng thẳng cốt lõi → Nhiều cách nhìn',
+ prompt:'Viết 3 câu về tự do cá nhân và lợi ích xã hội. Câu 1: AND (liệt kê hai quyền quan trọng). Câu 2: BUT (quyền quan trọng nhưng có giới hạn). Câu 3: OR (cảnh báo hậu quả).',
+ collocs:[
+   {ph:'the right to free speech',vi:'quyền tự do ngôn luận'},
+   {ph:'protect the public',vi:'bảo vệ cộng đồng'},
+   {ph:'harm others',vi:'gây hại cho người khác'},
+   {ph:'respect the law',vi:'tôn trọng pháp luật'},
+   {ph:'limit individual freedom',vi:'hạn chế tự do cá nhân'},
+   {ph:'social responsibility',vi:'trách nhiệm xã hội'},
+   {ph:'maintain social order',vi:'duy trì trật tự xã hội'}
+ ],
+ slots:[
+   {lbl:'Style 1 — AND (liệt kê quyền)',hints:['AND'],ph:'People have the right to free speech, and ...',fb:'AND',
+    model:'People have the right to free speech, and they also have the right to live without fear of harm from others.',
+    ok:'Hay! AND liệt kê hai quyền cơ bản của con người một cách tự nhiên và mạch lạc.',
+    no:'AND: [quyền 1], and [quyền 2 cũng quan trọng]. Ví dụ: "People have freedom of expression, and they also deserve fair treatment under the law."'},
+   {lbl:'Style 2 — BUT (quyền nhưng có giới hạn)',hints:['BUT'],ph:'Individual freedom is very important, but ...',fb:'BUT',
+    model:'Individual freedom is very important, but it must not be used in ways that cause harm to other people.',
+    ok:'Đúng! BUT tạo sự cân bằng cần thiết: quyền cá nhân quan trọng nhưng phải đi kèm trách nhiệm.',
+    no:'BUT: [tầm quan trọng của tự do], but [giới hạn cần thiết]. Ví dụ: "We have the right to our opinions, but spreading hate should not be allowed."'},
+   {lbl:'Style 3 — OR (cảnh báo hậu quả)',hints:['OR'],ph:'Governments need to balance freedom with responsibility, or ...',fb:'OR',
+    model:'Governments need to balance freedom with responsibility, or social order will break down and people will suffer.',
+    ok:'Tốt! OR cảnh báo: phải tìm sự cân bằng, hoặc xã hội sẽ gặp hậu quả nghiêm trọng.',
+    no:'OR: [điều cần làm], or [hậu quả nếu không làm]. Ví dụ: "We must have clear rules, or the stronger will always take advantage of the weaker."'}
+ ],
+ insight:'AND + BUT + OR là bộ ba hoàn chỉnh cho IELTS Task 2 về quyền con người: liệt kê quyền (AND), đặt ra giới hạn (BUT), cảnh báo hậu quả (OR). Mô hình này áp dụng được cho nhiều chủ đề.'
+},
+
+{id:19,lv:'intensive',topic:'Economy & Culture',
+ cA:'Toàn cầu hóa',cB:'Phát triển kinh tế & Mất bản sắc văn hóa',lt:'complex',
+ logicDot:'Quá trình toàn cầu → Hai chiều đối lập',
+ prompt:'Viết 3 câu phân tích toàn cầu hóa. Câu 1: AND (hai lợi ích kinh tế). Câu 2: YET (kinh tế tốt nhưng văn hóa bị ảnh hưởng). Câu 3: FOR (giải thích tại sao văn hóa mất đi).',
+ collocs:[
+   {ph:'boost economic growth',vi:'thúc đẩy tăng trưởng kinh tế'},
+   {ph:'create more jobs',vi:'tạo thêm việc làm'},
+   {ph:'lose local culture',vi:'mất bản sắc văn hóa địa phương'},
+   {ph:'adopt foreign habits',vi:'tiếp nhận thói quen ngoại lai'},
+   {ph:'spread global brands',vi:'lan truyền các thương hiệu toàn cầu'},
+   {ph:'traditional lifestyle',vi:'lối sống truyền thống'},
+   {ph:'international trade',vi:'thương mại quốc tế'}
+ ],
+ slots:[
+   {lbl:'Style 1 — AND (lợi ích kinh tế)',hints:['AND'],ph:'Globalisation creates more jobs, and ...',fb:'AND',
+    model:'Globalisation creates more jobs, and it helps countries trade goods and services more easily.',
+    ok:'Tốt! AND liệt kê hai lợi ích kinh tế rõ ràng của toàn cầu hóa.',
+    no:'AND: [lợi ích 1], and [lợi ích 2]. Ví dụ: "It brings investment into developing countries, and it helps reduce poverty in some regions."'},
+   {lbl:'Style 2 — YET (nghịch lý văn hóa)',hints:['YET'],ph:'Globalisation has brought economic benefits to many countries, yet ...',fb:'YET',
+    model:'Globalisation has brought economic benefits to many countries, yet local cultures and traditions are gradually being lost.',
+    ok:'Xuất sắc! YET thể hiện nghịch lý: kinh tế phát triển nhưng văn hóa địa phương dần biến mất.',
+    no:'YET: [lợi ích kinh tế], yet [mặt tiêu cực văn hóa]. Ví dụ: "It creates wealth, yet many young people are losing touch with their own traditions."'},
+   {lbl:'Style 3 — FOR (giải thích lý do)',hints:['FOR'],ph:'Many traditional customs are disappearing, for ...',fb:'FOR',
+    model:'Many traditional customs are disappearing, for global brands and media are encouraging people to adopt similar lifestyles everywhere.',
+    ok:'Tuyệt! FOR giải thích nguyên nhân: đặt hiện tượng trước, FOR + lý do tại sao sau.',
+    no:'FOR: [điều đang xảy ra], for [lý do giải thích]. Ví dụ: "Young people prefer foreign fashion, for global media has a strong influence on them."'}
+ ],
+ insight:'AND + YET + FOR tạo bài phân tích đa chiều: liệt kê lợi ích, thừa nhận nghịch lý, giải thích nguyên nhân. Bạn không cần từ ngữ phức tạp — điều quan trọng là logic giữa các mệnh đề phải đúng.'
+},
+
+{id:20,lv:'intensive',topic:'Environment & Policy',
+ cA:'Không hành động về biến đổi khí hậu',cB:'Thiệt hại không thể phục hồi',lt:'complex',
+ logicDot:'Nguy cơ → Cần hành động khẩn cấp',
+ prompt:'Viết 3 câu về biến đổi khí hậu. Câu 1: SO (phát thải nhiều → nhiệt độ tăng). Câu 2: YET (bằng chứng rõ nhưng nhiều nước chậm hành động). Câu 3: OR (cảnh báo về hậu quả).',
+ collocs:[
+   {ph:'carbon emissions increase',vi:'khí thải carbon tăng'},
+   {ph:'global temperatures rise',vi:'nhiệt độ toàn cầu tăng'},
+   {ph:'take action',vi:'hành động'},
+   {ph:'extreme weather events',vi:'các hiện tượng thời tiết cực đoan'},
+   {ph:'protect the planet',vi:'bảo vệ hành tinh'},
+   {ph:'face serious consequences',vi:'đối mặt với hậu quả nghiêm trọng'},
+   {ph:'reduce greenhouse gases',vi:'giảm khí nhà kính'}
+ ],
+ slots:[
+   {lbl:'Style 1 — SO (nhân quả khoa học)',hints:['SO'],ph:'Carbon emissions have been rising for decades, so ...',fb:'SO',
+    model:'Carbon emissions have been rising for decades, so global temperatures are now higher than ever before.',
+    ok:'Đúng! SO thể hiện quan hệ nhân quả khoa học: phát thải tăng → nhiệt độ tăng.',
+    no:'SO: [thực trạng phát thải], so [hậu quả khí hậu]. Ví dụ: "Factories burn more fuel each year, so the air in many cities is getting harder to breathe."'},
+   {lbl:'Style 2 — YET (nghịch lý hành động)',hints:['YET'],ph:'The evidence for climate change is clear, yet ...',fb:'YET',
+    model:'The evidence for climate change is clear, yet many governments are still slow to take the necessary action.',
+    ok:'Hay! YET nhấn mạnh nghịch lý: bằng chứng đầy đủ nhưng chính phủ vẫn chậm hành động.',
+    no:'YET: [bằng chứng khoa học rõ ràng], yet [sự chậm trễ đáng lo ngại]. Ví dụ: "Scientists have warned about this for years, yet few major changes have been made."'},
+   {lbl:'Style 3 — OR (cảnh báo khẩn cấp)',hints:['OR'],ph:'Countries must reduce their emissions now, or ...',fb:'OR',
+    model:'Countries must reduce their emissions now, or the effects of climate change will become impossible to reverse.',
+    ok:'Xuất sắc! OR cảnh báo khẩn cấp: phải hành động ngay, hoặc hậu quả sẽ không thể đảo ngược.',
+    no:'OR: [hành động khẩn cấp cần làm], or [hậu quả thảm khốc]. Ví dụ: "We need to change our habits now, or future generations will face a very difficult world."'}
+ ],
+ insight:'SO + YET + OR là bộ ba lý tưởng cho IELTS Task 2 về môi trường: SO nêu hệ quả khoa học, YET chỉ ra nghịch lý chính sách, OR cảnh báo về tương lai. Logic rõ ràng quan trọng hơn từ ngữ phức tạp.'
+}
+
+]; /* end DATA */
+
+/* ══════════════════════════════════════
+   STATE
+══════════════════════════════════════ */
+var state = {};
+var curFilter = 'all';
+
+/* ══════════════════════════════════════
+   BUILD LOGIC ARROW
+══════════════════════════════════════ */
+function buildArrow(d) {
+  var lt = LT[d.lt] || LT.cause;
+  var arrHtml = '<div class="la-arr ' + lt.arr + '" style="background:currentColor"></div>';
+  return '<div class="logic-arrow ' + lt.cls + '">'
+    + '<div class="la-box a">' + esc(d.cA) + '</div>'
+    + '<div class="la-mid"><div class="la-logic-type">' + esc(lt.lbl) + '</div><div class="la-arrows">' + arrHtml + '</div></div>'
+    + '<div class="la-box b">' + esc(d.cB) + '</div>'
+  + '</div>';
+}
+
+/* ══════════════════════════════════════
+   BUILD COLLOC TABLE
+══════════════════════════════════════ */
+function buildColloc(collocs) {
+  var items = collocs.map(function(c) {
+    return '<div class="colloc-item"><div class="colloc-ph">' + esc(c.ph) + '</div><div class="colloc-vi">' + esc(c.vi) + '</div></div>';
+  }).join('');
+  return '<div class="colloc-wrap">'
+    + '<div class="colloc-hdr"><div class="colloc-hdr-icon">★</div><div class="colloc-hdr-title">Từ vựng &amp; Collocations</div></div>'
+    + '<div class="colloc-grid">' + items + '</div>'
+  + '</div>';
+}
+
+/* ══════════════════════════════════════
+   BUILD CARD
+══════════════════════════════════════ */
+function buildCard(d, delay) {
+  var slotsHtml = d.slots.map(function(s, si) {
+    var hints = s.hints.map(function(h) {
+      return '<span class="fbt fbt-' + h + '">' + h + '</span>';
+    }).join('');
+    return '<div class="slot" id="slot-' + d.id + '-' + si + '">'
+      + '<div class="slot-hdr"><span class="slot-label">' + esc(s.lbl) + '</span><span class="fb-tags">' + hints + '</span></div>'
+      + '<textarea class="slot-ta" id="ta-' + d.id + '-' + si + '" rows="2" placeholder="' + esc(s.ph) + '" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>'
+      + '<div class="slot-checking" id="ck-' + d.id + '-' + si + '"><div class="spin"></div>Đang kiểm tra...</div>'
+      + '<div class="slot-fb" id="fb-' + d.id + '-' + si + '"></div>'
+    + '</div>';
+  }).join('');
+
+  var el = document.createElement('div');
+  el.className = 'mcard';
+  el.id = 'mc-' + d.id;
+  el.style.animationDelay = delay + 'ms';
+  el.innerHTML =
+    '<div class="mcard-head">'
+      + '<div class="mcard-meta"><span class="q-num">#' + d.id + '</span>'
+      + '<span class="lv-badge ' + LV_CLS[d.lv] + '">' + LV_VI[d.lv] + '</span>'
+      + '<span class="topic-tag">' + esc(d.topic) + '</span></div>'
+      + buildArrow(d)
+      + '<div class="logic-dot-row"><div class="logic-dot"></div><div class="logic-dot-label">' + esc(d.logicDot) + '</div></div>'
+      + '<div class="prompt-text">' + esc(d.prompt) + '</div>'
+    + '</div>'
+    + '<div style="padding:0 20px">' + buildColloc(d.collocs) + '</div>'
+    + '<div class="slots-wrap">' + slotsHtml + '</div>'
+    + '<div class="card-summary" id="cs-' + d.id + '"></div>'
+    + '<div class="model-wrap" id="mw-' + d.id + '">'
+      + '<button class="model-tog" onclick="togModel(this)">Xem đáp án mẫu (Band 5.5–6.5) <span class="arr">▾</span></button>'
+      + '<div class="model-body" id="mb-' + d.id + '"></div>'
+    + '</div>'
+    + '<div class="card-actions">'
+      + '<button class="check-btn" id="cb-' + d.id + '" onclick="checkCard(' + d.id + ')">Kiểm tra</button>'
+      + '<button class="redo-btn" id="rb-' + d.id + '" onclick="redoCard(' + d.id + ')">↺ Làm lại</button>'
+    + '</div>';
+  return el;
+}
+
+/* ══════════════════════════════════════
+   API CHECKING
+══════════════════════════════════════ */
+function buildAPIPrompt(d, slot, value) {
+  return 'You are an IELTS writing teacher. Evaluate this student sentence:\n\n'
+    + 'Context: ' + d.cA + ' → ' + d.cB + '\n'
+    + 'Required conjunction: ' + slot.fb + '\n'
+    + 'Student wrote: "' + value + '"\n\n'
+    + 'Check ONLY these two things:\n'
+    + '1. Does the sentence contain "' + slot.fb + '" used as a coordinating conjunction?\n'
+    + '2. Does subject-verb agreement look correct?\n\n'
+    + 'Respond ONLY with this exact JSON (no markdown, no extra text):\n'
+    + '{"ok":true/false,"issue":"one short issue in Vietnamese if not ok, else empty string"}\n\n'
+    + 'Be lenient — accept any sentence that has the right conjunction and makes basic sense.';
+}
+
+function checkSlotAPI(d, slot, si, value, cb) {
+  var ckEl = document.getElementById('ck-' + d.id + '-' + si);
+  var slotEl = document.getElementById('slot-' + d.id + '-' + si);
+  if (ckEl) ckEl.classList.add('show');
+
+  fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 120,
+      messages: [{ role: 'user', content: buildAPIPrompt(d, slot, value) }]
+    })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (ckEl) ckEl.classList.remove('show');
+    var txt = '';
+    if (data.content && data.content[0] && data.content[0].text) {
+      txt = data.content[0].text.trim().replace(/^```json\s*/,'').replace(/```$/,'').trim();
+    }
+    var result;
+    try { result = JSON.parse(txt); } catch(e) { result = null; }
+    if (!result) {
+      var hasConj = new RegExp('\\b' + slot.fb + '\\b', 'i').test(value);
+      result = { ok: hasConj && value.trim().length > 10, issue: hasConj ? '' : 'Câu cần có từ nối ' + slot.fb + '.' };
+    }
+    cb(result);
+  })
+  .catch(function() {
+    if (ckEl) ckEl.classList.remove('show');
+    var hasConj = new RegExp('\\b' + slot.fb + '\\b', 'i').test(value);
+    cb({ ok: hasConj && value.trim().length > 10, issue: hasConj ? '' : 'Câu cần có từ nối ' + slot.fb + '.' });
+  });
+}
+
+/* ══════════════════════════════════════
+   CHECK CARD
+══════════════════════════════════════ */
+function checkCard(id) {
+  var d = findD(id);
+  if (!d || state[id]) return;
+  var cbBtn = document.getElementById('cb-' + id);
+  if (cbBtn) cbBtn.disabled = true;
+
+  // Validate all filled
+  var allOk = true;
+  d.slots.forEach(function(s, si) {
+    var ta = document.getElementById('ta-' + id + '-' + si);
+    if (!ta || ta.value.trim().length < 8) allOk = false;
+  });
+  if (!allOk) {
+    if (cbBtn) cbBtn.disabled = false;
+    d.slots.forEach(function(s, si) {
+      var ta = document.getElementById('ta-' + id + '-' + si);
+      var slotEl = document.getElementById('slot-' + id + '-' + si);
+      if (ta && ta.value.trim().length < 8 && slotEl) {
+        slotEl.style.outline = '2px solid ' + 'var(--amber-m)';
+        setTimeout(function() { slotEl.style.outline = ''; }, 1800);
+      }
+    });
+    return;
+  }
+
+  // Disable textareas
+  var vals = [];
+  d.slots.forEach(function(s, si) {
+    var ta = document.getElementById('ta-' + id + '-' + si);
+    vals.push(ta ? ta.value.trim() : '');
+    if (ta) ta.disabled = true;
+  });
+
+  // Check each slot via API
+  var results = new Array(d.slots.length);
+  var pending = d.slots.length;
+  d.slots.forEach(function(s, si) {
+    checkSlotAPI(d, s, si, vals[si], function(res) {
+      results[si] = res;
+      pending--;
+      if (pending === 0) finishCard(id, d, results);
+    });
+  });
+}
+
+function finishCard(id, d, results) {
+  var correct = 0;
+  d.slots.forEach(function(s, si) {
+    var res = results[si];
+    var slotEl = document.getElementById('slot-' + id + '-' + si);
+    var ok = res.ok;
+    if (ok) correct++;
+    if (slotEl) { slotEl.classList.remove('s-ok','s-no'); slotEl.classList.add(ok ? 's-ok' : 's-no'); }
+  });
+
+  // Render feedback per slot
+  d.slots.forEach(function(s, si) {
+    var res = results[si];
+    var fbEl = document.getElementById('fb-' + id + '-' + si);
+    var ok = res.ok;
+    var why = ok ? s.ok : (res.issue ? res.issue + ' ' + s.no : s.no);
+    var model = '<b>Đáp án mẫu:</b> ' + esc(s.model).replace(
+      new RegExp('\\b(' + s.hints.join('|') + ')\\b', 'gi'),
+      function(m) { return '<span class="mex-conj">' + m + '</span>'; }
+    );
+    if (fbEl) {
+      fbEl.innerHTML = '<div class="fb-hd">' + (ok ? '✓ Chấp nhận!' : '✗ Chưa đúng') + '</div>'
+        + '<div class="fb-why">' + why + '</div>'
+        + '<div class="fb-model">' + model + '</div>';
+      fbEl.className = 'slot-fb show ' + (ok ? 'ok' : 'no');
+    }
+  });
+
+  // State
+  state[id] = { done: true, correct: correct, total: d.slots.length };
+
+  // Summary
+  var cs = document.getElementById('cs-' + id);
+  var pct = Math.round(correct / d.slots.length * 100);
+  var cls = pct === 100 ? 'ok' : pct >= 50 ? 'partial' : 'no';
+  var icon = pct === 100 ? '✓' : pct >= 50 ? '~' : '✗';
+  if (cs) {
+    cs.innerHTML = '<div class="cs-hd"><span>' + icon + '</span> ' + correct + '/' + d.slots.length + ' slot được chấp nhận</div>'
+      + '<div class="cs-insight"><span class="cs-insight-lbl">Ghi nhớ sư phạm</span>' + esc(d.insight) + '</div>';
+    cs.className = 'card-summary show ' + cls;
+  }
+
+  // Model answers
+  var mb = document.getElementById('mb-' + id);
+  var mw = document.getElementById('mw-' + id);
+  if (mb) {
+    mb.innerHTML = d.slots.map(function(s) {
+      var highlighted = esc(s.model).replace(
+        new RegExp('\\b(' + s.hints.join('|') + ')\\b', 'gi'),
+        function(m) { return '<span class="mex-conj">' + m + '</span>'; }
+      );
+      return '<div class="model-ex"><span class="mex-style">' + esc(s.lbl) + '</span><span>' + highlighted + '</span></div>';
+    }).join('');
+  }
+  if (mw) mw.classList.add('show');
+
+  // Redo btn
+  var rb = document.getElementById('rb-' + id);
+  if (rb) rb.classList.add('show');
+
+  updateProgress();
+  if (correct > 0) {
+    var sp = document.getElementById('topScore');
+    sp.classList.remove('bump'); void sp.offsetWidth; sp.classList.add('bump');
+  }
+  checkDone();
+}
+
+/* ══════════════════════════════════════
+   MODEL TOGGLE
+══════════════════════════════════════ */
+function togModel(btn) { btn.classList.toggle('open'); }
+
+/* ══════════════════════════════════════
+   REDO
+══════════════════════════════════════ */
+function redoCard(id) {
+  delete state[id];
+  var d = findD(id);
+  if (!d) return;
+  var old = document.getElementById('mc-' + id);
+  if (!old) return;
+  old.parentNode.replaceChild(buildCard(d, 0), old);
+  updateProgress();
+}
+
+/* ══════════════════════════════════════
+   FILTER
+══════════════════════════════════════ */
+function doFilter(lv, btn) {
+  curFilter = lv;
+  document.querySelectorAll('.ftab').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+  render();
+}
+
+/* ══════════════════════════════════════
+   RENDER
+══════════════════════════════════════ */
+function render() {
+  var wrap = document.getElementById('mainWrap');
+  wrap.innerHTML = '';
+  ['basic','intermediate','advanced','intensive'].forEach(function(lv) {
+    if (curFilter !== 'all' && curFilter !== lv) return;
+    var items = DATA.filter(function(d) { return d.lv === lv; });
+    var sep = document.createElement('div');
+    sep.className = 'lv-sep';
+    sep.innerHTML = '<div class="lv-sep-line"></div><div class="lv-sep-label">' + LV_VI[lv] + '</div><div class="lv-sep-line"></div>';
+    wrap.appendChild(sep);
+    items.forEach(function(d, i) { wrap.appendChild(buildCard(d, i * 45)); });
+  });
+  updateProgress();
+}
+
+/* ══════════════════════════════════════
+   PROGRESS + DONE
+══════════════════════════════════════ */
+function updateProgress() {
+  var done = Object.keys(state).length;
+  var total = DATA.length;
+  var correct = Object.values(state).filter(function(s) { return s.correct === s.total; }).length;
+  document.getElementById('progFill').style.width = (done / total * 100) + '%';
+  document.getElementById('progLbl').textContent = done + ' / ' + total + ' bài đã nộp';
+  document.getElementById('topScore').textContent = correct + ' / ' + total;
+}
+
+function checkDone() {
+  var vis = curFilter === 'all' ? DATA : DATA.filter(function(d) { return d.lv === curFilter; });
+  if (!vis.every(function(d) { return !!state[d.id]; })) return;
+  var correct = Object.values(state).filter(function(s) { return s.correct === s.total; }).length;
+  var total = DATA.length;
+  var pct = Math.round(correct / total * 100);
+  document.getElementById('finalNum').textContent = correct;
+  document.getElementById('finalTitle').textContent = pct >= 85 ? 'Xuất sắc!' : pct >= 70 ? 'Rất tốt!' : pct >= 50 ? 'Khá ổn!' : 'Tiếp tục luyện tập!';
+  document.getElementById('finalSub').textContent = 'Bạn viết đúng hoàn toàn ' + correct + '/' + total + ' bài (' + pct + '%). '
+    + (pct >= 65 ? 'Khả năng sử dụng FANBOYS của bạn rất linh hoạt!' : 'Hãy xem lại phần "Ghi nhớ sư phạm" để nắm rõ hơn logic.');
+  var fw = document.getElementById('finalWrap');
+  fw.classList.add('show');
+  fw.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetAll() {
+  state = {};
+  document.getElementById('finalWrap').classList.remove('show');
+  render();
+}
+
+/* ══════════════════════════════════════
+   UTILS
+══════════════════════════════════════ */
+function findD(id) {
+  for (var i = 0; i < DATA.length; i++) { if (DATA[i].id === id) return DATA[i]; }
+  return null;
+}
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+render();
+</script>
+</body>
+</html>
