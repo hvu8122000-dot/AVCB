@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>6D The Travel Show — Speakout A1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f0eb;--surface:#faf8f4;--card:#fff;
+  --navy:#1a1a3e;--accent:#1a6bb5;--accent2:#2e85d4;--accent-pale:#e8f2fc;--accent-soft:#4a95d4;
+  --amber:#b45309;--amber-pale:#fef9e7;--green:#15803d;--green-pale:#dcfce7;
+  --red:#dc2626;--red-pale:#fee2e2;--teal:#0d7373;--teal-pale:#ccfbf1;
+  --blue:#1d4ed8;--blue-pale:#dbeafe;--purple:#6d28d9;--purple-pale:#ede9fe;
+  --rome:#8b4513;--rome-pale:#fdf4ec;
+  --text:#1a1a3e;--text-muted:#4a4a7a;--text-light:#8888b0;
+  --border:#d8d0e8;--border-strong:#b8b0d0;
+  --shadow:0 2px 14px rgba(26,26,62,.07);--shadow-md:0 4px 24px rgba(26,26,62,.11);--shadow-lg:0 10px 40px rgba(26,26,62,.15);
+  --radius:16px;--radius-sm:10px;--radius-xs:6px;--sidebar-w:244px;--topbar-h:56px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Lexend',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.65}
+.topbar{display:none;position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:var(--navy);z-index:400;align-items:center;padding:0 16px;gap:12px}
+.topbar-info{flex:1;min-width:0}
+.topbar-title{font-size:13.5px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar-sub{font-size:10px;color:rgba(255,255,255,.5);font-weight:300}
+.hamburger{width:44px;height:44px;min-width:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:350;opacity:0;transition:opacity .25s;pointer-events:none}
+.overlay.show{opacity:1;pointer-events:auto}
+.sidebar{width:var(--sidebar-w);min-height:100vh;background:var(--navy);position:fixed;top:0;left:0;padding:26px 0 24px;display:flex;flex-direction:column;z-index:200;overflow-y:auto;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.sidebar-logo{padding:0 20px 20px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:8px}
+.sidebar-logo .tag{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-soft);background:rgba(26,107,181,.25);padding:3px 9px;border-radius:20px;display:inline-block;margin-bottom:8px}
+.sidebar-logo h1{font-size:14px;font-weight:700;color:#fff;line-height:1.4}
+.sidebar-logo p{font-size:11px;color:rgba(255,255,255,.4);margin-top:3px;font-weight:300}
+.nav-section{font-size:8.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:14px 20px 5px}
+.nav-link{display:flex;align-items:center;gap:9px;padding:10px 14px;border-radius:10px;margin:2px 8px;font-size:12.5px;font-weight:400;color:rgba(255,255,255,.6);text-decoration:none;transition:all .18s;min-height:44px;cursor:pointer}
+.nav-link:active,.nav-link.active{background:rgba(26,107,181,.35);color:#fff;font-weight:500}
+.nav-icon{font-size:14px;width:18px;text-align:center;flex-shrink:0}
+.nav-badge{margin-left:auto;font-size:9px;font-weight:700;background:rgba(255,255,255,.15);color:rgba(255,255,255,.7);padding:2px 7px;border-radius:20px}
+.nav-link.active .nav-badge{background:var(--accent);color:#fff}
+.sidebar-footer{margin-top:auto;padding:14px 20px 0;border-top:1px solid rgba(255,255,255,.1);font-size:10px;color:rgba(255,255,255,.3);font-weight:300}
+.main{margin-left:var(--sidebar-w);padding:36px 48px 80px;max-width:960px}
+.page-header{margin-bottom:32px;padding:26px 30px;background:var(--navy);border-radius:16px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.page-header::before{content:'🏛️';position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:72px;opacity:.08;pointer-events:none}
+.ph-tags{display:flex;gap:7px;margin-bottom:10px;flex-wrap:wrap}
+.ph-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7)}
+.page-header h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:5px}
+.page-header p{font-size:12.5px;color:rgba(255,255,255,.55);font-weight:300;line-height:1.7;max-width:520px}
+.section{margin-bottom:52px;scroll-margin-top:26px}
+.section-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px}
+.section-num{width:34px;height:34px;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px}
+.section-title{font-size:18px;font-weight:700;color:var(--text)}
+.section-sub{font-size:12px;color:var(--text-muted);font-weight:300;margin-top:3px}
+.divider{border:none;border-top:1px solid var(--border);margin:32px 0}
+.reading-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 28px;box-shadow:var(--shadow);margin-bottom:20px}
+.reading-title{font-size:16px;font-weight:700;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.bbc-badge{font-size:9px;font-weight:900;background:#c00;color:#fff;padding:3px 8px;border-radius:4px;letter-spacing:.05em}
+.reading-body{font-size:13.5px;color:var(--text);line-height:1.85}
+.reading-body p{margin-bottom:12px}
+.ht{font-weight:700;color:var(--accent);background:rgba(26,107,181,.1);padding:0 3px;border-radius:3px}
+.tts-bar{display:flex;align-items:center;gap:10px;padding:10px 16px;margin-bottom:18px;background:var(--accent-pale);border:1px solid #a8c8e8;border-radius:10px;flex-wrap:wrap}
+.tts-bar label{font-size:11.5px;font-weight:500;color:var(--text-muted);white-space:nowrap}
+.tts-select{padding:6px 10px;border-radius:20px;flex:1;min-width:0;border:1.5px solid var(--border-strong);background:#fff;font-family:'Lexend',sans-serif;font-size:12px;color:var(--text);outline:none}
+.tts-rate-wrap{display:flex;align-items:center;gap:6px}
+.tts-rate{width:70px;accent-color:var(--accent);cursor:pointer}
+.tts-rate-val{font-size:11px;font-weight:700;color:var(--accent);min-width:32px}
+.tts-btn{display:inline-flex;align-items:center;justify-content:center;min-width:32px;min-height:32px;border-radius:50%;border:1.5px solid var(--border-strong);background:var(--accent-pale);color:var(--accent);font-size:13px;cursor:pointer;transition:all .18s;flex-shrink:0;padding:0}
+.tts-btn:active,.tts-btn.speaking{background:var(--accent);color:#fff;border-color:var(--accent);transform:scale(.93)}
+.tts-btn.speaking{animation:pulse-tts .7s infinite alternate}
+@keyframes pulse-tts{from{box-shadow:0 0 0 0 rgba(26,107,181,.5)}to{box-shadow:0 0 0 8px rgba(26,107,181,0)}}
+.lecture-card{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .22s}
+.lec-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;user-select:none;border-bottom:1px solid transparent;transition:border-color .2s;min-height:56px}
+.lecture-card.open .lec-header{border-color:var(--border)}
+.lec-header:active{background:var(--accent-pale)}
+.lec-left{display:flex;align-items:center;gap:12px}
+.lec-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.lec-title{font-size:14px;font-weight:600;color:var(--text)}
+.lec-sub{font-size:11px;color:var(--text-muted);font-weight:300;margin-top:2px}
+.lec-chevron{font-size:12px;color:var(--text-light);transition:transform .2s}
+.lecture-card.open .lec-chevron{transform:rotate(180deg)}
+.lec-body{display:none;padding:20px 22px}
+.lecture-card.open .lec-body{display:block}
+.def-box{background:var(--accent-pale);border-left:4px solid var(--accent);border-radius:0 6px 6px 0;padding:14px 16px;margin-bottom:14px}
+.def-box p{font-size:13px;line-height:1.7}
+.def-box .vi{font-size:12px;color:var(--text-muted);margin-top:5px;padding-top:5px;border-top:1px dashed var(--border);font-style:italic}
+.note-box{background:var(--amber-pale);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:12px 15px;margin:12px 0;font-size:12.5px;line-height:1.65}
+.note-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:5px}
+.pattern-table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:13px}
+.pattern-table th{background:var(--accent);color:#fff;padding:9px 14px;text-align:left;font-weight:600;font-size:11px;letter-spacing:.04em}
+.pattern-table td{padding:9px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+.kw{font-weight:700;color:var(--accent)}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:12px}
+.vocab-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;cursor:pointer;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:all .22s;user-select:none;-webkit-user-select:none}
+.vocab-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--teal));opacity:0;transition:opacity .2s}
+.vocab-card:active{transform:scale(.97)}
+.vocab-card.revealed::after{opacity:1}
+.vc-cat{font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;padding:2px 8px;border-radius:20px;display:inline-block}
+.cat-n{background:var(--blue-pale);color:var(--blue)}
+.cat-v{background:var(--green-pale);color:var(--green)}
+.cat-adj{background:var(--purple-pale);color:var(--purple)}
+.cat-phrase{background:var(--accent-pale);color:var(--accent)}
+.cat-place{background:var(--rome-pale);color:var(--rome)}
+.vc-ipa{font-size:15px;color:var(--amber);font-weight:500;margin-bottom:5px;letter-spacing:.02em;line-height:1.4}
+.vc-word{font-size:17px;font-weight:700;color:var(--text);display:none;margin-bottom:4px;align-items:center;gap:7px}
+.vocab-card.revealed .vc-word{display:flex}
+.vocab-card.revealed .vc-ipa{font-size:11px;color:var(--text-light);margin-bottom:3px}
+.vc-vi{font-size:12px;color:var(--text-muted);font-weight:300;margin-bottom:6px}
+.vc-example{font-size:11.5px;color:var(--text-light);font-style:italic;border-top:1px solid var(--border);padding-top:7px;margin-top:7px;line-height:1.5;display:none;gap:6px}
+.vocab-card.revealed .vc-example{display:flex;align-items:flex-start}
+.vc-hint{font-size:10px;color:var(--text-light);margin-top:5px}
+.vocab-card.revealed .vc-hint{display:none}
+.reveal-btn{padding:10px 18px;border-radius:24px;border:1.5px solid var(--border-strong);background:transparent;color:var(--text-muted);font-family:'Lexend',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .18s;margin-bottom:14px;min-height:44px;display:inline-block}
+.reveal-btn:active{background:var(--accent-pale);color:var(--accent)}
+.coll-grid{display:flex;flex-direction:column;gap:9px}
+.coll-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 17px;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:14px;transition:all .18s}
+.coll-card:active{background:var(--accent-pale)}
+.cc-left{flex:0 0 200px}
+.cc-phrase{font-size:13.5px;font-weight:600;color:var(--accent);margin-bottom:2px;display:flex;align-items:center;gap:7px}
+.cc-ipa{font-size:11px;color:var(--amber);font-weight:400}
+.cc-meaning{font-size:13px;color:var(--text);font-weight:400;margin-bottom:3px}
+.cc-example{font-size:12px;color:var(--text-muted);font-style:italic;display:flex;align-items:flex-start;gap:5px}
+.exercise-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;margin-bottom:14px;box-shadow:var(--shadow)}
+.exercise-card h4{font-size:12.5px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ex-badge{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:20px;background:var(--accent-pale);color:var(--accent)}
+.diff-b1{background:var(--green-pale);color:var(--green)}
+.diff-b2{background:var(--blue-pale);color:var(--blue)}
+.q-block{margin-bottom:18px}
+.q-text{font-size:13.5px;color:var(--text);margin-bottom:10px;line-height:1.65}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt-btn{width:100%;text-align:left;padding:10px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);font-family:'Lexend',sans-serif;font-size:13px;font-weight:400;color:var(--text);cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:10px;min-height:44px}
+.opt-btn::before{content:attr(data-letter);width:22px;height:22px;border-radius:50%;background:var(--border);color:var(--text-muted);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .18s}
+.opt-btn:active:not(:disabled){transform:scale(.97)}
+.opt-btn.correct{background:var(--green-pale);border-color:var(--green);color:var(--green)}
+.opt-btn.correct::before{background:var(--green);color:#fff}
+.opt-btn.wrong{background:var(--red-pale);border-color:var(--red);color:var(--red)}
+.opt-btn.wrong::before{background:var(--red);color:#fff}
+.opt-btn:disabled{cursor:default}
+.fib-sentence{font-size:14px;line-height:2.3;margin-bottom:10px}
+.fib-input{display:inline-block;border:none;border-bottom:2px solid var(--border-strong);background:transparent;font-family:'Lexend',sans-serif;font-size:14px;font-weight:600;color:var(--accent);min-width:70px;max-width:120px;padding:0 4px;outline:none;transition:border-color .2s}
+.fib-input:focus{border-color:var(--accent)}
+.fib-input.correct{border-color:var(--green);color:var(--green)}
+.fib-input.wrong{border-color:var(--red);color:var(--red)}
+.word-bank{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px;padding:12px 14px;background:var(--accent-pale);border-radius:10px}
+.wb-chip{padding:5px 13px;border-radius:20px;background:var(--card);border:1px solid var(--border-strong);font-size:12px;font-weight:600;color:var(--accent)}
+.build-prompt{font-size:13.5px;color:var(--text);line-height:1.65;margin-bottom:10px;padding:12px 16px;background:var(--amber-pale);border-radius:6px;border-left:3px solid var(--amber)}
+.build-input{width:100%;padding:11px 15px;border:1.5px solid var(--border-strong);border-radius:10px;background:var(--bg);font-family:'Lexend',sans-serif;font-size:max(16px,13.5px);color:var(--text);outline:none;transition:border-color .2s;margin-bottom:10px}
+.build-input:focus{border-color:var(--accent);background:var(--card)}
+.build-input.correct{border-color:var(--green);background:var(--green-pale)}
+.build-input.wrong{border-color:var(--red);background:var(--red-pale)}
+.check-btn{padding:11px 24px;border-radius:24px;border:none;background:var(--accent);color:#fff;font-family:'Lexend',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;min-height:46px}
+.check-btn:active{transform:scale(.96)}
+.sample-btn{padding:9px 18px;border-radius:24px;border:1.5px solid var(--border-strong);background:transparent;color:var(--text-muted);font-family:'Lexend',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .18s;min-height:42px}
+.sample-btn:active{background:var(--accent-pale);color:var(--accent)}
+.fb-msg{font-size:12px;margin-top:8px;font-weight:400;display:none;padding:8px 12px;border-radius:6px;line-height:1.5}
+.fb-msg.show{display:block}
+.fb-msg.ok{color:var(--green);background:var(--green-pale);border:1px solid #a3d9b8}
+.fb-msg.bad{color:var(--red);background:var(--red-pale);border:1px solid #f5b4b4}
+.sample-ans{font-size:13px;color:var(--blue);background:var(--blue-pale);border:1px solid #bfd5f7;border-radius:6px;padding:11px 15px;margin-top:8px;display:none;line-height:1.65}
+.sample-ans.show{display:block}
+.sa-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}
+.score-bar{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--accent-pale);border-radius:10px;margin-top:14px;font-size:13px;color:var(--text-muted)}
+.score-val{font-size:20px;font-weight:700;color:var(--accent)}
+.speak-intro{background:var(--navy);border-radius:16px;padding:18px 22px;margin-bottom:20px;display:flex;align-items:flex-start;gap:14px}
+.si-icon{font-size:26px;flex-shrink:0;margin-top:2px}
+.si-title{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:5px}
+.si-body{font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;font-weight:300}
+.si-badges{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.si-badge{font-size:9.5px;font-weight:600;padding:3px 9px;border-radius:20px}
+.sib-green{background:rgba(21,128,61,.25);color:#6ee7b7}
+.sib-amber{background:rgba(180,83,9,.2);color:#fcd34d}
+.sib-red{background:rgba(220,38,38,.2);color:#fca5a5}
+.browser-notice{background:var(--amber-pale);border:1px solid #fbbf24;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#92400e;margin-bottom:16px;display:none}
+.browser-notice.show{display:block}
+.progress-row{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);margin-bottom:20px;flex-wrap:wrap}
+.pr-label{font-size:11px;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.pr-bar{flex:1;min-width:80px;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pr-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--teal));border-radius:3px;width:0%;transition:width .5s ease}
+.pr-count{font-size:11px;font-weight:700;color:var(--accent);white-space:nowrap}
+.line-card{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:12px;overflow:hidden;box-shadow:var(--shadow);transition:border-color .2s}
+.line-card.recording{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.line-card.done-good{border-color:var(--green)}
+.line-card.done-ok{border-color:var(--amber)}
+.line-card.done-bad{border-color:var(--red)}
+.line-header{padding:14px 18px 10px}
+.lh-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.lh-num{font-size:9.5px;font-weight:700;color:var(--text-light);background:var(--bg);padding:2px 8px;border-radius:20px;border:1px solid var(--border)}
+.lh-sp{font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+.sp-bbc{background:#c00;color:#fff}
+.sp-narr{background:var(--accent-pale);color:var(--accent)}
+.sp-key{background:var(--purple-pale);color:var(--purple)}
+.line-text{font-size:14px;color:var(--text);line-height:1.8}
+.line-text .word{display:inline;padding:1px 2px;border-radius:3px;transition:background .2s,color .2s}
+.word.w-correct{background:var(--green-pale);color:var(--green)}
+.word.w-wrong{background:var(--red-pale);color:var(--red);text-decoration:underline dotted}
+.word.w-missed{background:var(--amber-pale);color:var(--amber)}
+.line-ipa{font-size:11.5px;color:var(--amber);margin-top:5px;font-style:italic}
+.line-controls{padding:10px 18px 12px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;border-top:1px solid var(--border)}
+.listen-btn{display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:24px;border:1.5px solid var(--border-strong);background:var(--bg);font-family:'Lexend',sans-serif;font-size:12.5px;font-weight:500;cursor:pointer;color:var(--text-muted);transition:all .18s;min-height:42px}
+.listen-btn:active,.listen-btn.speaking{background:var(--accent-pale);border-color:var(--accent);color:var(--accent)}
+.rec-btn{display:flex;align-items:center;gap:8px;padding:9px 18px;border-radius:24px;border:none;font-family:'Lexend',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;min-height:42px}
+.rec-btn-start{background:var(--accent);color:#fff}
+.rec-btn-start:active{transform:scale(.96)}
+.rec-btn-stop{background:var(--red);color:#fff;animation:rec-pulse 1.4s infinite}
+@keyframes rec-pulse{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.4)}50%{box-shadow:0 0 0 10px rgba(220,38,38,0)}}
+.rec-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.7);flex-shrink:0}
+.rec-btn-stop .rec-dot{background:#fff;animation:dot-blink .8s infinite alternate}
+@keyframes dot-blink{from{opacity:1}to{opacity:.25}}
+.score-display{display:none;margin-left:auto}
+.score-display.show{display:flex;align-items:center;gap:9px}
+.score-circle{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.score-circle svg{position:absolute;top:0;left:0;transform:rotate(-90deg)}
+.score-circle .val{position:relative;z-index:1;font-size:11px;font-weight:700}
+.sc-excellent{color:var(--green)}.sc-good{color:var(--teal)}.sc-ok{color:var(--amber)}.sc-poor{color:var(--red)}
+.score-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.score-sub{font-size:10px;color:var(--text-light);margin-top:1px}
+.result-bar{padding:9px 18px;border-top:1px solid var(--border);display:none;flex-wrap:wrap;gap:8px;align-items:center;background:var(--bg)}
+.result-bar.show{display:flex}
+.rb-label{font-size:10.5px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.rb-heard{font-size:12.5px;color:var(--text-muted);font-style:italic;flex:1;min-width:0;word-break:break-word}
+.rb-retry{padding:7px 14px;border-radius:20px;border:1.5px solid var(--border-strong);background:transparent;font-family:'Lexend',sans-serif;font-size:11.5px;font-weight:500;cursor:pointer;color:var(--text-muted);transition:all .18s;min-height:36px}
+.rb-retry:active{background:var(--accent-pale);color:var(--accent)}
+.skeleton{background:linear-gradient(90deg,#e0d8f0 25%,#ede8f5 50%,#e0d8f0 75%);background-size:200% 100%;animation:shimmer 1.3s infinite;border-radius:10px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-card{height:130px;margin-bottom:12px}
+.scroll-top{position:fixed;bottom:24px;right:22px;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:16px;cursor:pointer;box-shadow:0 4px 16px rgba(26,107,181,.4);transition:all .2s;opacity:0;pointer-events:none;z-index:300}
+.scroll-top.show{opacity:1;pointer-events:auto}
+.scroll-top:active{transform:scale(.92)}
+@media(max-width:860px){
+  .topbar{display:flex}.overlay{display:block}
+  .sidebar{transform:translateX(-110%);z-index:400}
+  .sidebar.open{transform:translateX(0);box-shadow:6px 0 30px rgba(0,0,0,.25)}
+  .main{margin-left:0;padding:calc(var(--topbar-h) + 18px) 16px 80px}
+  .page-header{padding:18px}.page-header h2{font-size:18px}
+  .vocab-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .coll-card{flex-direction:column;gap:6px}.cc-left{flex:unset}
+}
+@media(max-width:460px){.vocab-grid{grid-template-columns:1fr}.section-title{font-size:16px}.line-text{font-size:13px}}
+</style>
+</head>
+<body>
+<div class="topbar" id="topbar">
+  <button class="hamburger" id="hamburger" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+  <div class="topbar-info">
+    <div class="topbar-title">6D The Travel Show — BBC Rome</div>
+    <div class="topbar-sub">Grammar: the · Speaking · Writing</div>
+  </div>
+</div>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="tag">Unit 6D · Speakout A1</div>
+    <h1>The Travel Show</h1>
+    <p>BBC Entertainment · Rome</p>
+  </div>
+  <nav>
+    <div class="nav-section">Bài đọc & Giảng</div>
+    <a class="nav-link active" href="#reading" onclick="navClick(this)"><span class="nav-icon">📰</span> BBC Transcript<span class="nav-badge">Text</span></a>
+    <a class="nav-link" href="#lecture" onclick="navClick(this)"><span class="nav-icon">📖</span> Grammar: the<span class="nav-badge">L</span></a>
+    <div class="nav-section">Vocabulary</div>
+    <a class="nav-link" href="#lexis" onclick="navClick(this)"><span class="nav-icon">🗂</span> Lexis & IPA<span class="nav-badge">18</span></a>
+    <a class="nav-link" href="#collocations" onclick="navClick(this)"><span class="nav-icon">🔗</span> Collocations<span class="nav-badge">10</span></a>
+    <div class="nav-section">Grammar Practice</div>
+    <a class="nav-link" href="#ex-mcq" onclick="navClick(this)"><span class="nav-icon">✅</span> a / an / the?<span class="nav-badge">15</span></a>
+    <a class="nav-link" href="#ex-fib" onclick="navClick(this)"><span class="nav-icon">✏️</span> Fill in blanks<span class="nav-badge">15</span></a>
+    <a class="nav-link" href="#ex-build" onclick="navClick(this)"><span class="nav-icon">🔨</span> Correct errors<span class="nav-badge">15</span></a>
+    <div class="nav-section">Speaking</div>
+    <a class="nav-link" href="#speaking" onclick="navClick(this)"><span class="nav-icon">🎙</span> Speaking Practice<span class="nav-badge">12</span></a>
+  </nav>
+  <div class="sidebar-footer">Speakout 3rd A1 · Unit 6D</div>
+</aside>
+<main class="main">
+  <div class="page-header">
+    <div class="ph-tags"><span class="ph-tag">🏛️ BBC Rome</span><span class="ph-tag">A1 Level</span><span class="ph-tag">Unit 6D</span></div>
+    <h2>6D — The Travel Show</h2>
+    <p>BBC presenter Ade Adepitan has six hours to see Rome by bus. Học từ vựng du lịch, cấu trúc mạo từ <em>the</em> và luyện nói về tour thành phố.</p>
+  </div>
+  <section class="section" id="reading">
+    <div class="section-header">
+      <div class="section-num" style="background:#c00;box-shadow:0 4px 12px rgba(192,0,0,.3);font-size:11px">BBC</div>
+      <div><div class="section-title">BBC Transcript — The Travel Show</div><div class="section-sub">Đọc và nghe toàn bộ transcript · Chú ý các từ <span style="color:var(--accent);font-weight:600">the</span> màu xanh</div></div>
+    </div>
+    <div class="tts-bar">
+      <span>🔊</span><label>Giọng:</label>
+      <select class="tts-select" id="voice-select"><option>Đang tải…</option></select>
+      <label>Tốc độ:</label>
+      <div class="tts-rate-wrap">
+        <input type="range" class="tts-rate" id="tts-rate" min="0.5" max="1.5" step="0.1" value="0.85" oninput="document.getElementById('tts-rate-val').textContent=parseFloat(this.value).toFixed(1)+'×'">
+        <span class="tts-rate-val" id="tts-rate-val">0.85×</span>
+      </div>
+    </div>
+    <div class="reading-card">
+      <div class="reading-title"><span class="bbc-badge">BBC</span>The Travel Show — Rome in Six Hours<button class="tts-btn" style="min-width:34px;min-height:34px;font-size:15px" id="read-all-btn" onclick="speakFullText(this)">🔊</button></div>
+      <div class="reading-body" id="reading-body"></div>
+    </div>
+  </section>
+  <hr class="divider">
+  <section class="section" id="lecture">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--accent);box-shadow:0 4px 12px rgba(26,107,181,.3)">L</div>
+      <div><div class="section-title">Grammar: The Definite Article <em>the</em></div><div class="section-sub">Khi nào dùng the · Phân biệt a/an và the</div></div>
+    </div>
+    <div class="lecture-card open" id="lc1">
+      <div class="lec-header" onclick="toggleLec('lc1')">
+        <div class="lec-left"><div class="lec-icon" style="background:var(--accent-pale)">📌</div><div><div class="lec-title">Khi nào dùng <em>the</em>?</div><div class="lec-sub">Unique · In a place · Dates · Times · Countries</div></div></div>
+        <span class="lec-chevron">▼</span>
+      </div>
+      <div class="lec-body">
+        <div class="def-box"><p>We use <strong>the</strong> when there is only <strong>ONE</strong> thing — everyone knows which one we mean.</p><div class="vi">Dùng <strong>the</strong> khi chỉ có MỘT thứ đó, hoặc người nghe biết chính xác ta đang nói về thứ gì.</div></div>
+        <table class="pattern-table">
+          <thead><tr><th>Trường hợp</th><th>Ví dụ</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Unique (duy nhất trên TG)</strong></td><td><span class="kw">the</span> Colosseum · <span class="kw">the</span> Eiffel Tower · <span class="kw">the</span> President of France</td></tr>
+            <tr><td><strong>In a place (chỉ có 1 trong nơi đó)</strong></td><td><span class="kw">the</span> entrance · <span class="kw">the</span> exit · <span class="kw">the</span> lift · <span class="kw">the</span> airport</td></tr>
+            <tr><td><strong>Dates (ngày tháng)</strong></td><td><span class="kw">the</span> first of June · <span class="kw">the</span> tenth of December</td></tr>
+            <tr><td><strong>Times of day (buổi)</strong></td><td>in <span class="kw">the</span> morning · in <span class="kw">the</span> afternoon · in <span class="kw">the</span> evening</td></tr>
+            <tr><td><strong>Some countries</strong></td><td><span class="kw">the</span> UK · <span class="kw">the</span> USA · <span class="kw">the</span> Netherlands</td></tr>
+            <tr><td><strong>Prepositions (vị trí)</strong></td><td>on <span class="kw">the</span> left · to <span class="kw">the</span> right of <span class="kw">the</span> cinema</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box"><div class="note-label">⚡ a/an vs the</div><strong>a / an</strong> = lần đầu đề cập / 1 trong nhiều → <em>He gets the help of <strong>a</strong> local tour guide.</em><br><strong>the</strong> = đã biết / chỉ có 1 → <em>His first stop is <strong>the</strong> Circus Maximus.</em></div>
+      </div>
+    </div>
+    <div class="lecture-card" id="lc2">
+      <div class="lec-header" onclick="toggleLec('lc2')">
+        <div class="lec-left"><div class="lec-icon" style="background:var(--rome-pale)">🏛️</div><div><div class="lec-title">Tourist Attractions in Rome</div><div class="lec-sub">Circus Maximus · Palatine Hill · Mouth of Truth · Trevi Fountain · Colosseum</div></div></div>
+        <span class="lec-chevron">▼</span>
+      </div>
+      <div class="lec-body">
+        <table class="pattern-table">
+          <thead><tr><th>Địa điểm</th><th>Mô tả</th></tr></thead>
+          <tbody>
+            <tr><td><strong>the Circus Maximus</strong></td><td>Ancient sports stadium for chariot races. Now a park.</td></tr>
+            <tr><td><strong>the Palatine Hill</strong></td><td>Ancient palaces and gardens. Nearly 3,000 years old.</td></tr>
+            <tr><td><strong>the Mouth of Truth</strong></td><td>Mysterious. People say it eats the hand of someone who doesn't tell the truth.</td></tr>
+            <tr><td><strong>the Trevi Fountain</strong></td><td>Many tourists' favourite. People throw ~3,000 euros in it every day.</td></tr>
+            <tr><td><strong>the Colosseum</strong></td><td>Ade's last stop. Just time for a photo!</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <hr class="divider">
+  <section class="section" id="lexis">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--teal);box-shadow:0 4px 12px rgba(13,115,115,.3)">2</div>
+      <div><div class="section-title">Lexis — IPA (American)</div><div class="section-sub">Từ vựng từ BBC transcript · Nhấn card để reveal</div></div>
+    </div>
+    <button class="reveal-btn" onclick="revealAll()">👁 Hiện tất cả spelling</button>
+    <div class="vocab-grid" id="vocab-grid"></div>
+  </section>
+  <hr class="divider">
+  <section class="section" id="collocations">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--amber);box-shadow:0 4px 12px rgba(180,83,9,.3)">3</div>
+      <div><div class="section-title">Collocations & Key Phrases</div><div class="section-sub">Cụm từ thường dùng khi nói về tour thành phố</div></div>
+    </div>
+    <div class="coll-grid" id="coll-grid"></div>
+  </section>
+  <hr class="divider">
+  <section class="section" id="ex-mcq">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--blue);box-shadow:0 4px 12px rgba(29,78,216,.3)">4</div>
+      <div><div class="section-title">Grammar Practice — a / an / the</div><div class="section-sub">15 câu mỗi bài tập · Từ B1 đến B2</div></div>
+    </div>
+    <div class="exercise-card" style="margin-bottom:20px">
+      <h4>Choose: a / an / the / — (no article) <span class="ex-badge">15 câu</span> <span class="ex-badge diff-b1">B1</span></h4>
+      <div id="mcq-container"></div>
+      <div class="score-bar" id="mcq-score" style="display:none">🎯 <span class="score-val" id="mcq-score-val">—</span></div>
+    </div>
+    <section class="section" id="ex-fib" style="margin-bottom:24px">
+      <div class="section-header" style="margin-bottom:12px">
+        <div class="section-num" style="background:var(--green);width:28px;height:28px;font-size:12px">4b</div>
+        <div><div class="section-title" style="font-size:15px">Fill in: a, an, or the</div></div>
+      </div>
+      <div class="exercise-card">
+        <h4>Điền mạo từ <span class="ex-badge">15 câu</span></h4>
+        <div class="word-bank"><span class="wb-chip">a</span><span class="wb-chip">an</span><span class="wb-chip">the</span><span class="wb-chip">— (no article)</span></div>
+        <div id="fib-container"></div>
+        <button class="check-btn" onclick="checkFib()">Kiểm tra tất cả</button>
+        <div class="score-bar" id="fib-score" style="display:none">🎯 <span class="score-val" id="fib-score-val">—</span></div>
+      </div>
+    </section>
+    <section class="section" id="ex-build" style="margin-bottom:24px">
+      <div class="section-header" style="margin-bottom:12px">
+        <div class="section-num" style="background:var(--rome);width:28px;height:28px;font-size:12px">4c</div>
+        <div><div class="section-title" style="font-size:15px">Correct the article error</div></div>
+      </div>
+      <div class="exercise-card">
+        <h4>Sửa lỗi mạo từ <span class="ex-badge">15 câu</span> <span class="ex-badge diff-b2">B2</span></h4>
+        <div id="build-container"></div>
+      </div>
+    </section>
+  </section>
+  <hr class="divider">
+  <section class="section" id="speaking">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--red);box-shadow:0 4px 12px rgba(220,38,38,.3)">5</div>
+      <div><div class="section-title">Speaking Practice</div><div class="section-sub">Câu từ transcript & Key Phrases · Nhấn 👂 nghe → 🎙 ghi âm</div></div>
+    </div>
+    <div class="speak-intro">
+      <div class="si-icon">🎙</div>
+      <div>
+        <div class="si-title">Luyện nói — The Travel Show & City Tour Phrases</div>
+        <div class="si-body">Nhấn <strong>👂 Nghe mẫu</strong> → <strong>🎙 Ghi âm</strong>. Dùng <strong>Chrome</strong> hoặc <strong>Safari iOS 14.5+</strong>.</div>
+        <div class="si-badges"><span class="si-badge sib-green">✓ Xanh: Đúng</span><span class="si-badge sib-amber">~ Vàng: Gần đúng</span><span class="si-badge sib-red">✗ Đỏ: Sai</span></div>
+      </div>
+    </div>
+    <div class="browser-notice" id="browser-notice">⚠️ Dùng <strong>Chrome</strong> hoặc <strong>Safari iOS 14.5+</strong>.</div>
+    <div class="progress-row">
+      <span class="pr-label">Tiến độ</span>
+      <div class="pr-bar"><div class="pr-fill" id="speak-progress"></div></div>
+      <span class="pr-count"><span id="done-count">0</span>/12 lines</span>
+    </div>
+    <div id="lines-container"></div>
+  </section>
+</main>
+<button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+const fullText="BBC presenter Ade Adepitan is at Rome Airport. But he has a problem his plane is late. Six hours late. So, he has six hours to see Rome. Where can he go? Ade gets the help of a local tour guide, Esther Maurini. He has big plans for his visit! Ade wants to see the Colosseum, the Circus Maximus, the Palatine Hill, the Mouth of Truth, and the Trevi Fountain. Everything in six hours and everything by bus! It isn't easy. His first stop is the Circus Maximus. It's an ancient sports stadium. A place for over 250,000 people to watch chariot races. It's now a park. Near the Circus Maximus is the Palatine Hill. Here you can see parts of ancient palaces and gardens. Some are nearly 3,000 years old, from the start of the city of Rome. Ade's next stop is the Mouth of Truth. People say that the mouth eats the hand of a person that doesn't speak the truth. Next, Ade visits the Trevi Fountain. The Trevi Fountain is many tourists' favourite place. It's very beautiful. And people throw money in the fountain about 3,000 euros every day. And finally, Ade's last stop the Colosseum. There's just time for a photo. Then it's back to the airport.";
+const readingParas=[
+  "BBC presenter Ade Adepitan is at Rome Airport. But he has a problem — his plane is late. Six hours late. So, he has six hours to see Rome. Where can he go?",
+  "Ade gets <span class='ht'>the</span> help of <span class='ht'>a</span> local tour guide, Esther Maurini. He has big plans for his visit! Ade wants to see <span class='ht'>the</span> Colosseum, <span class='ht'>the</span> Circus Maximus, <span class='ht'>the</span> Palatine Hill, <span class='ht'>the</span> Mouth of Truth, and <span class='ht'>the</span> Trevi Fountain. Everything in six hours and everything by bus! It isn't easy.",
+  "His first stop is <span class='ht'>the</span> Circus Maximus. It's <span class='ht'>an</span> ancient sports stadium. <span class='ht'>A</span> place for over 250,000 people to watch chariot races. It's now <span class='ht'>a</span> park. There aren't any chariot races today, but sometimes they have music concerts here.",
+  "Near <span class='ht'>the</span> Circus Maximus is <span class='ht'>the</span> Palatine Hill. Here you can see parts of ancient palaces and gardens. Some are nearly 3,000 years old, from <span class='ht'>the</span> start of <span class='ht'>the</span> city of Rome.",
+  "Ade's next stop is <span class='ht'>the</span> Mouth of Truth. So what is <span class='ht'>the</span> Mouth of Truth? Nobody knows. People say that <span class='ht'>the</span> mouth eats <span class='ht'>the</span> hand of <span class='ht'>a</span> person that doesn't speak <span class='ht'>the</span> truth.",
+  "Next, Ade visits <span class='ht'>the</span> Trevi Fountain. <span class='ht'>The</span> Trevi Fountain is many tourists' favourite place. It's very beautiful. And people throw money in <span class='ht'>the</span> fountain — about 3,000 euros every day. That's over one million euros <span class='ht'>a</span> year!",
+  "And finally, Ade's last stop — <span class='ht'>the</span> Colosseum. There's just time for <span class='ht'>a</span> photo. Then it's back to <span class='ht'>the</span> airport. And Ade has time to get there and catch his plane!"
+];
+const vocabData=[
+  {cat:'n',ipa:"/ ˈprez.ən.tər /",word:"presenter",vi:"người dẫn chương trình",example:"BBC presenter Ade Adepitan is at Rome Airport."},
+  {cat:'n',ipa:"/ ˈtʊər ɡaɪd /",word:"tour guide",vi:"hướng dẫn viên du lịch",example:"Ade gets the help of a local tour guide."},
+  {cat:'n',ipa:"/ ˌtʊr.ɪst ˌæt.rækˈʃən /",word:"tourist attraction",vi:"điểm thu hút du khách",example:"Rome has many tourist attractions."},
+  {cat:'n',ipa:"/ ˈsteɪ.di.əm /",word:"stadium",vi:"sân vận động",example:"It's an ancient sports stadium."},
+  {cat:'n',ipa:"/ ˈʃær.i.ɪt /",word:"chariot",vi:"xe ngựa cổ đại",example:"A place for 250,000 people to watch chariot races."},
+  {cat:'n',ipa:"/ ˈpæl.ɪs /",word:"palace",vi:"cung điện",example:"Here you can see parts of ancient palaces."},
+  {cat:'n',ipa:"/ ˈfaʊn.tən /",word:"fountain",vi:"đài phun nước",example:"People throw money in the fountain."},
+  {cat:'adj',ipa:"/ ˈeɪn.ʃənt /",word:"ancient",vi:"cổ đại, xưa",example:"It's an ancient sports stadium."},
+  {cat:'adj',ipa:"/ ˈloʊ.kəl /",word:"local",vi:"địa phương",example:"Ade gets the help of a local tour guide."},
+  {cat:'v',ipa:"/ θroʊ /",word:"throw",vi:"ném, quăng",example:"People throw money in the fountain."},
+  {cat:'phrase',ipa:"/ fɜːrst stɑːp /",word:"first stop",vi:"điểm dừng đầu tiên",example:"His first stop is the Circus Maximus."},
+  {cat:'phrase',ipa:"/ kætʃ ɪz pleɪn /",word:"catch his plane",vi:"kịp chuyến bay",example:"Ade has time to catch his plane!"},
+  {cat:'place',ipa:"/ sɜːrkəs mæk.sɪ.məs /",word:"the Circus Maximus",vi:"Đấu trường Circus Maximus",example:"His first stop is the Circus Maximus."},
+  {cat:'place',ipa:"/ trevi ˈfaʊn.tən /",word:"the Trevi Fountain",vi:"Đài phun nước Trevi",example:"The Trevi Fountain is many tourists' favourite place."},
+  {cat:'place',ipa:"/ kəˈlɒs.i.əm /",word:"the Colosseum",vi:"Đấu trường Colosseum",example:"Ade's last stop — the Colosseum."},
+  {cat:'place',ipa:"/ pæl.ə.taɪn hɪl /",word:"the Palatine Hill",vi:"Đồi Palatine",example:"Near the Circus Maximus is the Palatine Hill."},
+  {cat:'n',ipa:"/ ˌɑːtˈræk.ʃən /",word:"attraction",vi:"điểm tham quan",example:"Rome has many tourist attractions."},
+  {cat:'n',ipa:"/ ˈkɒn.sɜːrt /",word:"concert",vi:"buổi hòa nhạc",example:"Sometimes they have music concerts here."}
+];
+const catMap={n:'cat-n',v:'cat-v',adj:'cat-adj',phrase:'cat-phrase',place:'cat-place'};
+const catLabel={n:'Noun',v:'Verb',adj:'Adjective',phrase:'Key Phrase',place:'Place'};
+const collData=[
+  {phrase:"first / second stop",ipa:"/ fɜːrst stɑːp /",meaning:"điểm dừng đầu tiên / thứ hai",example:"Your first stop is the Eiffel Tower."},
+  {phrase:"throw money in it",ipa:"/ θroʊ mʌni ɪn ɪt /",meaning:"ném tiền vào đài phun nước",example:"People throw money in it every day."},
+  {phrase:"catch his plane",ipa:"/ kætʃ ɪz pleɪn /",meaning:"kịp chuyến bay",example:"Ade has time to catch his plane."},
+  {phrase:"tourist attraction",ipa:"/ ˈtʊər.ɪst əˌtræk.ʃən /",meaning:"điểm thu hút khách du lịch",example:"Rome has many tourist attractions."},
+  {phrase:"go by bus",ipa:"/ ɡoʊ baɪ bʌs /",meaning:"đi bằng xe buýt",example:"Everything in six hours and everything by bus!"},
+  {phrase:"take some great photos",ipa:"/ teɪk sʌm ɡreɪt foʊ.toʊz /",meaning:"chụp những bức ảnh đẹp",example:"You can take some great photos."},
+  {phrase:"Our first stop is …",ipa:"/ ɑːr fɜːrst stɑːp ɪz /",meaning:"Điểm đầu tiên của chúng ta là …",example:"Our first stop is the Musee d'Orsay."},
+  {phrase:"Finally, we come back",ipa:"/ faɪ.nəl.i wiː kʌm bæk /",meaning:"Cuối cùng, chúng ta quay trở lại",example:"Finally, we come back to our starting point."},
+  {phrase:"in the morning / afternoon",ipa:"/ ɪn ðə mɔːr.nɪŋ /",meaning:"vào buổi sáng / chiều / tối",example:"I start work at 8.00 in the morning."},
+  {phrase:"It's a good idea to …",ipa:"/ ɪts ə ɡʊd aɪˈdi.ə tuː /",meaning:"Thật là ý hay nếu …",example:"I think it's a good idea to buy a bus ticket."}
+];
+const mcqData=[
+  {q:"BBC presenter Ade Adepitan is at ___ Rome Airport.",opts:["a","an","the","— (no article)"],ans:"— (no article)",exp:"Tên riêng 'Rome Airport' không cần mạo từ."},
+  {q:"He gets the help of ___ local tour guide.",opts:["a","an","the","— (no article)"],ans:"a",exp:"'a local tour guide' — lần đầu đề cập, 1 trong nhiều → 'a'."},
+  {q:"His first stop is ___ Circus Maximus.",opts:["a","an","the","— (no article)"],ans:"the",exp:"'the Circus Maximus' — địa điểm duy nhất trên thế giới → 'the'."},
+  {q:"It's ___ ancient sports stadium.",opts:["a","an","the","— (no article)"],ans:"an",exp:"'an ancient' — 'ancient' bắt đầu bằng nguyên âm /eɪ/ → 'an'."},
+  {q:"There's just time for ___ photo.",opts:["a","an","the","— (no article)"],ans:"a",exp:"'a photo' — lần đầu đề cập → 'a'."},
+  {q:"Then it's back to ___ airport.",opts:["a","an","the","— (no article)"],ans:"the",exp:"'the airport' — đã biết sân bay nào (Rome Airport từ đầu bài) → 'the'."},
+  {q:"I start work at 8.00 in ___ morning.",opts:["a","an","the","— (no article)"],ans:"the",exp:"Buổi trong ngày: in the morning → luôn dùng 'the'."},
+  {q:"Where is ___ Eiffel Tower?",opts:["a","an","the","— (no article)"],ans:"the",exp:"'the Eiffel Tower' — địa điểm duy nhất nổi tiếng → 'the'."},
+  {q:"She's from ___ UK.",opts:["a","an","the","— (no article)"],ans:"the",exp:"Một số quốc gia dùng 'the': the UK, the USA."},
+  {q:"It's on ___ first of June.",opts:["a","an","the","— (no article)"],ans:"the",exp:"Ngày tháng: the first of June → luôn dùng 'the'."},
+  {q:"It's to ___ right of the cinema.",opts:["a","an","the","— (no article)"],ans:"the",exp:"Vị trí: on the left / to the right → luôn có 'the'."},
+  {q:"He's ___ actor.",opts:["a","an","the","— (no article)"],ans:"an",exp:"'an actor' — nghề nghiệp + nguyên âm /æ/ → 'an'."},
+  {q:"Can I have ___ banana, please?",opts:["a","an","the","— (no article)"],ans:"a",exp:"'a banana' — 1 trong nhiều, lần đầu đề cập → 'a'."},
+  {q:"Can I have ___ banana on the table, please?",opts:["a","an","the","— (no article)"],ans:"the",exp:"'the banana' — đã biết quả chuối nào (trên bàn) → 'the'."},
+  {q:"___ Trevi Fountain is many tourists' favourite place.",opts:["A","An","The","— (no article)"],ans:"The",exp:"'The Trevi Fountain' — đầu câu, địa điểm duy nhất → 'The'."}
+];
+const fibData=[
+  {before:"His plane is late, so he goes by ",answer:"—",after:" bus.",hint:"→ go by [no article] bus/car/train"},
+  {before:"Ade gets ",answer:"the",after:" help of a local tour guide.",hint:"→ 'the help' xác định cụ thể"},
+  {before:"It's ",answer:"an",after:" ancient sports stadium.",hint:"→ 'an' trước nguyên âm /eɪ/"},
+  {before:"They have music concerts in ",answer:"the",after:" evening.",hint:"→ in the evening"},
+  {before:"Near the Circus Maximus is ",answer:"the",after:" Palatine Hill.",hint:"→ tên riêng địa điểm duy nhất"},
+  {before:"Some are nearly 3,000 years old, from ",answer:"the",after:" start of the city.",hint:"→ 'the start' xác định cụ thể"},
+  {before:"People throw money in ",answer:"the",after:" fountain every day.",hint:"→ 'the fountain' đã đề cập trước"},
+  {before:"There's just time for ",answer:"a",after:" photo.",hint:"→ 'a photo' lần đầu đề cập"},
+  {before:"I start work at 8.00 in ",answer:"the",after:" morning.",hint:"→ in the morning"},
+  {before:"It's on ",answer:"the",after:" tenth of December.",hint:"→ ngày tháng: the tenth of…"},
+  {before:"She's from ",answer:"the",after:" UK.",hint:"→ the UK, the USA"},
+  {before:"He's ",answer:"an",after:" actor.",hint:"→ 'an actor' nguyên âm /æ/"},
+  {before:"Is there ",answer:"a",after:" bookshop near here?",hint:"→ lần đầu hỏi, không xác định"},
+  {before:"It's to ",answer:"the",after:" left of the exit.",hint:"→ to the left / to the right"},
+  {before:"Your first stop is ",answer:"the",after:" Eiffel Tower.",hint:"→ tên riêng địa điểm nổi tiếng"}
+];
+const buildData=[
+  {prompt:"Lỗi: \"Where's a exit?\" → Dùng đúng mạo từ.",ans:"Where's the exit?",sample:"Where's the exit?"},
+  {prompt:"Lỗi: \"He goes by the bus.\" → Bỏ mạo từ sai.",ans:"He goes by bus.",sample:"He goes by bus."},
+  {prompt:"Lỗi: \"It's a Trevi Fountain in Rome.\" → Địa điểm duy nhất.",ans:"It's the Trevi Fountain in Rome.",sample:"It's the Trevi Fountain in Rome."},
+  {prompt:"Lỗi: \"I work in morning.\" → Thêm mạo từ đúng.",ans:"I work in the morning.",sample:"I work in the morning."},
+  {prompt:"Lỗi: \"Can we meet on fifth of June?\" → Ngày tháng cần gì?",ans:"Can we meet on the fifth of June?",sample:"Can we meet on the fifth of June?"},
+  {prompt:"Lỗi: \"She's from UK.\" → Một số nước cần 'the'.",ans:"She's from the UK.",sample:"She's from the UK."},
+  {prompt:"Lỗi: \"Yes, it's to left of exit.\" → Sửa 2 lỗi.",ans:"Yes, it's to the left of the exit.",sample:"Yes, it's to the left of the exit."},
+  {prompt:"Lỗi: \"He's a actor.\" → Trước nguyên âm dùng gì?",ans:"He's an actor.",sample:"He's an actor."},
+  {prompt:"Lỗi: \"Can I have banana, please?\" → Số ít không xác định.",ans:"Can I have a banana, please?",sample:"Can I have a banana, please?"},
+  {prompt:"Lỗi: \"I finish at 6.00 in evening.\" → Thêm mạo từ đúng.",ans:"I finish at 6.00 in the evening.",sample:"I finish at 6.00 in the evening."},
+  {prompt:"Lỗi: \"There's an Colosseum in Rome.\" → Địa điểm duy nhất.",ans:"There's the Colosseum in Rome.",sample:"There's the Colosseum in Rome."},
+  {prompt:"Lỗi: \"His first stop is a Circus Maximus.\" → Tên địa điểm nổi tiếng.",ans:"His first stop is the Circus Maximus.",sample:"His first stop is the Circus Maximus."},
+  {prompt:"Lỗi: \"An Palatine Hill is near the Circus Maximus.\"",ans:"The Palatine Hill is near the Circus Maximus.",sample:"The Palatine Hill is near the Circus Maximus."},
+  {prompt:"Lỗi: \"People throw money in a fountain.\" → Đài phun nước đã nhắc đến.",ans:"People throw money in the fountain.",sample:"People throw money in the fountain."},
+  {prompt:"Lỗi: \"There's just time for the photo before leaving.\" → Lần đầu đề cập.",ans:"There's just time for a photo before leaving.",sample:"There's just time for a photo before leaving."}
+];
+const speakData=[
+  {id:0,sp:'sp-bbc',role:'BBC',text:"BBC presenter Ade Adepitan is at Rome Airport.",ipa:"presenter /ˈprez.ən.tər/ — nhấn BBC"},
+  {id:1,sp:'sp-narr',role:'Narrator',text:"He has six hours to see Rome.",ipa:"six hours /sɪks ˈaʊərz/ — liền mạch tự nhiên"},
+  {id:2,sp:'sp-narr',role:'Narrator',text:"His first stop is the Circus Maximus.",ipa:"first stop /fɜːrst stɑːp/ — the Circus Maximus luôn có 'the'"},
+  {id:3,sp:'sp-narr',role:'Narrator',text:"It's an ancient sports stadium.",ipa:"ancient /ˈeɪn.ʃənt/ — an + nguyên âm /eɪ/"},
+  {id:4,sp:'sp-narr',role:'Narrator',text:"The Trevi Fountain is many tourists' favourite place.",ipa:"tourists' /ˈtʊər.ɪsts/ — dấu sở hữu sau s"},
+  {id:5,sp:'sp-narr',role:'Narrator',text:"People throw money in the fountain every day.",ipa:"throw /θroʊ/ — âm /θ/ lưỡi chạm răng"},
+  {id:6,sp:'sp-narr',role:'Narrator',text:"There's just time for a photo.",ipa:"just time /dʒʌst taɪm/ — a photo lần đầu đề cập"},
+  {id:7,sp:'sp-narr',role:'Narrator',text:"Then it's back to the airport.",ipa:"the airport — đã biết sân bay nào → 'the'"},
+  {id:8,sp:'sp-key',role:'Key Phrase',text:"Your first stop is the Eiffel Tower.",ipa:"first stop /fɜːrst stɑːp/ — Key phrase city tour"},
+  {id:9,sp:'sp-key',role:'Key Phrase',text:"You can take some great photos.",ipa:"great photos /ɡreɪt ˈfoʊ.toʊz/ — Key phrase"},
+  {id:10,sp:'sp-key',role:'Key Phrase',text:"Finally, the bus goes to the Arc de Triomphe.",ipa:"Finally /ˈfaɪ.nəl.i/ — kết thúc tour"},
+  {id:11,sp:'sp-key',role:'Key Phrase',text:"The gardens are beautiful at all times of the year.",ipa:"beautiful /ˈbjuː.tɪ.fəl/ — at all times of the year"}
+];
+let voices=[],activeTtsBtn=null;
+function loadVoices(){voices=window.speechSynthesis.getVoices();const sel=document.getElementById('voice-select');if(!sel)return;const en=voices.filter(v=>v.lang.startsWith('en'));if(!en.length){sel.innerHTML='<option>No EN voice</option>';return;}sel.innerHTML='';en.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=v.name+' ('+v.lang+')';if(v.name.includes('Samantha')||v.lang==='en-US')o.selected=true;sel.appendChild(o);});}
+function getVoice(){const en=voices.filter(v=>v.lang.startsWith('en'));const sel=document.getElementById('voice-select');return(sel&&en.length)?(en[parseInt(sel.value)]||en[0]):null;}
+function getRate(){return parseFloat(document.getElementById('tts-rate')?.value||0.85);}
+function speak(text,btn){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();if(activeTtsBtn){activeTtsBtn.classList.remove('speaking');activeTtsBtn.textContent='🔊';}const utt=new SpeechSynthesisUtterance(text);utt.voice=getVoice();utt.lang='en-US';utt.rate=getRate();utt.pitch=1;if(btn){activeTtsBtn=btn;btn.classList.add('speaking');btn.textContent='⏹ Dừng';}utt.onend=utt.onerror=()=>{if(btn){btn.classList.remove('speaking');btn.textContent='🔊';}if(activeTtsBtn===btn)activeTtsBtn=null;};setTimeout(()=>window.speechSynthesis.speak(utt),50);}
+function speakFullText(btn){speak(fullText,btn);}
+if(window.speechSynthesis){window.speechSynthesis.onvoiceschanged=loadVoices;loadVoices();}
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+let activeRec=null,speakDone=0;const lineScores={};
+function normalise(s){return s.toLowerCase().replace(/[.,!?'"—\-:;]/g,'').replace(/\s+/g,' ').trim();}
+function tokenise(s){return normalise(s).split(' ').filter(Boolean);}
+function levenshtein(a,b){const m=a.length,n=b.length;const dp=Array.from({length:m+1},(_,i)=>Array.from({length:n+1},(_,j)=>i===0?j:j===0?i:0));for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);return dp[m][n];}
+function scoreWords(target,heard){const tT=tokenise(target),hT=tokenise(heard),hSet=new Set(hT);return tT.map(w=>{if(hSet.has(w))return{word:w,status:'correct'};const near=hT.find(h=>levenshtein(w,h)<=1&&Math.max(w.length,h.length)>2);return near?{word:w,status:'near'}:{word:w,status:'wrong'};});}
+function calcScore(wr){if(!wr.length)return 0;return Math.round(wr.reduce((s,w)=>s+(w.status==='correct'?1:w.status==='near'?.5:0),0)/wr.length*100);}
+function startRecording(id,startBtn,stopBtn){if(!SR){document.getElementById('browser-notice').classList.add('show');return;}if(activeRec){activeRec.stop();activeRec=null;}const card=document.getElementById('lc-'+id);card.classList.add('recording');startBtn.style.display='none';stopBtn.style.display='flex';const rec=new SR();activeRec=rec;rec.lang='en-US';rec.continuous=false;rec.interimResults=false;rec.maxAlternatives=3;rec.onresult=e=>processResult(id,e.results[0][0].transcript);rec.onerror=e=>{card.classList.remove('recording');startBtn.style.display='flex';stopBtn.style.display='none';activeRec=null;const rb=document.getElementById('rb-'+id);rb.classList.add('show');document.getElementById('rbh-'+id).textContent='Lỗi: '+(e.error==='no-speech'?'Không nghe thấy':e.error);};rec.onend=()=>{card.classList.remove('recording');startBtn.style.display='flex';stopBtn.style.display='none';activeRec=null;};rec.start();}
+function stopRecording(){if(activeRec){activeRec.stop();activeRec=null;}}
+function processResult(id,heard){const line=speakData[id];if(!line)return;const wr=scoreWords(line.text,heard);const score=calcScore(wr);document.getElementById('wc-'+id).innerHTML=wr.map(w=>'<span class="word w-'+(w.status==='correct'?'correct':w.status==='near'?'missed':'wrong')+'">'+w.word+' </span>').join('');renderScoreCircle(id,score);const rb=document.getElementById('rb-'+id);rb.classList.add('show');document.getElementById('rbh-'+id).textContent='"'+heard+'"';const card=document.getElementById('lc-'+id);card.classList.remove('done-good','done-ok','done-bad');card.classList.add(score>=80?'done-good':score>=50?'done-ok':'done-bad');if(lineScores[id]===undefined){speakDone++;document.getElementById('done-count').textContent=speakDone;document.getElementById('speak-progress').style.width=(speakDone/speakData.length*100)+'%';}lineScores[id]=score;}
+function renderScoreCircle(id,score){const sd=document.getElementById('sd-'+id);sd.classList.add('show');const circ=2*Math.PI*17,dash=circ*(1-score/100);const col=score>=80?'var(--green)':score>=60?'var(--teal)':score>=40?'var(--amber)':'var(--red)';const cls=score>=80?'sc-excellent':score>=60?'sc-good':score>=40?'sc-ok':'sc-poor';const lbl=score>=80?'Excellent':score>=60?'Good':score>=40?'Fair':'Retry';sd.innerHTML='<div class="score-circle"><svg width="46" height="46" viewBox="0 0 46 46"><circle cx="23" cy="23" r="17" fill="none" stroke="var(--border)" stroke-width="4"/><circle cx="23" cy="23" r="17" fill="none" stroke="'+col+'" stroke-width="4" stroke-dasharray="'+circ.toFixed(1)+'" stroke-dashoffset="'+dash.toFixed(1)+'" stroke-linecap="round"/></svg><span class="val '+cls+'">'+score+'%</span></div><div><div class="score-label '+cls+'">'+lbl+'</div><div class="score-sub">word accuracy</div></div>';}
+function renderReading(){const body=document.getElementById('reading-body');readingParas.forEach(p=>{const el=document.createElement('p');el.innerHTML=p;body.appendChild(el);});}
+function renderVocab(){const grid=document.getElementById('vocab-grid');grid.innerHTML='';vocabData.forEach(v=>{const card=document.createElement('div');card.className='vocab-card';const sw=v.word.replace(/'/g,"\\'"),se=v.example.replace(/'/g,"\\'");card.innerHTML='<span class="vc-cat '+catMap[v.cat]+'">'+catLabel[v.cat]+'</span><div class="vc-ipa">'+v.ipa+'</div><div class="vc-word"><span>'+v.word+'</span><button class="tts-btn" style="min-width:28px;min-height:28px;font-size:12px" onclick="event.stopPropagation();speak(\''+sw+'\',this)">🔊</button></div><div class="vc-vi">'+v.vi+'</div><div class="vc-example"><span>"'+v.example+'"</span><button class="tts-btn" style="min-width:26px;min-height:26px;font-size:11px;flex-shrink:0" onclick="event.stopPropagation();speak(\''+se+'\',this)">🔊</button></div><div class="vc-hint">👆 Nhấn để xem spelling</div>';let t;card.addEventListener('click',()=>card.classList.toggle('revealed'));card.addEventListener('touchstart',()=>{card.style.transform='scale(0.97)';clearTimeout(t);},{passive:true});card.addEventListener('touchend',()=>{t=setTimeout(()=>card.style.transform='',300);},{passive:true});grid.appendChild(card);});}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function renderCollocations(){const grid=document.getElementById('coll-grid');collData.forEach(c=>{const el=document.createElement('div');el.className='coll-card';const sp=c.phrase.replace(/'/g,"\\'"),se=c.example.replace(/'/g,"\\'");el.innerHTML='<div class="cc-left"><div class="cc-phrase"><span>'+c.phrase+'</span><button class="tts-btn" style="min-width:28px;min-height:28px;font-size:12px" onclick="speak(\''+sp+'\',this)">🔊</button></div><div class="cc-ipa">'+c.ipa+'</div></div><div class="cc-right"><div class="cc-meaning">'+c.meaning+'</div><div class="cc-example"><span>"'+c.example+'"</span><button class="tts-btn" style="min-width:26px;min-height:26px;font-size:11px;flex-shrink:0" onclick="speak(\''+se+'\',this)">🔊</button></div></div>';grid.appendChild(el);});}
+let mcqScores=[];
+function renderMCQ(){const c=document.getElementById('mcq-container');mcqData.forEach((item,i)=>{mcqScores.push(null);const div=document.createElement('div');div.className='q-block';div.innerHTML='<div class="q-text"><strong>'+(i+1)+'.</strong> '+item.q+'</div><div class="opts" id="mcq-opts-'+i+'"></div><div class="fb-msg" id="mcq-fb-'+i+'"></div>';c.appendChild(div);item.opts.forEach((opt,j)=>{const btn=document.createElement('button');btn.className='opt-btn';btn.setAttribute('data-letter',['A','B','C','D'][j]);btn.textContent=opt;btn.onclick=()=>{if(mcqScores[i]!==null)return;const ok=opt===item.ans;btn.classList.add(ok?'correct':'wrong');mcqScores[i]=ok?1:0;if(!ok)div.querySelectorAll('.opt-btn').forEach(b=>{if(b.textContent===item.ans)b.classList.add('correct');});div.querySelectorAll('.opt-btn').forEach(b=>b.disabled=true);const fb=document.getElementById('mcq-fb-'+i);fb.textContent=(ok?'✓ Đúng! ':'✗ Sai. ')+item.exp;fb.className='fb-msg show '+(ok?'ok':'bad');if(mcqScores.filter(s=>s!==null).length===mcqData.length){document.getElementById('mcq-score').style.display='flex';document.getElementById('mcq-score-val').textContent=mcqScores.filter(s=>s===1).length+'/'+mcqData.length;}};div.querySelector('#mcq-opts-'+i).appendChild(btn);});});}
+function renderFib(){const c=document.getElementById('fib-container');fibData.forEach((f,i)=>{const d=document.createElement('div');d.style.marginBottom='14px';d.innerHTML='<div class="fib-sentence"><strong>'+(i+1)+'.</strong> '+f.before+'<input class="fib-input" id="fib-'+i+'" placeholder="a/an/the/—" autocomplete="off" style="min-width:70px;max-width:120px"/> '+f.after+' <span style="font-size:11px;color:var(--text-light);font-style:italic">'+f.hint+'</span></div>';c.appendChild(d);});}
+function checkFib(){let ok=0;fibData.forEach((f,i)=>{const inp=document.getElementById('fib-'+i);const val=inp.value.trim().toLowerCase().replace(/[^a-z—\-]/g,'');const correct=val===f.answer||(f.answer==='—'&&(val===''||val==='—'||val==='-'));inp.classList.toggle('correct',correct);inp.classList.toggle('wrong',!correct);if(!correct)inp.value=f.answer;else ok++;});document.getElementById('fib-score').style.display='flex';document.getElementById('fib-score-val').textContent=ok+'/'+fibData.length;}
+function renderBuild(){const c=document.getElementById('build-container');buildData.forEach((b,i)=>{const d=document.createElement('div');d.style.marginBottom='20px';d.innerHTML='<div class="build-prompt"><strong>'+(i+1)+'.</strong> '+b.prompt+'</div><input class="build-input" id="build-'+i+'" placeholder="Viết câu đúng…" autocomplete="off"/><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><button class="check-btn" onclick="checkBuild('+i+')" style="padding:9px 18px;font-size:12px;min-height:40px">Kiểm tra</button><button class="sample-btn" onclick="toggleSample(\'build-s-'+i+'\',this)">👁 Xem đáp án</button></div><div class="sample-ans" id="build-s-'+i+'"><div class="sa-label">Đáp án</div>'+b.sample+'</div><div class="fb-msg" id="build-fb-'+i+'"></div>';c.appendChild(d);});}
+function checkBuild(i){const inp=document.getElementById('build-'+i);const val=normalise(inp.value),ans=normalise(buildData[i].ans);const ok=val===ans||levenshtein(val,ans)<=3;inp.classList.toggle('correct',ok);inp.classList.toggle('wrong',!ok);inp.disabled=true;document.querySelector('[onclick="checkBuild('+i+')"]').disabled=true;const fb=document.getElementById('build-fb-'+i);fb.textContent=ok?'✓ Câu đúng!':'✗ Chưa đúng. Xem đáp án.';fb.className='fb-msg show '+(ok?'ok':'bad');}
+function toggleSample(id,btn){const el=document.getElementById(id);btn.textContent=el.classList.toggle('show')?'🙈 Ẩn':'👁 Xem đáp án';}
+function renderSpeaking(){const c=document.getElementById('lines-container');const hasSR=!!SR;if(!hasSR)document.getElementById('browser-notice').classList.add('show');speakData.forEach(line=>{const card=document.createElement('div');card.className='line-card';card.id='lc-'+line.id;const words=line.text.split(' ').map(w=>'<span class="word">'+w+'</span>').join(' ');const safe=line.text.replace(/'/g,"\\'");card.innerHTML='<div class="line-header"><div class="lh-meta"><span class="lh-num">Line '+(line.id+1)+'</span><span class="lh-sp '+line.sp+'">'+line.role+'</span></div><div class="line-text" id="wc-'+line.id+'">'+words+'</div><div class="line-ipa">📌 '+line.ipa+'</div></div><div class="line-controls"><button class="listen-btn" id="lb-'+line.id+'" onclick="speak(\''+safe+'\',this)">👂 Nghe mẫu</button>'+(hasSR?'<button class="rec-btn rec-btn-start" id="rs-'+line.id+'" onclick="startRecording('+line.id+',this,document.getElementById(\'rx-'+line.id+'\'))"><span class="rec-dot"></span> Ghi âm</button><button class="rec-btn rec-btn-stop" id="rx-'+line.id+'" style="display:none" onclick="stopRecording()"><span class="rec-dot"></span> Đang nghe…</button>':'<span style="font-size:12px;color:var(--red)">⚠ Không hỗ trợ</span>')+'<div class="score-display" id="sd-'+line.id+'"></div></div><div class="result-bar" id="rb-'+line.id+'"><span class="rb-label">Nghe được:</span><span class="rb-heard" id="rbh-'+line.id+'"></span>'+(hasSR?'<button class="rb-retry" onclick="document.getElementById(\'rs-'+line.id+'\').click()">🔄 Thử lại</button>':'')+'</div>';c.appendChild(card);});}
+function toggleLec(id){document.getElementById(id).classList.toggle('open');}
+function toggleSidebar(){const sb=document.getElementById('sidebar'),ov=document.getElementById('overlay'),hb=document.getElementById('hamburger');const open=sb.classList.toggle('open');hb.classList.toggle('open',open);ov.classList.toggle('show',open);}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');document.getElementById('hamburger').classList.remove('open');}
+function navClick(el){closeSidebar();document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));el.classList.add('active');}
+window.addEventListener('scroll',()=>{document.getElementById('scroll-top').classList.toggle('show',window.scrollY>400);const ids=['reading','lecture','lexis','collocations','ex-mcq','ex-fib','ex-build','speaking'];let cur='reading';ids.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<140)cur=id;});document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));},{passive:true});
+window.addEventListener('DOMContentLoaded',()=>{renderReading();const grid=document.getElementById('vocab-grid');for(let i=0;i<4;i++){const sk=document.createElement('div');sk.className='skeleton sk-card';grid.appendChild(sk);}setTimeout(()=>{grid.innerHTML='';renderVocab();renderCollocations();renderMCQ();renderFib();renderBuild();renderSpeaking();},600);});
+</script>
+</body>
+</html>
