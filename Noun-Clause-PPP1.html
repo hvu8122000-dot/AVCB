@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Noun Clauses — IELTS Writing 5.0 - 6.5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ══ RESET ══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+
+/* ══ TOKENS ══ */
+:root{
+  --bg:#faf9f5;--bg2:#f2f0e8;--bg3:#e8e5d8;
+  --card:#ffffff;
+  --ink:#16140f;--ink2:#4a4637;--ink3:#8c8573;
+  --indigo:#2d3b8e;--indigo-l:#eceffe;--indigo-m:#4a5bbd;--indigo-d:#1e2a6e;
+  --teal:#0e6b5e;--teal-l:#e4f5f1;--teal-m:#1a8f7d;
+  --amber:#8a5e00;--amber-l:#fef7e6;--amber-m:#f5c842;
+  --rose:#9b2335;--rose-l:#fdf0f1;--rose-m:#e05060;
+  --green:#1a6b3a;--green-l:#e8f5ef;--green-m:#2a8f56;
+  --border:#dedad0;--border2:#ccc8bb;
+  --r:10px;--r-sm:6px;--r-lg:16px;--r-xl:22px;
+  --sh:0 2px 10px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.04);
+  --sh-h:0 8px 28px rgba(0,0,0,.1),0 0 0 1px rgba(0,0,0,.05);
+  --t:.2s cubic-bezier(.4,0,.2,1);
+  --font-main: 'Lexend', system-ui, sans-serif;
+}
+
+/* ══ LAYOUT CHÍNH ══ */
+body{
+  font-family:var(--font-main);
+  background:var(--bg);
+  color:var(--ink);
+  font-size:15px;
+  line-height:1.75;
+  min-height:100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* ══ SIDEBAR ══ */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background: var(--indigo-d);
+  color: #fff;
+  padding: 28px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 200;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.sb-logo {
+  font-family: var(--font-main);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.sb-logo span.dot { color: var(--amber-m); }
+.sb-logo .sb-subtitle {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0;
+  margin-top: 4px;
+}
+
+.sb-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sb-heading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 4px;
+  margin-top: 8px;
+  padding-left: 12px;
+}
+
+.sb-link {
+  padding: 10px 14px;
+  border-radius: var(--r-sm);
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 500;
+  transition: var(--t);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid transparent;
+}
+
+.sb-link:hover, .sb-link.act {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: rgba(255,255,255,0.15);
+}
+
+.sb-link.act {
+  background: rgba(74, 91, 189, 0.4);
+  border-left: 3px solid var(--amber-m);
+}
+
+.sb-progress {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.sb-prog-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-line {
+  height: 4px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--amber-m);
+  transition: width .5s cubic-bezier(.4,0,.2,1);
+  width: 0%;
+}
+
+/* ══ MAIN CONTENT WRAPPER ══ */
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ══ HERO ══ */
+.hero{background:var(--indigo-d);color:#fff;padding:56px 20px 72px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(74,91,189,.4) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(14,107,94,.3) 0%,transparent 50%)}
+.hero-inner{max-width:700px;margin:0 auto;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px;color:rgba(255,255,255,.9)}
+.hero h1{font-family:var(--font-main);font-size:clamp(32px,6.5vw,54px);font-weight:800;line-height:1.2;margin-bottom:14px;letter-spacing:-0.02em}
+.hero h1 em{font-style:normal;color:var(--amber-m)}
+.hero-sub{font-size:16px;opacity:.85;font-weight:300;max-width:560px;margin:0 auto 28px;line-height:1.6}
+.hero-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.hchip{padding:5px 14px;border-radius:20px;font-size:13px;font-weight:500;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.9)}
+
+/* ══ LAYOUT CONTENT ══ */
+.page{max-width:860px;margin:0 auto;padding:0 20px 80px}
+
+/* ══ SECTION HEADER ══ */
+.sec-hdr{display:flex;align-items:center;gap:14px;padding:40px 0 24px}
+.sec-badge{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.sb-p{background:var(--indigo);color:#fff}
+.sb-pr{background:var(--teal);color:#fff}
+.sb-pd{background:var(--rose);color:#fff}
+.sec-title{font-family:var(--font-main);font-size:24px;font-weight:700;line-height:1.2;letter-spacing:-0.01em}
+.sec-sub{font-size:14px;color:var(--ink3);font-weight:400;margin-top:4px}
+.sec-line{flex:1;height:1px;background:var(--border)}
+
+/* ══ CARD ══ */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--sh);overflow:hidden;margin-bottom:16px;transition:box-shadow var(--t)}
+.card:hover{box-shadow:var(--sh-h)}
+.card-hd{padding:18px 22px;border-bottom:1px solid var(--border);background:var(--bg);display:flex;align-items:center;gap:10px}
+.card-hd-title{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-0.01em}
+.card-hd-sub{font-size:13px;color:var(--ink3);font-weight:400;margin-left:auto}
+.card-body{padding:20px 22px}
+
+/* ══ PRESENT: CONCEPT BLOCKS ══ */
+.concept-stripe{border-left:4px solid var(--indigo);padding:16px 20px;background:var(--indigo-l);border-radius:0 var(--r) var(--r) 0;margin-bottom:16px}
+.concept-stripe h3{font-size:14px;font-weight:700;color:var(--indigo-d);margin-bottom:8px;letter-spacing:.02em;text-transform:uppercase}
+.concept-stripe p{font-size:14.5px;color:var(--ink2);line-height:1.7}
+.concept-stripe code{background:rgba(45,59,142,.08);color:var(--indigo-d);padding:2px 8px;border-radius:6px;font-family:var(--font-main);font-weight:600;font-size:14px;display:inline-block;margin:2px 0}
+.teal-stripe{border-left-color:var(--teal);background:var(--teal-l)}
+.teal-stripe h3{color:var(--teal)}
+.teal-stripe code{background:rgba(14,107,94,.08);color:var(--teal)}
+.amber-stripe{border-left-color:var(--amber);background:var(--amber-l)}
+.amber-stripe h3{color:var(--amber)}
+.amber-stripe code{background:rgba(138,94,0,.08);color:var(--amber)}
+.rose-stripe{border-left-color:var(--rose);background:var(--rose-l)}
+.rose-stripe h3{color:var(--rose)}
+
+/* ══ SYNTAX HIGHLIGHT ══ */
+.syntax-box{background:#1e2a3a;border-radius:var(--r);padding:18px 22px;margin:16px 0;font-size:14.5px;line-height:2;overflow-x:auto;font-family:var(--font-main);font-weight:400}
+.s-main{color:#e8e4d8}
+.s-nc{color:#7dd3fc;font-weight:500}      
+.s-conj{color:#f9c74f;font-weight:600}    
+.s-verb{color:#86efac;font-weight:500}    
+.s-subj{color:#fca5a5}                    
+.s-comm{color:#9ca3af;font-style:italic;font-weight:300}  
+
+/* ══ COMPARISON TABLE ══ */
+.cmp-table{width:100%;border-collapse:separate;border-spacing:0 4px;margin:10px 0}
+.cmp-table th{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);padding:8px 12px;text-align:left}
+.cmp-table td{padding:12px;font-size:14px;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cmp-table td:first-child{border-left:1px solid var(--border);border-radius:var(--r-sm) 0 0 var(--r-sm)}
+.cmp-table td:last-child{border-right:1px solid var(--border);border-radius:0 var(--r-sm) var(--r-sm) 0}
+.cmp-table tr:hover td{background:var(--bg2)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;vertical-align:middle}
+.tag-s{background:var(--indigo-l);color:var(--indigo)}
+.tag-o{background:var(--teal-l);color:var(--teal)}
+.tag-c{background:var(--amber-l);color:var(--amber)}
+.tag-p{background:var(--rose-l);color:var(--rose)}
+
+/* ══ PRACTICE Q CARDS ══ */
+.q-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:20px 22px;margin-bottom:16px;transition:border-color var(--t),box-shadow var(--t)}
+.q-card:hover{border-color:var(--border2);box-shadow:var(--sh)}
+.q-card.answered{border-color:var(--border2)}
+.q-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.q-num{font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:.02em}
+.q-type{font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;letter-spacing:.03em}
+.qt-id{background:var(--teal-l);color:var(--teal)}
+.qt-tf{background:var(--amber-l);color:var(--amber)}
+.qt-mc{background:var(--indigo-l);color:var(--indigo)}
+.qt-err{background:var(--rose-l);color:var(--rose)}
+.qt-tr{background:var(--bg2);color:var(--ink2)}
+.qt-wr{background:#f0f9ff;color:#0369a1}
+.q-text{font-size:15.5px;color:var(--ink);line-height:1.65;margin-bottom:16px}
+.q-text strong{color:var(--indigo);font-weight:600}
+.q-text em{font-style:italic;color:var(--ink2)}
+.q-blank{display:inline-block;min-width:120px;border-bottom:2.5px solid var(--indigo);text-align:center;padding:0 6px;font-weight:600;color:var(--indigo);vertical-align:bottom;transition:var(--t)}
+
+/* MCQ */
+.mcq-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:480px){.mcq-opts{grid-template-columns:1fr}}
+.mcq-btn{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:var(--r);border:1.5px solid var(--border);background:var(--bg);font-family:var(--font-main);font-size:14.5px;font-weight:400;color:var(--ink);cursor:pointer;text-align:left;transition:all .15s}
+.mcq-btn:hover:not(:disabled){border-color:var(--indigo-m);background:var(--indigo-l)}
+.mcq-btn:active:not(:disabled){transform:scale(.98)}
+.mcq-letter{width:24px;height:24px;border-radius:50%;background:var(--border);color:var(--ink3);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--t)}
+.mcq-btn:hover:not(:disabled) .mcq-letter{background:var(--indigo);color:#fff}
+.mcq-btn.correct{background:var(--green-l)!important;border-color:var(--green-m)!important;color:var(--green)!important}
+.mcq-btn.correct .mcq-letter{background:var(--green);color:#fff}
+.mcq-btn.wrong{background:var(--rose-l)!important;border-color:var(--rose-m)!important;color:var(--rose)!important}
+.mcq-btn.wrong .mcq-letter{background:var(--rose);color:#fff}
+.mcq-btn:disabled{cursor:default;transform:none}
+
+/* Input */
+.q-input-row{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}
+.q-input{flex:1;min-width:180px;padding:12px 16px;border-radius:var(--r);border:1.5px solid var(--border);background:var(--bg);font-family:var(--font-main);font-size:15px;font-weight:400;color:var(--ink);outline:none;transition:var(--t);-webkit-text-size-adjust:100%}
+.q-input:focus{border-color:var(--indigo-m);background:#fff;box-shadow:0 0 0 3px rgba(45,59,142,.1)}
+.q-input.ok{border-color:var(--green-m)!important;background:var(--green-l)!important;color:var(--green)!important}
+.q-input.no{border-color:var(--rose-m)!important;background:var(--rose-l)!important;color:var(--rose)!important}
+.q-input:disabled{cursor:default}
+.submit-btn{padding:12px 20px;border-radius:var(--r);border:none;background:var(--indigo);color:#fff;font-family:var(--font-main);font-size:14px;font-weight:600;cursor:pointer;transition:var(--t);white-space:nowrap}
+.submit-btn:hover{background:var(--indigo-m);transform:translateY(-1px)}
+.submit-btn:active{transform:scale(.97)}
+.submit-btn:disabled{background:var(--ink3);cursor:default;transform:none}
+
+/* Textarea */
+.q-ta{width:100%;padding:14px 16px;border-radius:var(--r);border:1.5px solid var(--border);background:var(--bg);font-family:var(--font-main);font-size:15px;color:var(--ink);outline:none;resize:none;min-height:80px;transition:var(--t);-webkit-text-size-adjust:100%;line-height:1.65;font-weight:400}
+.q-ta:focus{border-color:var(--indigo-m);background:#fff;box-shadow:0 0 0 3px rgba(45,59,142,.1)}
+.q-ta:disabled{cursor:default;color:var(--ink2)}
+
+/* T/F buttons */
+.tf-btns{display:flex;gap:10px}
+.tf-btn{padding:10px 24px;border-radius:24px;border:1.5px solid var(--border);background:var(--bg);font-family:var(--font-main);font-size:14px;font-weight:600;cursor:pointer;transition:var(--t);color:var(--ink2)}
+.tf-btn:hover:not(:disabled){border-color:var(--indigo-m);color:var(--indigo);background:var(--indigo-l)}
+.tf-btn.correct{background:var(--green-l);border-color:var(--green-m);color:var(--green)}
+.tf-btn.wrong{background:var(--rose-l);border-color:var(--rose-m);color:var(--rose)}
+.tf-btn:disabled{cursor:default}
+
+/* Feedback */
+.q-fb{display:none;margin-top:12px;padding:12px 16px;border-radius:var(--r-sm);font-size:14px;line-height:1.6;animation:fbIn .2s ease}
+.q-fb.show{display:block}
+@keyframes fbIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.q-fb.ok{background:var(--green-l);border:1px solid #9dd4b6;color:var(--green)}
+.q-fb.no{background:var(--rose-l);border:1px solid #f5a8a8;color:var(--rose)}
+.q-fb.info{background:var(--indigo-l);border:1px solid #a8b8e8;color:var(--indigo)}
+.fb-hd{font-weight:700;margin-bottom:4px;font-size:15px}
+
+/* Hint button */
+.hint-btn{display:none;margin-top:10px;padding:8px 16px;border-radius:24px;border:1.5px solid var(--amber);background:transparent;font-family:var(--font-main);font-size:13px;font-weight:500;color:var(--amber);cursor:pointer;transition:var(--t);align-items:center;gap:6px}
+.hint-btn:hover{background:var(--amber-l)}
+.hint-btn.show{display:inline-flex}
+.hint-box{display:none;margin-top:10px;padding:12px 16px;border-radius:var(--r-sm);background:var(--amber-l);border:1px solid var(--amber-m);font-size:14px;color:var(--amber);line-height:1.6}
+.hint-box.show{display:block;animation:fbIn .2s ease}
+
+/* Redo */
+.redo-btn{display:none;margin-top:10px;padding:8px 16px;border-radius:24px;border:1.5px solid var(--border2);background:transparent;font-family:var(--font-main);font-size:13px;font-weight:500;color:var(--ink3);cursor:pointer;transition:var(--t);align-items:center;gap:6px}
+.redo-btn:hover{border-color:var(--indigo-m);color:var(--indigo);background:var(--indigo-l)}
+.redo-btn.show{display:inline-flex}
+
+/* Colloc chips */
+.colloc-area{margin-bottom:12px}
+.colloc-lbl{font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+.colloc-chips{display:flex;flex-wrap:wrap;gap:8px}
+.colloc-chip{padding:6px 12px;border-radius:24px;font-size:13px;font-weight:400;background:var(--bg2);border:1px solid var(--border2);color:var(--ink2);cursor:pointer;transition:var(--t);font-style:italic}
+.colloc-chip:hover{background:var(--indigo-l);border-color:var(--indigo-m);color:var(--indigo);font-weight:500}
+
+/* Progress bar */
+.section-progress{background:var(--bg2);border-radius:var(--r);padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;gap:16px}
+.sp-track{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.sp-fill{height:100%;border-radius:3px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.sp-fill.indigo{background:var(--indigo)}
+.sp-fill.teal{background:var(--teal)}
+.sp-fill.rose{background:var(--rose-m)}
+.sp-text{font-size:13px;color:var(--ink3);font-weight:500;white-space:nowrap}
+.sp-score{font-size:16px;font-weight:700;white-space:nowrap}
+.sp-score.indigo{color:var(--indigo)}
+.sp-score.teal{color:var(--teal)}
+.sp-score.rose{color:var(--rose)}
+
+/* Summary */
+.summary-card{display:none;background:var(--card);border-radius:var(--r-xl);border:1px solid var(--border);box-shadow:var(--sh);padding:32px 28px;text-align:center;margin-top:20px;animation:fbIn .4s ease}
+.summary-card.show{display:block}
+.sum-ring{width:90px;height:90px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 16px}
+.sum-num{font-size:32px;font-weight:800;line-height:1}
+.sum-denom{font-size:13px;opacity:.7;font-weight:500}
+.sum-title{font-family:var(--font-main);font-size:22px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em}
+.sum-sub{font-size:15px;color:var(--ink3);margin-bottom:24px;line-height:1.6}
+.reset-btn{padding:12px 28px;border-radius:28px;border:none;background:var(--indigo);color:#fff;font-family:var(--font-main);font-size:15px;font-weight:600;cursor:pointer;transition:var(--t)}
+.reset-btn:hover{background:var(--indigo-m);transform:translateY(-2px);box-shadow:0 5px 18px rgba(45,59,142,.28)}
+
+/* Accordion */
+.accordion{border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:14px}
+.acc-hd{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg);cursor:pointer;border:none;width:100%;font-family:var(--font-main);font-size:15px;font-weight:600;color:var(--ink);transition:var(--t)}
+.acc-hd:hover{background:var(--bg2)}
+.acc-arrow{font-size:13px;color:var(--ink3);transition:transform .2s}
+.acc-hd.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{display:none;padding:18px 20px;background:var(--card);border-top:1px solid var(--border)}
+.acc-hd.open+.acc-body{display:block}
+
+/* Key point callout */
+.key-box{background:var(--indigo-d);color:#fff;border-radius:var(--r);padding:18px 22px;margin:16px 0;font-size:14.5px;line-height:1.75}
+.key-box strong{color:var(--amber-m);font-weight:600}
+.key-box code{background:rgba(255,255,255,.15);padding:2px 8px;border-radius:6px;font-family:var(--font-main);font-weight:600;font-size:14px;display:inline-block;margin:2px 0}
+
+/* ══ RESPONSIVE MOBILE ══ */
+@media(max-width: 768px) {
+  body { flex-direction: column; }
+  .sidebar { 
+    width: 100%; 
+    height: auto; 
+    position: sticky; 
+    top: 0; 
+    padding: 16px; 
+    gap: 16px; 
+    border-right: none; 
+    border-bottom: 1px solid rgba(255,255,255,0.1); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  }
+  .sb-logo { padding-bottom: 0; border-bottom: none; display: flex; align-items: center; justify-content: space-between; }
+  .sb-logo .sb-subtitle { display: inline-block; margin-top: 0; margin-left: 10px; }
+  .sb-heading { display: none; }
+  .sb-nav { flex-direction: row; overflow-x: auto; padding-bottom: 4px; }
+  .sb-link { padding: 8px 16px; font-size: 13px; white-space: nowrap; border-left: 1px solid transparent; }
+  .sb-link.act { border-left: 1px solid transparent; border-bottom: 3px solid var(--amber-m); }
+  .sb-progress { display: none; }
+  
+  .hero h1{font-size:32px}
+  .card-body,.card-hd{padding:16px 18px}
+  .q-card{padding:16px 18px}
+}
+
+/* scroll animation */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sb-logo">
+    SpeakUp<span class="dot">.</span>
+    <span class="sb-subtitle">IELTS Writing 5.0 - 6.5</span>
+  </div>
+  
+  <div class="sb-heading">Lộ trình P-P-P</div>
+  <nav class="sb-nav">
+    <a class="sb-link act" href="#present">📚 1. Present</a>
+    <a class="sb-link" href="#practice">🎯 2. Practice</a>
+    <a class="sb-link" href="#production">✍️ 3. Production</a>
+  </nav>
+
+  <div class="sb-progress">
+    <div class="sb-prog-text">
+      <span>Hoàn thành bài học</span> 
+      <strong id="progPercentText" style="color:white">0%</strong>
+    </div>
+    <div class="progress-line"><div class="progress-fill" id="globalProgress"></div></div>
+  </div>
+</aside>
+
+<main class="main-content">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Từng bước chinh phục điểm cao · Band 5.0 - 6.5</div>
+      <h1>Mệnh đề danh từ<br><em>Noun Clauses</em></h1>
+      <p class="hero-sub">Học cách nhúng một mệnh đề hoàn chỉnh vào vị trí của danh từ — từ những câu giao tiếp đơn giản nhất đến các cấu trúc học thuật nâng cao trong IELTS Writing.</p>
+      <div class="hero-chips">
+        <span class="hchip">Subject Clause</span>
+        <span class="hchip">Object Clause</span>
+        <span class="hchip">Complement Clause</span>
+        <span class="hchip">Prepositional Object</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page">
+    <section id="present">
+      <div class="sec-hdr reveal">
+        <div class="sec-badge sb-p">P</div>
+        <div><div class="sec-title">Present — Lý thuyết cốt lõi</div><div class="sec-sub">Cấu trúc, chức năng và cú pháp (Từ cơ bản đến IELTS)</div></div>
+        <div class="sec-line"></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-hd"><div class="card-hd-title">1. Noun Clause là gì?</div><div class="card-hd-sub">Định nghĩa & vai trò</div></div>
+        <div class="card-body">
+          <div class="concept-stripe">
+            <h3>Định nghĩa dễ hiểu</h3>
+            <p>Noun Clause (mệnh đề danh từ) đơn giản là một cụm có đủ <strong>Chủ ngữ + Động từ</strong> nhưng nó lại đóng vai trò như <strong>MỘT DANH TỪ</strong> trong câu lớn.</p>
+          </div>
+          <div class="concept-stripe teal-stripe">
+            <h3>Vị trí trong câu — 4 chức năng chính</h3>
+            <p>
+              <code>Subject</code> — Đứng đầu làm Chủ ngữ của câu<br>
+              <code>Object</code> — Làm Tân ngữ, đứng sau động từ<br>
+              <code>Complement</code> — Làm Bổ ngữ, đứng sau to-be (is/are)<br>
+              <code>Object of Preposition</code> — Đứng sau giới từ (about, on, in...)
+            </p>
+          </div>
+          <div class="syntax-box">
+            <span class="s-comm">// Cơ bản (Band 5.0): </span><span class="s-subj">I</span> <span class="s-verb">know</span> <span class="s-nc">that he is rich</span>.<br>
+            <span class="s-comm">// Nâng cao (Band 6.5): </span><span class="s-subj">Researchers</span> <span class="s-verb">found</span> <span class="s-main">that </span><span class="s-nc">urban migration had accelerated</span>.<br><br>
+            <span class="s-comm">// Cơ bản (Band 5.0): </span><span class="s-nc">What people eat</span> <span class="s-verb">is</span> <span class="s-main">important.</span><br>
+            <span class="s-comm">// Nâng cao (Band 6.5): </span><span class="s-nc">What the chart demonstrates</span> <span class="s-verb">is</span> <span class="s-main">a steady increase.</span>
+          </div>
+          <div class="key-box">
+            💡 Nhờ Noun Clause, thay vì viết nhiều câu ngắn lắt nhắt, bạn có thể <strong>"nhúng"</strong> một ý tưởng hoàn chỉnh vào một câu duy nhất. Đây là chìa khóa để đạt điểm Ngữ pháp (Grammar) cao trong IELTS!
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-hd"><div class="card-hd-title">2. Từ nối dẫn mệnh đề (Connectors)</div><div class="card-hd-sub">Các từ hay dùng nhất</div></div>
+        <div class="card-body">
+          <table class="cmp-table">
+            <thead><tr><th>Từ nối</th><th>Ý nghĩa</th><th>Ví dụ thực tế</th></tr></thead>
+            <tbody>
+              <tr><td><strong>that</strong></td><td>Rằng, sự thật là (Hay lược bỏ)</td><td>Many people think <em>(that)</em> fast food is harmful.</td></tr>
+              <tr><td><strong>whether / if</strong></td><td>Liệu có... hay không</td><td>We are not sure <em>whether</em> the plan will work.</td></tr>
+              <tr><td><strong>what / who / which</strong></td><td>Cái gì / Ai / Cái nào</td><td><em>What</em> students need is more practical skills.</td></tr>
+              <tr><td><strong>how</strong></td><td>Như thế nào / Mức độ nào</td><td>The graph shows <em>how</em> prices changed.</td></tr>
+              <tr><td><strong>why / when / where</strong></td><td>Tại sao / Khi nào / Ở đâu</td><td>The report explains <em>why</em> the traffic is bad.</td></tr>
+            </tbody>
+          </table>
+          <div class="concept-stripe amber-stripe" style="margin-top:16px">
+            <h3>⚠ Lỗi tử thần: Đảo ngữ (Word Order)</h3>
+            <p>Tuyệt đối nhớ: Mặc dù bắt đầu bằng từ để hỏi (What/Where/Why...), trật tự từ bên trong Noun Clause phải là <strong>Chủ ngữ + Động từ</strong> (S+V) giống câu kể bình thường!</p>
+            <p>❌ <code>I don't know where is the station.</code> (Đảo ngữ của câu hỏi)<br>
+            ✓ <code>I don't know where the station is.</code> (S + V chuẩn)<br><br>
+            ❌ <code>Experts explained why did it happen.</code><br>
+            ✓ <code>Experts explained why it happened.</code></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-hd"><div class="card-hd-title">3. Các cấu trúc IELTS ăn điểm (Band 6.0+)</div></div>
+        <div class="card-body">
+
+          <div class="accordion">
+            <button class="acc-hd" onclick="this.classList.toggle('open')">
+              <span>🌟 Dùng với Reporting Verbs (Trình bày quan điểm/dữ liệu)</span><span class="acc-arrow">▾</span>
+            </button>
+            <div class="acc-body">
+              <p style="font-size:14px;margin-bottom:12px;color:var(--ink2)">Đây là cách dễ nhất để đưa ý kiến hoặc số liệu vào bài Task 1 và Task 2. Đứng sau các động từ như: <em>show, suggest, believe, argue, indicate...</em></p>
+              <div class="syntax-box" style="margin-top:0">
+                <span class="s-main">Many people </span><span class="s-verb">believe</span> <span class="s-main">that </span><span class="s-nc">technology improves lives</span>. (Task 2)<br>
+                <span class="s-main">The line graph </span><span class="s-verb">shows</span> <span class="s-main">how </span><span class="s-nc">the population increased</span>. (Task 1)<br>
+                <span class="s-main">The data </span><span class="s-verb">suggests</span> <span class="s-main">that </span><span class="s-nc">the gap has widened</span>. (Task 1/2)
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="acc-hd" onclick="this.classList.toggle('open')">
+              <span>🌟 Cấu trúc "It is + adj + that..." (Khách quan hóa)</span><span class="acc-arrow">▾</span>
+            </button>
+            <div class="acc-body">
+              <p style="font-size:14px;margin-bottom:12px;color:var(--ink2)">Thay vì viết "I think...", hãy dùng cấu trúc này để bài viết trông chuyên nghiệp và học thuật hơn rất nhiều.</p>
+              <div class="syntax-box" style="margin-top:0">
+                <code>It is clear that</code> <span class="s-nc">pollution is getting worse.</span> (Rõ ràng là...)<br>
+                <code>It is evident that</code> <span class="s-nc">education reduces poverty.</span> (Hiển nhiên là...)<br>
+                <code>It is uncertain whether</code> <span class="s-nc">the policy will succeed.</span> (Không chắc liệu...)
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="acc-hd" onclick="this.classList.toggle('open')">
+              <span>🌟 Mệnh đề sau giới từ (Prepositional Object)</span><span class="acc-arrow">▾</span>
+            </button>
+            <div class="acc-body">
+              <p style="font-size:14px;margin-bottom:12px;color:var(--ink2)">Dùng sau các cụm từ rất phổ biến như: <em>focus on, depend on, be concerned about...</em></p>
+              <div class="syntax-box" style="margin-top:0">
+                <span class="s-main">Success </span><span class="s-verb">depends on</span> <span class="s-nc">how much effort you put in</span>.<br>
+                <span class="s-main">The government is </span><span class="s-verb">concerned about</span> <span class="s-nc">whether prices will rise</span>.
+              </div>
+              <p style="font-size:13px;color:var(--rose);margin-top:8px"><strong>Lưu ý nhỏ:</strong> Đứng sau giới từ, chúng ta dùng "whether" chứ không dùng "if".</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="practice">
+      <div class="sec-hdr reveal">
+        <div class="sec-badge sb-pr">Pr</div>
+        <div><div class="sec-title">Practice — Khởi động từ dễ đến khó</div><div class="sec-sub">Nhận dạng · Sửa lỗi · Biến đổi · Điền từ</div></div>
+        <div class="sec-line"></div>
+      </div>
+
+      <div class="section-progress">
+        <div class="sp-track"><div class="sp-fill teal" id="prFill" style="width:0%"></div></div>
+        <div class="sp-text" id="prText">0 / 22 câu</div>
+        <div class="sp-score teal" id="prScore">0 đúng</div>
+      </div>
+
+      <div id="practiceContainer"></div>
+
+      <div class="summary-card" id="prSummary">
+        <div class="sum-ring" style="background:var(--teal-l);border:3px solid var(--teal-m)">
+          <div class="sum-num" style="color:var(--teal)" id="prSumNum">0</div>
+          <div class="sum-denom">/22</div>
+        </div>
+        <div class="sum-title" id="prSumTitle">Practice hoàn thành!</div>
+        <div class="sum-sub" id="prSumSub"></div>
+        <button class="reset-btn" style="background:var(--teal)" onclick="resetSection('practice')">↺ Làm lại Practice</button>
+      </div>
+    </section>
+
+    <section id="production">
+      <div class="sec-hdr reveal">
+        <div class="sec-badge sb-pd">Pd</div>
+        <div><div class="sec-title">Production — Tự do sáng tạo</div><div class="sec-sub">Tập viết câu thực tế theo từng mốc điểm Band 5.0 đến 6.5</div></div>
+        <div class="sec-line"></div>
+      </div>
+
+      <div class="section-progress">
+        <div class="sp-track"><div class="sp-fill rose" id="pdFill" style="width:0%"></div></div>
+        <div class="sp-text" id="pdText">0 / 10 câu</div>
+        <div class="sp-score rose" id="pdScore">0 nộp</div>
+      </div>
+
+      <div id="productionContainer"></div>
+
+      <div class="summary-card" id="pdSummary">
+        <div class="sum-ring" style="background:var(--rose-l);border:3px solid var(--rose-m)">
+          <div class="sum-num" style="color:var(--rose)" id="pdSumNum">0</div>
+          <div class="sum-denom">/10</div>
+        </div>
+        <div class="sum-title">Production hoàn thành!</div>
+        <div class="sum-sub">Tuyệt vời! Bạn đã có thể vận dụng Noun Clause từ những câu đơn giản nhất đến các câu phức tạp chuẩn chỉnh trong IELTS.</div>
+        <button class="reset-btn" style="background:var(--rose-m)" onclick="resetSection('production')">↺ Làm lại Production</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+/* ════════════════════════════════════════
+   PRACTICE DATA — 22 questions (Tăng dần độ khó)
+════════════════════════════════════════ */
+var PR = [
+/* Khởi động - Band 5.0 (Nhận dạng câu cơ bản) */
+{id:'p1', type:'mc', typeLabel:'Nhận dạng (Band 5.0)',
+ text:'Câu nào chứa Noun Clause đóng vai trò <strong>chủ ngữ (Subject)</strong>?',
+ opts:['A. I think that reading books is good.',
+       'B. What people eat is very important for their health.',
+       'C. He asked me about my study plan.',
+       'D. Fast food, which is cheap, is not healthy.'],
+ ans:1, letters:['A','B','C','D'],
+ ok:'Đúng rồi! "What people eat" đứng ở đầu câu, làm chủ ngữ cho động từ "is".',
+ no:'Hãy tìm một cụm có đủ Chủ+Vị đứng đầu câu nhé. Đáp án đúng là B ("What people eat").'},
+
+{id:'p2', type:'mc', typeLabel:'Nhận dạng (Band 5.0)',
+ text:'Noun Clause nào đóng vai trò <strong>tân ngữ (Object)</strong> đứng ngay sau động từ?',
+ opts:['A. The truth is that exercise reduces stress.',
+       'B. My parents depend on how much I earn.',
+       'C. Many experts believe that fast food causes obesity.',
+       'D. Where he lives is a secret.'],
+ ans:2, letters:['A','B','C','D'],
+ ok:'Rất chuẩn! "that fast food causes obesity" đứng ngay sau động từ "believe".',
+ no:'Đáp án C nhé. Bạn thấy động từ "believe" không? Ngay sau nó chính là Noun Clause làm tân ngữ.'},
+
+{id:'p3', type:'mc', typeLabel:'Nhận dạng (Band 5.5)',
+ text:'Câu nào sử dụng Noun Clause đứng sau <strong>giới từ (Preposition)</strong>?',
+ opts:['A. Success depends on how hard you work.',
+       'B. It is obvious that technology helps us.',
+       'C. The teacher explained why the rule is necessary.',
+       'D. Students know that they must study hard.'],
+ ans:0, letters:['A','B','C','D'],
+ ok:'Chính xác! "how hard you work" đứng ngay sau giới từ "on".',
+ no:'Đáp án A. Giới từ ở đây là "on" (trong cụm depend on). Cụm theo sau nó chính là Noun Clause.'},
+
+/* Đúng/Sai - Band 5.5 (Trật tự từ) */
+{id:'p4', type:'tf', typeLabel:'Trật tự từ (Band 5.5)',
+ text:'Câu sau viết đúng ngữ pháp chưa?<br><em>"I want to know <strong>what is the answer</strong>."</em>',
+ ans:false,
+ ok:'Giỏi lắm! Câu này SAI vì bị đảo ngữ. Đúng phải là: "I want to know <u>what the answer is</u>."',
+ no:'Câu này SAI bạn nhé. Dù có chữ "what" nhưng đây không phải câu hỏi trực tiếp. Trật tự đúng là S+V: "what the answer is".'},
+
+{id:'p5', type:'tf', typeLabel:'Trật tự từ (Band 5.5)',
+ text:'Câu sau viết đúng chưa?<br><em>"The article explains <strong>why the problem happened</strong>."</em>',
+ ans:true,
+ ok:'Chính xác! "why the problem happened" tuân thủ đúng trật tự từ S + V. Không bị nhầm sang "why did the problem happen".',
+ no:'Câu này ĐÚNG rồi nhé. Trật tự S + V ("the problem" + "happened") trong Noun Clause đã được giữ nguyên, không bị đảo ngữ.'},
+
+{id:'p6', type:'tf', typeLabel:'Từ nối (Band 6.0)',
+ text:'Có thể dùng "that whether" liền nhau như thế này không?<br><em>"We are discussing <strong>that whether</strong> the rule is fair."</em>',
+ ans:false,
+ ok:'Đúng! Câu này SAI. Hai từ nối này không bao giờ đứng cạnh nhau. Chỉ dùng "whether" thôi nhé: "...discussing <u>whether</u> the rule is fair."',
+ no:'Câu này SAI. Bạn không thể "tham lam" gộp "that" và "whether". Chỉ cần dùng "whether" là đủ.'},
+
+/* Sửa lỗi - Band 5.5-6.0 */
+{id:'p7', type:'fill', typeLabel:'Sửa lỗi (Band 5.5)',
+ text:'Sửa lỗi trong câu sau (nhập phần đúng):<br><em>"I don\'t understand <u>where are the books</u>."</em><br>Thay "<u>where are the books</u>" bằng:',
+ ans:['where the books are'],
+ ok:'Chuẩn luôn! Trật tự từ S+V: "where the books are".',
+ no:'Đáp án: "where the books are". Nhớ nhé, không đảo ngữ "are" lên trước chủ ngữ "the books".'},
+
+{id:'p8', type:'fill', typeLabel:'Sửa lỗi (Band 6.0)',
+ text:'Sửa lỗi dùng từ sau giới từ:<br><em>"We should focus on <u>if</u> online learning is effective."</em><br>Thay "<u>if</u>" bằng từ gì?',
+ ans:['whether'],
+ ok:'Chính xác! Sau giới từ ("on") bắt buộc phải dùng "whether", không được dùng "if".',
+ no:'Đáp án là "whether". Trong văn viết IELTS, sau giới từ ta không dùng "if".'},
+
+{id:'p9', type:'fill', typeLabel:'Sửa lỗi (Band 6.0)',
+ text:'Sửa lỗi chia động từ (Subject-Verb Agreement):<br><em>"What most people want <u>are</u> a good job."</em><br>Thay "<u>are</u>" bằng chữ gì?',
+ ans:['is'],
+ ok:'Rất tốt! Cả cụm "What most people want" được coi là một Chủ ngữ số ít (Singular) -> động từ to-be là "is".',
+ no:'Đáp án: "is". Một Noun Clause làm chủ ngữ luôn được tính là số ít.'},
+
+{id:'p10', type:'mc', typeLabel:'Sửa lỗi (Band 6.0)',
+ text:'Đâu là phiên bản chuẩn xác nhất của câu hỏi Yes/No gián tiếp này?<br><em>"The concern is that <u>are</u> climate targets achievable."</em>',
+ opts:['A. The concern is that climate targets are achievable.',
+       'B. The concern is whether climate targets are achievable.',
+       'C. The concern is what climate targets are achievable.',
+       'D. The concern is how climate targets are achievable.'],
+ ans:1, letters:['A','B','C','D'],
+ ok:'Tuyệt vời! Dùng "whether" là đúng nhất vì ý nghĩa câu này mang tính nghi vấn (liệu có đạt được không).',
+ no:'Đáp án B. "whether" dùng để nối ý nghi vấn (có hay không). Các phương án khác làm thay đổi hẳn nghĩa hoặc sai ngữ pháp.'},
+
+{id:'p11', type:'fill', typeLabel:'Sửa lỗi (Band 6.0)',
+ text:'Sửa lỗi đảo ngữ trong câu này:<br><em>"Researchers questioned <u>why did the plan fail</u>."</em><br>Nhập phần sửa đúng:',
+ ans:['why the plan failed'],
+ ok:'Chuẩn! "why the plan failed" (S + V) là chính xác.',
+ no:'Đáp án: "why the plan failed". Bạn chỉ cần đưa nó về dạng quá khứ bình thường, bỏ mượn trợ động từ "did".'},
+
+/* Điền từ (Band 6.0) */
+{id:'p12', type:'fill', typeLabel:'Điền từ (Band 6.0)',
+ text:'Điền từ nối phù hợp chỉ 1 SỰ THẬT (Fact):<br>"The chart clearly shows _____ the population has grown rapidly." (that / whether / what)',
+ ans:['that'],
+ ok:'Dùng "that" là chuẩn nhất để trình bày một dữ liệu hiển nhiên.',
+ no:'Đáp án: "that". "shows that..." = "cho thấy rằng..." (trình bày một fact).'},
+
+{id:'p13', type:'fill', typeLabel:'Điền từ (Band 6.0)',
+ text:'Điền từ diễn tả sự LƯỠNG LỰ/NGHI VẤN:<br>"It is still unclear _____ the new law will be effective." (that / whether / what)',
+ ans:['whether'],
+ ok:'Chính xác! "unclear" (chưa rõ ràng) đi với "whether" (liệu rằng).',
+ no:'Đáp án: "whether". Ý của câu là "Chưa rõ LIỆU RẰNG luật mới có hiệu quả không".'},
+
+{id:'p14', type:'fill', typeLabel:'Điền từ (Band 6.0)',
+ text:'Điền từ mang nghĩa "ĐIỀU MÀ" làm chủ ngữ:<br>"_____ the government needs to do now is to create more jobs." (What / That / How)',
+ ans:['what','What'],
+ ok:'Đúng! "What" đứng đầu câu mang nghĩa "Điều mà...".',
+ no:'Đáp án: "What". Dùng "What" khi Noun Clause làm chủ ngữ mang nghĩa "điều mà/thứ mà".'},
+
+{id:'p15', type:'fill', typeLabel:'Điền từ (Band 6.0)',
+ text:'Điền từ mang nghĩa "NHƯ THẾ NÀO / RA SAO":<br>"The essay will discuss _____ social media changes our daily lives." (that / how / whether)',
+ ans:['how'],
+ ok:'"how" (cách mà / như thế nào) là hoàn toàn phù hợp với ngữ cảnh.',
+ no:'Đáp án: "how". "discuss how..." = thảo luận về cách mà / mức độ mà...'},
+
+{id:'p16', type:'fill', typeLabel:'Điền từ (Band 6.5)',
+ text:'Điền từ vào cấu trúc It is + adj: "It is widely accepted _____ education plays a vital role in society."',
+ ans:['that'],
+ ok:'Cấu trúc "It is widely accepted that..." rất phổ biến và ăn điểm trong Writing Task 2.',
+ no:'Đáp án: "that". Đây là mẫu câu kinh điển: "It is widely accepted that..."'},
+
+{id:'p17', type:'fill', typeLabel:'Điền từ (Band 6.5)',
+ text:'Điền từ sau giới từ: "Citizens are worried about _____ taxes will be raised again next year." (whether / that / what)',
+ ans:['whether'],
+ ok:'Đúng rồi, sau "about" và mang nghĩa nghi vấn "có bị tăng không" thì dùng "whether".',
+ no:'Đáp án: "whether". Vừa đứng sau giới từ, vừa thể hiện sự lo ngại (yes/no) -> chắc chắn là "whether".'},
+
+/* Biến đổi câu (Band 6.0 - 6.5) */
+{id:'p18', type:'fill', typeLabel:'Biến đổi câu (Band 6.0)',
+ text:'Nối 2 câu thành 1 dùng Noun Clause (Nhớ bỏ đảo ngữ nhé):<br><em>"Why is the city so crowded? We need to find out."</em><br>Bắt đầu bằng: "We need to find out..."',
+ ans:['we need to find out why the city is so crowded','we need to find out why the city is so crowded .','We need to find out why the city is so crowded.'],
+ ok:'Quá chuẩn! Bạn đã đưa "is" ra sau "the city" thành công.',
+ no:'Đáp án: "We need to find out why the city is so crowded." (Chỉ cần đưa động từ to-be "is" ra sau chủ ngữ).'},
+
+{id:'p19', type:'fill', typeLabel:'Biến đổi câu (Band 6.0)',
+ text:'Viết lại sang phong cách IELTS (Impersonal) dùng <em>It is clear that...</em>:<br><em>"Clearly, pollution is a serious problem."</em>',
+ ans:['it is clear that pollution is a serious problem','It is clear that pollution is a serious problem.'],
+ ok:'Đúng rồi! Câu văn lập tức trở nên học thuật hơn hẳn.',
+ no:'Đáp án: "It is clear that pollution is a serious problem."'},
+
+{id:'p20', type:'mc', typeLabel:'Biến đổi câu (Band 6.5)',
+ text:'Ghép 2 ý này thành 1 câu hoàn chỉnh (Liệu luật mới có hiệu quả không? Điều này vẫn chưa rõ ràng):<br><em>"Will the new law work? This remains unknown."</em>',
+ opts:['A. Whether will the new law work remains unknown.',
+       'B. Whether the new law will work remains unknown.',
+       'C. That the new law will work remains unknown.',
+       'D. If the new law will work remains unknown.'],
+ ans:1, letters:['A','B','C','D'],
+ ok:'Xuất sắc! B vừa đúng từ nối "Whether", vừa chuẩn trật tự từ S+V.',
+ no:'Đáp án B. A sai vì chưa bỏ đảo ngữ; C sai vì "that" dùng cho sự thật (fact); D sai vì "If" không đứng đầu câu làm chủ ngữ.'},
+
+{id:'p21', type:'fill', typeLabel:'Biến đổi câu (Band 6.5)',
+ text:'Kết hợp dùng "what":<br><em>"What are the main causes of traffic jams? The report investigates this."</em><br>Viết lại bắt đầu bằng "The report investigates..."',
+ ans:['the report investigates what the main causes of traffic jams are','The report investigates what the main causes of traffic jams are.'],
+ ok:'Cực kỳ chính xác! Bạn nắm word order rất vững.',
+ no:'Đáp án: "The report investigates what the main causes of traffic jams are." (Nhớ ném chữ "are" xuống cuối cùng nhé).'},
+
+{id:'p22', type:'mc', typeLabel:'Nhận diện cấu trúc Nâng cao (Band 6.5)',
+ text:'Đâu là mẫu câu "The fact that..." chuẩn xác trong IELTS?',
+ opts:['A. The fact is that people are living longer.',
+       'B. The fact that people are living longer brings both benefits and challenges.',
+       'C. The fact, which is that people are living longer, matters.',
+       'D. The fact about people are living longer is positive.'],
+ ans:1, letters:['A','B','C','D'],
+ ok:'Chính xác! "The fact that + mệnh đề" là một cụm danh từ khổng lồ làm chủ ngữ. Cấu trúc ăn điểm cực mạnh trong Task 2.',
+ no:'Đáp án B. "The fact that + S + V" tạo thành một cụm chủ ngữ đồ sộ và rất học thuật.'}
+];
+
+/* ════════════════════════════════════════
+   PRODUCTION DATA — 10 questions (Tăng dần độ khó)
+════════════════════════════════════════ */
+var PD = [
+{id:'pd1', typeLabel:'Câu cơ bản (Band 5.0)',
+ prompt:'Dùng động từ <strong>believe</strong> và Noun Clause để viết: <em>"Nhiều người tin rằng thức ăn nhanh có hại cho sức khỏe."</em>',
+ collocs:['Many people believe that','fast food is harmful to','cause health problems','lead to obesity','regular consumption of'],
+ model:'Many people believe that consuming fast food on a regular basis is harmful to human health.'},
+
+{id:'pd2', typeLabel:'Chủ ngữ giả (Band 5.5)',
+ prompt:'Chuyển ý cá nhân thành ý khách quan bằng cấu trúc <em>"It is clear that..."</em>. Viết câu: <em>"Rõ ràng là kẹt xe đang trở nên tồi tệ hơn ở các thành phố lớn."</em>',
+ collocs:['It is clear that','traffic congestion','is getting worse','is becoming more severe','in major cities','urban areas'],
+ model:'It is clear that traffic congestion is becoming a more severe problem in major cities.'},
+
+{id:'pd3', typeLabel:'Mệnh đề chủ ngữ (Band 5.5)',
+ prompt:'Dùng cấu trúc <strong>"What + S + V..."</strong> làm chủ ngữ. Viết câu: <em>"Điều mà học sinh cần hiện nay là nhiều kỹ năng thực tế hơn."</em>',
+ collocs:['What students need today is','more practical skills','hands-on experience','better preparation for the workplace','rather than just theoretical knowledge'],
+ model:'What students need today is more practical skills and hands-on experience rather than just theoretical knowledge.'},
+
+{id:'pd4', typeLabel:'Mệnh đề sau giới từ (Band 6.0)',
+ prompt:'Dùng "depend on how...". Viết câu: <em>"Thành công trong học tập phụ thuộc vào việc bạn cố gắng như thế nào."</em>',
+ collocs:['Academic success largely depends on','how much effort you put into your studies','how hard a student works','dedication and persistence'],
+ model:'Academic success largely depends on how much effort and dedication a student puts into their studies.'},
+
+{id:'pd5', typeLabel:'Ứng dụng Task 1 (Band 6.0)',
+ prompt:'Mô tả biểu đồ. Dùng <em>"The chart shows that..."</em> hoặc <em>"What the data reveals is..."</em> để nói về sự gia tăng của năng lượng tái tạo.',
+ collocs:['The line graph clearly shows that','What the data reveals is','a steady increase in','the consumption of renewable energy','over the ten-year period'],
+ model:'What the data reveals is a steady increase in the consumption of renewable energy over the ten-year period.'},
+
+{id:'pd6', typeLabel:'Mệnh đề Whether (Band 6.0)',
+ prompt:'Viết một câu diễn tả sự tranh luận: <em>"Vẫn còn nhiều tranh cãi liệu bằng đại học có phải là con đường duy nhất dẫn đến thành công hay không."</em>',
+ collocs:['There is a debate about whether','It remains a controversial issue whether','a university degree is the only path to success','guarantees a good career','higher education is essential'],
+ model:'There is an ongoing debate about whether a university degree is the only reliable path to career success.'},
+
+{id:'pd7', typeLabel:'Cấu trúc Nâng cao (Band 6.5)',
+ prompt:'Báo cáo quan điểm của chuyên gia dùng 2 vế. <em>"Nhiều chuyên gia cho rằng (argue that) công nghệ giúp ích, nhưng những người khác lại thắc mắc liệu (wonder whether) nó có làm ta lười đi không."</em>',
+ collocs:['While many experts argue that','technology greatly improves our productivity','others wonder whether','it makes people more passive and lazy','over-reliance on digital devices'],
+ model:'While many experts argue that technology significantly improves our productivity, others wonder whether an over-reliance on digital devices makes people more passive and lazy.'},
+
+{id:'pd8', typeLabel:'The fact that (Band 6.5)',
+ prompt:'Dùng siêu cấu trúc <strong>"The fact that..."</strong> làm chủ ngữ cho chủ đề Môi trường. <em>(Ví dụ: Sự thật là Trái đất đang nóng lên đòi hỏi chúng ta phải hành động ngay.)</em>',
+ collocs:['The fact that global temperatures are rising','demands immediate action','requires urgent attention from governments','cannot be ignored anymore'],
+ model:'The fact that global temperatures are rising at an alarming rate demands immediate and coordinated action from all governments.'},
+
+{id:'pd9', typeLabel:'So sánh Task 1 (Band 6.5)',
+ prompt:'Dùng cụm <em>"What stands out is that..." (Điều nổi bật là...)</em> để so sánh 2 xu hướng (ví dụ: chi phí y tế tăng, trong khi chi phí giáo dục giảm).',
+ collocs:['What stands out from the graph is that','while healthcare expenditure increased significantly','spending on education saw a slight decline','the opposite trend was observed'],
+ model:'What stands out from the graph is that while healthcare expenditure increased significantly, spending on education actually saw a slight decline.'},
+
+{id:'pd10', typeLabel:'Câu phức tổng hợp (Band 6.5)',
+ prompt:'Viết một câu Kết luận (Conclusion) cho bài Task 2 về giáo dục. Gợi ý: Dùng <em>"In conclusion, I believe that... because what society needs is..."</em>',
+ collocs:['In conclusion, I firmly believe that','education should be free for everyone','because what society truly needs is','a well-educated and skilled workforce','equal opportunities for all citizens'],
+ model:'In conclusion, I firmly believe that higher education should be free, because what society truly needs is a well-educated workforce that has equal opportunities regardless of financial background.'}
+];
+
+/* ════════════════════════════════════════
+   STATE
+════════════════════════════════════════ */
+var prState = {};   
+var pdState = {};   
+
+/* ════════════════════════════════════════
+   RENDER PRACTICE
+════════════════════════════════════════ */
+function renderPractice() {
+  var c = document.getElementById('practiceContainer');
+  c.innerHTML = '';
+  PR.forEach(function(q, i) {
+    c.appendChild(buildPracticeCard(q, i));
+  });
+  updatePrProgress();
+}
+
+function buildPracticeCard(q, i) {
+  var div = document.createElement('div');
+  div.className = 'q-card reveal';
+  div.id = 'qc-' + q.id;
+  div.style.animationDelay = (i * 30) + 'ms';
+
+  var typeCls = {
+    'mc':'qt-mc','tf':'qt-tf','fill':'qt-id','err':'qt-err','tr':'qt-tr'
+  }[q.type] || 'qt-id';
+  var typeCls2 = q.typeLabel.indexOf('Sửa') >= 0 ? 'qt-err' : (q.typeLabel.indexOf('Biến') >= 0 ? 'qt-tr' : typeCls);
+
+  var inner = '<div class="q-meta">'
+    + '<span class="q-num">#' + (i+1) + '</span>'
+    + '<span class="q-type ' + typeCls + '">' + (q.type === 'mc' ? 'Trắc nghiệm' : q.type === 'tf' ? 'Đúng / Sai' : 'Điền / Viết') + '</span>'
+    + '<span class="q-type ' + typeCls2 + '" style="margin-left:2px">' + q.typeLabel + '</span>'
+    + '</div>'
+    + '<div class="q-text">' + q.text + '</div>';
+
+  if (q.type === 'mc') {
+    inner += '<div class="mcq-opts">'
+      + q.opts.map(function(o, oi) {
+        return '<button class="mcq-btn" onclick="checkMC(\'' + q.id + '\',' + oi + ')">'
+          + '<span class="mcq-letter">' + q.letters[oi] + '</span>'
+          + '<span>' + o + '</span>'
+          + '</button>';
+      }).join('')
+      + '</div>';
+  } else if (q.type === 'tf') {
+    inner += '<div class="tf-btns">'
+      + '<button class="tf-btn" onclick="checkTF(\'' + q.id + '\',true)">✓ Đúng</button>'
+      + '<button class="tf-btn" onclick="checkTF(\'' + q.id + '\',false)">✗ Sai</button>'
+      + '</div>';
+  } else {
+    inner += '<div class="q-input-row">'
+      + '<input class="q-input" type="text" id="inp-' + q.id + '" placeholder="Nhập câu trả lời..." autocorrect="off" spellcheck="false" onkeydown="if(event.key===\'Enter\')checkFill(\'' + q.id + '\')">'
+      + '<button class="submit-btn" id="sbtn-' + q.id + '" onclick="checkFill(\'' + q.id + '\')">Kiểm tra</button>'
+      + '</div>';
+  }
+
+  inner += '<div class="q-fb" id="fb-' + q.id + '"></div>'
+    + '<button class="hint-btn" id="hint-' + q.id + '" onclick="showHint(\'' + q.id + '\')">💡 Xem gợi ý</button>'
+    + '<div class="hint-box" id="hbox-' + q.id + '"></div>'
+    + '<button class="redo-btn" id="redo-' + q.id + '" onclick="redoPr(\'' + q.id + '\')">↺ Làm lại</button>';
+
+  div.innerHTML = inner;
+  return div;
+}
+
+/* ════════════════════════════════════════
+   PRACTICE CHECK FUNCTIONS
+════════════════════════════════════════ */
+function checkMC(qid, chosen) {
+  if (prState[qid] !== undefined) return;
+  var q = findPR(qid);
+  var card = document.getElementById('qc-' + qid);
+  var btns = card.querySelectorAll('.mcq-btn');
+  btns.forEach(function(b) { b.disabled = true; });
+  btns[q.ans].classList.add('correct');
+  if (chosen !== q.ans) btns[chosen].classList.add('wrong');
+  var ok = chosen === q.ans;
+  prState[qid] = ok;
+  showPrFb(qid, ok, q);
+}
+
+function checkTF(qid, chosen) {
+  if (prState[qid] !== undefined) return;
+  var q = findPR(qid);
+  var card = document.getElementById('qc-' + qid);
+  var btns = card.querySelectorAll('.tf-btn');
+  btns.forEach(function(b) { b.disabled = true; });
+  var ok = chosen === q.ans;
+  btns[0].classList.add(q.ans === true ? 'correct' : (chosen === true ? 'wrong' : ''));
+  btns[1].classList.add(q.ans === false ? 'correct' : (chosen === false ? 'wrong' : ''));
+  prState[qid] = ok;
+  showPrFb(qid, ok, q);
+}
+
+function checkFill(qid) {
+  if (prState[qid] !== undefined) return;
+  var q = findPR(qid);
+  var inp = document.getElementById('inp-' + qid);
+  var sbtn = document.getElementById('sbtn-' + qid);
+  var val = inp.value.trim().toLowerCase().replace(/[.!?]$/, '');
+  if (!val) { inp.focus(); return; }
+  inp.disabled = true;
+  if (sbtn) sbtn.disabled = true;
+  var ok = q.ans.some(function(a) { return val === a.toLowerCase().replace(/[.!?]$/, ''); });
+  inp.classList.add(ok ? 'ok' : 'no');
+  prState[qid] = ok;
+  showPrFb(qid, ok, q);
+}
+
+function showPrFb(qid, ok, q) {
+  var fb = document.getElementById('fb-' + qid);
+  var hint = document.getElementById('hint-' + qid);
+  var hbox = document.getElementById('hbox-' + qid);
+  var redo = document.getElementById('redo-' + qid);
+  fb.innerHTML = '<div class="fb-hd">' + (ok ? '✓ Chính xác!' : '✗ Chưa đúng') + '</div>'
+    + '<div>' + (ok ? q.ok : q.no) + '</div>';
+  fb.className = 'q-fb show ' + (ok ? 'ok' : 'no');
+
+  if (!ok) {
+    hint.classList.add('show');
+    hbox.innerHTML = '<strong>Gợi ý:</strong> ' + q.no;
+  }
+  redo.classList.add('show');
+
+  var card = document.getElementById('qc-' + qid);
+  card.classList.add('answered');
+  updatePrProgress();
+}
+
+function showHint(qid) {
+  var hbox = document.getElementById('hbox-' + qid);
+  hbox.classList.toggle('show');
+}
+
+function redoPr(qid) {
+  delete prState[qid];
+  var q = findPR(qid);
+  var idx = PR.findIndex(function(x) { return x.id === qid; });
+  var old = document.getElementById('qc-' + qid);
+  if (old) old.parentNode.replaceChild(buildPracticeCard(q, idx), old);
+  updatePrProgress();
+}
+
+function updatePrProgress() {
+  var done = Object.keys(prState).length;
+  var total = PR.length;
+  var correct = Object.values(prState).filter(Boolean).length;
+  document.getElementById('prFill').style.width = (done / total * 100) + '%';
+  document.getElementById('prText').textContent = done + ' / ' + total + ' câu';
+  document.getElementById('prScore').textContent = correct + ' đúng';
+  updateGlobal();
+  if (done === total) showPrSummary(correct, total);
+}
+
+function showPrSummary(c, t) {
+  var pct = Math.round(c / t * 100);
+  document.getElementById('prSumNum').textContent = c;
+  document.getElementById('prSumTitle').textContent = pct >= 85 ? 'Xuất sắc!' : pct >= 65 ? 'Rất tốt!' : pct >= 50 ? 'Khá ổn!' : 'Cần ôn thêm!';
+  document.getElementById('prSumSub').textContent = 'Bạn trả lời đúng ' + c + '/' + t + ' câu (' + pct + '%). ' + (pct < 65 ? 'Hãy xem lại phần Present trước khi sang Production.' : 'Bạn đã nắm vững nền tảng — sẵn sàng cho Production!');
+  document.getElementById('prSummary').classList.add('show');
+  document.getElementById('prSummary').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+/* ════════════════════════════════════════
+   RENDER PRODUCTION
+════════════════════════════════════════ */
+function renderProduction() {
+  var c = document.getElementById('productionContainer');
+  c.innerHTML = '';
+  PD.forEach(function(q, i) {
+    c.appendChild(buildProductionCard(q, i));
+  });
+  updatePdProgress();
+}
+
+function buildProductionCard(q, i) {
+  var div = document.createElement('div');
+  div.className = 'q-card reveal';
+  div.id = 'pdc-' + q.id;
+  div.style.animationDelay = (i * 40) + 'ms';
+
+  var chips = q.collocs.map(function(c) {
+    return '<span class="colloc-chip" onclick="insertColloc(\'' + q.id + '\',this)">' + c + '</span>';
+  }).join('');
+
+  div.innerHTML = '<div class="q-meta">'
+    + '<span class="q-num">#' + (i+1) + '</span>'
+    + '<span class="q-type qt-wr">' + q.typeLabel + '</span>'
+    + '</div>'
+    + '<div class="q-text">' + q.prompt + '</div>'
+    + '<div class="colloc-area"><div class="colloc-lbl">Collocations gợi ý</div><div class="colloc-chips">' + chips + '</div></div>'
+    + '<textarea class="q-ta" id="pta-' + q.id + '" rows="3" placeholder="Viết câu của bạn ở đây..." autocorrect="off" spellcheck="false"></textarea>'
+    + '<div class="q-input-row" style="margin-top:12px">'
+      + '<button class="submit-btn" style="background:var(--rose-m)" id="psbtn-' + q.id + '" onclick="submitPd(\'' + q.id + '\')">Nộp bài</button>'
+      + '<button class="redo-btn" id="predo-' + q.id + '" style="display:none" onclick="redoPd(\'' + q.id + '\')">↺ Viết lại</button>'
+    + '</div>'
+    + '<div class="q-fb" id="pfb-' + q.id + '"></div>';
+
+  return div;
+}
+
+function insertColloc(qid, chip) {
+  var ta = document.getElementById('pta-' + qid);
+  if (!ta || ta.disabled) return;
+  var val = ta.value;
+  var ph = chip.textContent;
+  if (val.length > 0 && val[val.length-1] !== ' ') val += ' ';
+  ta.value = val + ph + ' ';
+  ta.focus();
+}
+
+function submitPd(qid) {
+  if (pdState[qid]) return;
+  var ta = document.getElementById('pta-' + qid);
+  var sbtn = document.getElementById('psbtn-' + qid);
+  var redo = document.getElementById('predo-' + qid);
+  var fb = document.getElementById('pfb-' + qid);
+  var val = ta ? ta.value.trim() : '';
+  if (!val || val.length < 15) { if (ta) { ta.style.borderColor = 'var(--rose-m)'; setTimeout(function(){ ta.style.borderColor = ''; }, 1500); } return; }
+  if (ta) ta.disabled = true;
+  if (sbtn) sbtn.disabled = true;
+  pdState[qid] = true;
+  if (redo) redo.style.display = 'inline-flex';
+
+  var q = PD.find(function(x) { return x.id === qid; });
+  fb.innerHTML = '<div class="fb-hd">Đã nộp! So sánh với câu mẫu dưới đây:</div>'
+    + '<div style="margin-top:6px"><strong style="font-size:13px;opacity:.8;text-transform:uppercase;letter-spacing:.05em">Câu mẫu tham khảo:</strong></div>'
+    + '<div style="margin-top:4px;font-style:italic">' + q.model + '</div>';
+  fb.className = 'q-fb show info';
+
+  var card = document.getElementById('pdc-' + qid);
+  card.classList.add('answered');
+  updatePdProgress();
+}
+
+function redoPd(qid) {
+  delete pdState[qid];
+  var q = PD.find(function(x) { return x.id === qid; });
+  var idx = PD.findIndex(function(x) { return x.id === qid; });
+  var old = document.getElementById('pdc-' + qid);
+  if (old) old.parentNode.replaceChild(buildProductionCard(q, idx), old);
+  updatePdProgress();
+}
+
+function updatePdProgress() {
+  var done = Object.keys(pdState).length;
+  var total = PD.length;
+  document.getElementById('pdFill').style.width = (done / total * 100) + '%';
+  document.getElementById('pdText').textContent = done + ' / ' + total + ' câu';
+  document.getElementById('pdScore').textContent = done + ' nộp';
+  updateGlobal();
+  if (done === total) {
+    document.getElementById('pdSumNum').textContent = done;
+    document.getElementById('pdSummary').classList.add('show');
+    document.getElementById('pdSummary').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function updateGlobal() {
+  var prDone = Object.keys(prState).length;
+  var pdDone = Object.keys(pdState).length;
+  var total = PR.length + PD.length;
+  var done = prDone + pdDone;
+  var percent = Math.round((done / total) * 100);
+
+  document.getElementById('globalProgress').style.width = percent + '%';
+  var progText = document.getElementById('progPercentText');
+  if (progText) progText.textContent = percent + '%';
+
+  var sp = window.scrollY + 100;
+  var prTop = document.getElementById('practice') ? document.getElementById('practice').offsetTop : 9999;
+  var pdTop = document.getElementById('production') ? document.getElementById('production').offsetTop : 9999;
+  
+  document.querySelectorAll('.sb-link').forEach(function(p) { p.classList.remove('act'); });
+  if (sp >= pdTop) document.querySelectorAll('.sb-link')[2].classList.add('act');
+  else if (sp >= prTop) document.querySelectorAll('.sb-link')[1].classList.add('act');
+  else document.querySelectorAll('.sb-link')[0].classList.add('act');
+}
+
+/* ════════════════════════════════════════
+   RESET
+════════════════════════════════════════ */
+function resetSection(sec) {
+  if (sec === 'practice') {
+    prState = {};
+    document.getElementById('prSummary').classList.remove('show');
+    renderPractice();
+  } else {
+    pdState = {};
+    document.getElementById('pdSummary').classList.remove('show');
+    renderProduction();
+  }
+  updateGlobal();
+}
+
+/* ════════════════════════════════════════
+   UTILS
+════════════════════════════════════════ */
+function findPR(id) {
+  for (var i = 0; i < PR.length; i++) { if (PR[i].id === id) return PR[i]; }
+  return null;
+}
+Array.prototype.findIndex = Array.prototype.findIndex || function(cb) {
+  for (var i = 0; i < this.length; i++) { if (cb(this[i], i)) return i; }
+  return -1;
+};
+
+/* ════════════════════════════════════════
+   SCROLL REVEAL + INIT
+════════════════════════════════════════ */
+var revealObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+function observeReveals() {
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+}
+
+window.addEventListener('scroll', updateGlobal, { passive: true });
+
+renderPractice();
+renderProduction();
+observeReveals();
+updateGlobal();
+</script>
+</body>
+</html>
