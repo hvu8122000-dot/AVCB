@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Tenses – PPP Lesson</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Lexend',sans-serif;background:#f7f4ff;color:#2d2b3d;line-height:1.7}
+
+/* NAV */
+.nav{background:#fff;border-bottom:1.5px solid #e8e4ff;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:0;padding:0 2rem}
+.nav-logo{font-size:1.1rem;font-weight:600;color:#6c5ce7;padding:1rem 1.5rem 1rem 0;border-right:1px solid #e8e4ff;margin-right:1rem}
+.nav-btn{background:none;border:none;font-family:'Lexend',sans-serif;font-size:.85rem;font-weight:500;padding:.85rem 1.1rem;cursor:pointer;color:#888;border-bottom:2.5px solid transparent;transition:color .2s,border-color .2s}
+.nav-btn:hover{color:#6c5ce7}
+.nav-btn.active{color:#6c5ce7;border-bottom-color:#6c5ce7}
+.progress-bar{height:3px;background:linear-gradient(90deg,#a29bfe,#fd79a8);transition:width .4s}
+
+/* SECTIONS */
+.section{display:none;padding:2.5rem 2rem;max-width:980px;margin:0 auto}
+.section.active{display:block}
+
+/* PRESENTATION */
+.hero{text-align:center;padding:2rem 0 1.5rem}
+.hero h1{font-size:2rem;font-weight:700;color:#6c5ce7;margin-bottom:.4rem}
+.hero p{color:#888;font-size:.95rem}
+
+.phase-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a29bfe;margin-bottom:.4rem}
+.section-title{font-size:1.4rem;font-weight:600;color:#2d2b3d;margin-bottom:1.5rem}
+
+.tense-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem;margin-bottom:2.5rem}
+.tense-card{background:#fff;border-radius:16px;padding:1.4rem;border:1.5px solid #e8e4ff;transition:transform .2s,box-shadow .2s;cursor:default}
+.tense-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(108,92,231,.13)}
+.tense-card .tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .7rem;border-radius:20px;margin-bottom:.8rem}
+.tag-present{background:#f0edff;color:#6c5ce7}
+.tag-past{background:#ffeef6;color:#e84393}
+.tag-future{background:#e8f8f0;color:#00b894}
+.tense-card h3{font-size:1rem;font-weight:600;margin-bottom:.6rem}
+.formula{background:#f7f4ff;border-radius:10px;padding:.6rem .9rem;font-size:.85rem;font-weight:500;color:#6c5ce7;margin-bottom:.7rem;font-family:monospace}
+.tense-card p{font-size:.83rem;color:#666;margin-bottom:.5rem}
+.example{font-size:.85rem;color:#444;font-style:italic;border-left:3px solid #a29bfe;padding-left:.7rem;margin-top:.6rem}
+.vi-note{font-size:.78rem;color:#888;margin-top:.35rem}
+
+/* VERB TABLE */
+.verb-section{background:#fff;border-radius:16px;padding:1.5rem;border:1.5px solid #e8e4ff;margin-bottom:2rem}
+.verb-section h3{font-size:1rem;font-weight:600;margin-bottom:1rem;color:#2d2b3d}
+table{width:100%;border-collapse:collapse;font-size:.83rem}
+th{background:#f0edff;color:#6c5ce7;font-weight:600;padding:.6rem .8rem;text-align:left;border-radius:4px}
+td{padding:.55rem .8rem;border-bottom:1px solid #f0edff;color:#444}
+tr:hover td{background:#faf9ff}
+.verb-form{font-weight:600;color:#2d2b3d}
+.highlight-verb{color:#6c5ce7;font-weight:700}
+
+/* SIGNAL WORDS */
+.signal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.8rem;margin-bottom:2rem}
+.signal-box{background:#fff;border-radius:12px;padding:.9rem;border:1.5px solid #e8e4ff}
+.signal-box h4{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.signal-box ul{list-style:none;font-size:.8rem;color:#555}
+.signal-box ul li::before{content:"→ ";color:#a29bfe}
+
+/* PRODUCTION CTA */
+.cta-box{background:linear-gradient(135deg,#f0edff,#ffeef6);border-radius:16px;padding:1.5rem;text-align:center;border:1.5px solid #e8e4ff}
+.cta-box p{color:#666;font-size:.9rem;margin-bottom:1rem}
+.btn-primary{background:#6c5ce7;color:#fff;border:none;border-radius:10px;padding:.75rem 2rem;font-family:'Lexend',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:background .2s,transform .15s}
+.btn-primary:hover{background:#5a4bd1;transform:scale(1.03)}
+
+/* PRACTICE */
+.practice-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
+.score-badge{background:#fff;border:1.5px solid #e8e4ff;border-radius:12px;padding:.5rem 1.1rem;font-size:.85rem;font-weight:600;color:#6c5ce7}
+
+.q-filter{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.filter-btn{background:#fff;border:1.5px solid #e8e4ff;border-radius:20px;padding:.35rem .9rem;font-family:'Lexend',sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;color:#888;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+
+.q-block{background:#fff;border-radius:16px;padding:1.3rem 1.5rem;margin-bottom:1.1rem;border:1.5px solid #e8e4ff;transition:border-color .2s}
+.q-block.correct{border-color:#00b894}
+.q-block.wrong{border-color:#e17055}
+.q-meta{display:flex;gap:.5rem;align-items:center;margin-bottom:.6rem}
+.q-num{font-size:.72rem;font-weight:700;color:#aaa}
+.q-type-tag{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .55rem;border-radius:20px;background:#f0edff;color:#6c5ce7}
+.q-text{font-size:.92rem;color:#2d2b3d;margin-bottom:.9rem;font-weight:500}
+.blank{display:inline-block;min-width:90px;border-bottom:2px solid #a29bfe;text-align:center;color:#6c5ce7;font-weight:600;padding:0 4px}
+
+/* MC options */
+.mc-options{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.mc-btn{background:#f7f4ff;border:1.5px solid #e8e4ff;border-radius:10px;padding:.55rem .9rem;font-family:'Lexend',sans-serif;font-size:.82rem;cursor:pointer;text-align:left;transition:all .18s;color:#444}
+.mc-btn:hover:not(:disabled){background:#ede9ff;border-color:#a29bfe;color:#6c5ce7}
+.mc-btn.selected-correct{background:#d4edda;border-color:#00b894;color:#00855e}
+.mc-btn.selected-wrong{background:#fde8e8;border-color:#e17055;color:#c0392b}
+.mc-btn.reveal-correct{background:#d4edda;border-color:#00b894;color:#00855e}
+.mc-btn:disabled{cursor:default}
+
+/* Fill-in */
+.fill-wrap{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.fill-input{border:1.5px solid #e8e4ff;border-radius:8px;padding:.45rem .8rem;font-family:'Lexend',sans-serif;font-size:.85rem;width:160px;outline:none;transition:border-color .2s;color:#2d2b3d}
+.fill-input:focus{border-color:#a29bfe}
+.fill-input.correct-input{border-color:#00b894;background:#f0fff8;color:#00855e}
+.fill-input.wrong-input{border-color:#e17055;background:#fff5f5;color:#c0392b}
+.check-btn{background:#6c5ce7;color:#fff;border:none;border-radius:8px;padding:.45rem .9rem;font-family:'Lexend',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:background .18s}
+.check-btn:hover{background:#5a4bd1}
+
+/* Error-correction */
+.error-sent{font-size:.9rem;margin-bottom:.6rem;color:#2d2b3d}
+.error-word{color:#e17055;font-weight:700;text-decoration:underline wavy #e17055}
+.rewrite-input{border:1.5px solid #e8e4ff;border-radius:8px;padding:.45rem .9rem;font-family:'Lexend',sans-serif;font-size:.85rem;width:100%;max-width:380px;outline:none;transition:border-color .2s;color:#2d2b3d;margin-bottom:.5rem}
+.rewrite-input:focus{border-color:#a29bfe}
+
+/* Feedback */
+.feedback{font-size:.8rem;margin-top:.5rem;font-weight:500}
+.feedback.ok{color:#00b894}
+.feedback.fail{color:#e17055}
+.explain{font-size:.78rem;color:#888;margin-top:.3rem}
+
+/* Context matching */
+.match-context{font-size:.85rem;color:#555;background:#f7f4ff;border-radius:8px;padding:.6rem .9rem;margin-bottom:.7rem;border-left:3px solid #a29bfe}
+
+/* Progress */
+.progress-wrap{background:#f0edff;border-radius:999px;height:8px;margin-bottom:2rem;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#a29bfe,#fd79a8);border-radius:999px;transition:width .5s}
+
+/* Results */
+.result-box{background:#fff;border-radius:20px;padding:2rem;text-align:center;border:1.5px solid #e8e4ff;margin-top:1rem}
+.result-box .big-score{font-size:3rem;font-weight:700;color:#6c5ce7}
+.result-box p{color:#666;margin-top:.5rem}
+.btn-secondary{background:#fff;color:#6c5ce7;border:1.5px solid #6c5ce7;border-radius:10px;padding:.65rem 1.5rem;font-family:'Lexend',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .18s;margin:.3rem}
+.btn-secondary:hover{background:#f0edff}
+
+/* Reorder */
+.word-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem;min-height:36px}
+.chip{background:#f0edff;color:#6c5ce7;border-radius:8px;padding:.3rem .7rem;font-size:.82rem;font-weight:500;cursor:pointer;border:1.5px solid #e8e4ff;transition:all .15s;user-select:none}
+.chip:hover{background:#ede9ff;border-color:#a29bfe}
+.chip.used{opacity:.35;pointer-events:none}
+.answer-chips{display:flex;flex-wrap:wrap;gap:.4rem;min-height:38px;border:1.5px dashed #d0caff;border-radius:10px;padding:.4rem .6rem;margin-bottom:.5rem}
+.answer-chips .chip{background:#fff;border-color:#a29bfe;color:#2d2b3d}
+.answer-chips .chip:hover{background:#ffeef6;border-color:#fd79a8}
+
+@media(max-width:600px){.mc-options{grid-template-columns:1fr}.tense-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-logo">🇬🇧 English Tenses</div>
+  <button class="nav-btn active" onclick="showSection('presentation',this)">📖 Presentation</button>
+  <button class="nav-btn" onclick="showSection('practice',this)">✏️ Practice</button>
+  <button class="nav-btn" onclick="showSection('production',this)">🚀 Production</button>
+</div>
+<div class="progress-bar" id="progressBar" style="width:33%"></div>
+
+<!-- ═══════════════════════ PRESENTATION ═══════════════════════ -->
+<div class="section active" id="presentation">
+  <div class="hero">
+    <div class="phase-label">Phase 1 — Presentation</div>
+    <h1>English Tenses</h1>
+    <p>Học 5 thì cơ bản trong tiếng Anh – hiểu rõ cấu trúc, nhận diện ngữ cảnh</p>
+  </div>
+
+  <!-- VERB FORMS TABLE -->
+  <div class="verb-section">
+    <h3>🔑 Dạng động từ cần biết (Verb Forms)</h3>
+    <table>
+      <thead><tr><th>Bare / Base verb</th><th>3rd person -s/es</th><th>V-ing</th><th>Past Simple (V2)</th><th>Past Participle (V3)</th></tr></thead>
+      <tbody>
+        <tr><td class="verb-form">go</td><td>go<span class="highlight-verb">es</span></td><td>go<span class="highlight-verb">ing</span></td><td>went</td><td>gone</td></tr>
+        <tr><td class="verb-form">play</td><td>play<span class="highlight-verb">s</span></td><td>play<span class="highlight-verb">ing</span></td><td>played</td><td>played</td></tr>
+        <tr><td class="verb-form">study</td><td>stud<span class="highlight-verb">ies</span></td><td>study<span class="highlight-verb">ing</span></td><td>studied</td><td>studied</td></tr>
+        <tr><td class="verb-form">eat</td><td>eat<span class="highlight-verb">s</span></td><td>eat<span class="highlight-verb">ing</span></td><td>ate</td><td>eaten</td></tr>
+        <tr><td class="verb-form">write</td><td>write<span class="highlight-verb">s</span></td><td>writ<span class="highlight-verb">ing</span></td><td>wrote</td><td>written</td></tr>
+        <tr><td class="verb-form">have</td><td>ha<span class="highlight-verb">s</span></td><td>hav<span class="highlight-verb">ing</span></td><td>had</td><td>had</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.78rem;color:#aaa;margin-top:.7rem">💡 <strong>Bare verb</strong> = động từ nguyên mẫu không "to" | <strong>V2/V3 bất quy tắc</strong> cần học thuộc lòng</p>
+  </div>
+
+  <!-- TENSE CARDS -->
+  <div class="section-title">5 Thì Cơ Bản</div>
+  <div class="tense-grid">
+
+    <div class="tense-card">
+      <span class="tag tag-present">Present</span>
+      <h3>Present Simple</h3>
+      <div class="formula">S + V(s/es) / S + do/does + not + V</div>
+      <p>📌 Diễn tả thói quen, sự thật hiển nhiên, lịch trình cố định.</p>
+      <div class="example">She <strong>studies</strong> English every day.<br>Water <strong>boils</strong> at 100°C.</div>
+      <div class="vi-note">🇻🇳 Giống "Lan học tiếng Anh mỗi ngày" – không có trợ động từ đặc biệt</div>
+    </div>
+
+    <div class="tense-card">
+      <span class="tag tag-present">Present</span>
+      <h3>Present Continuous</h3>
+      <div class="formula">S + am/is/are + V-ing</div>
+      <p>📌 Diễn tả hành động đang xảy ra ngay lúc nói.</p>
+      <div class="example">They <strong>are playing</strong> football now.<br>I <strong>am not watching</strong> TV.</div>
+      <div class="vi-note">🇻🇳 Giống "đang" – He is eating = Anh ấy đang ăn</div>
+    </div>
+
+    <div class="tense-card">
+      <span class="tag tag-present">Present</span>
+      <h3>Present Perfect</h3>
+      <div class="formula">S + have/has + V3 (past participle)</div>
+      <p>📌 Hành động đã xảy ra, kết quả ảnh hưởng đến hiện tại.</p>
+      <div class="example">She <strong>has visited</strong> Ha Long Bay.<br>We <strong>have lived</strong> here for 5 years.</div>
+      <div class="vi-note">🇻🇳 Không có tương đương trực tiếp – chú ý "already, just, ever, never, for, since"</div>
+    </div>
+
+    <div class="tense-card">
+      <span class="tag tag-past">Past</span>
+      <h3>Past Simple</h3>
+      <div class="formula">S + V2 (V-ed / irregular) / S + did not + V</div>
+      <p>📌 Hành động đã xảy ra và kết thúc trong quá khứ.</p>
+      <div class="example">He <strong>watched</strong> a film last night.<br>They <strong>went</strong> to Hanoi yesterday.</div>
+      <div class="vi-note">🇻🇳 Giống "đã" – She ate = Cô ấy đã ăn | Chú ý động từ bất quy tắc</div>
+    </div>
+
+    <div class="tense-card">
+      <span class="tag tag-future">Future</span>
+      <h3>Future Simple</h3>
+      <div class="formula">S + will + V (bare verb)</div>
+      <p>📌 Dự đoán, quyết định tức thì, lời hứa.</p>
+      <div class="example">I <strong>will help</strong> you tomorrow.<br>It <strong>will rain</strong> tonight.</div>
+      <div class="vi-note">🇻🇳 Giống "sẽ" – She will come = Cô ấy sẽ đến | will + bare verb (KHÔNG chia)</div>
+    </div>
+
+  </div>
+
+  <!-- SIGNAL WORDS -->
+  <div class="section-title">⏰ Từ tín hiệu (Signal Words)</div>
+  <div class="signal-grid">
+    <div class="signal-box" style="border-top:3px solid #a29bfe">
+      <h4 style="color:#6c5ce7">Present Simple</h4>
+      <ul><li>every day/week</li><li>always, usually</li><li>often, sometimes</li><li>never, rarely</li></ul>
+    </div>
+    <div class="signal-box" style="border-top:3px solid #74b9ff">
+      <h4 style="color:#0984e3">Present Continuous</h4>
+      <ul><li>now, right now</li><li>at the moment</li><li>currently, today</li><li>listen! look!</li></ul>
+    </div>
+    <div class="signal-box" style="border-top:3px solid #55efc4">
+      <h4 style="color:#00b894">Present Perfect</h4>
+      <ul><li>already, just</li><li>ever, never</li><li>for, since</li><li>recently, yet</li></ul>
+    </div>
+    <div class="signal-box" style="border-top:3px solid #fd79a8">
+      <h4 style="color:#e84393">Past Simple</h4>
+      <ul><li>yesterday</li><li>last night/year</li><li>ago, in 2020</li><li>when I was young</li></ul>
+    </div>
+    <div class="signal-box" style="border-top:3px solid #ffeaa7">
+      <h4 style="color:#fdcb6e">Future Simple</h4>
+      <ul><li>tomorrow, soon</li><li>next week/year</li><li>in the future</li><li>I think / I believe</li></ul>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:2rem">
+    <button class="btn-primary" onclick="showSection('practice',document.querySelectorAll('.nav-btn')[1])">Bắt đầu luyện tập →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════ PRACTICE ═══════════════════════ -->
+<div class="section" id="practice">
+  <div class="practice-header">
+    <div>
+      <div class="phase-label">Phase 2 — Practice</div>
+      <div class="section-title" style="margin-bottom:0">100 Câu Luyện Tập</div>
+    </div>
+    <div class="score-badge" id="scoreBadge">Điểm: 0 / 0</div>
+  </div>
+
+  <div class="progress-wrap"><div class="progress-fill" id="practiceProgress" style="width:0%"></div></div>
+
+  <div class="q-filter">
+    <button class="filter-btn active" onclick="filterQ('all',this)">Tất cả</button>
+    <button class="filter-btn" onclick="filterQ('mc',this)">Trắc nghiệm</button>
+    <button class="filter-btn" onclick="filterQ('fill',this)">Điền từ</button>
+    <button class="filter-btn" onclick="filterQ('reorder',this)">Sắp xếp</button>
+    <button class="filter-btn" onclick="filterQ('error',this)">Sửa lỗi</button>
+    <button class="filter-btn" onclick="filterQ('context',this)">Ngữ cảnh</button>
+  </div>
+
+  <div id="questionsContainer"></div>
+
+  <div id="finalResult" style="display:none">
+    <div class="result-box">
+      <div class="big-score" id="finalScore">—</div>
+      <p id="finalMsg">Hoàn thành bài luyện tập!</p>
+      <br>
+      <button class="btn-secondary" onclick="resetPractice()">🔄 Làm lại từ đầu</button>
+      <button class="btn-primary" onclick="showSection('production',document.querySelectorAll('.nav-btn')[2])">Tiến đến Production →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ PRODUCTION ═══════════════════════ -->
+<div class="section" id="production">
+  <div class="phase-label">Phase 3 — Production</div>
+  <div class="section-title">Tự sáng tạo câu của bạn</div>
+  <div class="cta-box">
+    <p>Bạn đã học xong 5 thì cơ bản! Bây giờ hãy tự viết câu, kể chuyện, hoặc mô tả một ngày của bạn bằng tiếng Anh.</p>
+    <p style="font-size:.82rem;color:#999;margin-bottom:1rem">Gợi ý: Viết về buổi sáng hôm nay – dùng ít nhất 3 thì khác nhau.</p>
+    <textarea id="productionText" style="width:100%;min-height:120px;border:1.5px solid #e8e4ff;border-radius:12px;padding:.9rem;font-family:'Lexend',sans-serif;font-size:.88rem;color:#2d2b3d;outline:none;resize:vertical;margin-bottom:1rem" placeholder="Ví dụ: I woke up at 6 AM. Now I am studying English. I will go to school at 7..."></textarea>
+    <button class="btn-primary" onclick="checkProduction()">Kiểm tra bài viết ✨</button>
+    <div id="productionFeedback" style="margin-top:1rem;font-size:.85rem;color:#6c5ce7"></div>
+  </div>
+
+  <div style="margin-top:2rem;background:#fff;border-radius:16px;padding:1.4rem;border:1.5px solid #e8e4ff">
+    <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">📋 Bảng tổng hợp nhanh</h3>
+    <table>
+      <thead><tr><th>Thì</th><th>Công thức (+)</th><th>Từ tín hiệu</th></tr></thead>
+      <tbody>
+        <tr><td>Present Simple</td><td>S + V(s/es)</td><td>every day, always, usually</td></tr>
+        <tr><td>Present Continuous</td><td>S + am/is/are + V-ing</td><td>now, at the moment</td></tr>
+        <tr><td>Present Perfect</td><td>S + have/has + V3</td><td>already, just, ever, for, since</td></tr>
+        <tr><td>Past Simple</td><td>S + V2</td><td>yesterday, last…, ago</td></tr>
+        <tr><td>Future Simple</td><td>S + will + V</td><td>tomorrow, next…, soon</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const QUESTIONS = [
+  // ── MULTIPLE CHOICE (30) ──
+  {id:1,type:'mc',tense:'Present Simple',q:'She _____ to school every morning.',opts:['go','goes','is going','went'],ans:1,ex:'She (he/she/it) → goes (thêm -es)'},
+  {id:2,type:'mc',tense:'Present Continuous',q:'Look! The children _____ in the park right now.',opts:['play','played','are playing','have played'],ans:2,ex:'Right now → Present Continuous (are + V-ing)'},
+  {id:3,type:'mc',tense:'Past Simple',q:'We _____ a great film last night.',opts:['watch','watches','watched','have watched'],ans:2,ex:'Last night → Past Simple (V-ed)'},
+  {id:4,type:'mc',tense:'Future Simple',q:'I think it _____ rain tomorrow.',opts:['rains','rained','is raining','will rain'],ans:3,ex:'Tomorrow + think → will + bare verb'},
+  {id:5,type:'mc',tense:'Present Perfect',q:'She _____ already finished her homework.',opts:['has','have','had','is'],ans:0,ex:'She → has + V3 (Present Perfect)'},
+  {id:6,type:'mc',tense:'Present Simple',q:'Water _____ at 100 degrees Celsius.',opts:['boil','boils','is boiling','boiled'],ans:1,ex:'Scientific fact → Present Simple: boils'},
+  {id:7,type:'mc',tense:'Present Continuous',q:'Listen! Someone _____ at the door.',opts:['knocks','knocked','is knocking','has knocked'],ans:2,ex:'Listen! = happening now → is knocking'},
+  {id:8,type:'mc',tense:'Past Simple',q:'They _____ to Ha Long Bay two years ago.',opts:['go','goes','have gone','went'],ans:3,ex:'Two years ago → Past Simple: went (irregular)'},
+  {id:9,type:'mc',tense:'Future Simple',q:'Don\'t worry, I _____ help you with the project.',opts:['help','helped','will help','am helping'],ans:2,ex:'Promise → will + bare verb'},
+  {id:10,type:'mc',tense:'Present Perfect',q:'Have you ever _____ sushi?',opts:['eat','ate','eating','eaten'],ans:3,ex:'Have + ever → V3 (past participle): eaten'},
+  {id:11,type:'mc',tense:'Present Simple',q:'My father _____ for a big company in Ho Chi Minh City.',opts:['work','works','is working','worked'],ans:1,ex:'Fact/routine → Present Simple: works'},
+  {id:12,type:'mc',tense:'Present Continuous',q:'She _____ a new language these days.',opts:['learn','learns','learned','is learning'],ans:3,ex:'These days (temp activity) → is learning'},
+  {id:13,type:'mc',tense:'Past Simple',q:'I _____ my keys this morning but I found them later.',opts:['lose','lost','have lost','am losing'],ans:1,ex:'This morning (finished) → Past Simple: lost'},
+  {id:14,type:'mc',tense:'Future Simple',q:'The weather forecast says it _____ sunny next weekend.',opts:['is','was','will be','has been'],ans:2,ex:'Next weekend → will + bare verb: will be'},
+  {id:15,type:'mc',tense:'Present Perfect',q:'I _____ never seen snow in my life.',opts:['have','has','had','did'],ans:0,ex:'Never + present result → have + V3'},
+  {id:16,type:'mc',tense:'Present Simple',q:'The library _____ at 8 AM on weekdays.',opts:['open','opened','opens','is opening'],ans:2,ex:'Fixed schedule → Present Simple: opens'},
+  {id:17,type:'mc',tense:'Past Simple',q:'She _____ her phone when she was walking to school.',opts:['drops','is dropping','dropped','has dropped'],ans:2,ex:'While walking (finished event) → dropped'},
+  {id:18,type:'mc',tense:'Present Continuous',q:'The students _____ a test at the moment.',opts:['take','took','takes','are taking'],ans:3,ex:'At the moment → are + V-ing'},
+  {id:19,type:'mc',tense:'Present Perfect',q:'He _____ just arrived at the airport.',opts:['have','has','had','is'],ans:1,ex:'He + just → has + V3: has arrived'},
+  {id:20,type:'mc',tense:'Future Simple',q:'I _____ call you when I get home.',opts:['call','called','calls','will call'],ans:3,ex:'Promise about future → will call'},
+  {id:21,type:'mc',tense:'Present Simple',q:'Dogs _____ bones.',opts:['like','likes','liked','are liking'],ans:0,ex:'General truth, plural subject → like (no -s)'},
+  {id:22,type:'mc',tense:'Present Continuous',q:'Why _____ you wearing a coat? It\'s warm today.',opts:['do','did','are','have'],ans:2,ex:'Question with right now → are you wearing?'},
+  {id:23,type:'mc',tense:'Past Simple',q:'We _____ volleyball after school yesterday.',opts:['play','plays','played','have played'],ans:2,ex:'Yesterday → Past Simple: played'},
+  {id:24,type:'mc',tense:'Present Perfect',q:'They _____ lived in this city since 2018.',opts:['have','has','had','are'],ans:0,ex:'Since + present result → have + V3'},
+  {id:25,type:'mc',tense:'Future Simple',q:'Scientists believe robots _____ do most jobs in 2050.',opts:['will','are','have','do'],ans:0,ex:'Future prediction → will + bare verb'},
+  {id:26,type:'mc',tense:'Present Simple',q:'She doesn\'t _____ coffee in the morning.',opts:['drinks','drank','drink','drinking'],ans:2,ex:'Negative: doesn\'t + bare verb (drink)'},
+  {id:27,type:'mc',tense:'Past Simple',q:'_____ you watch the football match last Sunday?',opts:['Do','Does','Did','Have'],ans:2,ex:'Last Sunday → Did + bare verb (question)'},
+  {id:28,type:'mc',tense:'Present Perfect',q:'I haven\'t seen that movie _____.',opts:['ago','last week','yet','since'],ans:2,ex:'Negative Present Perfect → yet'},
+  {id:29,type:'mc',tense:'Present Continuous',q:'The teacher _____ the lesson right now.',opts:['explain','explains','is explaining','explained'],ans:2,ex:'Right now → is + V-ing'},
+  {id:30,type:'mc',tense:'Future Simple',q:'If you study hard, you _____ pass the exam.',opts:['pass','passed','will pass','are passing'],ans:2,ex:'Future result → will + bare verb'},
+
+  // ── FILL IN THE BLANK (30) ──
+  {id:31,type:'fill',tense:'Present Simple',q:'My brother _____ (play) video games every evening.',ans:'plays',ex:'Every evening + he/she/it → plays'},
+  {id:32,type:'fill',tense:'Present Continuous',q:'She _____ (read) a book right now.',ans:'is reading',ex:'Right now → is + reading'},
+  {id:33,type:'fill',tense:'Past Simple',q:'We _____ (visit) our grandparents last summer.',ans:'visited',ex:'Last summer → visited (regular -ed)'},
+  {id:34,type:'fill',tense:'Future Simple',q:'I _____ (travel) to Da Nang next month.',ans:'will travel',ex:'Next month → will + bare verb'},
+  {id:35,type:'fill',tense:'Present Perfect',q:'She _____ (finish) all her assignments already.',ans:'has finished',ex:'Already + she → has + V3'},
+  {id:36,type:'fill',tense:'Present Simple',q:'The sun _____ (rise) in the east.',ans:'rises',ex:'Scientific fact → rises'},
+  {id:37,type:'fill',tense:'Present Continuous',q:'They _____ (have) lunch at the cafeteria now.',ans:'are having',ex:'Now → are having'},
+  {id:38,type:'fill',tense:'Past Simple',q:'She _____ (write) a letter to her pen pal yesterday.',ans:'wrote',ex:'Yesterday → wrote (irregular)'},
+  {id:39,type:'fill',tense:'Future Simple',q:'He _____ (be) 14 years old next birthday.',ans:'will be',ex:'Next birthday → will be'},
+  {id:40,type:'fill',tense:'Present Perfect',q:'I _____ (never / try) durian before.',ans:'have never tried',ex:'Never + experience → have never + V3'},
+  {id:41,type:'fill',tense:'Present Simple',q:'Nam _____ (not / like) spicy food.',ans:"doesn't like",ex:"Negative: doesn't + bare verb"},
+  {id:42,type:'fill',tense:'Present Continuous',q:'Look! It _____ (snow) outside!',ans:'is snowing',ex:'Look! = happening now → is snowing'},
+  {id:43,type:'fill',tense:'Past Simple',q:'They _____ (go) to the beach and _____ (swim) all day.',ans:'went, swam',ex:'Past story → went, swam (both irregular)'},
+  {id:44,type:'fill',tense:'Future Simple',q:'I promise I _____ (not / tell) anyone your secret.',ans:"won't tell",ex:'Promise → will not (won\'t) + bare verb'},
+  {id:45,type:'fill',tense:'Present Perfect',q:'_____ you ever _____ (see) a real elephant?',ans:'Have, seen',ex:'Ever → Have you + V3?'},
+  {id:46,type:'fill',tense:'Present Simple',q:'The train to Hanoi _____ (leave) at 7 PM tonight.',ans:'leaves',ex:'Fixed timetable → Present Simple: leaves'},
+  {id:47,type:'fill',tense:'Present Continuous',q:'My parents _____ (watch) the news at the moment.',ans:'are watching',ex:'At the moment → are watching'},
+  {id:48,type:'fill',tense:'Past Simple',q:'She _____ (not / come) to school because she _____ (be) sick.',ans:"didn't come, was",ex:"Negative past: didn't + bare verb"},
+  {id:49,type:'fill',tense:'Present Perfect',q:'We _____ (live) here for ten years.',ans:'have lived',ex:'For + present → have + V3'},
+  {id:50,type:'fill',tense:'Future Simple',q:'In 20 years, people _____ (use) electric cars everywhere.',ans:'will use',ex:'Future prediction → will + bare verb'},
+  {id:51,type:'fill',tense:'Present Simple',q:'He always _____ (brush) his teeth before bed.',ans:'brushes',ex:'Always + he → brushes'},
+  {id:52,type:'fill',tense:'Present Continuous',q:'Why _____ she _____ (cry)?',ans:'is, crying',ex:'Why is she + V-ing?'},
+  {id:53,type:'fill',tense:'Past Simple',q:'I _____ (lose) my wallet when I _____ (take) the bus.',ans:'lost, was taking',ex:'Lost = past simple; was taking = background action'},
+  {id:54,type:'fill',tense:'Present Perfect',q:'He _____ (just / eat) so he\'s not hungry.',ans:'has just eaten',ex:'Just → has + V3: has just eaten'},
+  {id:55,type:'fill',tense:'Future Simple',q:'I think the new school year _____ (start) in September.',ans:'will start',ex:'I think (prediction) → will start'},
+  {id:56,type:'fill',tense:'Present Simple',q:'Cats _____ (sleep) up to 16 hours a day.',ans:'sleep',ex:'General fact, plural → sleep (no -s)'},
+  {id:57,type:'fill',tense:'Present Continuous',q:'The band _____ (perform) a new song tonight.',ans:'is performing',ex:'Tonight (arranged) → is performing'},
+  {id:58,type:'fill',tense:'Past Simple',q:'My family _____ (move) to Saigon five years ago.',ans:'moved',ex:'Five years ago → moved (regular -ed)'},
+  {id:59,type:'fill',tense:'Present Perfect',q:'She _____ (already / book) a table at the restaurant.',ans:'has already booked',ex:'Already → has + already + V3'},
+  {id:60,type:'fill',tense:'Future Simple',q:'Don\'t worry, everything _____ (be) okay.',ans:'will be',ex:'Reassurance → will be'},
+
+  // ── SENTENCE REORDER (15) ──
+  {id:61,type:'reorder',tense:'Present Simple',q:'Sắp xếp lại thành câu đúng:',words:['every','She','English','morning','studies'],ans:'She studies English every morning',ex:'Subject + V(s/es) + object + time'},
+  {id:62,type:'reorder',tense:'Present Continuous',q:'Sắp xếp lại thành câu đúng:',words:['playing','They','are','football','now'],ans:'They are playing football now',ex:'Subject + are + V-ing + object + time'},
+  {id:63,type:'reorder',tense:'Past Simple',q:'Sắp xếp lại thành câu đúng:',words:['went','We','last','to','Hanoi','week'],ans:'We went to Hanoi last week',ex:'Subject + V2 + place + time'},
+  {id:64,type:'reorder',tense:'Future Simple',q:'Sắp xếp lại thành câu đúng:',words:['visit','will','My','family','Hue','next','month'],ans:'My family will visit Hue next month',ex:'Subject + will + bare verb + place + time'},
+  {id:65,type:'reorder',tense:'Present Perfect',q:'Sắp xếp lại thành câu đúng:',words:['finished','has','She','already','homework','her'],ans:'She has already finished her homework',ex:'Subject + has/have + already + V3 + object'},
+  {id:66,type:'reorder',tense:'Present Simple',q:'Sắp xếp lại thành câu đúng:',words:["doesn't","He","like","vegetables"],ans:"He doesn't like vegetables",ex:"Subject + doesn't + bare verb + object"},
+  {id:67,type:'reorder',tense:'Present Continuous',q:'Sắp xếp lại thành câu đúng:',words:['is','right','now','listening','She','to','music'],ans:'She is listening to music right now',ex:'Subject + is + V-ing + object + time'},
+  {id:68,type:'reorder',tense:'Past Simple',q:'Sắp xếp lại thành câu đúng:',words:['you','Did','watch','last','the','match','night'],ans:'Did you watch the match last night',ex:'Did + subject + bare verb + object + time'},
+  {id:69,type:'reorder',tense:'Future Simple',q:'Sắp xếp lại thành câu đúng:',words:['will','I','you','help','tomorrow'],ans:'I will help you tomorrow',ex:'Subject + will + bare verb + object + time'},
+  {id:70,type:'reorder',tense:'Present Perfect',q:'Sắp xếp lại thành câu đúng:',words:['never','I','have','tried','sushi'],ans:'I have never tried sushi',ex:'Subject + have + never + V3 + object'},
+  {id:71,type:'reorder',tense:'Present Simple',q:'Sắp xếp lại thành câu đúng:',words:['start','at','school','does','What','time'],ans:'What time does school start',ex:'What time + does + subject + bare verb'},
+  {id:72,type:'reorder',tense:'Present Continuous',q:'Sắp xếp lại thành câu đúng:',words:['are','Why','crying','you'],ans:'Why are you crying',ex:'Why + are + subject + V-ing'},
+  {id:73,type:'reorder',tense:'Past Simple',q:'Sắp xếp lại thành câu đúng:',words:['born','was','she','Where'],ans:'Where was she born',ex:'Where + was + subject + V3 (passive sense)'},
+  {id:74,type:'reorder',tense:'Present Perfect',q:'Sắp xếp lại thành câu đúng:',words:['have','two','I','hours','for','waited'],ans:'I have waited for two hours',ex:'Subject + have + V3 + for + time'},
+  {id:75,type:'reorder',tense:'Future Simple',q:'Sắp xếp lại thành câu đúng:',words:['there','be','Will','a','test','tomorrow'],ans:'Will there be a test tomorrow',ex:'Will + there + be (question form)'},
+
+  // ── ERROR CORRECTION (13) ──
+  {id:76,type:'error',tense:'Present Simple',q:'She <u>go</u> to the market every Saturday.',error:'go',ans:'goes',ex:'She (3rd person singular) → goes'},
+  {id:77,type:'error',tense:'Present Continuous',q:'They <u>is playing</u> basketball after school now.',error:'is playing',ans:'are playing',ex:'They → are (not is) + V-ing'},
+  {id:78,type:'error',tense:'Past Simple',q:'I <u>buyed</u> a new notebook yesterday.',error:'buyed',ans:'bought',ex:'Buy is irregular: buy → bought'},
+  {id:79,type:'error',tense:'Future Simple',q:'She <u>wills go</u> to the cinema tomorrow.',error:'wills go',ans:'will go',ex:"will is a modal verb – never add 's': will + bare verb"},
+  {id:80,type:'error',tense:'Present Perfect',q:'He has <u>eat</u> lunch already.',error:'eat',ans:'eaten',ex:'have/has + V3 (past participle): eat → eaten'},
+  {id:81,type:'error',tense:'Present Simple',q:'My father <u>don\'t</u> drink coffee in the morning.',error:"don't",ans:"doesn't",ex:"He/she/it → doesn't (not don't)"},
+  {id:82,type:'error',tense:'Present Continuous',q:'Look! The bird <u>flies</u> away right now.',error:'flies',ans:'is flying',ex:'Right now → is flying (not Present Simple)'},
+  {id:83,type:'error',tense:'Past Simple',q:'We <u>didn\'t went</u> to school last Monday.',error:"didn't went",ans:"didn't go",ex:"didn't + bare verb (not V2): didn't go"},
+  {id:84,type:'error',tense:'Present Perfect',q:'I <u>have saw</u> that film three times.',error:'have saw',ans:'have seen',ex:'See is irregular: see → saw → seen (V3)'},
+  {id:85,type:'error',tense:'Future Simple',q:'I <u>am going will</u> travel to Japan next year.',error:'am going will',ans:'will travel',ex:'Use only one future form: will + bare verb'},
+  {id:86,type:'error',tense:'Present Simple',q:'The class <u>start</u> at 7:30 every morning.',error:'start',ans:'starts',ex:'The class (singular) → starts'},
+  {id:87,type:'error',tense:'Present Perfect',q:'She <u>has lived</u> in Hanoi since she <u>was born</u>.',error:'',ans:'has lived',ex:'Both forms are actually correct here! has lived + since + past simple'},
+  {id:88,type:'error',tense:'Past Simple',q:'He <u>have visited</u> the museum last Sunday.',error:'have visited',ans:'visited',ex:'Last Sunday → Past Simple, not Present Perfect: visited'},
+
+  // ── CONTEXT-BASED (12) ──
+  {id:89,type:'context',tense:'Present Simple',context:'Nam is a student. He gets up at 6 every morning, has breakfast, and takes the bus to school.',q:'What tense is used in this passage and why?',opts:['Past Simple – events in the past','Present Simple – daily routine','Present Continuous – happening now','Future Simple – plans'],ans:1,ex:'Daily routines → Present Simple'},
+  {id:90,type:'context',tense:'Present Continuous',context:'It is 8 PM. Lan\'s mother is cooking dinner. Her father is reading the newspaper. Her sister is doing homework.',q:'Why is Present Continuous used here?',opts:['These are permanent facts','These actions happen every day','These actions are happening right now','These happened in the past'],ans:2,ex:'Right now (8 PM, ongoing) → Present Continuous'},
+  {id:91,type:'context',tense:'Past Simple',context:'Last year, our school held a sports day. Students competed in many events. Everyone enjoyed the day.',q:'Choose the correct tense for: "Students _____ (compete) in many events."',opts:['compete','are competing','competed','have competed'],ans:2,ex:'Last year → Past Simple: competed'},
+  {id:92,type:'context',tense:'Future Simple',context:'Minh is looking at a dark cloud. He thinks it will rain soon. He will bring an umbrella.',q:'Why is "will" used in this context?',opts:['It is raining now','It rained before','It is a prediction about the future','It is a habit'],ans:2,ex:'Prediction about future event → will'},
+  {id:93,type:'context',tense:'Present Perfect',context:'Lan: "Do you want to watch Avengers?" Minh: "No thanks, I\'ve already seen it twice."',q:'Why does Minh use Present Perfect?',opts:['The film is playing now','He saw it in a specific time in the past','He has past experience that affects the present','He will watch it later'],ans:2,ex:'Life experience with present relevance → Present Perfect'},
+  {id:94,type:'context',tense:'Present Simple',context:'A biology textbook says: "Bees collect nectar from flowers and produce honey in their hives."',q:'The textbook uses Present Simple because:',opts:['This is happening right now','This is a scientific/general fact','This happened in the past','This will happen in the future'],ans:1,ex:'General truths/scientific facts → Present Simple'},
+  {id:95,type:'context',tense:'Present Continuous',context:'Teacher: "Class, please be quiet! I can see some of you are talking while I am explaining."',q:'Choose the right option for: "Some students _____ (talk)."',opts:['talk','talked','are talking','have talked'],ans:2,ex:'Right now in class → are talking'},
+  {id:96,type:'context',tense:'Past Simple',context:'Diary entry: "5th April – I woke up late. I missed breakfast. I ran to school but arrived 10 minutes late."',q:'All verbs are Past Simple because:',opts:['These are future plans','These are habits','These are completed events on a specific date','These are ongoing now'],ans:2,ex:'Specific date in diary → completed past events'},
+  {id:97,type:'context',tense:'Future Simple',context:'News headline: "Scientists announce that the new vaccine will be available to the public next month."',q:'"Will be available" expresses:',opts:['A current action','A past discovery','A future prediction/announcement','A habit'],ans:2,ex:'Next month + announcement → future with will'},
+  {id:98,type:'context',tense:'Present Perfect',context:'Nga: "You look different! Have you changed your hair?" Lan: "Yes! I\'ve just cut it."',q:'Why does Lan use "I\'ve just cut"?',opts:['She cut her hair a long time ago','She is cutting her hair now','She just cut it and the result is visible now','She will cut it later'],ans:2,ex:'Just + visible result now → Present Perfect'},
+  {id:99,type:'context',tense:'Present Simple',context:'A recipe says: "Mix the flour and eggs. Add milk slowly. Bake for 30 minutes at 180°C."',q:'Recipes use Present Simple because:',opts:['Instructions are always in the past','Instructions describe general actions/steps','The cook is doing it right now','This is a prediction'],ans:1,ex:'Instructions & general steps → Present Simple'},
+  {id:100,type:'context',tense:'Mixed',context:'This morning I woke up at 6. Now I am eating breakfast. I have already packed my bag. I will go to school in 30 minutes.',q:'Match: "I have already packed my bag" uses:',opts:['Past Simple','Present Continuous','Present Perfect','Future Simple'],ans:2,ex:'Already + result now → Present Perfect'},
+];
+
+let score=0, answered=0, currentFilter='all';
+const qStates={};
+
+function showSection(id, btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  const map={presentation:33,practice:66,production:100};
+  document.getElementById('progressBar').style.width=map[id]+'%';
+}
+
+function buildQuestions(){
+  const c=document.getElementById('questionsContainer');
+  c.innerHTML='';
+  const filtered=currentFilter==='all'?QUESTIONS:QUESTIONS.filter(q=>q.type===currentFilter);
+  filtered.forEach(q=>{
+    const div=document.createElement('div');
+    div.className='q-block';
+    div.id='q'+q.id;
+    if(qStates[q.id]){
+      div.classList.add(qStates[q.id].correct?'correct':'wrong');
+    }
+    let typeLabel={mc:'Trắc nghiệm',fill:'Điền từ',reorder:'Sắp xếp',error:'Sửa lỗi',context:'Ngữ cảnh'}[q.type];
+    let html=`<div class="q-meta"><span class="q-num">Câu ${q.id}</span><span class="q-type-tag">${typeLabel}</span><span class="q-type-tag" style="background:#f0fff8;color:#00b894">${q.tense}</span></div>`;
+
+    if(q.type==='context') html+=`<div class="match-context">${q.context}</div>`;
+    if(q.type==='error') html+=`<div class="error-sent">Tìm và sửa lỗi: "<em>${q.q}</em>"</div>`;
+    else html+=`<div class="q-text">${q.q}</div>`;
+
+    if(q.type==='mc'||q.type==='context'){
+      html+=`<div class="mc-options">`;
+      q.opts.forEach((o,i)=>{
+        let cls='mc-btn';
+        if(qStates[q.id]){
+          if(i===q.ans) cls+=' reveal-correct';
+          else if(i===qStates[q.id].chosen) cls+=' selected-wrong';
+        }
+        html+=`<button class="${cls}" ${qStates[q.id]?'disabled':''} onclick="answerMC(${q.id},${i})">${o}</button>`;
+      });
+      html+=`</div>`;
+    } else if(q.type==='fill'){
+      const saved=qStates[q.id]?qStates[q.id].val:'';
+      const inputCls=qStates[q.id]?(qStates[q.id].correct?'fill-input correct-input':'fill-input wrong-input'):'fill-input';
+      html+=`<div class="fill-wrap"><input class="${inputCls}" type="text" id="fi${q.id}" placeholder="Nhập câu trả lời..." value="${saved}" ${qStates[q.id]?'disabled':''}><button class="check-btn" ${qStates[q.id]?'style="display:none"':''} onclick="checkFill(${q.id})">Kiểm tra</button></div>`;
+    } else if(q.type==='reorder'){
+      const shuffled=qStates[q.id]?null:[...q.words].sort(()=>Math.random()-.5);
+      const chips=qStates[q.id]?q.words:shuffled;
+      html+=`<div class="answer-chips" id="ac${q.id}">`;
+      if(qStates[q.id]) html+=`<span class="chip" style="background:${qStates[q.id].correct?'#d4edda':'#fde8e8'};color:${qStates[q.id].correct?'#00855e':'#c0392b'}">${qStates[q.id].val}</span>`;
+      html+=`</div>`;
+      html+=`<div class="word-chips" id="wc${q.id}">`;
+      chips.forEach((w,i)=>{
+        const used=qStates[q.id]?true:false;
+        html+=`<span class="chip ${used?'used':''}" id="ch${q.id}_${i}" onclick="addWord(${q.id},'${w}',${i})">${w}</span>`;
+      });
+      html+=`</div>`;
+      if(!qStates[q.id]) html+=`<div style="display:flex;gap:.5rem"><button class="check-btn" onclick="checkReorder(${q.id})">Kiểm tra</button><button class="check-btn" style="background:#aaa" onclick="clearReorder(${q.id})">Xóa</button></div>`;
+    } else if(q.type==='error'){
+      const saved=qStates[q.id]?qStates[q.id].val:'';
+      const inputCls=qStates[q.id]?(qStates[q.id].correct?'rewrite-input correct-input':'rewrite-input wrong-input'):'rewrite-input';
+      html+=`<input class="${inputCls}" type="text" id="ei${q.id}" placeholder="Viết lại đúng động từ sai..." value="${saved}" ${qStates[q.id]?'disabled':''}><br>`;
+      if(!qStates[q.id]) html+=`<button class="check-btn" onclick="checkError(${q.id})">Kiểm tra</button>`;
+    }
+
+    if(qStates[q.id]){
+      html+=`<div class="feedback ${qStates[q.id].correct?'ok':'fail'}">${qStates[q.id].correct?'✅ Đúng rồi!':'❌ Chưa đúng'}</div>`;
+      html+=`<div class="explain">💡 ${q.ex}</div>`;
+      if(!qStates[q.id].correct) html+=`<div class="explain" style="color:#6c5ce7">✔ Đáp án: <strong>${q.ans!==undefined&&typeof q.ans==='number'&&(q.type==='mc'||q.type==='context')?q.opts[q.ans]:q.ans}</strong></div>`;
+    }
+    div.innerHTML=html;
+    c.appendChild(div);
+  });
+  updateScore();
+}
+
+// reorder state per question
+const reorderBuilt={};
+
+function addWord(qid,word,idx){
+  if(!reorderBuilt[qid]) reorderBuilt[qid]=[];
+  reorderBuilt[qid].push(word);
+  document.getElementById('ch'+qid+'_'+idx).classList.add('used');
+  const ac=document.getElementById('ac'+qid);
+  const chip=document.createElement('span');
+  chip.className='chip';
+  chip.textContent=word;
+  chip.onclick=()=>{
+    reorderBuilt[qid].splice(reorderBuilt[qid].indexOf(word),1);
+    document.getElementById('ch'+qid+'_'+idx).classList.remove('used');
+    chip.remove();
+  };
+  ac.appendChild(chip);
+}
+
+function clearReorder(qid){
+  reorderBuilt[qid]=[];
+  const ac=document.getElementById('ac'+qid);
+  ac.innerHTML='';
+  document.querySelectorAll(`[id^="ch${qid}_"]`).forEach(c=>c.classList.remove('used'));
+}
+
+function checkReorder(qid){
+  const q=QUESTIONS.find(x=>x.id===qid);
+  const val=(reorderBuilt[qid]||[]).join(' ');
+  const correct=val.toLowerCase().trim()===q.ans.toLowerCase().trim();
+  recordAnswer(qid,correct,val);
+  buildQuestions();
+}
+
+function answerMC(qid,chosen){
+  const q=QUESTIONS.find(x=>x.id===qid);
+  const correct=chosen===q.ans;
+  qStates[qid]={correct,chosen,val:q.opts[chosen]};
+  answered++;
+  if(correct) score++;
+  updateScore();
+  buildQuestions();
+}
+
+function checkFill(qid){
+  const q=QUESTIONS.find(x=>x.id===qid);
+  const val=document.getElementById('fi'+qid).value.trim();
+  const correct=val.toLowerCase()===q.ans.toLowerCase();
+  recordAnswer(qid,correct,val);
+  buildQuestions();
+}
+
+function checkError(qid){
+  const q=QUESTIONS.find(x=>x.id===qid);
+  const val=document.getElementById('ei'+qid).value.trim();
+  const correct=val.toLowerCase()===q.ans.toLowerCase();
+  recordAnswer(qid,correct,val);
+  buildQuestions();
+}
+
+function recordAnswer(qid,correct,val){
+  if(qStates[qid]) return;
+  qStates[qid]={correct,val};
+  answered++;
+  if(correct) score++;
+  updateScore();
+  if(answered===QUESTIONS.length) showResult();
+}
+
+function updateScore(){
+  document.getElementById('scoreBadge').textContent=`Điểm: ${score} / ${answered}`;
+  document.getElementById('practiceProgress').style.width=(answered/QUESTIONS.length*100).toFixed(1)+'%';
+}
+
+function showResult(){
+  document.getElementById('finalResult').style.display='block';
+  const pct=Math.round(score/QUESTIONS.length*100);
+  document.getElementById('finalScore').textContent=`${score}/100`;
+  let msg=pct>=90?'🌟 Xuất sắc! Bạn nắm vững các thì tiếng Anh!':pct>=70?'👍 Tốt lắm! Ôn lại những câu sai nhé.':pct>=50?'💪 Cố gắng thêm! Xem lại phần Presentation.':'📚 Hãy xem lại bài học và thử lại!';
+  document.getElementById('finalMsg').textContent=msg;
+  window.scrollTo({top:document.getElementById('finalResult').offsetTop-80,behavior:'smooth'});
+}
+
+function resetPractice(){
+  Object.keys(qStates).forEach(k=>delete qStates[k]);
+  Object.keys(reorderBuilt).forEach(k=>delete reorderBuilt[k]);
+  score=0; answered=0;
+  document.getElementById('finalResult').style.display='none';
+  updateScore();
+  buildQuestions();
+}
+
+function filterQ(type,btn){
+  currentFilter=type;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  buildQuestions();
+}
+
+function checkProduction(){
+  const text=document.getElementById('productionText').value.trim();
+  if(!text){document.getElementById('productionFeedback').textContent='Hãy viết ít nhất một câu nhé!';return;}
+  const tenseHints=[
+    {re:/\b(am|is|are)\s+\w+ing\b/i,label:'✅ Present Continuous'},
+    {re:/\b(have|has)\s+(just|already|never|ever)?\s*\w+(ed|en|ne|wn|rn|nt|lt|pt|ght)\b/i,label:'✅ Present Perfect'},
+    {re:/\bwill\s+\w+\b/i,label:'✅ Future Simple'},
+    {re:/\b(went|was|were|had|did|saw|came|made|got|took|bought|ate|ran)\b/i,label:'✅ Past Simple'},
+  ];
+  const found=tenseHints.filter(t=>t.re.test(text)).map(t=>t.label);
+  const fb=document.getElementById('productionFeedback');
+  if(found.length===0) fb.innerHTML='🔍 Hãy thử dùng một trong 5 thì đã học trong câu của bạn!';
+  else fb.innerHTML='Tìm thấy trong bài viết của bạn:<br>'+found.join('<br>')+(found.length>=3?'<br>🌟 Tuyệt vời! Bạn đã dùng nhiều thì khác nhau!':'<br>💡 Thử thêm các thì khác nữa nhé!');
+}
+
+// Init
+buildQuestions();
+</script>
+</body>
+</html>
